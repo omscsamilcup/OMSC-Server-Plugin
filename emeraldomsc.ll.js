@@ -1442,7 +1442,7 @@ mc.listen('onServerStarted',() => {
                                 pl.addTag('e8')
                                 pl.tell(`§l§a成功使用該粒子`)
                             }
-                        }else if (id == 2) {
+                        }else if (id == 8) {
                             if (pl.hasTag('e9')) {
                                 pl.removeTag('e9')
                                 pl.tell(`§l§a成功關閉該粒子`)
@@ -1450,7 +1450,7 @@ mc.listen('onServerStarted',() => {
                                 pl.addTag('e9')
                                 pl.tell(`§l§a成功使用該粒子`)
                             }
-                        }else if (id == 2) {
+                        }else if (id == 9) {
                             if (pl.hasTag('e10')) {
                                 pl.removeTag('e10')
                                 pl.tell(`§l§a成功關閉該粒子`)
@@ -1485,6 +1485,101 @@ mc.listen('onServerStarted',() => {
 })
 
 //管理員選單
+mc.listen("onServerStarted",()=> {
+    var fm = mc.newSimpleForm()
+    fm.setTitle('§l§c管理員選單')
+    fm.addButton('§l§9更換游戲模式')
+    fm.addButton('§l§9開關隱身模式')
+    fm.addButton('§l§9封禁玩家')
+    fm.addButton('§l§9解除封禁玩家')
+    fm.addButton('§l§9傳送到其他玩家')
+    fm.addButton('§l§9踢出玩家')
+    fm.addButton('§l§9banlist')
+    fm.addButton('§l§9blackbe')
+
+    var tp = mc.newCustomForm()
+    tp.addDropdown('請選取你要傳送的玩家',mc.getOnlinePlayers())
+
+    var kick = mc.newCustomForm()
+    kick.addDropdown('請選取你要踢出的玩家',mc.getOnlinePlayers())
+    kick.addInput('請輸入踢出的原因(選填，請加上"")')
+
+    var ban = mc.newCustomForm()
+    ban.setTitle('§l§9封禁玩家')
+    ban.addInput('請輸入玩家名稱(如玩家名稱有空格請加上""):')
+    ban.addInput('請輸入封禁原因(選填，請加上""):')
+    ban.addInput('請輸入封禁時間(分鐘，選填(如填寫此處必須填寫封禁原因)):')
+
+    var unban = mc.newCustomForm()
+    unban.setTitle('§l§9解除封禁(如玩家名稱有空格請加上"")')
+    unban.addInput('請輸入你要解除封禁的玩家')
+
+    var cmd = mc.newCommand('admin','管理員選單',PermType.GameMasters)
+    cmd.overload()
+    cmd.setCallback((_cmd,ori,_out,_res) => {
+        ori.player.sendForm(fm,(pl,id)=>{
+            if (id == 0) {
+
+            } else if (id == 1) {
+
+            } else if (id == 2) {
+                pl.sendForm(ban,(pl,data) => {
+                    if (data[0] != undefined) {
+                        if (data[1] != undefined) {
+                            if (data[2] != undefined) {
+                                pl.runcmd(`ban ${data[0]} ${data[1]} ${data[2]}`)
+                                pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1] + '時間爲' + data[2] + '分鐘')
+                            } else if (data[2] == undefined) {
+                                pl.runcmd(`ban ${data[0]} ${data[1]}`)
+                                pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1])
+                            }
+                        } else if (data[1] == undefined){
+                            pl.runcmd(`ban ${data[0]}`)
+                            pl.tell('§l§a成功封禁玩家' + data[0])
+                        }
+                    } else if (data[0] == undefined) {
+                        pl.tell('§l§c請輸入你所封禁的玩家名稱')
+                    }
+                })
+            } else if (id == 3) {
+                pl.sendForm(unban,(pl,data) => {
+                    if (data[0] != undefined) {
+                        pl.runcmd(`unban ${data[0]}`)
+                        pl.tell('§l§a成功解除玩家' + data[0] + '的封禁')
+                    }
+                })
+            } else if (id == 4) {
+                pl.sendForm(tp,(pl,data)=>{
+                    if (data[0] != undefined) {
+                        pl.runcmd(`tp \"${data[0]}\"`)
+                        pl.tell(`§l§a你成功傳送到玩家${data[0]}`)
+                    } else if (data == undefined) {
+                        pl.tell(`§l§c請正確選取玩家ID`)
+                    }
+                })
+            } else if (id == 5) {
+                pl.sendForm(kick,(pl,data) => {
+                    if (data[0] != undefined) {
+                        if (data[1] != undefined) {
+                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:{data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
+                            pl.tell(`§l§a你成功踢出玩家${data[0]}`)
+                        } else if (data[0] == undefined) {
+                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:空\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
+                            pl.tell(`§l§a你成功踢出玩家${data[0]}`)
+                        }
+                    } else if (data[0] == undefined) {
+                        pl.tell(`§l§c請正確選取玩家ID`)
+                    }
+                })
+            } else if (id == 6) {
+                pl.runcmd(`banlist`)
+            } else if (id == 7) {
+                pl.runcmd(`blackbe`)
+            }
+        })
+    })
+    cmd.setup()
+})
 
 //高級商店
 mc.listen('onServerStarted',()=> {
@@ -1501,5 +1596,14 @@ mc.listen('onServerStarted',()=> {
 
 //粒子效果
 setInterval(() => {
-    mc.runcmd(`execute @a[tag=e1] `)
+    mc.runcmd(`execute as @a[tag=e1] particle minecraft:heart_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e2] particle minecraft:water_wake_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e3] particle minecraft:bubble_column_up_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e4] particle minecraft:campfire_smoke_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e5] particle minecraft:dragon_breath_trail ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e6] particle minecraft:heart_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e7] particle minecraft:lava_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e8] particle minecraft:electric_spark_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e9] particle minecraft:enchanting_table_particle ~~-1~`)
+    mc.runcmd(`execute as @a[tag=e10] particle minecraft:end_chest ~~-1~`)
 }, 1000);
