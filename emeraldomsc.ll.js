@@ -1503,4 +1503,3 @@ mc.listen('onServerStarted',()=> {
 setInterval(() => {
     mc.runcmd(`execute @a[tag=e1] `)
 }, 1000);
-.
