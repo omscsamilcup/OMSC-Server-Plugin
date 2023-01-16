@@ -1502,4 +1502,4 @@ mc.listen('onServerStarted',()=> {
 //粒子效果
 setInterval(() => {
     mc.runcmd(`execute @a[tag=e1] `)
-}, 1000);t
+}, 1000);
