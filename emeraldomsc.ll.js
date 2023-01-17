@@ -1496,11 +1496,30 @@ mc.listen("onServerStarted",()=> {
     fm.addButton('§l§9踢出玩家')
     fm.addButton('§l§9banlist')
     fm.addButton('§l§9blackbe')
+    fm.addButton('§l§9查背包')
+
+    var gamemode = mc.newCustomForm()
+    gamemode.setTitle('§l§9更換游戲模式')
+    gamemode.addLabel('1:創造,2:生存,3:冒險,4:旁觀者')
+    gamemode.addSlider('請選取你要更換的模式',1,4)
+    gamemode.addStepSlider('創造',1)
+    gamemode.addStepSlider('生存',2)
+    gamemode.addStepSlider('冒險', 3)
+    gamemode.addStepSlider('旁觀者',4)
+
+    var unsee = mc.newCustomForm()
+    unsee.setTitle('§l§9隱身')
+    unsee.addLabel('1:假裝離開伺服器,2:隱身效果')
+    unsee.addSlider('請選取隱身等級',1,2)
+    unsee.addStepSlider('離開伺服器',1)
+    unsee.addStepSlider('隱身效果',2)
 
     var tp = mc.newCustomForm()
+    tp.setTitle('§l§9傳送玩家')
     tp.addDropdown('請選取你要傳送的玩家',mc.getOnlinePlayers())
 
     var kick = mc.newCustomForm()
+    kick.setTitle('§l§9踢出玩家')
     kick.addDropdown('請選取你要踢出的玩家',mc.getOnlinePlayers())
     kick.addInput('請輸入踢出的原因(選填，請加上"")')
 
@@ -1519,9 +1538,25 @@ mc.listen("onServerStarted",()=> {
     cmd.setCallback((_cmd,ori,_out,_res) => {
         ori.player.sendForm(fm,(pl,id)=>{
             if (id == 0) {
-
+                pl.sendForm(gamemode,(pl,data) => {
+                    if (data[1] == 1) {
+                        pl.runcmd(`gamemode 1`)
+                    } else if (data[1] == 2) {
+                        pl.runcmd(`gamemode 0`)
+                    } else if (data[1] == 3) {
+                        pl.runcmd(`gamemode 2`)
+                    } else if (data[1] == 4) {
+                        pl.runcmd(`gamemode spectator`)
+                    }
+                })
             } else if (id == 1) {
-
+                pl.sendForm(unsee,(pl,data) => {
+                    if (data[1] == 1) {
+                        mc.broadcast('§e'+pl.realName+'離開了游戲')
+                    } else if (data[1] == 2) {
+                        pl.runcmd(`effect @s invisibility 99999 255 true`)
+                    }
+                })
             } else if (id == 2) {
                 pl.sendForm(ban,(pl,data) => {
                     if (data[0] != undefined) {
@@ -1575,6 +1610,8 @@ mc.listen("onServerStarted",()=> {
                 pl.runcmd(`banlist`)
             } else if (id == 7) {
                 pl.runcmd(`blackbe`)
+            } else if (id == 8) {
+                pl.runcmd(`cb`)
             }
         })
     })
