@@ -1482,10 +1482,12 @@ mc.listen('onServerStarted',() => {
             })
         }
     })
+    cmd.setup()
 })
 
 //管理員選單
 mc.listen("onServerStarted",()=> {
+
     var fm = mc.newSimpleForm()
     fm.setTitle('§l§c管理員選單')
     fm.addButton('§l§9更換游戲模式')
@@ -1505,16 +1507,11 @@ mc.listen("onServerStarted",()=> {
     gamemode.setTitle('§l§9更換游戲模式')
     gamemode.addLabel('1:創造,2:生存,3:冒險,4:旁觀者')
     gamemode.addSlider('請選取你要更換的模式',1,4)
-    gamemode.addStepSlider('創造',1)
-    gamemode.addStepSlider('生存',2)
-    gamemode.addStepSlider('冒險', 3)
-    gamemode.addStepSlider('旁觀者',4)
 
     var unsee = mc.newCustomForm()
     unsee.setTitle('§l§9隱身')
     unsee.addLabel('1:假裝離開伺服器,2:隱身效果')
     unsee.addSlider('請選取隱身等級',1,2)
-    unsee.addStepSlider(['離開伺服器','隱身效果'])
 
     var tp = mc.newCustomForm()
     tp.setTitle('§l§9傳送玩家')
@@ -1549,6 +1546,8 @@ mc.listen("onServerStarted",()=> {
                         pl.runcmd(`gamemode 2`)
                     } else if (data[1] == 4) {
                         pl.runcmd(`gamemode spectator`)
+                    }else if (data[0] == undefined) {
+                        pl.tell('§l§c你已取消操作')
                     }
                 })
             } else if (id == 1) {
@@ -1557,6 +1556,8 @@ mc.listen("onServerStarted",()=> {
                         mc.broadcast('§e'+pl.realName+'離開了游戲')
                     } else if (data[1] == 2) {
                         pl.runcmd(`effect @s invisibility 99999 255 true`)
+                    }else if (data[0] == undefined) {
+                        pl.tell('§l§c你已取消操作')
                     }
                 })
             } else if (id == 2) {
@@ -1583,6 +1584,8 @@ mc.listen("onServerStarted",()=> {
                     if (data[0] != undefined) {
                         pl.runcmd(`unban ${data[0]}`)
                         pl.tell('§l§a成功解除玩家' + data[0] + '的封禁')
+                    }else if (data[0] == undefined) {
+                        pl.tell('§l§c你已取消操作')
                     }
                 })
             } else if (id == 4) {
@@ -1778,18 +1781,18 @@ mc.listen('onServerStarted',()=> {
             })
         }
     })
+    cmd.setup()
 })
 
 //粒子效果
 setInterval(() => {
-    mc.runcmd(`execute as @a[tag=e1] particle minecraft:heart_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e2] particle minecraft:water_wake_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e3] particle minecraft:bubble_column_up_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e4] particle minecraft:campfire_smoke_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e5] particle minecraft:dragon_breath_trail ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e6] particle minecraft:heart_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e7] particle minecraft:lava_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e8] particle minecraft:electric_spark_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e9] particle minecraft:enchanting_table_particle ~~-1~`)
-    mc.runcmd(`execute as @a[tag=e10] particle minecraft:end_chest ~~-1~`)
+    var e1 = mc.runcmdEx(`execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~`)
+    var e2 = mc.runcmdEx(`execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~`)
+    var e3 = mc.runcmdEx(`execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~`)
+    var e4 = mc.runcmdEx(`execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~`)
+    var e5 = mc.runcmdEx(`execute as @a[tag=e6] run particle minecraft:heart_particle ~~-1~`)
+    var e6 = mc.runcmdEx(`execute as @a[tag=e7] run particle minecraft:lava_particle ~~-1~`)
+    var e7 = mc.runcmdEx(`execute as @a[tag=e8] run particle minecraft:electric_spark_particle ~~-1~`)
+    var e8 = mc.runcmdEx(`execute as @a[tag=e9] run particle minecraft:enchanting_table_particle ~~-1~`)
+    var e9 = mc.runcmdEx(`execute as @a[tag=e10] run particle minecraft:end_chest ~~-1~`)
 }, 1000);
