@@ -1651,13 +1651,71 @@ mc.listen('onServerStarted',()=> {
     high_level_equipment.addButton('§l§9卓越裝備')
     high_level_equipment.addButton('§l§9大師裝備')
 
+    var high_level_weapon = mc.newSimpleForm()
+    high_level_weapon.setTitle('§l§9高級武器')
+    high_level_weapon.setContent('§l§9請選取你要購買的鎬子')
+    high_level_weapon.addButton('§l§9超值武器')
+    high_level_weapon.addButton('§l§9超凡武器')
+    high_level_weapon.addButton('§l§9卓越武器')
+    high_level_weapon.addButton('§l§9大師武器')
+
+    var great_value_pickaxe = mc.newSimpleForm()
+    great_value_pickaxe.addButton('§l§9低級超值鎬子')
+    great_value_pickaxe.addButton('§l§9中級超值鎬子')
+    great_value_pickaxe.addButton('§l§9高級超值鎬子')
+
+    var extraordinary_pickaxe = mc.newSimpleForm()
+    extraordinary_pickaxe.addButton('§l§9低級超凡鎬子')
+    extraordinary_pickaxe.addButton('§l§9中級超凡鎬子')
+    extraordinary_pickaxe.addButton('§l§9高級超凡鎬子')
+
+    var excellence_pickaxe = mc.newSimpleForm()
+    excellence_pickaxe.addButton('§l§9低級卓越鎬子')
+    excellence_pickaxe.addButton('§l§9中級卓越鎬子')
+    excellence_pickaxe.addButton('§l§9高級卓越鎬子')
+
+    var Grandmaster_pickaxe = mc.newSimpleForm()
+    Grandmaster_pickaxe.addButton('§l§9低級大師鎬子')
+    Grandmaster_pickaxe.addButton('§l§9中級大師鎬子')
+    Grandmaster_pickaxe.addButton('§l§9高級大師鎬子')
+
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
         if (ori.player.hasTag('high') == false) {
             ori.player.tell('§l§c你不是贊助者/你沒有高級商店的權限')
         } else {
-            
+            pl.sendForm(fm,(pl,id) => {
+                if (id == 0) {
+                    pl.sendForm(high_level_pickaxe,(pl,id) => {
+                        if (id == 0) {
+                            pl.sendForm(great_value_pickaxe,(pl,id) => {
+
+                            })
+                        } else if (id == 1) {
+                            pl.sendForm(extraordinary_pickaxe,(pl,id) => {
+
+                            })
+                        } else if (id == 2) {
+                            pl.sendForm(excellence_pickaxe,(pl,id) => {
+
+                            })
+                        } else if (id == 3) {
+                            pl.sendForm(Grandmaster_pickaxe,(pl,id) => {
+                                
+                            })
+                        }
+                    })
+                } else if (id == 1) {
+                    pl.sendForm(high_level_equipment,(pl,id) => {
+
+                    })
+                } else if (id == 2) {
+                    pl.sendForm(high_level_weapon,(pl,id) => {
+
+                    })
+                }
+            })
         }
     })
 })
