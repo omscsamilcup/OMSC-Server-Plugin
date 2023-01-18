@@ -1679,6 +1679,18 @@ mc.listen('onServerStarted',()=> {
     Grandmaster_pickaxe.addButton('§l§9中級大師鎬子')
     Grandmaster_pickaxe.addButton('§l§9高級大師鎬子')
 
+    var low_great_pickaxe = mc.newCustomForm()
+    low_great_pickaxe.setTitle('§l§9低級超值鎬子')
+    low_great_pickaxe.addLabel('§l§6『低級超值鎬子』一把售價為150000SC幣')
+
+    var second_great_pickaxe = mc.newCustomForm()
+    second_great_pickaxe.setTitle('§l§9中級超值鎬子')
+    second_great_pickaxe.addLabel('§l§6『中級超值鎬子』一把售價為200000SC幣')
+
+    var high_great_pickaxe = mc.newCustomForm()
+    high_great_pickaxe.setTitle('§l§9高級超值鎬子')
+    high_great_pickaxe.addLabel('§l§6『高級超值鎬子』一把售價為250000SC幣')
+
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
@@ -1690,19 +1702,67 @@ mc.listen('onServerStarted',()=> {
                     pl.sendForm(high_level_pickaxe,(pl,id) => {
                         if (id == 0) {
                             pl.sendForm(great_value_pickaxe,(pl,id) => {
+                                if (id == 0) {
+                                    pl.sendForm(low_great_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else if (data != undefined) {
+                                            if (pl.getScore('money') >= 150000) {
 
+                                            }
+                                        }
+                                    })
+                                } else if (id == 1) {
+                                    pl.sendForm(second_great_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else if (data != undefined) {
+                                            if (pl.getScore('money') >= 200000) {
+                                                
+                                            }
+                                        }
+                                    })
+                                } else if (id == 2) {
+                                    pl.sendForm(high_great_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else if (data != undefined) {
+                                            if (pl.getScore('money') >= 250000) {
+
+                                            }
+                                        }
+                                    })
+                                }
                             })
                         } else if (id == 1) {
                             pl.sendForm(extraordinary_pickaxe,(pl,id) => {
+                                if (id == 0) {
 
+                                } else if (id == 1) {
+
+                                } else if (id == 2) {
+                                    
+                                }
                             })
                         } else if (id == 2) {
                             pl.sendForm(excellence_pickaxe,(pl,id) => {
+                                if (id == 0) {
 
+                                } else if (id == 1) {
+
+                                } else if (id == 2) {
+                                    
+                                }
                             })
                         } else if (id == 3) {
                             pl.sendForm(Grandmaster_pickaxe,(pl,id) => {
-                                
+                                if (id == 0) {
+
+                                } else if (id == 1) {
+
+                                } else if (id == 2) {
+                                    
+                                }
                             })
                         }
                     })
