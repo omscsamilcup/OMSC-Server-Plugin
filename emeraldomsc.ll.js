@@ -1497,6 +1497,9 @@ mc.listen("onServerStarted",()=> {
     fm.addButton('§l§9banlist')
     fm.addButton('§l§9blackbe')
     fm.addButton('§l§9查背包')
+    fm.addButton('§l§9重啟伺服器§c(請勿胡亂使用！)')
+    fm.addButton('§l§9關閉伺服器§c(倒數5秒，請勿胡亂使用！)')
+    fm.addButton('§l§9關閉伺服器§c(倒數15秒，請勿胡亂使用！)')
 
     var gamemode = mc.newCustomForm()
     gamemode.setTitle('§l§9更換游戲模式')
@@ -1511,8 +1514,7 @@ mc.listen("onServerStarted",()=> {
     unsee.setTitle('§l§9隱身')
     unsee.addLabel('1:假裝離開伺服器,2:隱身效果')
     unsee.addSlider('請選取隱身等級',1,2)
-    unsee.addStepSlider('離開伺服器',1)
-    unsee.addStepSlider('隱身效果',2)
+    unsee.addStepSlider(['離開伺服器','隱身效果'])
 
     var tp = mc.newCustomForm()
     tp.setTitle('§l§9傳送玩家')
@@ -1612,6 +1614,12 @@ mc.listen("onServerStarted",()=> {
                 pl.runcmd(`blackbe`)
             } else if (id == 8) {
                 pl.runcmd(`cb`)
+            } else if (id == 9) {
+                pl.runcmd(`restart`)
+            } else if (id == 10) {
+                pl.runcmd(`stopser`)
+            } else if (id == 11) {
+                pl.runcmd(`wnstop`)
             }
         })
     })
@@ -1620,6 +1628,29 @@ mc.listen("onServerStarted",()=> {
 
 //高級商店
 mc.listen('onServerStarted',()=> {
+    var fm = mc.newSimpleForm()
+    fm.setTitle('§l§9高級商店')
+    fm.setContent('§l§c高級商店系統提示你:倒賣高級商店物品屬於違規行爲，玩家將會被取消高級商店使用資格以及封禁(會根據情況判斷)')
+    fm.addButton('§l§9高級鎬子')
+    fm.addButton('§l§9高級裝備')
+    fm.addButton('§l§9高級武器')
+
+    var high_level_pickaxe = mc.newSimpleForm()
+    high_level_pickaxe.setTitle('§l§9高級鎬子')
+    high_level_pickaxe.setContent('§l§9請選取你要購買的鎬子種類')
+    high_level_pickaxe.addButton('§l§9超值鎬子')
+    high_level_pickaxe.addButton('§l§9超凡鎬子')
+    high_level_pickaxe.addButton('§l§9卓越鎬子')
+    high_level_pickaxe.addButton('§l§9大師鎬子')
+
+    var high_level_equipment = mc.newSimpleForm()
+    high_level_equipment.setTitle('§l§9高級裝備')
+    high_level_equipment.setContent('§l§9請選取你要購買的裝備種類')
+    high_level_equipment.addButton('§l§9超值裝備')
+    high_level_equipment.addButton('§l§9超凡裝備')
+    high_level_equipment.addButton('§l§9卓越裝備')
+    high_level_equipment.addButton('§l§9大師裝備')
+
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
