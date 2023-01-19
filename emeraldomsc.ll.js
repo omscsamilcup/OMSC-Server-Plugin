@@ -1487,6 +1487,13 @@ mc.listen('onServerStarted',() => {
 
 //管理員選單
 mc.listen("onServerStarted",()=> {
+    function createPlayerNamesList(playerList) {
+        let onlinePlayers = []
+        for (let i = 0; i<playerList.length; i++) {
+            onlinePlayers.push(playerList[i].realName);
+        }
+        return onlinePlayers;
+    }
 
     var fm = mc.newSimpleForm()
     fm.setTitle('§l§c管理員選單')
@@ -1515,11 +1522,11 @@ mc.listen("onServerStarted",()=> {
 
     var tp = mc.newCustomForm()
     tp.setTitle('§l§9傳送玩家')
-    tp.addDropdown('請選取你要傳送的玩家',mc.getOnlinePlayers())
+    tp.addDropdown('請選取你要傳送的玩家', createPlayerNamesList(mc.getOnlinePlayers()))
 
     var kick = mc.newCustomForm()
     kick.setTitle('§l§9踢出玩家')
-    kick.addDropdown('請選取你要踢出的玩家',mc.getOnlinePlayers())
+    kick.addDropdown('請選取你要踢出的玩家', createPlayerNamesList(mc.getOnlinePlayers()))
     kick.addInput('請輸入踢出的原因(選填，請加上"")')
 
     var ban = mc.newCustomForm()
@@ -1567,15 +1574,15 @@ mc.listen("onServerStarted",()=> {
                             if (data[2] != undefined) {
                                 pl.runcmd(`ban ${data[0]} ${data[1]} ${data[2]}`)
                                 pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1] + '時間爲' + data[2] + '分鐘')
-                            } else if (data[2] == undefined) {
+                            } else if (data[2] == '') {
                                 pl.runcmd(`ban ${data[0]} ${data[1]}`)
                                 pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1])
                             }
-                        } else if (data[1] == undefined){
+                        } else if (data[1] == ''){
                             pl.runcmd(`ban ${data[0]}`)
                             pl.tell('§l§a成功封禁玩家' + data[0])
                         }
-                    } else if (data[0] == undefined) {
+                    } else if (data[0] == '') {
                         pl.tell('§l§c請輸入你所封禁的玩家名稱')
                     }
                 })
@@ -1593,8 +1600,8 @@ mc.listen("onServerStarted",()=> {
                     if (data[0] != undefined) {
                         pl.runcmd(`tp \"${data[0]}\"`)
                         pl.tell(`§l§a你成功傳送到玩家${data[0]}`)
-                    } else if (data == undefined) {
-                        pl.tell(`§l§c請正確選取玩家ID`)
+                    } else if (data[0] == undefined) {
+                        pl.tell('§l§c你已取消操作')
                     }
                 })
             } else if (id == 5) {
@@ -1603,12 +1610,14 @@ mc.listen("onServerStarted",()=> {
                         if (data[1] != undefined) {
                             pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:{data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
                             pl.tell(`§l§a你成功踢出玩家${data[0]}`)
-                        } else if (data[0] == undefined) {
+                        } else if (data[0] == '') {
                             pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:空\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
                             pl.tell(`§l§a你成功踢出玩家${data[0]}`)
                         }
-                    } else if (data[0] == undefined) {
+                    } else if (data[0] == '') {
                         pl.tell(`§l§c請正確選取玩家ID`)
+                    } else if (data[0] == undefined) {
+                        pl.tell('§l§c你已取消操作')
                     }
                 })
             } else if (id == 6) {
