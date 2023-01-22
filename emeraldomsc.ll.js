@@ -1450,14 +1450,6 @@ mc.listen('onServerStarted',() => {
                                 pl.addTag('e9')
                                 pl.tell(`§l§a成功使用該粒子`)
                             }
-                        }else if (id == 9) {
-                            if (pl.hasTag('e10')) {
-                                pl.removeTag('e10')
-                                pl.tell(`§l§a成功關閉該粒子`)
-                            } else {
-                                pl.addTag('e10')
-                                pl.tell(`§l§a成功使用該粒子`)
-                            }
                         }
                     })
                 } else if (id == 1) {
@@ -1569,9 +1561,9 @@ mc.listen("onServerStarted",()=> {
                 })
             } else if (id == 2) {
                 pl.sendForm(ban,(pl,data) => {
-                    if (data[0] != undefined) {
-                        if (data[1] != undefined) {
-                            if (data[2] != undefined) {
+                    if (data[0] != '') {
+                        if (data[1] != '') {
+                            if (data[2] != '') {
                                 pl.runcmd(`ban ${data[0]} ${data[1]} ${data[2]}`)
                                 pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1] + '時間爲' + data[2] + '分鐘')
                             } else if (data[2] == '') {
@@ -1588,7 +1580,7 @@ mc.listen("onServerStarted",()=> {
                 })
             } else if (id == 3) {
                 pl.sendForm(unban,(pl,data) => {
-                    if (data[0] != undefined) {
+                    if (data[0] != '') {
                         pl.runcmd(`unban ${data[0]}`)
                         pl.tell('§l§a成功解除玩家' + data[0] + '的封禁')
                     }else if (data[0] == undefined) {
@@ -1597,7 +1589,7 @@ mc.listen("onServerStarted",()=> {
                 })
             } else if (id == 4) {
                 pl.sendForm(tp,(pl,data)=>{
-                    if (data[0] != undefined) {
+                    if (data[0] != '') {
                         pl.runcmd(`tp \"${data[0]}\"`)
                         pl.tell(`§l§a你成功傳送到玩家${data[0]}`)
                     } else if (data[0] == undefined) {
@@ -1606,16 +1598,14 @@ mc.listen("onServerStarted",()=> {
                 })
             } else if (id == 5) {
                 pl.sendForm(kick,(pl,data) => {
-                    if (data[0] != undefined) {
-                        if (data[1] != undefined) {
-                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:{data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
+                    if (data[0] != '') {
+                        if (data[1] != '') {
+                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:${data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
                             pl.tell(`§l§a你成功踢出玩家${data[0]}`)
                         } else if (data[0] == '') {
                             pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:空\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
                             pl.tell(`§l§a你成功踢出玩家${data[0]}`)
                         }
-                    } else if (data[0] == '') {
-                        pl.tell(`§l§c請正確選取玩家ID`)
                     } else if (data[0] == undefined) {
                         pl.tell('§l§c你已取消操作')
                     }
@@ -1794,14 +1784,12 @@ mc.listen('onServerStarted',()=> {
 })
 
 //粒子效果
-setInterval(() => {
-    var e1 = mc.runcmdEx(`execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~`)
-    var e2 = mc.runcmdEx(`execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~`)
-    var e3 = mc.runcmdEx(`execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~`)
-    var e4 = mc.runcmdEx(`execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~`)
-    var e5 = mc.runcmdEx(`execute as @a[tag=e6] run particle minecraft:heart_particle ~~-1~`)
-    var e6 = mc.runcmdEx(`execute as @a[tag=e7] run particle minecraft:lava_particle ~~-1~`)
-    var e7 = mc.runcmdEx(`execute as @a[tag=e8] run particle minecraft:electric_spark_particle ~~-1~`)
-    var e8 = mc.runcmdEx(`execute as @a[tag=e9] run particle minecraft:enchanting_table_particle ~~-1~`)
-    var e9 = mc.runcmdEx(`execute as @a[tag=e10] run particle minecraft:end_chest ~~-1~`)
-}, 1000);
+//execute as @a[tag=e1] run particle minecraft:heart_particle ~~-1~
+//execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~`)
+//execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~
+//execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~
+//execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~
+//execute as @a[tag=e6] run particle minecraft:lava_particle ~~-1~
+//execute as @a[tag=e7] run particle minecraft:electric_spark_particle ~~-1~
+//execute as @a[tag=e8] run particle minecraft:enchanting_table_particle ~~-1~
+//execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
