@@ -533,10 +533,12 @@ mc.listen('onServerStarted',()=>{
             } else if (id == 3) {
                 pl.runcmd('rank')
             } else if (id == 4) {
-                pl.runcmd('cdk')
+                pl.runcmd('high')
             } else if (id == 5) {
-                pl.runcmd('donate')
+                pl.runcmd('cdk')
             } else if (id == 6) {
+                pl.runcmd('donate')
+            } else if (id == 7) {
                 pl.runcmd('admin')
             }
         })
@@ -1479,14 +1481,6 @@ mc.listen('onServerStarted',() => {
 
 //管理員選單
 mc.listen("onServerStarted",()=> {
-    function createPlayerNamesList(playerList) {
-        let onlinePlayers = []
-        for (let i = 0; i<playerList.length; i++) {
-            onlinePlayers.push(playerList[i].name);
-        }
-        return onlinePlayers;
-    }
-
     var fm = mc.newSimpleForm()
     fm.setTitle('§l§c管理員選單')
     fm.addButton('§l§9更換游戲模式')
@@ -1514,11 +1508,11 @@ mc.listen("onServerStarted",()=> {
 
     var tp = mc.newCustomForm()
     tp.setTitle('§l§9傳送玩家')
-    tp.addDropdown('請選取你要傳送的玩家', createPlayerNamesList(mc.getOnlinePlayers()));
+    tp.addInput('請輸入你要傳送的玩家(如玩家名稱有空格請加上"")');
 
     var kick = mc.newCustomForm()
     kick.setTitle('§l§9踢出玩家')
-    kick.addDropdown('請選取你要踢出的玩家', createPlayerNamesList(mc.getOnlinePlayers()));
+    kick.addInput('請輸入你要踢出的玩家(如玩家名稱有空格請加上"")');
     kick.addInput('請輸入踢出的原因(選填，請加上"")')
 
     var ban = mc.newCustomForm()
@@ -1589,25 +1583,37 @@ mc.listen("onServerStarted",()=> {
                 })
             } else if (id == 4) {
                 pl.sendForm(tp,(pl,data)=>{
-                    if (data[0] == undefined) {
-                        pl.tell('§l§c你已取消操作')
-                    } else if (data[0] != undefined) {
-                        pl.runcmd(`tp \"${data[0]}\"`)
-                        pl.tell(`§l§a你成功傳送到玩家${data[0]}`)
+                    if (data[0] != '' && mc.getOnlinePlayers().includes(data[0])) {
+                            pl.runcmd(`tp \"${[data[0]]}\"`)
+                            pl.tell(`§l§a你成功傳送到玩家${[data[0]]}`)
+                    } else if (data[0] == '') {
+                        pl.tell('§l§c請正確輸入玩家ID')
+                    } else if (mc.getOnlinePlayers().includes(data[0]) == false) {
+                        pl.tell('§l§c沒有該玩家')
+                    } else if (data[0] == undefined) {
+                        pl.tell('你已取消操作')
                     }
                 })
             } else if (id == 5) {
                 pl.sendForm(kick,(pl,data) => {
+                    if (data[0] != '' && mc.getOnlinePlayers().includes(data[0])) {
                         if (data[1] != '') {
-                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:${data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
-                            pl.tell(`§l§a你成功踢出玩家${data[0]}`)
+                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${[data[0]]}你已被伺服器管理員踢出伺服器\n原因爲:${data[1]}\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
+                            pl.tell(`§l§a你成功踢出玩家${mc.getPlayer(players[data[0]])}`)
                         } else if (data[1] == ''){
-                            pl.runcmd(`kick \"${data[0]}\" §l§6玩家${data[0]}你已被伺服器管理員踢出伺服器\n原因爲:空\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
-                            pl.tell(`§l§a你成功踢出玩家${data[0]}`)
+                            pl.runcmd(`kick \"${[data[0]]}\" §l§6玩家${[data[0]]}你已被伺服器管理員踢出伺服器\n原因爲:空\n§l§d如有任何問題請到本服Discord群組詢問\n§bhttps://discord.gg/VMN3cgeUBd`)
+                            pl.tell(`§l§a你成功踢出玩家${[data[0]]}`)
                         }else if (data[0] == undefined) {
                             pl.tell('§l§c你已取消操作')
                         }
-                    })
+                    } else if (data[0] == '') {
+                        pl.tell('§l§c請正確輸入玩家ID')
+                    }else if (mc.getOnlinePlayers().includes(data[0]) == false) {
+                        pl.tell('§l§c沒有該玩家')
+                    } else if (data[0] == undefined) {
+                        pl.tell('你已取消操作')
+                    }
+                })
             } else if (id == 6) {
                 pl.runcmd(`banlist`)
             } else if (id == 7) {
@@ -1781,13 +1787,14 @@ mc.listen('onServerStarted',()=> {
     cmd.setup()
 })
 
-//粒子效果
-//execute as @a[tag=e1] run particle minecraft:heart_particle ~~-1~
-//execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~
-//execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~
-//execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~
-//execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~
-//execute as @a[tag=e6] run particle minecraft:lava_particle ~~-1~
-//execute as @a[tag=e7] run particle minecraft:electric_spark_particle ~~-1~
-//execute as @a[tag=e8] run particle minecraft:enchanting_table_particle ~~-1~
-//execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
+/*粒子效果
+execute as @a[tag=e1] run particle minecraft:heart_particle ~~-1~
+execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~
+execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~
+execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~
+execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~
+execute as @a[tag=e6] run particle minecraft:lava_particle ~~-1~
+execute as @a[tag=e7] run particle minecraft:electric_spark_particle ~~-1~
+execute as @a[tag=e8] run particle minecraft:enchanting_table_particle ~~-1~
+execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
+*/
