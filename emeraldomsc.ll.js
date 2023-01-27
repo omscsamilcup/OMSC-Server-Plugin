@@ -34,6 +34,7 @@ mc.listen('onServerStarted',() => {
     mc.newScoreObjective('day','天')
     mc.newScoreObjective('point','點數')
     mc.newScoreObjective('ownercoins','服主幣')
+    mc.newScoreObjective('rebirth', '重生次數')
     })
 })
 
@@ -52,7 +53,7 @@ mc.listen('onJoin',(pl) => {
 
         var fm = mc.newSimpleForm()
         fm.setTitle('§l§c本§6伺§e服§a器§2條§b款')
-        fm.setContent('§l§b歡迎你加入OMSC伺服器\n§e我是本服的服主，杯子小以下是一些有關本伺服器的條款，請仔細閲讀！§d\n1.伺服器會在你每次進入伺服器時記錄下你的IP、使用設備和你的Xuid\n2.伺服器的所有系統基本上都是由插件製作，如果有發現任何Bug，但是不回報，玩家將會處以重罰\n3.任何色情言論/粗俗語言，玩家都會被封禁1天-永久天，根據次數決定\n4.非因爲伺服器的原因而導致物品消失，本服將不予賠償(本服有記錄)\n5伺服器禁止使用外挂，違規者將會被永久封禁\n5如玩家遭到管理員的惡意判罰，例如無理由封禁，玩家需要在一天内到Discord開"回報工單"否則不予處理\n\n\n§6伺服器條款到這裏，如果玩家接受本服的條款請按"同意伺服器退款"，不同意請按"不同意伺服器條款"\n\n\n\n伺服器Discord:https://discord.gg/VMN3cgeUBd')
+        fm.setContent('§l§b歡迎你加入OMSC伺服器\n§e我是本服的服主，杯子小以下是一些有關本伺服器的條款，請仔細閲讀！§d\n1.伺服器會在你每次進入伺服器時記錄下你的IP、使用設備和你的Xuid\n2.伺服器的所有系統基本上都是由插件製作，如果有發現任何Bug，但是不回報，玩家將會處以重罰\n3.任何色情言論/粗俗語言，玩家都會被封禁1天-永久天，根據次數決定\n4.非因爲伺服器的原因而導致物品消失，本服將不予賠償(本服有記錄)\n5伺服器禁止使用外挂，違規者將會被永久封禁\n5如玩家遭到管理員的惡意判罰，例如無理由封禁，玩家需要在一天内到Discord開"回報工單"否則不予處理\n\n伺服器Discord連結https://discord.gg/VMN3cgeUBd \n\n\n§6伺服器條款到這裏，如果玩家接受本服的條款請按"同意伺服器退款"，不同意請按"不同意伺服器條款"\n\n\n\n伺服器Discord:https://discord.gg/VMN3cgeUBd')
         fm.addButton('§l§a同意伺服器條款')
         fm.addButton('§l§c不同意伺服器條款')
         pl.sendForm(fm,(pl,id) => {
@@ -80,7 +81,9 @@ mc.listen('onJoin',(pl) => {
 
 //聊天訊息
 mc.listen('onChat',(pl,msg)=> {
-    if (pl.hasTag('team')) {
+    if (msg.length > 75) {
+        return false
+    } else if (pl.hasTag('team')) {
         if (pl.hasTag('owner')) {
             mc.broadcast('§8[§cOwner§8]§e' + pl.realName + '§b>>§6' + msg)
         } else if (pl.hasTag('admin')) {
@@ -354,15 +357,16 @@ setInterval(() => {
         var str0 = '§l§e|§r §b玩家名稱: $o.name'.replace('$o.name', pl.realName)
         var str1 = '§l§e|§r §b你擁有$o.money閃幣'.replace('$o.money', pl.getScore('money'))
         var str2 = '§l§e|§r §b服主幣$o.ownermoney 點數$o.point'.replace('$o.ownermoney', pl.getScore('ownercoins')).replace('$o.point', pl.getScore('point'))
-        var str3 = '§l§e|§r §b你的等級:$o.level($o.exp)'.replace('$o.level', pl.getScore('level')).replace('$o.exp', pl.getScore('exp'))
-        var str4 = '§l§e|§r §b你的延遲:$o.pingms'.replace('$o.ping', dv.avgPing)
-        var str5 = '§l§e|§r §b你的設備:$o.os'.replace('$o.os', dv.os)
-        var str6 = '§l§e|§r §b在綫人數:$o.online/100'.replace('$o.online', mc.getOnlinePlayers().length)
-        var str7 = '§l§e|§r §b你的Rank:$o.rank'.replace('$o.rank', rank)
-        var str8 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
-        var str9 = '§l§e|§r §b埠:19132'
-        var str10 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
-        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10]
+        var str3 = '§l§e|§r §b你的重生次數o.rebirth'.replace('$o.rebirth', pl.getScore('rebirth'))
+        var str4 = '§l§e|§r §b你的等級:$o.level($o.exp)'.replace('$o.level', pl.getScore('level')).replace('$o.exp', pl.getScore('exp'))
+        var str5 = '§l§e|§r §b你的延遲:$o.pingms'.replace('$o.ping', dv.avgPing)
+        var str6 = '§l§e|§r §b你的設備:$o.os'.replace('$o.os', dv.os)
+        var str7 = '§l§e|§r §b在綫人數:$o.online/100'.replace('$o.online', mc.getOnlinePlayers().length)
+        var str8 = '§l§e|§r §b你的Rank:$o.rank'.replace('$o.rank', rank)
+        var str9 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
+        var str10 = '§l§e|§r §b埠:19132'
+        var str11 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
+        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11]
         
         bar = '{"'
         for (i in arr) {
@@ -533,7 +537,7 @@ mc.listen('onServerStarted',()=>{
             } else if (id == 3) {
                 pl.runcmd('rank')
             } else if (id == 4) {
-                pl.runcmd('high')
+                pl.runcmd('highshop')
             } else if (id == 5) {
                 pl.runcmd('cdk')
             } else if (id == 6) {
@@ -1703,7 +1707,7 @@ mc.listen('onServerStarted',()=> {
         if (ori.player.hasTag('high') == false) {
             ori.player.tell('§l§c你不是贊助者/你沒有高級商店的權限')
         } else {
-            pl.sendForm(fm,(pl,id) => {
+            ori.player.sendForm(fm,(pl,id) => {
                 if (id == 0) {
                     pl.sendForm(high_level_pickaxe,(pl,id) => {
                         if (id == 0) {
@@ -1712,9 +1716,13 @@ mc.listen('onServerStarted',()=> {
                                     pl.sendForm(low_great_pickaxe,(pl,data) => {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
-                                        } else if (data != undefined) {
+                                        } else {
                                             if (pl.getScore('money') >= 150000) {
-
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值鎬子"},"ench":[{"id":18s,"lvl":10s},{"id":15s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.reduceScore('money',150000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
                                             }
                                         }
                                     })
@@ -1722,9 +1730,13 @@ mc.listen('onServerStarted',()=> {
                                     pl.sendForm(second_great_pickaxe,(pl,data) => {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
-                                        } else if (data != undefined) {
+                                        } else {
                                             if (pl.getScore('money') >= 200000) {
-                                                
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值鎬子"},"ench":[{"id":18s,"lvl":15s},{"id":15s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.reduceScore('money',200000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
                                             }
                                         }
                                     })
@@ -1732,9 +1744,13 @@ mc.listen('onServerStarted',()=> {
                                     pl.sendForm(high_great_pickaxe,(pl,data) => {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
-                                        } else if (data != undefined) {
+                                        } else {
                                             if (pl.getScore('money') >= 250000) {
-
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值鎬子"},"ench":[{"id":18s,"lvl":20s},{"id":15s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.reduceScore('money',250000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
                                             }
                                         }
                                     })
@@ -1743,7 +1759,7 @@ mc.listen('onServerStarted',()=> {
                         } else if (id == 1) {
                             pl.sendForm(extraordinary_pickaxe,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm()
                                 } else if (id == 1) {
 
                                 } else if (id == 2) {
