@@ -1701,6 +1701,30 @@ mc.listen('onServerStarted',()=> {
     high_great_pickaxe.setTitle('§l§9高級超值鎬子')
     high_great_pickaxe.addLabel('§l§6『高級超值鎬子』一把售價為250000SC幣')
 
+    var low_extraordinary_pickaxe = mc.newCustomForm()
+    low_extraordinary_pickaxe.setTitle('§l§9低級超凡鎬子')
+    low_extraordinary_pickaxe.addLabel('§l§6『低級超凡鎬子』，一把售價為300000SC幣')
+
+    var second_extraordinary_pickaxe = mc.newCustomForm()
+    second_extraordinary_pickaxe.setTitle('§l§9中級超凡鎬子')
+    second_extraordinary_pickaxe.setLabel('§l§6『低級超凡鎬子『，一把售價為350000SC幣')
+
+    var high_extraordinary_pickaxe = mc.newCustomForm()
+    high_extraordinary_pickaxe.setTitle('§l§9高級超凡鎬子')
+    high_extraordinary_pickaxe.addLabel('§l§6『高級超凡鎬子』，一把售價為400000SC幣')
+
+    var low_excellent_pickaxe = mc.newCustomForm()
+    low_excellent_pickaxe.setTitle('§l§9低級卓越鎬子')
+    low_excellent_pickaxe.addLabel('§l§6『低級卓越鎬子』，一把售價為450000SC幣')
+
+    var second_excellent_pickaxe = mc.newCustomForm()
+    second_excellent_pickaxe.setTitle('§l§9中級卓越鎬子')
+    second_excellent_pickaxe.addLabel('§l§6『中級卓越鎬子』，一把售價為500000SC幣')
+
+    var high_excellent_pickaxe = mc.newCustomForm()
+    high_excellent_pickaxe.setTitle('§l§9高級卓越鎬子')
+    high_excellent_pickaxe.addLabel('§l§6『高級卓越鎬子』，一把售價為550000SC幣')
+
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
@@ -1759,27 +1783,99 @@ mc.listen('onServerStarted',()=> {
                         } else if (id == 1) {
                             pl.sendForm(extraordinary_pickaxe,(pl,id) => {
                                 if (id == 0) {
-                                    pl.sendForm()
+                                    pl.sendForm(low_excellent_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 300000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡鎬子"},"ench":[{"id":18s,"lvl":25s},{"id":15s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.reduceScore('money',300000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_extraordinary_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 350000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.reduceScore('money',350000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-                                    
+                                    pl.sendForm(high_extraordinary_pickaxe,(pl,data)=> {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 400000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡鎬子"},"ench":[{"id":18s,"lvl":35s},{"id":15s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.reduceScore('money',400000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         } else if (id == 2) {
                             pl.sendForm(excellence_pickaxe,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm(low_excellent_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 450000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越鎬子"},"ench":[{"id":18s,"lvl":40s},{"id":15s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.reduceScore('money',450000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_excellent_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 500000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越鎬子"},"ench":[{"id":18s,"lvl":45s},{"id":15s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.reduceScore('money',500000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-                                    
+                                    pl.sendForm(high_excellent_pickaxe,(pl,data) =>{ 
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 400000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越鎬子"},"ench":[{"id":18s,"lvl":50s},{"id":15s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.reduceScore('money',400000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         } else if (id == 3) {
                             pl.sendForm(Grandmaster_pickaxe,(pl,id) => {
                                 if (id == 0) {
-
+                                    
                                 } else if (id == 1) {
 
                                 } else if (id == 2) {
