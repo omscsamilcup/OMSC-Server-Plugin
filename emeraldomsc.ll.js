@@ -44,8 +44,11 @@ mc.listen('onJoin',(pl) => {
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:writable_book","WasPickedUp":0b,"tag":{"pages":[{"photoname":"","text":"§l§b歡迎你加入OMSC伺服器！\n§l§6我是本服的新手教學書\n§l§d閲讀這本書 來學習怎麽玩\n§l§d本服吧\n§l§9新玩家你好，我是本服服主，§9§l杯子小\n§l§a伺服器類型-綠寶石商店\n§c本服有著完美的插件體系\n§l§b所本服有地方都能用選單/指令前往"},{"photoname":"","text":""},{"photoname":"","text":"§l§9伺服器常用指令\n/mine - 前往最原本的礦場\n/vipmine - 前往VIP礦場\n/vippmine - 前往VIP+礦場\n/vipppmine - 前往VIP++礦場\n§l§9/mvpmine - 前往MVP礦場\n§l§9/mvppmine - 前往MVP+礦場\n§l§9/mvpppmine-前往MVP++礦場\n/rank - 購買Rank"},{"photoname":"","text":""},{"photoname":"","text":""}]}}')))
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:iron_pickaxe","WasPickedUp":0b,"tag":{"Damage":0}}')))
         pl.addScore('money',500)
-        pl.setScore('level', 1)
+        pl.setScore('level', 0)
         pl.setScore('exp', 0)
+        pl.setScore('rebirth', 0)
+        pl.setScore('ownercoins',0)
+        pl.setScore('point',0)
         pl.addTag('first')
         mc.runcmd(`give \"${pl.realName}\" compass`)
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
@@ -1670,21 +1673,25 @@ mc.listen('onServerStarted',()=> {
     high_level_weapon.addButton('§l§9大師武器')
 
     var great_value_pickaxe = mc.newSimpleForm()
+    great_value_pickaxe.setTitle('§l§9超值鎬子')
     great_value_pickaxe.addButton('§l§9低級超值鎬子')
     great_value_pickaxe.addButton('§l§9中級超值鎬子')
     great_value_pickaxe.addButton('§l§9高級超值鎬子')
 
     var extraordinary_pickaxe = mc.newSimpleForm()
+    extraordinary_pickaxe.setTitle('§l§9超凡鎬子')
     extraordinary_pickaxe.addButton('§l§9低級超凡鎬子')
     extraordinary_pickaxe.addButton('§l§9中級超凡鎬子')
     extraordinary_pickaxe.addButton('§l§9高級超凡鎬子')
 
     var excellence_pickaxe = mc.newSimpleForm()
+    excellence_pickaxe.setTitle('§l§9卓越鎬子')
     excellence_pickaxe.addButton('§l§9低級卓越鎬子')
     excellence_pickaxe.addButton('§l§9中級卓越鎬子')
     excellence_pickaxe.addButton('§l§9高級卓越鎬子')
 
     var Grandmaster_pickaxe = mc.newSimpleForm()
+    Grandmaster_pickaxe.setTitle('§l§9大師鎬子')
     Grandmaster_pickaxe.addButton('§l§9低級大師鎬子')
     Grandmaster_pickaxe.addButton('§l§9中級大師鎬子')
     Grandmaster_pickaxe.addButton('§l§9高級大師鎬子')
@@ -1724,6 +1731,50 @@ mc.listen('onServerStarted',()=> {
     var high_excellent_pickaxe = mc.newCustomForm()
     high_excellent_pickaxe.setTitle('§l§9高級卓越鎬子')
     high_excellent_pickaxe.addLabel('§l§6『高級卓越鎬子』，一把售價為550000SC幣')
+
+    var low_GrandMaster_pickaxe = mc.newCustomForm()
+    low_GrandMaster_pickaxe.setTitle('§l§9低級大師鎬子')
+    low_GrandMaster_pickaxe.addLabel('§l§6『低級大師鎬子』，一把售價為650000SC幣')
+
+    var second_GrandMaster_pickaxe = mc.newCustomForm()
+    second_GrandMaster_pickaxe.setTitle('§l§9中級大師鎬子')
+    second_GrandMaster_pickaxe.setTitle('§l§6『中級大師鎬子』，一把售價為750000SC幣')
+
+    var high_GrandMaster_pickaxe = mc.newCustomForm()
+    high_GrandMaster_pickaxe.setTitle('§l§9高級大師鎬子')
+    high_GrandMaster_pickaxe.addLabel('§l§6『高級大師鎬子』，一把售價為850000SC幣')
+
+    var great_value_equipment = mc.newSimpleForm()
+    great_value_equipment.setTitle('§l§9超值裝備')
+    great_value_equipment.addButton('§l§9低級超值裝備')
+    great_value_equipment.addButton('§l§9中級超值裝備')
+    great_value_equipment.addButton('§l§9高級超值裝備')
+
+    var excellen_equipment = mc.newSimpleForm()
+    excellen_equipment.setTitle('§l§9超凡鎬子')
+    excellen_equipment.addButton('§l§9低級超凡裝備')
+    excellen_equipment.addButton('§l§9中級超凡裝備')
+    excellen_equipment.addButton('§l§9高級超凡裝備')
+
+    var extraordinary_equipment = mc.newSimpleForm()
+    extraordinary_equipment.setTitle('§l§9卓越裝備')
+    extraordinary_equipment.addButton('§l§9低級卓越裝備')
+    extraordinary_equipment.addButton('§l§9中級卓越裝備')
+    extraordinary_equipment.addButton('§l§9高級卓越裝備')
+    
+    var GrandMaster_equipment = mc.newSimpleForm()
+    GrandMaster_equipment.setTitle('§l§9大師裝備')
+    GrandMaster_equipment.addButton('§l§9低級大師裝備')
+    GrandMaster_equipment.addButton('§l§9中級大師裝備')
+    GrandMaster_equipment.addButton('§l§9高級大師裝備')
+
+    var low_great_equipment = mc.newCustomForm()
+    low_great_equipment.setTitle('§l§9低級超值裝備')
+    low_great_equipment.addLabel('§l§6『低級超值裝備』，該物品為全套裝備，售價為200000SC幣')
+
+    var second_great_equipment = mc.newCustomForm()
+    second_great_equipment.setTitle('§l§9中級超值鎬子')
+
 
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
@@ -1861,9 +1912,9 @@ mc.listen('onServerStarted',()=> {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
-                                            if (pl.getScore('money') >= 400000) {
+                                            if (pl.getScore('money') >= 550000) {
                                                 pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越鎬子"},"ench":[{"id":18s,"lvl":50s},{"id":15s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
-                                                pl.reduceScore('money',400000)
+                                                pl.reduceScore('money',550000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
                                                 pl.tell('§l§c你的錢不足')
@@ -1875,18 +1926,74 @@ mc.listen('onServerStarted',()=> {
                         } else if (id == 3) {
                             pl.sendForm(Grandmaster_pickaxe,(pl,id) => {
                                 if (id == 0) {
-                                    
+                                    pl.sendForm(low_GrandMaster_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 650000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師鎬子"},"ench":[{"id":18s,"lvl":60s},{"id":15s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.reduceScore('money',650000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_GrandMaster_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 750000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師鎬子"},"ench":[{"id":18s,"lvl":70s},{"id":15s,"lvl":70s},{"id":17s,"lvl":65s},{"id":26s,"lvl":60s}]}}')))
+                                                pl.reduceScore('money',750000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-                                    
+                                    pl.sendForm(high_GrandMaster_pickaxe,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 850000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師鎬子"},"ench":[{"id":18s,"lvl":80s},{"id":15s,"lvl":80s},{"id":17s,"lvl":75s},{"id":26s,"lvl":70s}]}}')))
+                                                pl.reduceScore('money',850000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         }
                     })
                 } else if (id == 1) {
                     pl.sendForm(high_level_equipment,(pl,id) => {
+                        if (id == 0) {
+                            pl.sendForm(great_value_equipment,(pl,id) => {
+                                if (id == 0) {
+                                    pl.sendForm(low_great_equipment,(pl,data) => {
 
+                                    })
+                                }
+                            })
+                        } else if (id == 1) {
+                            pl.sendForm(excellen_equipment,(pl,id) => {
+
+                            })
+                        } else if (id == 2) {
+                            pl.sendForm(extraordinary_equipment,(pl,id) => {
+
+                            })
+                        } else if (id == 3) {
+                            pl.sendForm(GrandMaster_equipment,(pl,id) => {
+
+                            })
+                        }
                     })
                 } else if (id == 2) {
                     pl.sendForm(high_level_weapon,(pl,id) => {
@@ -1910,3 +2017,51 @@ execute as @a[tag=e7] run particle minecraft:electric_spark_particle ~~-1~
 execute as @a[tag=e8] run particle minecraft:enchanting_table_particle ~~-1~
 execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
 */
+
+//等級系統
+mc.listen("onTick", ()=> {
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pl[pls]
+        if (pl.getScore('exp') > pl.getScore('level') * pl.getScore('level') * 5 + 5) {
+            pl.addScore('level', 1)
+            mc.broadcast('§l§b恭喜玩家' + pl.realName + '的等級到達了' + pl.getScore('level'))
+            pl.tell('§l§d恭喜你達到' + pl.getScore('level') + '級，這是升級的獎勵:' + pl.getScore('level') * pl.getScore('level') * 2 + 'SC幣，下一級所需的經驗值為:' + pl.getScore('exp') - (pl.getScore('level') * pl.getScore('level') * 5 + 5) + '總需要經驗值:' + pl.getScore('level') * pl.getScore('level') * 5 + 5)
+        }
+    }
+})
+
+//計算挖掘數量和經驗值
+mc.listen("onDestroyBlock",(pl,bl) => {
+    if (bl.name == 'emerald_ore') {
+        pl.addScore('exp', 1)
+    }
+})
+
+//玩家Info
+mc.listen('onServerStarted',() => {
+    var cmd = mc.newCommand('info','你的資料')
+    cmd.overload()
+    cmd.setCallback((_cmd,ori,_out,_res) => {
+        var rank = {}
+        if (pl.hasTag('vip')) {
+            rank = '§aVIP'
+        } else if (pl.hasTag('vipp')) {
+            rank = '§aVIP§6+'
+        } else if (pl.hasTag('vippp')) {
+            rank = '§aVIP§6++'
+        } else if (pl.hasTag('mvp')) {
+            rank = '§bMVP'
+        } else if (pl.hasTag('mvpp')) {
+            rank = '§bMVP§c+'
+        } else if (pl.hasTag('mvppp')) {
+            rank = '§bMVP§c++'
+        } else if (pl.hasTag('team')) {
+            rank = '§6Server Team'
+        } else {
+            rank = 'Null'
+        }
+        ori.player.tell('§l§6=======玩家資料=======\n§l§c玩家名稱\n§l§6擁有SC幣' + pl.getScore('money')+'\n§l§e擁有服主幣' + pl.getScore('ownercoins')+'\n§l§a擁有點數' + pl.getScore('point') +'\n§l§2玩家等級:' + pl.getScore('level') + '經驗:' + pl.getScore('exp') + '\n§l§b你的Rank:' + rank + '\n§l§d重生次數:' + pl.getScore('rebirth'))
+        
+    })
+})
