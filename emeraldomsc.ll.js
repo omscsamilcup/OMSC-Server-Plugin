@@ -28,13 +28,15 @@ mc.listen('onServerStarted',() => {
     mc.newScoreObjective('level', '等級')
     mc.newScoreObjective('exp','經驗值')
     mc.newScoreObjective('times','挖掘次數')
-    mc.newScoreObjective('sec','秒')
-    mc.newScoreObjective('min','分')
-    mc.newScoreObjective('hours','小時')
-    mc.newScoreObjective('day','天')
+    mc.newScoreObjective('playSec','秒')
+    mc.newScoreObjective('playMin','分')
+    mc.newScoreObjective('playHours','小時')
+    mc.newScoreObjective('playDays','天')
     mc.newScoreObjective('point','點數')
     mc.newScoreObjective('ownercoins','服主幣')
     mc.newScoreObjective('rebirth', '重生次數')
+    var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth']
+    var score_name = ['閃幣','等級']
     })
 })
 
@@ -49,6 +51,10 @@ mc.listen('onJoin',(pl) => {
         pl.setScore('rebirth', 0)
         pl.setScore('ownercoins',0)
         pl.setScore('point',0)
+        pl.setScore('playDays',0)
+        pl.setScore('playHours',0)
+        pl.setScore('playMin',0)
+        pl.setScore('playSec',0)
         pl.addTag('first')
         mc.runcmd(`give \"${pl.realName}\" compass`)
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
@@ -363,13 +369,14 @@ setInterval(() => {
         var str3 = '§l§e|§r §b你的重生次數o.rebirth'.replace('$o.rebirth', pl.getScore('rebirth'))
         var str4 = '§l§e|§r §b你的等級:$o.level($o.exp)'.replace('$o.level', pl.getScore('level')).replace('$o.exp', pl.getScore('exp'))
         var str5 = '§l§e|§r §b你的延遲:$o.pingms'.replace('$o.ping', dv.avgPing)
-        var str6 = '§l§e|§r §b你的設備:$o.os'.replace('$o.os', dv.os)
-        var str7 = '§l§e|§r §b在綫人數:$o.online/100'.replace('$o.online', mc.getOnlinePlayers().length)
-        var str8 = '§l§e|§r §b你的Rank:$o.rank'.replace('$o.rank', rank)
-        var str9 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
-        var str10 = '§l§e|§r §b埠:19132'
-        var str11 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
-        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11]
+        var str6 = '§l§e|§r §b你的總游玩時間$o.playD天$o.playH小時$o.playm分鐘$o.plays'.replace('$o.playD',pl.getScore('playDays')).replace('$o.playHours',pl.getScore('playHours')).replace('$o.playm',pl.getScore('playMin')).replace('$o.plays',pl.getScore('playSec'))
+        var str7 = '§l§e|§r §b你的設備:$o.os'.replace('$o.os', dv.os)
+        var str8 = '§l§e|§r §b在綫人數:$o.online/100'.replace('$o.online', mc.getOnlinePlayers().length)
+        var str9 = '§l§e|§r §b你的Rank:$o.rank'.replace('$o.rank', rank)
+        var str10 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
+        var str11 = '§l§e|§r §b埠:19132'
+        var str12 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
+        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12]
         
         bar = '{"'
         for (i in arr) {
@@ -1773,8 +1780,12 @@ mc.listen('onServerStarted',()=> {
     low_great_equipment.addLabel('§l§6『低級超值裝備』，該物品為全套裝備，售價為200000SC幣')
 
     var second_great_equipment = mc.newCustomForm()
-    second_great_equipment.setTitle('§l§9中級超值鎬子')
+    second_great_equipment.setTitle('§l§9中級超值裝備')
+    second_great_equipment.addLabel('§l§6『中級超值裝備』，該物品為全套裝備，售價為300000SC幣')
 
+    var high_great_equipment = mc.newCustomForm()
+    high_great_equipment.setTitle('§l§9高級超值裝備')
+    high_great_equipment.addLabel('§l§6『高級超值裝備』，該物品為全套裝備，售價為400000SC幣')
 
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
@@ -1979,6 +1990,14 @@ mc.listen('onServerStarted',()=> {
                                     pl.sendForm(low_great_equipment,(pl,data) => {
 
                                     })
+                                } else if (id == 1) {
+                                    pl.sendForm(second_great_equipment,(pl,data) => {
+
+                                    })
+                                } else if (id == 2) {
+                                    pl.sendForm(high_great_equipment,(pl,data) => {
+                                        
+                                    })
                                 }
                             })
                         } else if (id == 1) {
@@ -2035,6 +2054,10 @@ mc.listen("onTick", ()=> {
 mc.listen("onDestroyBlock",(pl,bl) => {
     if (bl.name == 'emerald_ore') {
         pl.addScore('exp', 1)
+        pl.addScore('times', 1)
+    } else if (bl.name == 'emerald_block') {
+        pl.addScore('exp', 1)
+        pl.addScore('times', 1)
     }
 })
 
