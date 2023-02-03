@@ -23,20 +23,20 @@ mc.regPlayerCmd('resc', "§l§e重新加載OMSC綠寶石插件",(pl) => {
 
 //計分板
 mc.listen('onServerStarted',() => {
-    mc.regConsoleCmd('score','score', () => {
-    mc.newScoreObjective('money', '閃幣')
-    mc.newScoreObjective('level', '等級')
-    mc.newScoreObjective('exp','經驗值')
-    mc.newScoreObjective('times','挖掘次數')
-    mc.newScoreObjective('playSec','秒')
-    mc.newScoreObjective('playMin','分')
-    mc.newScoreObjective('playHours','小時')
-    mc.newScoreObjective('playDays','天')
-    mc.newScoreObjective('point','點數')
-    mc.newScoreObjective('ownercoins','服主幣')
-    mc.newScoreObjective('rebirth', '重生次數')
-    var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth']
-    var score_name = ['閃幣','等級']
+    mc.regConsoleCmd('score','加載計分板',() => {
+        var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth','score']
+        var score_name = ['閃幣','等級','經驗值','挖掘次數','秒','分','小時','天','點數','服主幣','重生次數','開關計分板']
+        var a = 0
+        if (score.length == score_name.length) {
+            while (a < score.length) {
+                mc.newScoreObjective(score[a],score_name[a])
+                a += 1
+            }
+            log('完成安裝計分板')
+        } else if (score.length != score_name.length) {
+            log ('出現重大錯誤，無法成功加載')
+            mc.runcmd('ll unload emeraldomsc.ll.js')
+        }
     })
 })
 
@@ -55,6 +55,7 @@ mc.listen('onJoin',(pl) => {
         pl.setScore('playHours',0)
         pl.setScore('playMin',0)
         pl.setScore('playSec',0)
+        pl.setScore('score',0)
         pl.addTag('first')
         mc.runcmd(`give \"${pl.realName}\" compass`)
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
@@ -366,10 +367,10 @@ setInterval(() => {
         var str0 = '§l§e|§r §b玩家名稱: $o.name'.replace('$o.name', pl.realName)
         var str1 = '§l§e|§r §b你擁有$o.money閃幣'.replace('$o.money', pl.getScore('money'))
         var str2 = '§l§e|§r §b服主幣$o.ownermoney 點數$o.point'.replace('$o.ownermoney', pl.getScore('ownercoins')).replace('$o.point', pl.getScore('point'))
-        var str3 = '§l§e|§r §b你的重生次數o.rebirth'.replace('$o.rebirth', pl.getScore('rebirth'))
+        var str3 = '§l§e|§r §b你的重生次數$o.rebirth'.replace('$o.rebirth', pl.getScore('rebirth'))
         var str4 = '§l§e|§r §b你的等級:$o.level($o.exp)'.replace('$o.level', pl.getScore('level')).replace('$o.exp', pl.getScore('exp'))
         var str5 = '§l§e|§r §b你的延遲:$o.pingms'.replace('$o.ping', dv.avgPing)
-        var str6 = '§l§e|§r §b你的總游玩時間$o.playD天$o.playH小時$o.playm分鐘$o.plays'.replace('$o.playD',pl.getScore('playDays')).replace('$o.playHours',pl.getScore('playHours')).replace('$o.playm',pl.getScore('playMin')).replace('$o.plays',pl.getScore('playSec'))
+        var str6 = '§l§e|§r §b你的總游玩時間$o.playD天$o.playH小時$o.playm分鐘$o.plays秒'.replace('$o.playD',pl.getScore('playDays')).replace('$o.playH',pl.getScore('playHours')).replace('$o.playm',pl.getScore('playMin')).replace('$o.plays',pl.getScore('playSec'))
         var str7 = '§l§e|§r §b你的設備:$o.os'.replace('$o.os', dv.os)
         var str8 = '§l§e|§r §b在綫人數:$o.online/100'.replace('$o.online', mc.getOnlinePlayers().length)
         var str9 = '§l§e|§r §b你的Rank:$o.rank'.replace('$o.rank', rank)
@@ -383,10 +384,26 @@ setInterval(() => {
             bar = bar + "\§r" + arr[i] + '":' + String(Number(i)+1) + ',"'
         }
         bar = bar.slice(0,-2) + '}'
-        pl.removeSidebar()
-        pl.setSidebar('§l§cO§6M§eS§aC§2伺§b服§d器', JSON.parse(bar),0)
+        if (pl.getScore('score') == 0) {
+            pl.removeSidebar()
+            pl.setSidebar('§l§cO§6M§eS§aC§2伺§b服§d器', JSON.parse(bar),0)
+        } else if (pl.getScore('score' == 1)) {
+            pl.removeSidebar()
+        }
     }
 }, 1000);
+
+mc.listen("onServerStarted",() => {
+    mc.regPlayerCmd('sidebar','開關計分板顯示',(pl) => {
+        if (pl.getScore('score') == 1) {
+            pl.setScore('score', 0)
+            pl.tell("§l§a你已成功開啟計分板")
+        } else if (pl.getScore('score') == 0) {
+            pl.setScore('score',1)
+            pl.tell('§l§c你已成功關閉計分板')
+        }
+    })
+})
 
 //抽獎
 mc.listen("onServerStarted",() => {
@@ -1721,7 +1738,7 @@ mc.listen('onServerStarted',()=> {
 
     var second_extraordinary_pickaxe = mc.newCustomForm()
     second_extraordinary_pickaxe.setTitle('§l§9中級超凡鎬子')
-    second_extraordinary_pickaxe.setLabel('§l§6『低級超凡鎬子『，一把售價為350000SC幣')
+    second_extraordinary_pickaxe.addLabel('§l§6『低級超凡鎬子『，一把售價為350000SC幣')
 
     var high_extraordinary_pickaxe = mc.newCustomForm()
     high_extraordinary_pickaxe.setTitle('§l§9高級超凡鎬子')
@@ -2041,21 +2058,23 @@ execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
 mc.listen("onTick", ()=> {
     var pls = mc.getOnlinePlayers()
     for (pl in pls) {
-        var pl = pl[pls]
+        var pl = pls[pl]
         if (pl.getScore('exp') > pl.getScore('level') * pl.getScore('level') * 5 + 5) {
             pl.addScore('level', 1)
-            mc.broadcast('§l§b恭喜玩家' + pl.realName + '的等級到達了' + pl.getScore('level'))
-            pl.tell('§l§d恭喜你達到' + pl.getScore('level') + '級，這是升級的獎勵:' + pl.getScore('level') * pl.getScore('level') * 2 + 'SC幣，下一級所需的經驗值為:' + pl.getScore('exp') - (pl.getScore('level') * pl.getScore('level') * 5 + 5) + '總需要經驗值:' + pl.getScore('level') * pl.getScore('level') * 5 + 5)
+            mc.broadcast('§l§b恭喜玩家' + pl.realName + '到達了' + pl.getScore('level') + '級')
+            var level = pl.getScore('exp') > pl.getScore('level') * pl.getScore('level') * 5 + 5
+            pl.addScore('money', pl.getScore('level') * pl.getScore('level') * 2)
+            pl.tell('§l§d恭喜你達到' + pl.getScore('level') + '級，這是升級的獎勵:' + pl.getScore('level') * pl.getScore('level') * 2 + 'SC幣，下一級所需的經驗值為:' + pl.getScore('exp') - (pl.getScore('level') * pl.getScore('level') * 5 + 5) + '總需要經驗值:' + level)
         }
     }
 })
 
 //計算挖掘數量和經驗值
 mc.listen("onDestroyBlock",(pl,bl) => {
-    if (bl.name == 'emerald_ore') {
+    if (bl.type == 'minecraft:emerald_ore') {
         pl.addScore('exp', 1)
         pl.addScore('times', 1)
-    } else if (bl.name == 'emerald_block') {
+    } else if (bl.type == 'emerald_block') {
         pl.addScore('exp', 1)
         pl.addScore('times', 1)
     }
@@ -2066,6 +2085,7 @@ mc.listen('onServerStarted',() => {
     var cmd = mc.newCommand('info','你的資料')
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
+        var pl = ori.player
         var rank = {}
         if (pl.hasTag('vip')) {
             rank = '§aVIP'
@@ -2084,7 +2104,29 @@ mc.listen('onServerStarted',() => {
         } else {
             rank = 'Null'
         }
-        ori.player.tell('§l§6=======玩家資料=======\n§l§c玩家名稱\n§l§6擁有SC幣' + pl.getScore('money')+'\n§l§e擁有服主幣' + pl.getScore('ownercoins')+'\n§l§a擁有點數' + pl.getScore('point') +'\n§l§2玩家等級:' + pl.getScore('level') + '經驗:' + pl.getScore('exp') + '\n§l§b你的Rank:' + rank + '\n§l§d重生次數:' + pl.getScore('rebirth'))
-        
+        pl.tell('§l§6=======玩家資料=======\n§l§c玩家名稱\n§l§6擁有SC幣' + pl.getScore('money')+'\n§l§e擁有服主幣' + pl.getScore('ownercoins')+'\n§l§a擁有點數' + pl.getScore('point') +'\n§l§2玩家等級:' + pl.getScore('level') + '經驗:' + pl.getScore('exp') + '\n§l§b你的Rank:' + rank + '\n§l§d重生次數:' + pl.getScore('rebirth'))
     })
+    cmd.setup()
+})
+
+mc.listen('onServerStarted',() => {
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pls[pl]
+        setInterval(() => {
+            pl.addScore('playSec',1)
+            if (pl.getScore('playSec') > 60) {
+                pl.addScore('playMin', 1)
+                pl.reduceScore('playSec', 60)
+            }
+            if (pl.getScore('playMin') > 60) {
+                pl.addScore('playHours', 1)
+                pl.reduceScore('playMin',60)
+            }
+            if (pl.getScore('playHours') > 24) {
+                pl.addScore('playDays', 1)
+                pl.reduceScore('playHours', 1)
+            }
+        },1000)
+    }
 })
