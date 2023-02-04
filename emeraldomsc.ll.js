@@ -45,7 +45,7 @@ mc.listen('onJoin',(pl) => {
     if (pl.hasTag('first') == false) {
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:writable_book","WasPickedUp":0b,"tag":{"pages":[{"photoname":"","text":"§l§b歡迎你加入OMSC伺服器！\n§l§6我是本服的新手教學書\n§l§d閲讀這本書 來學習怎麽玩\n§l§d本服吧\n§l§9新玩家你好，我是本服服主，§9§l杯子小\n§l§a伺服器類型-綠寶石商店\n§c本服有著完美的插件體系\n§l§b所本服有地方都能用選單/指令前往"},{"photoname":"","text":""},{"photoname":"","text":"§l§9伺服器常用指令\n/mine - 前往最原本的礦場\n/vipmine - 前往VIP礦場\n/vippmine - 前往VIP+礦場\n/vipppmine - 前往VIP++礦場\n§l§9/mvpmine - 前往MVP礦場\n§l§9/mvppmine - 前往MVP+礦場\n§l§9/mvpppmine-前往MVP++礦場\n/rank - 購買Rank"},{"photoname":"","text":""},{"photoname":"","text":""}]}}')))
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:iron_pickaxe","WasPickedUp":0b,"tag":{"Damage":0}}')))
-        pl.giveItem(mc.newItem('Minecraft:compass'))
+        pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:compass","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§l§b選單"}}}')))
         pl.addScore('money',500)
         pl.setScore('level', 0)
         pl.setScore('exp', 0)
@@ -58,7 +58,6 @@ mc.listen('onJoin',(pl) => {
         pl.setScore('playSec',0)
         pl.setScore('score',0)
         pl.addTag('first')
-        mc.runcmd(`give \"${pl.realName}\" compass`)
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
         log(pl.realName + '首次加入伺服器')
 
@@ -93,6 +92,7 @@ mc.listen('onJoin',(pl) => {
 //聊天訊息
 mc.listen('onChat',(pl,msg)=> {
     if (msg.length > 75) {
+        pl.tell('§l§c請不要嘗試刷屏')
         return false
     } else if (pl.hasTag('team')) {
         if (pl.hasTag('owner')) {
@@ -160,6 +160,28 @@ mc.listen('onJoin', (pl) => {
         mc.broadcast('§b歡迎伺服器團隊成員' + pl.realName + '加入伺服器')
     } else{
         mc.broadcast('§f歡迎玩家' + pl.realName + '加入伺服器')
+    }
+})
+
+mc.listen('onLeft', (pl) => {
+    if (pl.hasTag('vip')) {
+        mc.broadcast('§aVIP玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('vipp')) {
+        mc.broadcast('§aVIP§6+§a玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('vippp')) {
+        mc.broadcast('§aVIP§6++§a玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('mvp')) {
+        mc.broadcast('§6MVP§6玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('mvpp')) {
+        mc.broadcast('§6MVP§c+§6玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('mvppp')) {
+        mc.broadcast('§6MVP§c++§6玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('yt')) {
+        mc.broadcast('§cYouTube玩家' + pl.realName + '離開伺服器')
+    } else if (pl.hasTag('team')) { 
+        mc.broadcast('§b伺服器團隊成員' + pl.realName + '離開伺服器')
+    } else{
+        mc.broadcast('§f玩家' + pl.realName + '離開伺服器')
     }
 })
 
@@ -366,7 +388,7 @@ setInterval(() => {
         }
 
         var str0 = '§l§e|§r §b玩家名稱: $o.name'.replace('$o.name', pl.realName)
-        var str1 = '§l§e|§r §b你擁有$o.moneySC幣'.replace('$o.money', pl.getScore('money'))
+        var str1 = '§l§e|§r §b你擁有$o.money SC幣'.replace('$o.money', pl.getScore('money'))
         var str2 = '§l§e|§r §b服主幣$o.ownermoney 點數$o.point'.replace('$o.ownermoney', pl.getScore('ownercoins')).replace('$o.point', pl.getScore('point'))
         var str3 = '§l§e|§r §b你的重生次數$o.rebirth'.replace('$o.rebirth', pl.getScore('rebirth'))
         var str4 = '§l§e|§r §b你的等級:$o.level($o.exp)'.replace('$o.level', pl.getScore('level')).replace('$o.exp', pl.getScore('exp'))
@@ -388,7 +410,7 @@ setInterval(() => {
         if (pl.getScore('score') == 0) {
             pl.removeSidebar()
             pl.setSidebar('§l§cO§6M§eS§aC§2伺§b服§d器', JSON.parse(bar),0)
-        } else if (pl.getScore('score' == 1)) {
+        } else if (pl.getScore('score') == 1) {
             pl.removeSidebar()
         }
     }
@@ -414,17 +436,35 @@ mc.listen("onServerStarted",() => {
     cmd.overload(['money','bouns'])
     cmd.setCallback((_cmd,ori,_out,res) => {
         const {money,bouns} = res
-        if (ori.player.getScore('money') >= money) {
-            ori.player.reduceScore('money', money)
-            var numbers = Math.floor(Math.random() * 101)
-            if (numbers >= 0 && numbers < 21) {
-                ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
-                ori.player.addScore('money',money * bouns)
-            } else if (numbers >= 21 && numbers < 51) {
-                ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
-                ori.player.addScore('money', money)
-            } else if (numbers >= 51 && numbers < 101) {
-                ori.player.tell('§l§c哈哈，你運氣真的差，抽到了Null，你的錢都沒了')
+        if (ori.player.getScore('money') >= money && bouns >= ori.player.getScore('money') / 2) {
+            if (money >= 100000) {
+                ori.player.reduceScore('money', money)
+                var numbers = Math.floor(Math.random() * 1001)
+                if (numbers >= 0 && numbers < 210) {
+                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
+                    ori.player.addScore('money',money * bouns)
+                } else if (numbers >= 210 && numbers < 510) {
+                    ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
+                    ori.player.addScore('money', money)
+                } else if (numbers >= 510 && numbers < 1000) {
+                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了Null，你的錢都沒了')
+                } else if (numbers == 1000) {
+                    ori.player.tell('§l§d你簡直是天選之子，抽到了0.1%的鎬子和Bouns')
+                    ori.player.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
+                    ori.player.addScore('money',money * bouns)
+                }
+            } else if (money < 100000) {
+                    ori.player.reduceScore('money', money)
+                var numbers = Math.floor(Math.random() * 1001)
+                if (numbers >= 0 && numbers < 210) {
+                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
+                    ori.player.addScore('money',money * bouns)
+                } else if (numbers >= 210 && numbers < 510) {
+                    ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
+                    ori.player.addScore('money', money)
+                } else if (numbers >= 510 && numbers < 1000) {
+                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了Null，你的錢都沒了')
+                }
             }
         }
     })
@@ -1376,7 +1416,7 @@ mc.listen('onCmdBlockExecute',(isMinecart,pos) => {
 
 //指南針選單
 mc.listen('onUseItem',(pl,item) => {
-    if (item.name == 'Compass') {
+    if (item.type == 'minecraft:compass') {
         pl.runcmd('menu')
     }
 })
@@ -2009,15 +2049,54 @@ mc.listen('onServerStarted',()=> {
                             pl.sendForm(great_value_equipment,(pl,id) => {
                                 if (id == 0) {
                                     pl.sendForm(low_great_equipment,(pl,data) => {
-
-                                    })
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 200000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":10s,"lvl":5s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":2s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.reduceScore('money', 200000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })   
                                 } else if (id == 1) {
                                     pl.sendForm(second_great_equipment,(pl,data) => {
-
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 300000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":2s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":10s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.reduceScore('money', 200000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
                                     })
                                 } else if (id == 2) {
                                     pl.sendForm(high_great_equipment,(pl,data) => {
-                                        
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 300000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值低級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":2s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":15s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.reduceScore('money', 200000)
+                                                pl.tell('§l§a你已成功購買')
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
                                     })
                                 }
                             })
@@ -2120,15 +2199,15 @@ mc.listen('onServerStarted',() => {
         var pl = pls[pl]
         setInterval(() => {
             pl.addScore('playSec',1)
-            if (pl.getScore('playSec') > 60) {
+            if (pl.getScore('playSec') >= 60) {
                 pl.addScore('playMin', 1)
                 pl.reduceScore('playSec', 60)
             }
-            if (pl.getScore('playMin') > 60) {
+            if (pl.getScore('playMin') >= 60) {
                 pl.addScore('playHours', 1)
                 pl.reduceScore('playMin',60)
             }
-            if (pl.getScore('playHours') > 24) {
+            if (pl.getScore('playHours') >= 24) {
                 pl.addScore('playDays', 1)
                 pl.reduceScore('playHours', 1)
             }
@@ -2159,57 +2238,61 @@ setInterval(() => {
 
 //重生系統
 mc.listen("onServerStarted",() => {
-    setInterval(() => {
-        if (pl.getScore('rebirth') == 0) {
-            if (pl.getScore('level') >= 500 && pl.getScore('money') >= 10000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生1的條件(等級達到500、SC幣有超過10,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 500 && pl.getScore('money') >= 10000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生1的條件(等級達到500、SC幣有超過10,000,000和擁有MVP++')
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pls[pl]
+        setInterval(() => {
+            if (pl.getScore('rebirth') == 0) {
+                if (pl.getScore('level') >= 500 && pl.getScore('money') >= 10000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生1的條件(等級達到500、SC幣有超過10,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 500 && pl.getScore('money') >= 10000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生1的條件(等級達到500、SC幣有超過10,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 1) {
+                if (pl.getScore('level') >= 750 && pl.getScore('money') >= 50000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生2的條件(等級達到750、SC幣有超過50,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 750 && pl.getScore('money') >= 50000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生2的條件(等級達到750、SC幣有超過50,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 2) {
+                if (pl.getScore('level') >= 1000 && pl.getScore('money') >= 100000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生3的條件(等級達到1000、SC幣有超過100,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 1000 && pl.getScore('money') >= 100000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生3的條件(等級達到1000、SC幣有超過100,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 3) {
+                if (pl.getScore('level') >= 1250 && pl.getScore('money') >= 150000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生4的條件(等級達到1250、SC幣有超過150,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 1250 && pl.getScore('money') >= 150000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生4的條件(等級達到1250、SC幣有超過150,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 4) {
+                if (pl.getScore('level') >= 1500 && pl.getScore('money') >= 200000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生5的條件(等級達到1500、SC幣有超過200,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 1500 && pl.getScore('money') >= 200000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生5的條件(等級達到1500、SC幣有超過200,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 5) {
+                if (pl.getScore('level') >= 1750 && pl.getScore('money') > 250000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生6的條件(等級達到1750、SC幣有超過250,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 1750 && pl.getScore('money') >= 250000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生6的條件(等級達到1750、SC幣有超過250,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 6) {
+                if (pl.getScore('level') >= 2000 && pl.getScore('money') >= 300000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生7的條件(等級達到2000、SC幣有超過300,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 2000 && pl.getScore('money') >= 300000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生7的條件(等級達到2000、SC幣有超過300,000,000和擁有MVP++')
+                }
+            } else if (pl.getScore('rebirth') == 7) {
+                if (pl.getScore('level') >= 2250 && pl.getScore('money') >= 350000000 && pl.hasTag('mvpp')) {
+                    pl.tell('§l§b你已達到重生8的條件(等級達到2250、SC幣有超過350,000,000和擁有MVP+')
+                } else if (pl.getScore('level') >= 2250 && pl.getScore('money') >= 350000000 && pl.hasTag('mvppp')) {
+                    pl.tell('§l§b你已達到重生8的條件(等級達到2250、SC幣有超過350,000,000和擁有MVP++')
+                }
             }
-        } else if (pl.getScore('rebirth') == 1) {
-            if (pl.getScore('level') >= 750 && pl.getScore('money') >= 50000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生2的條件(等級達到750、SC幣有超過50,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 750 && pl.getScore('money') >= 50000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生2的條件(等級達到750、SC幣有超過50,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 2) {
-            if (pl.getScore('level') >= 1000 && pl.getScore('money') >= 100000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生3的條件(等級達到1000、SC幣有超過100,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 1000 && pl.getScore('money') >= 100000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生3的條件(等級達到1000、SC幣有超過100,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 3) {
-            if (pl.getScore('level') >= 1250 && pl.getScore('money') >= 150000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生4的條件(等級達到1250、SC幣有超過150,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 1250 && pl.getScore('money') >= 150000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生4的條件(等級達到1250、SC幣有超過150,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 4) {
-            if (pl.getScore('level') >= 1500 && pl.getScore('money') >= 200000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生5的條件(等級達到1500、SC幣有超過200,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 1500 && pl.getScore('money') >= 200000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生5的條件(等級達到1500、SC幣有超過200,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 5) {
-            if (pl.getScore('level') >= 1750 && pl.getScore('money') > 250000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生6的條件(等級達到1750、SC幣有超過250,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 1750 && pl.getScore('money') >= 250000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生6的條件(等級達到1750、SC幣有超過250,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 6) {
-            if (pl.getScore('level') >= 2000 && pl.getScore('money') >= 300000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生7的條件(等級達到2000、SC幣有超過300,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 2000 && pl.getScore('money') >= 300000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生7的條件(等級達到2000、SC幣有超過300,000,000和擁有MVP++')
-            }
-        } else if (pl.getScore('rebirth') == 7) {
-            if (pl.getScore('level') >= 2250 && pl.getScore('money') >= 350000000 && pl.hasTag('mvpp')) {
-                pl.tell('§l§b你已達到重生8的條件(等級達到2250、SC幣有超過350,000,000和擁有MVP+')
-            } else if (pl.getScore('level') >= 2250 && pl.getScore('money') >= 350000000 && pl.hasTag('mvppp')) {
-                pl.tell('§l§b你已達到重生8的條件(等級達到2250、SC幣有超過350,000,000和擁有MVP++')
-            }
-        }
-    },1800000)
+        },1800000)
+    }
 
     var fm = mc.newCustomForm()
     fm.setTitle('§l§9重生系統')
@@ -2228,24 +2311,24 @@ mc.listen("onServerStarted",() => {
     rebirth_2.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是2，升級要求是1000級,100,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var rebirth_3 = mc.newCustomForm()
-    rebirth_0.setTitle('§l§9重生系統')
-    rebirth_0.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是3，升級要求是1250級,150,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
+    rebirth_3.setTitle('§l§9重生系統')
+    rebirth_3.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是3，升級要求是1250級,150,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var rebirth_4 = mc.newCustomForm()
-    rebirth_1.setTitle('§l§9重生系統')
-    rebirth_1.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是4，升級要求是1500級,200,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
+    rebirth_4.setTitle('§l§9重生系統')
+    rebirth_4.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是4，升級要求是1500級,200,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var rebirth_5 = mc.newCustomForm()
-    rebirth_2.setTitle('§l§9重生系統')
-    rebirth_2.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是5，升級要求是1750級,250,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
+    rebirth_5.setTitle('§l§9重生系統')
+    rebirth_5.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是5，升級要求是1750級,250,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var rebirth_6 = mc.newCustomForm()
-    rebirth_1.setTitle('§l§9重生系統')
-    rebirth_1.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是6，升級要求是2000級,300,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
+    rebirth_6.setTitle('§l§9重生系統')
+    rebirth_6.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是6，升級要求是2000級,300,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var rebirth_7 = mc.newCustomForm()
-    rebirth_2.setTitle('§l§9重生系統')
-    rebirth_2.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是7，升級要求是2250級,350,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
+    rebirth_7.setTitle('§l§9重生系統')
+    rebirth_7.addLabel('§l§9玩家你好，歡迎使用重生系統，當你按下"送出"按鈕時，系統將會檢測你是否已經通過重生要求，現在你的重生次數是7，升級要求是2250級,350,000,000SC幣和擁有MVP+/MVP++，重生後，你的Rank(不包括贊助者)、等級(包括經驗值)、SC幣和所有身上的物品(你可以使用終界箱來儲存物品)會被清空')
 
     var cmd = mc.newCommand('rebirth','重生',PermType.Any)
     cmd.overload()
@@ -2462,6 +2545,8 @@ mc.listen("onServerStarted",() => {
             }
         })
     })
+    cmd.setup(
+    )
 })
 
 //在綫獎勵
@@ -2479,6 +2564,14 @@ mc.listen("onServerStarted",() => {
 //獲取指南針
 mc.listen('onServerStarted',() => {
     mc.regPlayerCmd('compass','獲取指南針(選單)',(pl) => {
-        pl.giveItem(mc.newItem('Minecraft:compass'))
+        pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:compass","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§l§b選單"}}}')))
     })
+})
+
+//防spam
+mc.listen("onPlayerCmd",(pl,cmd) => {
+    if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r')) {
+        pl.tell('§l§c請不要嘗試刷屏')
+        return false
+    }
 })
