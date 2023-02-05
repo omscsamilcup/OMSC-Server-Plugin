@@ -1739,6 +1739,7 @@ mc.listen('onServerStarted',()=> {
     high_level_weapon.addButton('§l§9超凡武器')
     high_level_weapon.addButton('§l§9卓越武器')
     high_level_weapon.addButton('§l§9大師武器')
+    high_level_weapon.addButton('§l§9高級弓')
 
     var great_value_pickaxe = mc.newSimpleForm()
     great_value_pickaxe.setTitle('§l§9超值鎬子')
@@ -1897,28 +1898,80 @@ mc.listen('onServerStarted',()=> {
     high_GrandMaster_equipment.addLabel('§l§6『高級大師裝備』，該物品為全套裝備，售價為1300000SC幣')
 
     var great_value_weapon = mc.newSimpleForm()
-    great_value_weapon.setTitle('§l§9超值武器')
-    great_value_weapon.addButton('§l§9低級超值武器')
-    great_value_weapon.addButton('§l§9中級超值武器')
-    great_value_weapon.addButton('§l§9高級超值武器')
+    great_value_weapon.setTitle('§l§9超值劍')
+    great_value_weapon.addButton('§l§9低級超值劍')
+    great_value_weapon.addButton('§l§9中級超值劍')
+    great_value_weapon.addButton('§l§9高級超值劍')
 
     var extraordinary_weapon = mc.newSimpleForm()
-    extraordinary_weapon.setTitle('§l§9超凡武器')
-    extraordinary_weapon.addButton('§l§9低級超凡武器')
-    extraordinary_weapon.addButton('§l§9中級超凡武器')
-    extraordinary_weapon.addButton('§l§9高級超凡武器')
+    extraordinary_weapon.setTitle('§l§9超凡劍')
+    extraordinary_weapon.addButton('§l§9低級超凡劍')
+    extraordinary_weapon.addButton('§l§9中級超凡劍')
+    extraordinary_weapon.addButton('§l§9高級超凡劍')
 
     var excellence_weapon = mc.newSimpleForm()
-    excellence_weapon.setTitle('§l§9卓越武器')
-    excellence_weapon.addButton('§l§9低級卓越武器')
-    excellence_weapon.addButton('§l§9中級卓越武器')
-    excellence_weapon.addButton('§l§9高級卓越武器')
+    excellence_weapon.setTitle('§l§9卓越劍')
+    excellence_weapon.addButton('§l§9低級卓越劍')
+    excellence_weapon.addButton('§l§9中級卓越劍')
+    excellence_weapon.addButton('§l§9高級卓越劍')
 
     var Grandmaster_weapon = mc.newSimpleForm()
-    Grandmaster_weapon.setTitle('§l§9大師武器')
-    Grandmaster_weapon.addButton('§l§9低級大師武器')
-    Grandmaster_weapon.addButton('§l§9中級大師武器')
-    Grandmaster_weapon.addButton('§l§9高級大師武器')
+    Grandmaster_weapon.setTitle('§l§9大師劍')
+    Grandmaster_weapon.addButton('§l§9低級大師劍')
+    Grandmaster_weapon.addButton('§l§9中級大師劍')
+    Grandmaster_weapon.addButton('§l§9高級大師劍')
+
+    var low_great_weapon = mc.newCustomForm()
+    low_great_weapon.setTitle('§l§9低級超值劍')
+    low_great_weapon.addLabel('§l§6『低級超值劍』一把售價為150000SC幣')
+
+    var second_great_weapon = mc.newCustomForm()
+    second_great_weapon.setTitle('§l§9中級超值劍')
+    second_great_weapon.addLabel('§l§6『中級超值劍』一把售價為200000SC幣')
+
+    var high_great_weapon = mc.newCustomForm()
+    high_great_weapon.setTitle('§l§9高級超值劍')
+    high_great_weapon.addLabel('§l§6『高級超值劍』一把售價為250000SC幣')
+
+    var low_extraordinary_weapon = mc.newCustomForm()
+    low_extraordinary_weapon.setTitle('§l§9低級超凡劍')
+    low_extraordinary_weapon.addLabel('§l§6『低級超凡劍』，一把售價為300000SC幣')
+
+    var second_extraordinary_weapon = mc.newCustomForm()
+    second_extraordinary_weapon.setTitle('§l§9中級超凡劍')
+    second_extraordinary_weapon.addLabel('§l§6『低級超凡劍『，一把售價為350000SC幣')
+
+    var high_extraordinary_weapon = mc.newCustomForm()
+    high_extraordinary_weapon.setTitle('§l§9高級超凡劍')
+    high_extraordinary_weapon.addLabel('§l§6『高級超凡劍』，一把售價為400000SC幣')
+
+    var low_excellent_weapon = mc.newCustomForm()
+    low_excellent_weapon.setTitle('§l§9低級卓越劍')
+    low_excellent_weapon.addLabel('§l§6『低級卓越劍』，一把售價為450000SC幣')
+
+    var second_excellent_weapon = mc.newCustomForm()
+    second_excellent_weapon.setTitle('中級卓越劍')
+    second_excellent_weapon.addLabel('§l§6『中級卓越劍』，一把售價為500000SC幣')
+
+    var high_excellent_weapon = mc.newCustomForm()
+    high_excellent_weapon.setTitle('§l§9高級卓越劍')
+    high_excellent_weapon.addLabel('§l§6『高級卓越劍』，一把售價為550000SC幣')
+
+    var low_GrandMaster_weapon = mc.newCustomForm()
+    low_GrandMaster_weapon.setTitle('§l§9低級大師劍')
+    low_GrandMaster_weapon.addLabel('§l§6『低級大師武器』，一把售價為650000SC幣')
+
+    var second_GrandMaster_weapon = mc.newCustomForm()
+    second_GrandMaster_weapon.setTitle('中級大師劍')
+    second_GrandMaster_weapon.setTitle('§l§6『中級大師劍』，一把售價為750000SC幣')
+
+    var high_GrandMaster_weapon = mc.newCustomForm()
+    high_GrandMaster_weapon.setTitle('§l§9高級大師劍')
+    high_GrandMaster_weapon.addLabel('§l§6『高級大師劍』，一把售價為850000SC幣')
+
+    var bow = mc.newCustomForm()
+    bow.setTitle('§l§9高級弓')
+    bow.addLabel('§l§6『高級弓』，一把售價為500000SC幣')
   
     var cmd = mc.newCommand('highshop','高級商店',PermType.Any)
     cmd.overload()
@@ -2125,10 +2178,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 200000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":10s,"lvl":5s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超值低級裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":2s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":10s,"lvl":5s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值裝備"},"ench":[{"id":0s,"lvl":10s},{"id":1s,"lvl":10s},{"id":2s,"lvl":10s},{"id":3s,"lvl":10s},{"id":4s,"lvl":10s},{"id":5s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
                                                 pl.reduceScore('money', 200000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2142,10 +2195,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 300000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值中級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值中級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值中級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超值中級裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":2s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值裝備"},"ench":[{"id":0s,"lvl":15s},{"id":1s,"lvl":15s},{"id":2s,"lvl":15s},{"id":3s,"lvl":15s},{"id":4s,"lvl":15s},{"id":5s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
                                                 pl.reduceScore('money', 300000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2159,10 +2212,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 400000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超值高級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超值高級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超值高級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超值高級裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":2s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值裝備"},"ench":[{"id":0s,"lvl":20s},{"id":1s,"lvl":20s},{"id":2s,"lvl":20s},{"id":3s,"lvl":20s},{"id":4s,"lvl":20s},{"id":5s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
                                                 pl.reduceScore('money', 400000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2180,10 +2233,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 500000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超凡低級裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超凡低級裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超凡低級裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b超凡低級裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":2s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡裝備"},"ench":[{"id":0s,"lvl":25s},{"id":1s,"lvl":25s},{"id":2s,"lvl":25s},{"id":3s,"lvl":25s},{"id":4s,"lvl":25s},{"id":5s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
                                                 pl.reduceScore('money', 500000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2197,10 +2250,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 600000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超凡中級裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超凡中級裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超凡中級裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d超凡中級裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":2s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡裝備"},"ench":[{"id":0s,"lvl":30s},{"id":1s,"lvl":30s},{"id":2s,"lvl":30s},{"id":3s,"lvl":30s},{"id":4s,"lvl":30s},{"id":5s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s}]}}')))
                                                 pl.reduceScore('money', 600000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2214,10 +2267,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 700000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超凡高級裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超凡高級裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超凡高級裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c超凡高級裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":2s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡裝備"},"ench":[{"id":0s,"lvl":35s},{"id":1s,"lvl":35s},{"id":2s,"lvl":35s},{"id":3s,"lvl":35s},{"id":4s,"lvl":35s},{"id":5s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
                                                 pl.reduceScore('money', 700000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2235,10 +2288,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 800000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b卓越低級裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b卓越低級裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b卓越低級裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b卓越低級裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":2s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越裝備"},"ench":[{"id":0s,"lvl":40s},{"id":1s,"lvl":40s},{"id":2s,"lvl":40s},{"id":3s,"lvl":40s},{"id":4s,"lvl":40s},{"id":5s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
                                                 pl.reduceScore('money', 800000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2252,10 +2305,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 900000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d卓越中級裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d卓越中級裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d卓越中級裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d卓越中級裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":2s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越裝備"},"ench":[{"id":0s,"lvl":45s},{"id":1s,"lvl":45s},{"id":2s,"lvl":45s},{"id":3s,"lvl":45s},{"id":4s,"lvl":45s},{"id":5s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
                                                 pl.reduceScore('money', 900000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2269,10 +2322,10 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 1000000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c卓越高級裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c卓越高級裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c卓越高級裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c卓越高級裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":2s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越裝備"},"ench":[{"id":0s,"lvl":50s},{"id":1s,"lvl":50s},{"id":2s,"lvl":50s},{"id":3s,"lvl":50s},{"id":4s,"lvl":50s},{"id":5s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
                                                 pl.reduceScore('money', 1000000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2289,12 +2342,12 @@ mc.listen('onServerStarted',()=> {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
-                                            if (pl.getScore('money') >= 700000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b大師低級裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b大師低級裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b大師低級裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c大師低級裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":2s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
-                                                pl.reduceScore('money', 700000)
+                                            if (pl.getScore('money') >= 1100000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c低級大師裝備"},"ench":[{"id":0s,"lvl":55s},{"id":1s,"lvl":55s},{"id":2s,"lvl":55s},{"id":3s,"lvl":55s},{"id":4s,"lvl":55s},{"id":5s,"lvl":55s},{"id":17s,"lvl":50s},{"id":26s,"lvl":45s}]}}')))
+                                                pl.reduceScore('money', 1100000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
                                                 pl.tell('§l§c你的錢不足')
@@ -2306,12 +2359,12 @@ mc.listen('onServerStarted',()=> {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
-                                            if (pl.getScore('money') >= 700000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d大師中級裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d大師中級裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d大師中級裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d大師中級裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":2s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
-                                                pl.reduceScore('money', 700000)
+                                            if (pl.getScore('money') >= 1200000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師裝備"},"ench":[{"id":0s,"lvl":60s},{"id":1s,"lvl":60s},{"id":2s,"lvl":60s},{"id":3s,"lvl":60s},{"id":4s,"lvl":60s},{"id":5s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.reduceScore('money', 1200000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
                                                 pl.tell('§l§c你的錢不足')
@@ -2323,12 +2376,12 @@ mc.listen('onServerStarted',()=> {
                                         if (data == undefined) {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
-                                            if (pl.getScore('money') >= 700000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c大師高級裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c大師高級裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c大師高級裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c大師高級裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":2s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
-                                                pl.reduceScore('money', 700000)
+                                            if (pl.getScore('money') >= 1300000) {
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_helmet","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_chestplate","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_leggings","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_boots","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師裝備"},"ench":[{"id":0s,"lvl":65s},{"id":1s,"lvl":65s},{"id":2s,"lvl":65s},{"id":3s,"lvl":65s},{"id":4s,"lvl":65s},{"id":5s,"lvl":65s},{"id":17s,"lvl":60s},{"id":26s,"lvl":55s}]}}')))
+                                                pl.reduceScore('money', 1300000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
                                                 pl.tell('§l§c你的錢不足')
@@ -2344,51 +2397,187 @@ mc.listen('onServerStarted',()=> {
                         if (id == 0) {
                             pl.sendForm(great_value_weapon,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm(low_great_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 150000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值劍"},"ench":[{"id":9s,"lvl":10s},{"id":14s,"lvl":10s},{"id":12s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s},{"id":13s,"lvl":10s}]}}')))
+                                                pl.reduceScore('money',150000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_great_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 200000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b中級超值劍"},"ench":[{"id":9s,"lvl":15s},{"id":14s,"lvl":15s},{"id":12s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s},{"id":13s,"lvl":15s}]}}')))
+                                                pl.reduceScore('money',200000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-
-                                } else if (id == 3) {
-                                    
+                                    pl.sendForm(high_great_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 250000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值劍"},"ench":[{"id":9s,"lvl":20s},{"id":14s,"lvl":20s},{"id":12s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s},{"id":13s,"lvl":20s}]}}')))
+                                                pl.reduceScore('money',250000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         } else if (id == 1) {
                             pl.sendForm(excellence_weapon,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm(low_excellent_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 300000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡劍"},"ench":[{"id":9s,"lvl":25s},{"id":14s,"lvl":25s},{"id":12s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s},{"id":13s,"lvl":25s}]}}')))
+                                                pl.reduceScore('money',300000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_excellent_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 350000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡劍"},"ench":[{"id":9s,"lvl":30s},{"id":14s,"lvl":30s},{"id":12s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":20s},{"id":13s,"lvl":30s}]}}')))
+                                                pl.reduceScore('money',350000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-
-                                } else if (id == 3) {
-                                    
+                                    pl.sendForm(high_excellent_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 400000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡劍"},"ench":[{"id":9s,"lvl":35s},{"id":14s,"lvl":35s},{"id":12s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s},{"id":13s,"lvl":35s}]}}')))
+                                                pl.reduceScore('money',400000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         } else if (id == 2) {
                             pl.sendForm(extraordinary_weapon,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm(low_extraordinary_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 450000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越劍"},"ench":[{"id":9s,"lvl":40s},{"id":14s,"lvl":40s},{"id":12s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s},{"id":13s,"lvl":40s}]}}')))
+                                                pl.reduceScore('money',450000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_extraordinary_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 500000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越劍"},"ench":[{"id":9s,"lvl":45s},{"id":14s,"lvl":45s},{"id":12s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s},{"id":13s,"lvl":45s}]}}')))
+                                                pl.reduceScore('money',500000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-
-                                } else if (id == 3) {
-                                    
+                                    pl.sendForm(high_extraordinary_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 550000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越劍"},"ench":[{"id":9s,"lvl":50s},{"id":14s,"lvl":50s},{"id":12s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s},{"id":13s,"lvl":50s}]}}')))
+                                                pl.reduceScore('money',550000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
                         } else if (id == 3) {
                             pl.sendForm(Grandmaster_weapon,(pl,id) => {
                                 if (id == 0) {
-
+                                    pl.sendForm(low_GrandMaster_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 650000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師劍"},"ench":[{"id":9s,"lvl":60s},{"id":14s,"lvl":60s},{"id":12s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s},{"id":13s,"lvl":60s}]}}')))
+                                                pl.reduceScore('money',650000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 1) {
-
+                                    pl.sendForm(second_GrandMaster_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 750000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d高級大師劍"},"ench":[{"id":9s,"lvl":70s},{"id":14s,"lvl":70s},{"id":12s,"lvl":70s},{"id":17s,"lvl":65s},{"id":26s,"lvl":60s},{"id":13s,"lvl":70s}]}}')))
+                                                pl.reduceScore('money',750000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 } else if (id == 2) {
-
-                                } else if (id == 3) {
-
+                                    pl.sendForm(high_GrandMaster_weapon,(pl,data) => {
+                                        if (data == undefined) {
+                                            pl.tell('§l§c你已取消購買')
+                                        } else {
+                                            if (pl.getScore('money') >= 850000) {
+                                                pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_sword","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師劍"},"ench":[{"id":9s,"lvl":80s},{"id":14s,"lvl":80s},{"id":12s,"lvl":80s},{"id":17s,"lvl":75s},{"id":26s,"lvl":70s},{"id":13s,"lvl":80s}]}}')))
+                                                pl.reduceScore('money',850000)
+                                            } else {
+                                                pl.tell('§l§c你的錢不足')
+                                            }
+                                        }
+                                    })
                                 }
                             })
+                        } else if (id == 4) {
+                            pl.sendForm(bow,(pl,data) => {
+                                if (data == undefined) {
+                                    pl.tell('§l§c你已取消購買')
+                                } else {
+                                    if (pl.getScore('money') >= 500000) {
+                                        pl.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:bow","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級弓"},"ench":[{"id":20s,"lvl":50s},{"id":17s,"lvl":45s},{"id":19s,"lvl":50s},{"id":21s,"lvl":50s},{"id":22s,"lvl":1s},{"id":26s,"lvl":40s}]}}')))
+                                    } else {
+                                        pl.tell('§l§c你的錢不足')
+                                    }
+                                }
+                            }) 
                         }
                     })
                 }
@@ -2466,27 +2655,25 @@ mc.listen('onServerStarted',() => {
 })
 
 //游玩時間計算
-mc.listen('onServerStarted',() => {
+setInterval(() => {
     var pls = mc.getOnlinePlayers()
     for (pl in pls) {
-        var pl = pls[pl]
-        setInterval(() => {
-            pl.addScore('playSec',1)
-            if (pl.getScore('playSec') >= 60) {
-                pl.addScore('playMin', 1)
-                pl.reduceScore('playSec', 60)
-            }
-            if (pl.getScore('playMin') >= 60) {
-                pl.addScore('playHours', 1)
-                pl.reduceScore('playMin',60)
-            }
-            if (pl.getScore('playHours') >= 24) {
-                pl.addScore('playDays', 1)
-                pl.reduceScore('playHours', 1)
-            }
-        },1000)
+    var pl = pls[pl]
+        pl.addScore('playSec',1)
+        if (pl.getScore('playSec') >= 60) {
+            pl.addScore('playMin', 1)
+            pl.reduceScore('playSec', 60)
+        }
+        if (pl.getScore('playMin') >= 60) {
+            pl.addScore('playHours', 1)
+            pl.reduceScore('playMin',60)
+        }
+        if (pl.getScore('playHours') >= 24) {
+            pl.addScore('playDays', 1)
+            pl.reduceScore('playHours', 1)
+        }
     }
-})
+},1000)
 
 //每秒SC幣
 setInterval(() => {
