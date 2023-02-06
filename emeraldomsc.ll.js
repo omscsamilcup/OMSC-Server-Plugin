@@ -23,8 +23,8 @@ mc.regPlayerCmd('resc', "§l§e重新加載OMSC綠寶石插件",(pl) => {
 //計分板
 mc.listen('onServerStarted',() => {
     mc.regConsoleCmd('score','加載計分板',() => {
-        var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth','score']
-        var score_name = ['SC幣','等級','經驗值','挖掘次數','秒','分','小時','天','點數','服主幣','重生次數','開關計分板']
+        var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth','score','antispam','antispam2']
+        var score_name = ['SC幣','等級','經驗值','挖掘次數','秒','分','小時','天','點數','服主幣','重生次數','開關計分板','防刷屏','防刷屏2']
         var a = 0
         if (score.length == score_name.length) {
             while (a < score.length) {
@@ -90,10 +90,14 @@ mc.listen('onJoin',(pl) => {
 
 //聊天訊息
 mc.listen('onChat',(pl,msg)=> {
-    if (msg.length > 75) {
+    if (msg.length > 50 && pl.hasTag('team') == false) {
         pl.tell('§l§c請不要嘗試刷屏')
+        pl.addScore('antispam2', 1)
         return false
-    } else if (pl.hasTag('team')) {
+    } else if (pl.getScore('antispam') != 0) {
+        pl.tell('§l§c你在短時間的聊天次數過多，請暫停下來！')
+        pl.addScore('antispam2', 1)
+    }else if (pl.hasTag('team')) {
         if (pl.hasTag('owner')) {
             mc.broadcast('§8[§cOwner§8]§e' + pl.realName + '§b>>§6' + msg)
         } else if (pl.hasTag('admin')) {
@@ -108,6 +112,7 @@ mc.listen('onChat',(pl,msg)=> {
             mc.broadcast('§8[§9Auxiliary Admin§8]§e' + pl.realName + '§b>>§1' + msg)
         }
     } else if (pl.hasTag('donate')) {
+        pl.addScore('antispam', 3)
         if (pl.hasTag('mvp')) {
             mc.broadcast('§b[MVP(D)] ' + pl.realName + '§b>>§e' + msg)
         } else if (pl.hasTag('mvpp')){
@@ -120,6 +125,7 @@ mc.listen('onChat',(pl,msg)=> {
             mc.broadcast('§a[VIP§6+§a(D)]' + pl.realName + '§b>>§6' + msg)
         } 
     } else {
+        pl.addScore('antispam', 5)
         if (pl.hasTag('yt')) {
             mc.broadcast('§c[§fYOUTUBE§c]' + pl.realName + '§b>>§f' + msg)
         } else if (pl.hasTag('mvp')) {
@@ -3033,8 +3039,33 @@ mc.listen('onServerStarted',() => {
 
 //防spam
 mc.listen("onPlayerCmd",(pl,cmd) => {
-    if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r')) {
+    if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r') && !pl.hasTag('team')) {
         pl.tell('§l§c請不要嘗試刷屏')
         return false
     }
 })
+
+//放聊天刷屏
+setInterval(() => {
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pls[pl]
+        if (pl.getScore('antispam') > 0) {
+            pl.reduceScore('antispam', 1)
+        }
+        if (pl.getScore('antispam2') == 3) {
+            pl.setScore('antispam2', 0)
+            pl.kick('§l§c你在短時間的聊天速度太快/字數太多了，你暫時已被踢出伺服器。重新進入伺服器則可。')
+        }
+    }
+},1000)
+
+setInterval(()=>{
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pls[pl]
+        if (pl.getScore('antispam2') > 0) {
+            pl.reduceScore('antispam2', 1)
+        }
+    }
+},10000)
