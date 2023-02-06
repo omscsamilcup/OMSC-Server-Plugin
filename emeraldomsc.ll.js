@@ -499,7 +499,7 @@ mc.listen('onServerStarted',() => {
     var pay = mc.newCustomForm()
     pay.setTitle('§l§b轉賬系統')
     pay.addLabel('§l§c轉賬將會收取10%手續費')
-    pay.addInput('收錢者ID(請確保該玩家在綫，如果不在綫，本服將不會賠償):')
+    pay.addInput('收錢者ID:')
     pay.addInput('給與SC幣數量:')
     pay.addLabel('')
 
@@ -524,9 +524,15 @@ mc.listen('onServerStarted',() => {
                     if (data == undefined) {
                         pl.tell('§l§c銀行系統:你已取消操作')
                     } else if (data[2] <= pl.getScore('money')) {
-                        var givemoney = data[2] - (data[2]*0.1)
-                        mc.runcmd(`scoreboard players add \"${data[1]}\" ${givemoney}"`)
-                        pl.reduceScore('money',)
+                        if (mc.getOnlinePlayers().includes(data[1])) {
+                            var givemoney = data[2] - (data[2]*0.1)
+                            mc.runcmd(`scoreboard players add \"${data[1]}\" ${givemoney}"`)
+                            pl.reduceScore('money',data[2])
+                            pl.tell('§l§a你已成功轉賬' + data[2] +'給玩家' + data[1])
+                            data[2].tell('§l§a玩家' + pl.realName + '轉賬' + data[2]+ 'SC幣給你')
+                        } else {
+                            pl.tell('§l§c玩家不在綫')
+                        }
                     } else {
                         pl.tell('§l§c你的SC幣不足')
                     }
@@ -537,6 +543,7 @@ mc.listen('onServerStarted',() => {
                         pl.tell('§l§c銀行系統:你已取消操作')
                     } else if (data[1] <= pl.getScore('ownercoins')) {
                         pl.addScore('money',data[1] * 100000)
+                        pl.tell('§l§a你已成功兌換'+data[1] +'服主幣為' + data[1] *100000)
                     } else {
                         pl.tell('§l§c你的服主幣不足')
                     }
@@ -547,6 +554,7 @@ mc.listen('onServerStarted',() => {
                         pl.tell('§l§c銀行系統:你已取消操作')
                     } else if (data[1] <= pl.getScore('point')) {
                         pl.addScore('money', pl.getScore('money') * 100000) 
+                        pl.tell('§l§a你已成功兌換'+data[1] +'點數為' + data[1] *100000)
                     } else {
                         pl.tell('§l§c你的點數不足')
                     }
@@ -556,6 +564,28 @@ mc.listen('onServerStarted',() => {
     })
     cmd.setup()
 })
+
+//轉賬系統
+mc.listen("onServerStarted",()=>{
+    var cmd = mc.newCommand('pay','轉賬系統')
+    cmd.mandatory('name', ParamType.Player)
+    cmd.mandatory('money', ParamType.Int)
+    cmd.overload(['name','money'])
+    cmd.setCallback((_cmd,ori,_out,res) => {
+        const {name,money} = res
+        if (mc.getOnlinePlayers().includes(name)) {
+            if (ori.player.realName >= money) {
+                ori.player.reduceScore('money',money)
+                name.addScore('money',money * 0.9)
+                ori.player.tell('§l§a你已成功轉賬' + money +'SC幣給玩家' + name)
+                name.tell('§l§a玩家' + ori.player.realName + '轉賬' + money+ 'SC幣給你')
+            }
+        } else {
+            pl.tell('§l§c玩家不在綫')
+        }
+    })
+})
+
 
 //menu系統(選單)
 mc.listen('onServerStarted',()=>{
