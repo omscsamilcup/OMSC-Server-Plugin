@@ -584,6 +584,7 @@ mc.listen("onServerStarted",()=>{
             pl.tell('§l§c玩家不在綫')
         }
     })
+    cmd.setup()
 })
 
 
