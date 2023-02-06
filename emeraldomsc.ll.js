@@ -1,7 +1,6 @@
 //LiteLoaderScript Dev Helper
 /// <reference path="C:\Users\pc\.vscode\dts\HelperLib-master\src/dts/HelperLib-master/src/index.d.ts"/> 
 
-
 ll.registerPlugin(
     /* name */ "omsc綠寶石伺服器插件",
     /* introduction */ "OMSC插件",
@@ -400,7 +399,7 @@ setInterval(() => {
         var str10 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
         var str11 = '§l§e|§r §b埠:19132'
         var str12 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
-        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12]
+        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,]
         
         bar = '{"'
         for (i in arr) {
@@ -2680,18 +2679,22 @@ setInterval(() => {
     var pls = mc.getOnlinePlayers()
     for (pl in pls) {
         var pl = pls[pl]
-        if (pl.hasTag('vip')) {
-            pl.addScore('money',5)
-        } else if (pl.hasTag('vipp')) {
-            pl.addScore('money',10)
-        } else if (pl.hasTag('vippp')) {
-            pl.addScore('money', 20)
-        } else if (pl.hasTag('mvp')) {
-            pl.addScore('money', 35)
-        } else if (pl.hasTag('mvpp')) {
-            pl.addScore('money',50)
-        } else if (pl.hasTag('team')) {
-            pl.addScore('money', 100)
+        if (!pl.hasTag('donate')) {
+            if (pl.hasTag('vip')) {
+                pl.addScore('money',5)
+            } else if (pl.hasTag('vipp')) {
+                pl.addScore('money',10)
+            } else if (pl.hasTag('vippp')) {
+                pl.addScore('money', 20)
+            } else if (pl.hasTag('mvp')) {
+                pl.addScore('money', 35)
+            } else if (pl.hasTag('mvpp')) {
+                pl.addScore('money',50)
+            } else if (pl.hasTag('team')) {
+                pl.addScore('money', 100)
+            }
+        } else if (pl.hasTag('donate')) {
+            pl.addScore('money',75)
         }
     }
 }, 1000)
