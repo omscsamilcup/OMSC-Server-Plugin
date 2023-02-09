@@ -567,7 +567,7 @@ mc.listen('onServerStarted',() => {
 
 //轉賬系統
 mc.listen("onServerStarted",()=>{
-    var cmd = mc.newCommand('pay','轉賬系統')
+    var cmd = mc.newCommand('pay','轉賬系統',PermType.Any)
     cmd.mandatory('name', ParamType.Player)
     cmd.mandatory('money', ParamType.Int)
     cmd.overload(['name','money'])
@@ -1619,21 +1619,21 @@ mc.listen("onServerStarted",()=> {
 
     var tp = mc.newCustomForm()
     tp.setTitle('§l§9傳送玩家')
-    tp.addInput('請輸入你要傳送的玩家(如玩家名稱有空格請加上"")');
+    tp.addInput('請輸入你要傳送的玩家');
 
     var kick = mc.newCustomForm()
     kick.setTitle('§l§9踢出玩家')
-    kick.addInput('請輸入你要踢出的玩家(如玩家名稱有空格請加上"")');
+    kick.addInput('請輸入你要踢出的玩家');
     kick.addInput('請輸入踢出的原因(選填，請加上"")')
 
     var ban = mc.newCustomForm()
     ban.setTitle('§l§9封禁玩家')
-    ban.addInput('請輸入玩家名稱(如玩家名稱有空格請加上""):')
-    ban.addInput('請輸入封禁原因(選填，請加上""):')
+    ban.addInput('請輸入玩家名稱:')
+    ban.addInput('請輸入封禁原因(選填):')
     ban.addInput('請輸入封禁時間(分鐘，選填(如填寫此處必須填寫封禁原因)):')
 
     var unban = mc.newCustomForm()
-    unban.setTitle('§l§9解除封禁(如玩家名稱有空格請加上"")')
+    unban.setTitle('§l§9解除封禁')
     unban.addInput('請輸入你要解除封禁的玩家')
 
     var cmd = mc.newCommand('admin','管理員選單',PermType.GameMasters)
@@ -1669,10 +1669,10 @@ mc.listen("onServerStarted",()=> {
                     if (data[0] != '') {
                         if (data[1] != '') {
                             if (data[2] != '') {
-                                pl.runcmd(`ban ${data[0]} ${data[1]} ${data[2]}`)
+                                pl.runcmd(`ban \"${data[0]}\" ${data[1]} ${data[2]}`)
                                 pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1] + '時間爲' + data[2] + '分鐘')
                             } else if (data[2] == '') {
-                                pl.runcmd(`ban ${data[0]} ${data[1]}`)
+                                pl.runcmd(`ban \"${data[0]}\" ${data[1]}`)
                                 pl.tell('§l§a成功封禁玩家' + data[0] + '原因爲' + data[1])
                             }
                         } else if (data[1] == ''){
@@ -1686,7 +1686,7 @@ mc.listen("onServerStarted",()=> {
             } else if (id == 3) {
                 pl.sendForm(unban,(pl,data) => {
                     if (data[0] != '') {
-                        pl.runcmd(`unban ${data[0]}`)
+                        pl.runcmd(`unban \"${data[0]}\"`)
                         pl.tell('§l§a成功解除玩家' + data[0] + '的封禁')
                     }else if (data[0] == undefined) {
                         pl.tell('§l§c你已取消操作')
@@ -2663,7 +2663,7 @@ mc.listen("onDestroyBlock",(pl,bl) => {
 
 //玩家Info
 mc.listen('onServerStarted',() => {
-    var cmd = mc.newCommand('info','你的資料')
+    var cmd = mc.newCommand('info','你的資料',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
         var pl = ori.player
@@ -3100,3 +3100,29 @@ setInterval(()=>{
         }
     }
 },10000)
+
+//簽到系統
+mc.listen("onServerStarted",() => {
+    var cmd = mc.newCommand('daily','簽到',PermType,Any)
+    cmd.setAlias('dm')
+    cmd.overload()
+    cmd.setCallback((_cmd,ori,_out,_res)=>{
+        var pl = ori.player
+        if (pl.getScore('daily') == 0) {
+            pl.addScore('daily',1)
+            pl.addScore('money', 500)
+        } else if (pl.getScore('daily') == 1) {
+            mc.broadcast('§l§c你今天已經簽到了，請等待明天！')
+        }
+    })
+    cmd.setup()
+    
+    setInterval(() => {
+        var tm = system.getTimeObj()
+        if (tm.m == 0 && tm.s == 0 && tm.h == 0) {
+            mc.removeScoreObjective('daily')
+            mc.newScoreObjective('daily','簽到')
+            mc.broadcast('§l§b簽到已刷新')
+        }
+    },100)
+})
