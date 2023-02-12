@@ -1603,6 +1603,7 @@ mc.listen("onServerStarted",()=> {
     fm.addButton('§l§9banlist')
     fm.addButton('§l§9blackbe')
     fm.addButton('§l§9查背包')
+    fm.addButton('§l§9開關顯示伺服器現時狀態')
     fm.addButton('§l§9重啟伺服器§c(請勿胡亂使用！)')
     fm.addButton('§l§9關閉伺服器§c(倒數5秒，請勿胡亂使用！)')
     fm.addButton('§l§9關閉伺服器§c(倒數15秒，請勿胡亂使用！)')
@@ -1731,11 +1732,17 @@ mc.listen("onServerStarted",()=> {
                 pl.runcmd(`blackbe`)
             } else if (id == 8) {
                 pl.runcmd(`cb`)
-            } else if (id == 9) {
-                pl.runcmd(`restart`)
+            }else if (id == 9) {
+                if (pl.hasTag('nowdata')) {
+                    pl.removeTag('nowdata')
+                } else if (!pl.hasTag('nowdata')) {
+                    pl.addTag('nowdata')
+                }
             } else if (id == 10) {
-                pl.runcmd(`stopser`)
+                pl.runcmd(`restart`)
             } else if (id == 11) {
+                pl.runcmd(`stopser`)
+            } else if (id == 12) {
                 pl.runcmd(`wnstop`)
             }
         })
