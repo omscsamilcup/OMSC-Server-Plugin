@@ -2651,8 +2651,8 @@ mc.listen("onTick", ()=> {
             pl.addScore('money', pl.getScore('level') * pl.getScore('level') * 2)
             pl.addScore('level', 1)
             mc.broadcast('§l§b恭喜玩家' + pl.realName + '到達了' + pl.getScore('level') + '級')
-            var level = pl.getScore('exp') > pl.getScore('level') * pl.getScore('level') * 5 + 5
-            pl.tell('§l§d恭喜你達到' + pl.getScore('level') + '級，這是升級的獎勵:' + pl.getScore('level') * pl.getScore('level') * 2 + 'SC幣，下一級所需的經驗值為:' + pl.getScore('exp') - (pl.getScore('level') * pl.getScore('level') * 5 + 5) + '總需要經驗值:' + level)
+            var level = pl.getScore('level') * pl.getScore('level') * 5 + 5 - pl.getScore('exp')
+            pl.tell('§l§b恭喜你達到' + pl.getScore('level') +'你獲得了'+ (pl.getScore('level') * pl.getScore('level') * 2) + 'SC幣，你距離下一級還差' + level + '，總經驗值' + (pl.getScore('level') * pl.getScore('level') * 5 + 5))
         }
     }
 })
@@ -2662,8 +2662,8 @@ mc.listen("onDestroyBlock",(pl,bl) => {
     if (bl.type == 'minecraft:emerald_ore') {
         pl.addScore('exp', 1)
         pl.addScore('times', 1)
-    } else if (bl.type == 'emerald_block') {
-        pl.addScore('exp', 1)
+    } else if (bl.type == 'minecraft:emerald_block') {
+        pl.addScore('exp', 9)
         pl.addScore('times', 1)
     }
 })
@@ -3118,8 +3118,9 @@ mc.listen("onServerStarted",() => {
         if (pl.getScore('daily') == 0) {
             pl.addScore('daily',1)
             pl.addScore('money', 500)
+            pl.tell('§l§a你已成功簽到，獲得500SC幣')
         } else if (pl.getScore('daily') == 1) {
-            mc.broadcast('§l§c你今天已經簽到了，請等待明天！')
+            pl.tell('§l§c你今天已經簽到了，請等待明天！')
         }
     })
     cmd.setup()
