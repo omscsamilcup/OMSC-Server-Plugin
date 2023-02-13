@@ -407,8 +407,8 @@ setInterval(() => {
         var str12 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
         var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,]
         
-        bar = '{"'
-        for (i in arr) {
+        var bar = '{"'
+        for (var i in arr) {
             bar = bar + "\§r" + arr[i] + '":' + String(Number(i)+1) + ',"'
         }
         bar = bar.slice(0,-2) + '}'
@@ -454,7 +454,7 @@ mc.listen("onServerStarted",() => {
                 } else if (numbers >= 510 && numbers < 1000) {
                     ori.player.tell('§l§c哈哈，你運氣真的差，抽到了Null，你的錢都沒了')
                 } else if (numbers == 1000) {
-                    ori.player.tell('§l§d你簡直是天選之子，抽到了0.1%的鎬子和Bouns')
+                    ori.player.tell('§l§d你簡直是天選之子，抽到了百分之0.1機率的鎬子和Bouns')
                     ori.player.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
                     ori.player.addScore('money',money * bouns)
                 }
@@ -498,7 +498,7 @@ mc.listen('onServerStarted',() => {
 
     var pay = mc.newCustomForm()
     pay.setTitle('§l§b轉賬系統')
-    pay.addLabel('§l§c轉賬將會收取10%手續費')
+    pay.addLabel('§l§c轉賬將會收取百分之10手續費')
     pay.addInput('收錢者ID:')
     pay.addInput('給與SC幣數量:')
     pay.addLabel('')
@@ -3110,7 +3110,7 @@ setInterval(()=>{
 
 //簽到系統
 mc.listen("onServerStarted",() => {
-    var cmd = mc.newCommand('daily','簽到',PermType,Any)
+    var cmd = mc.newCommand('daily','簽到',PermType.Any)
     cmd.setAlias('dm')
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res)=>{
