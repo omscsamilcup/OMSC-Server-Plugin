@@ -23,8 +23,8 @@ mc.regPlayerCmd('resc', "§l§e重新加載OMSC綠寶石插件",(pl) => {
 //計分板
 mc.listen('onServerStarted',() => {
     mc.regConsoleCmd('score','加載計分板',() => {
-        var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth','score','antispam','antispam2']
-        var score_name = ['SC幣','等級','經驗值','挖掘次數','秒','分','小時','天','點數','服主幣','重生次數','開關計分板','防刷屏','防刷屏2']
+        var score = ['money','level','exp','times','playSec','playMin','playHours','playDays','point','ownercoins', 'rebirth','score','antispam','antispam2','daily']
+        var score_name = ['SC幣','等級','經驗值','挖掘次數','秒','分','小時','天','點數','服主幣','重生次數','開關計分板','防刷屏','防刷屏2','簽到']
         var a = 0
         if (score.length == score_name.length) {
             while (a < score.length) {
@@ -42,7 +42,7 @@ mc.listen('onServerStarted',() => {
 //玩家首次進入
 mc.listen('onJoin',(pl) => {
     if (pl.hasTag('first') == false) {
-        pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:writable_book","WasPickedUp":0b,"tag":{"pages":[{"photoname":"","text":"§l§b歡迎你加入OMSC伺服器！\n§l§6我是本服的新手教學書\n§l§d閲讀這本書 來學習怎麽玩\n§l§d本服吧\n§l§9新玩家你好，我是本服服主，§9§l杯子小\n§l§a伺服器類型-綠寶石商店\n§c本服有著完美的插件體系\n§l§b所本服有地方都能用選單/指令前往"},{"photoname":"","text":""},{"photoname":"","text":"§l§9伺服器常用指令\n/mine - 前往最原本的礦場\n/vipmine - 前往VIP礦場\n/vippmine - 前往VIP+礦場\n/vipppmine - 前往VIP++礦場\n§l§9/mvpmine - 前往MVP礦場\n§l§9/mvppmine - 前往MVP+礦場\n§l§9/mvpppmine-前往MVP++礦場\n/rank - 購買Rank"},{"photoname":"","text":""},{"photoname":"","text":""}]}}')))
+        pl.giveItem(mc.newItem(NBT.parseSNBT('{Count:1b,tag:{generation:0,xuid:"",pages:[{text:"§l§g歡迎你來到OMSC伺服器\n§l§b目前有多項功能可以使用\n§d1.§9Rank系統\n§d2.§9轉帳系統\n§d3.§9簽到系統\n§d4.§9選單系統\n§d5.§9經濟系統\n§d6.§9商店系統\n§d7.§9等級系統\n§d8.§9計分板系統\n§d9.§9重生系統\n§d10.§9贊助者系統\n§d11.§9在線獎勵系統",photoname:""},{text:"§l§d12.§9挖掘系統\n§d13.§9效果系統\n§d14.§9防掛系統\n§d15.§9傳送系統\n§d16.§9抽獎系統\n§d17.§9聊天系統\n§a以上都是由本服插件師Br寫的\n之後有可能再增加",photoname:""},{text:"§l§9Rank系統\n§b購買Rank是要花Sc幣\n§g一般的Rank§c(就是後面沒加D的)\n§g可以用Sc幣購買必須照順序購買\n§l§gYt訂閱要150+ 必須放一個宣傳影片 觀看數要50+ 目前購買途徑有兩種 一種是打開羅盤 另一種是在聊天框輸入/rank\n",photoname:""},{text:"§l§9轉帳系統\n§g/pay\n每一筆轉帳都會抽10%\n轉帳單位為Sc幣作為計算\n如果轉帳者不在線\n會顯示不能轉帳\n輸入錯誤也會提醒",photoname:""},{text:"§l§9簽到系統\n§g/sign\n每天每一個人固定簽到一次\n過了午夜12點才能再簽到一次\n每天上線都會做提醒\n不能進行補簽",photoname:""},{text:"§l§9選單系統\n§g目前伺服器大部分重要功能\n都採以選單式的來簡化\n都以羅盤打開\n如果羅盤不見\n可以用/menu來開啟",photoname:""},{text:"§l§9經濟系統\n§g本伺服器擁有完善的經濟系統\n貨幣分成Sc幣，服主幣以及點數\n目前點數是用贊助伺服器\n才能獲得\n而Sc幣可以透過挖礦獲得\n服主幣也能進行兌換Sc幣\n服主幣要用抽獎",photoname:""},{text:"§l§9商店系統\n§g有分高級商店和一般商店\n一般商店有賣工具類附魔類\n裝備類而附魔是給書本\n高級商店\n§c請注意不能販賣給其他玩家\n如果發現直接封禁\n§g裡面有賣高級物品但必須是贊助者才能使用",photoname:""},{text:"§l§9等級系統\n§g目前獎勵的計算辦法為\n每升級一等將會給予\n等級*等級*2的Sc幣\n而目前Sc幣為本服的主要通用貨幣",photoname:""},{text:"§l§9計分板系統\n§g本服的計分板都是伺服器團隊\n精心設計的沒有一服會一樣\n都是經過反覆調整\n符合最佳視線的設計\n經過設計視線的隔擋畫最小了\n也可以透過/sidebar關閉顯示\n功能性十足都看到各人的信息\n不再像傳統的伺服器\n要一直打指令才能知道信息\n",photoname:""},{text:"§l§9重生系統\n§g目前分成八個等級\n如果到達了會跳出提示（後面21頁）\n重生後你的Rank會清除（不包括贊助者）然後會清除經驗，等級，sc幣包括身上的所有東西終界箱也會清除\n而重生後會增加1個綠寶石兌換Sc幣量\n沒重生1綠寶石=1sc幣\n重生1的1個綠寶石=2sc幣\n重生2的1個綠寶石=3綠寶石",photoname:""},{text:"§l§9贊助者系統\n§g目前本服的贊助者\n享受到的福利非常好\n不僅有高級商店還有能購買Rank贊助的相關細節在DC裡面有\n還有特別的聊天訊息\n本服的點數可以用贊助換來\n目前贊助者每秒會獲得75Sc幣",photoname:""},{text:"§l§9在線獎勵系統\n§g本服很佛心只要在線上\n都會有獎勵就算是掛機也會有\n一般玩家每三十分鐘獲得200Sc\n",photoname:""},{text:"§l§9挖掘系統\n§g目前升等的計算方式為\n等級*等級*5+5\n每挖掘綠寶石礦一次\n增加經驗一次\n可以透過附魔來增加效率\n",photoname:""},{text:"§l§9效果系統\n§g此系統是專門為贊助者設計的\n有心型\n水粒子\n氣泡水\n煙霧\n龍之吐息\n等等別人一眼就能看出你的身份地位十分炫泡",photoname:""},{text:"§l§9防掛系統\n§g目前本服封禁\n非法NBT\n就是不是透過正常管道取得的\n如果被發現將以封禁處理\n另外也嚴格禁止任何會讓\n伺服器崩掉或卡頓的東西\n就算沒有開掛就是違規請不要嘗試如果發現玩家有利用遊戲漏洞並未回報者會連同知情不報者連同處分如果有相關檢舉請去Dc檢舉",photoname:""},{text:"§l§9傳送系統\n§g傳送的區域有\n大廳\n普通礦場\nVIP礦場\nVIP+礦場\nMVP礦場\nMVP+礦場\nMVP++礦場\n以上都能透過傳送選單進行傳送",photoname:""},{text:"§l§9聊天系統\n§g本服的聊天插件都是服主自己寫\n因為不同的階級也會有不同的聊天顏色",photoname:""},{text:"§l§9抽獎系統\n§g目前抽獎活動都是不定時的\n如果有活動都會在Dc上進行公告\n抽獎有機會獲得服主幣，Sc幣，點數\n獎金豐厚請各位玩家多多關注Dc",photoname:""},{text:"§l§9重生升級需求\n§g1.500 10000000\n2.750 50000000\n3.1000 100000000\n4.1250 150000000\n5.1500 200000000\n6.1750 250000000\n7.2000 300000000\n8.2250 350000000\n每個重生等級都要擁有\nMvp,MVp+",photoname:""}],title:"§l§e[§aOMSC§e]\n§b新手須知\n§c(如果有不懂的請去dc詢問)",author:""},Damage:0s,WasPickedUp:0b,Name:"minecraft:written_book"}')))
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:iron_pickaxe","WasPickedUp":0b,"tag":{"Damage":0}}')))
         pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:compass","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§l§b選單"}}}')))
         pl.addScore('money',500)
@@ -405,7 +405,7 @@ setInterval(() => {
         var str10 = '§l§e|§r §b伺服器IP:omsctop.ddns.net(待定)'
         var str11 = '§l§e|§r §b埠:19132'
         var str12 = '§l§e|§r §b伺服器版本:MCPE$o.version'.replace('$o.version', mc.getBDSVersion())
-        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,]
+        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12]
         
         var bar = '{"'
         for (var i in arr) {
@@ -455,7 +455,7 @@ mc.listen("onServerStarted",() => {
                     ori.player.tell('§l§c哈哈，你運氣真的差，抽到了Null，你的錢都沒了')
                 } else if (numbers == 1000) {
                     ori.player.tell('§l§d你簡直是天選之子，抽到了百分之0.1機率的鎬子和Bouns')
-                    ori.player.giveItem(mc.newItem(NBT.parseJson('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
+                    ori.player.giveItem(mc.newItem(NBT.parseJson('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
                     ori.player.addScore('money',money * bouns)
                 }
             } else if (money < 100000) {
@@ -2033,7 +2033,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 150000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值鎬子"},"ench":[{"id":18s,"lvl":10s},{"id":15s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超值鎬子"},"ench":[{"id":18s,"lvl":10s},{"id":15s,"lvl":10s},{"id":17s,"lvl":5s},{"id":26s,"lvl":1s}]}}')))
                                                 pl.reduceScore('money',150000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2047,7 +2047,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 200000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值鎬子"},"ench":[{"id":18s,"lvl":15s},{"id":15s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超值鎬子"},"ench":[{"id":18s,"lvl":15s},{"id":15s,"lvl":15s},{"id":17s,"lvl":10s},{"id":26s,"lvl":5s}]}}')))
                                                 pl.reduceScore('money',200000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2061,7 +2061,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 250000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值鎬子"},"ench":[{"id":18s,"lvl":20s},{"id":15s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超值鎬子"},"ench":[{"id":18s,"lvl":20s},{"id":15s,"lvl":20s},{"id":17s,"lvl":15s},{"id":26s,"lvl":10s}]}}')))
                                                 pl.reduceScore('money',250000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2079,7 +2079,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 300000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡鎬子"},"ench":[{"id":18s,"lvl":25s},{"id":15s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級超凡鎬子"},"ench":[{"id":18s,"lvl":25s},{"id":15s,"lvl":25s},{"id":17s,"lvl":20s},{"id":26s,"lvl":15s}]}}')))
                                                 pl.reduceScore('money',300000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2093,7 +2093,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 350000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級超凡鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
                                                 pl.reduceScore('money',350000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2107,7 +2107,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 400000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡鎬子"},"ench":[{"id":18s,"lvl":35s},{"id":15s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級超凡鎬子"},"ench":[{"id":18s,"lvl":35s},{"id":15s,"lvl":35s},{"id":17s,"lvl":30s},{"id":26s,"lvl":25s}]}}')))
                                                 pl.reduceScore('money',400000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2125,7 +2125,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 450000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越鎬子"},"ench":[{"id":18s,"lvl":40s},{"id":15s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級卓越鎬子"},"ench":[{"id":18s,"lvl":40s},{"id":15s,"lvl":40s},{"id":17s,"lvl":35s},{"id":26s,"lvl":30s}]}}')))
                                                 pl.reduceScore('money',450000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2139,7 +2139,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 500000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越鎬子"},"ench":[{"id":18s,"lvl":45s},{"id":15s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級卓越鎬子"},"ench":[{"id":18s,"lvl":45s},{"id":15s,"lvl":45s},{"id":17s,"lvl":40s},{"id":26s,"lvl":35s}]}}')))
                                                 pl.reduceScore('money',500000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2153,7 +2153,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 550000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越鎬子"},"ench":[{"id":18s,"lvl":50s},{"id":15s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級卓越鎬子"},"ench":[{"id":18s,"lvl":50s},{"id":15s,"lvl":50s},{"id":17s,"lvl":45s},{"id":26s,"lvl":40s}]}}')))
                                                 pl.reduceScore('money',550000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2171,7 +2171,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 650000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師鎬子"},"ench":[{"id":18s,"lvl":60s},{"id":15s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§b低級大師鎬子"},"ench":[{"id":18s,"lvl":60s},{"id":15s,"lvl":60s},{"id":17s,"lvl":55s},{"id":26s,"lvl":50s}]}}')))
                                                 pl.reduceScore('money',650000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2185,7 +2185,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 750000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師鎬子"},"ench":[{"id":18s,"lvl":70s},{"id":15s,"lvl":70s},{"id":17s,"lvl":65s},{"id":26s,"lvl":60s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§d中級大師鎬子"},"ench":[{"id":18s,"lvl":70s},{"id":15s,"lvl":70s},{"id":17s,"lvl":65s},{"id":26s,"lvl":60s}]}}')))
                                                 pl.reduceScore('money',750000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -2199,7 +2199,7 @@ mc.listen('onServerStarted',()=> {
                                             pl.tell('§l§c你已取消購買')
                                         } else {
                                             if (pl.getScore('money') >= 850000) {
-                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師鎬子"},"ench":[{"id":18s,"lvl":80s},{"id":15s,"lvl":80s},{"id":17s,"lvl":75s},{"id":26s,"lvl":70s}]}}')))
+                                                pl.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c高級大師鎬子"},"ench":[{"id":18s,"lvl":80s},{"id":15s,"lvl":80s},{"id":17s,"lvl":75s},{"id":26s,"lvl":70s}]}}')))
                                                 pl.reduceScore('money',850000)
                                                 pl.tell('§l§a你已成功購買')
                                             } else {
@@ -3132,5 +3132,20 @@ mc.listen("onServerStarted",() => {
             mc.newScoreObjective('daily','簽到')
             mc.broadcast('§l§b簽到已刷新')
         }
-    },100)
+    },1000)
+})
+mc.listen("onJoin",(pl) => {
+    if (pl.getScore('daily') == 0) {
+        pl.tell('§l§d你今天還沒進行簽到，輸入/daily或/dm來簽到吧！')
+    }
+})
+
+mc.listen("onServerStarted",() => {
+    var cmd = mc.newCommand('teachbook','獲取新手教學書',PermType.Any)
+    cmd.overload()
+    cmd.setCallback((_cmd,ori,_out,_res) => {
+        var pl = ori.player
+        pl.giveItem(mc.newItem(NBT.parseSNBT('{Count:1b,tag:{generation:0,xuid:"",pages:[{text:"§l§g歡迎你來到OMSC伺服器\n§l§b目前有多項功能可以使用\n§d1.§9Rank系統\n§d2.§9轉帳系統\n§d3.§9簽到系統\n§d4.§9選單系統\n§d5.§9經濟系統\n§d6.§9商店系統\n§d7.§9等級系統\n§d8.§9計分板系統\n§d9.§9重生系統\n§d10.§9贊助者系統\n§d11.§9在線獎勵系統",photoname:""},{text:"§l§d12.§9挖掘系統\n§d13.§9效果系統\n§d14.§9防掛系統\n§d15.§9傳送系統\n§d16.§9抽獎系統\n§d17.§9聊天系統\n§a以上都是由本服插件師Br寫的\n之後有可能再增加",photoname:""},{text:"§l§9Rank系統\n§b購買Rank是要花Sc幣\n§g一般的Rank§c(就是後面沒加D的)\n§g可以用Sc幣購買必須照順序購買\n§l§gYt訂閱要150+ 必須放一個宣傳影片 觀看數要50+ 目前購買途徑有兩種 一種是打開羅盤 另一種是在聊天框輸入/rank\n",photoname:""},{text:"§l§9轉帳系統\n§g/pay\n每一筆轉帳都會抽10%\n轉帳單位為Sc幣作為計算\n如果轉帳者不在線\n會顯示不能轉帳\n輸入錯誤也會提醒",photoname:""},{text:"§l§9簽到系統\n§g/sign\n每天每一個人固定簽到一次\n過了午夜12點才能再簽到一次\n每天上線都會做提醒\n不能進行補簽",photoname:""},{text:"§l§9選單系統\n§g目前伺服器大部分重要功能\n都採以選單式的來簡化\n都以羅盤打開\n如果羅盤不見\n可以用/menu來開啟",photoname:""},{text:"§l§9經濟系統\n§g本伺服器擁有完善的經濟系統\n貨幣分成Sc幣，服主幣以及點數\n目前點數是用贊助伺服器\n才能獲得\n而Sc幣可以透過挖礦獲得\n服主幣也能進行兌換Sc幣\n服主幣要用抽獎",photoname:""},{text:"§l§9商店系統\n§g有分高級商店和一般商店\n一般商店有賣工具類附魔類\n裝備類而附魔是給書本\n高級商店\n§c請注意不能販賣給其他玩家\n如果發現直接封禁\n§g裡面有賣高級物品但必須是贊助者才能使用",photoname:""},{text:"§l§9等級系統\n§g目前獎勵的計算辦法為\n每升級一等將會給予\n等級*等級*2的Sc幣\n而目前Sc幣為本服的主要通用貨幣",photoname:""},{text:"§l§9計分板系統\n§g本服的計分板都是伺服器團隊\n精心設計的沒有一服會一樣\n都是經過反覆調整\n符合最佳視線的設計\n經過設計視線的隔擋畫最小了\n也可以透過/sidebar關閉顯示\n功能性十足都看到各人的信息\n不再像傳統的伺服器\n要一直打指令才能知道信息\n",photoname:""},{text:"§l§9重生系統\n§g目前分成八個等級\n如果到達了會跳出提示（後面21頁）\n重生後你的Rank會清除（不包括贊助者）然後會清除經驗，等級，sc幣包括身上的所有東西終界箱也會清除\n而重生後會增加1個綠寶石兌換Sc幣量\n沒重生1綠寶石=1sc幣\n重生1的1個綠寶石=2sc幣\n重生2的1個綠寶石=3綠寶石",photoname:""},{text:"§l§9贊助者系統\n§g目前本服的贊助者\n享受到的福利非常好\n不僅有高級商店還有能購買Rank贊助的相關細節在DC裡面有\n還有特別的聊天訊息\n本服的點數可以用贊助換來\n目前贊助者每秒會獲得75Sc幣",photoname:""},{text:"§l§9在線獎勵系統\n§g本服很佛心只要在線上\n都會有獎勵就算是掛機也會有\n一般玩家每三十分鐘獲得200Sc\n",photoname:""},{text:"§l§9挖掘系統\n§g目前升等的計算方式為\n等級*等級*5+5\n每挖掘綠寶石礦一次\n增加經驗一次\n可以透過附魔來增加效率\n",photoname:""},{text:"§l§9效果系統\n§g此系統是專門為贊助者設計的\n有心型\n水粒子\n氣泡水\n煙霧\n龍之吐息\n等等別人一眼就能看出你的身份地位十分炫泡",photoname:""},{text:"§l§9防掛系統\n§g目前本服封禁\n非法NBT\n就是不是透過正常管道取得的\n如果被發現將以封禁處理\n另外也嚴格禁止任何會讓\n伺服器崩掉或卡頓的東西\n就算沒有開掛就是違規請不要嘗試如果發現玩家有利用遊戲漏洞並未回報者會連同知情不報者連同處分如果有相關檢舉請去Dc檢舉",photoname:""},{text:"§l§9傳送系統\n§g傳送的區域有\n大廳\n普通礦場\nVIP礦場\nVIP+礦場\nMVP礦場\nMVP+礦場\nMVP++礦場\n以上都能透過傳送選單進行傳送",photoname:""},{text:"§l§9聊天系統\n§g本服的聊天插件都是服主自己寫\n因為不同的階級也會有不同的聊天顏色",photoname:""},{text:"§l§9抽獎系統\n§g目前抽獎活動都是不定時的\n如果有活動都會在Dc上進行公告\n抽獎有機會獲得服主幣，Sc幣，點數\n獎金豐厚請各位玩家多多關注Dc",photoname:""},{text:"§l§9重生升級需求\n§g1.500 10000000\n2.750 50000000\n3.1000 100000000\n4.1250 150000000\n5.1500 200000000\n6.1750 250000000\n7.2000 300000000\n8.2250 350000000\n每個重生等級都要擁有\nMvp,MVp+",photoname:""}],title:"§l§e[§aOMSC§e]\n§b新手須知\n§c(如果有不懂的請去dc詢問)",author:""},Damage:0s,WasPickedUp:0b,Name:"minecraft:written_book"}')))
+        pl.tell('§l§a成功獲取新手教學書')
+    })
 })
