@@ -1446,7 +1446,7 @@ mc.listen('onServerStarted',()=> {
 mc.listen('onCmdBlockExecute',(isMinecart,pos) => {
     if (isMinecart == true) {
         log('有玩家使用命令方塊礦車惡意崩服，坐標為' + pos)
-    return false
+        return false
     }    
 })
 
@@ -3083,7 +3083,7 @@ mc.listen("onPlayerCmd",(pl,cmd) => {
     }
 })
 
-//放聊天刷屏
+//防聊天刷屏
 setInterval(() => {
     var pls = mc.getOnlinePlayers()
     for (pl in pls) {
