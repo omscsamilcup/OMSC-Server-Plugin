@@ -75,13 +75,15 @@ mc.listen('onJoin',(pl) => {
                 file.writeTo('plugins/主插件/terms.json', JSON.stringify(confirm,null,'\t'))
             } else if (id == 1) {
                 mc.runcmd(`clear \"${pl.realName}\"`)
-                pl.kick('§l§c你未能夠同意伺服器條款！')
                 pl.removeTag('first')
+                pl.setScore('money',0)
+                pl.kick('§l§c你未能夠同意伺服器條款！')
                 log(pl.realName + '不同意伺服器條款')
             } else if (id = 'Null') {
                 mc.runcmd(`clear \"${pl.realName}\"`)
-                pl.kick('§l§c你未能夠同意伺服器條款！')
                 pl.removeTag('first')
+                pl.setScore('money',0)
+                pl.kick('§l§c你未能夠同意伺服器條款！')
                 log(pl.realName + '不同意伺服器條款')
             }
         })
@@ -168,6 +170,7 @@ mc.listen('onJoin', (pl) => {
     }
 })
 
+//離開訊息
 mc.listen('onLeft', (pl) => {
     if (pl.hasTag('vip')) {
         mc.broadcast('§aVIP玩家' + pl.realName + '離開伺服器')
@@ -230,7 +233,7 @@ mc.listen('onServerStarted',() => {
 
 //Bossbar
 mc.listen('onJoin',(pl) => {
-    pl.setBossBar(1,'§l§c歡迎§6你加§e入本§a伺服§2器，§b請你§d記得§c加入§6本服§eDC', 100,8)
+    pl.setBossBar(1,'§l§c歡迎§6你加§e入本§a伺服§2器，§b請你§d記得§c加入§6本服§eDiscord', 100,8)
 })
 
 //Discord
@@ -2736,6 +2739,8 @@ setInterval(() => {
                 pl.addScore('money',50)
             } else if (pl.hasTag('team')) {
                 pl.addScore('money', 100)
+            } else if (pl.hasTag('yt')) {
+                pl.addScore('money',50)
             }
         } else if (pl.hasTag('donate')) {
             pl.addScore('money',75)
