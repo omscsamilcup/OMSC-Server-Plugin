@@ -33,7 +33,7 @@ setInterval(() => {
         var str4 = '§l§e| §r§b你的總游玩時間$playD天$playH小時$playm分鐘$plays秒'.replace('$playD',pl.getScore('playDays')).replace('$playH',pl.getScore('playHours')).replace('$playm',pl.getScore('playMin')).replace('$plays',pl.getScore('playSec'))
         var str5 = '§l§e| §r§b你的設備:$os'.replace('$os', pl.getDevice().os)
         var str6 = '§l§e| §r§b在綫人數:$online/100'.replace('$online', mc.getOnlinePlayers().length)
-        var str7 = '§l§e|§r §b你的Rank:$rank'.replace('rank', rank)
+        var str7 = '§l§e|§r §b你的Rank:$rank'.replace('$rank', rank)
         var str8 = '§l§e| §r§b伺服器IP:omsctop.ddns.net(待定)'
         var str9 = '§l§e| §r§b埠:19133'
         var str10 = '§l§e| §r§b伺服器版本:MCPE$version'.replace('$version', mc.getBDSVersion())
@@ -162,8 +162,10 @@ mc.listen('onJoin',(pl) => {
 //防刷屏
 mc.listen("onPlayerCmd",(pl,cmd) => {
     if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r')) {
-        pl.tell('§l§c請不要嘗試刷屏')
-        return false
+        if (!pl.hasTag('team')) {
+            pl.tell('§l§c請不要嘗試刷屏')
+            return false
+        }
     }
 })
 
@@ -517,7 +519,7 @@ mc.listen("onServerStarted",() => {
     cmd.overload(['money','bouns'])
     cmd.setCallback((_cmd,ori,_out,res) => {
         const {money,bouns} = res
-        if (ori.player.getScore('money') >= money && bouns >= ori.player.getScore('money') / 2) {
+        if (ori.player.getScore('money') >= money && bouns <= ori.player.getScore('money') / 2) {
             if (money >= 100000) {
                 ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
@@ -681,6 +683,18 @@ mc.listen('onServerStarted',() => {
         }
     })
 })
+
+/*粒子效果
+execute as @a[tag=e1] run particle minecraft:heart_particle ~~-1~
+execute as @a[tag=e2] run particle minecraft:water_wake_particle ~~-1~
+execute as @a[tag=e3] run particle minecraft:bubble_column_up_particle ~~-1~
+execute as @a[tag=e4] run particle minecraft:campfire_smoke_particle ~~-1~
+execute as @a[tag=e5] run particle minecraft:dragon_breath_trail ~~-1~
+execute as @a[tag=e6] run particle minecraft:lava_particle ~~-1~
+execute as @a[tag=e7] run particle minecraft:electric_spark_particle ~~-1~
+execute as @a[tag=e8] run particle minecraft:enchanting_table_particle ~~-1~
+execute as @a[tag=e9] run particle minecraft:end_chest ~~-1~
+*/
 
 //管理員選單
 mc.listen("onServerStarted",()=> {
@@ -868,3 +882,11 @@ setInterval(() => {
         }
     }
 }, 1000)
+
+//Anti Minecart Crasher
+mc.listen('onCmdBlockExecute',(isMinecart,pos) => {
+    if (isMinecart == true) {
+        log('有玩家使用命令方塊礦車惡意崩服，坐標為' + pos)
+        return false
+    }    
+})
