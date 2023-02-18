@@ -444,7 +444,7 @@ mc.listen("onServerStarted",() => {
     cmd.overload(['money','bouns'])
     cmd.setCallback((_cmd,ori,_out,res) => {
         const {money,bouns} = res
-        if (ori.player.getScore('money') >= money && bouns >= ori.player.getScore('money') / 2) {
+        if (ori.player.getScore('money') >= money && bouns <= ori.player.getScore('money') / 2) {
             if (money >= 100000) {
                 ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
@@ -3082,9 +3082,11 @@ mc.listen('onServerStarted',() => {
 
 //防spam
 mc.listen("onPlayerCmd",(pl,cmd) => {
-    if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r') && !pl.hasTag('team')) {
-        pl.tell('§l§c請不要嘗試刷屏')
-        return false
+    if (cmd.includes('@e') || cmd.includes('@a') || cmd.includes('@p') || cmd.includes('@r')) {
+        if (!pl.hasTag('team')) {
+            pl.tell('§l§c請不要嘗試刷屏')
+            return false
+        }
     }
 })
 
