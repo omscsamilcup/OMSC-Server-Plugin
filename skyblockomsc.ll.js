@@ -160,8 +160,72 @@ mc.listen("onServerStarted",()=>{
     var buy3 = mc.newSimpleForm()
     buy3.setTitle('§l§9雜物類')
     
-    var buy4 = mc.newSimpleForm()
-    buy4.setTitle('§l§9裝飾類')
+    var dr = mc.newSimpleForm()
+    dr.setTitle('§l§9裝飾類')
+    dr.addButton('§l§9磚塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5a/Stone_Bricks_JE3_BE2.png/revision/latest?cb=20200328093253')
+    dr.addButton('§l§9照明類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/46/Torch_JE4_BE2.png/revision/latest?cb=20200612171103')
+    dr.addButton('§l§9園藝類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Grass_JE4_BE3.png/revision/latest?cb=20200612162352')
+    dr.addButton('§l§9珊瑚礁類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/Tube_Coral_Block_JE2_BE1.png/revision/latest?cb=20200716012352')
+    dr.addButton('§l§9玻璃類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3e/Glass_JE4_BE2.png/revision/latest?cb=20190519011607')
+    
+    var brick = mc.newSimpleForm()
+    brick.setTitle('§l§9磚塊類')
+    brick.addButton('§l§9磚頭','')
+    brick.addButton('§l§9海麟石磚','')
+    brick.addButton('§l§9泥磚','')
+    
+    var bright = mc.newSimpleForm()
+    bright.setTitle('§l§9照明類')
+    bright.addButton('§l§9螢光石','')
+    bright.addButton('§l§9海燈籠','')
+    bright.addButton('§l§9烽火台','')
+    bright.addButton('§l§9南瓜燈','')
+    bright.addButton('§l§9珠光蛙燈','')
+    bright.addButton('§l§9翠綠蛙燈','')
+    bright.addButton('§l§9赭色挖燈','')
+    
+    var grd = mc.newSimpleForm()
+    grd.setTitle('§l§9園藝類')
+    
+    
+    var cr = mc.newSimpleForm()
+    cr.setTitle('§l§9珊瑚礁')
+    cr.addButton('§l§9紅色珊瑚','')
+    cr.addButton('§l§9粉紅珊瑚','')
+    cr.addButton('§l§9洋紅色珊瑚','')
+    cr.addButton('§l§9藍色珊瑚','')
+    cr.addButton('§l§9黃色珊瑚','')
+    cr.addButton('§l§9紅色瑚扇','')
+    cr.addButton('§l§9粉紅瑚扇','')
+    cr.addButton('§l§9洋紅色瑚扇','')
+    cr.addButton('§l§9藍色瑚扇','')
+    cr.addButton('§l§9黃色瑚扇','')
+    cr.addButton('§l§9紅色瑚扇方塊','')
+    cr.addButton('§l§9粉紅色瑚扇方塊','')
+    cr.addButton('§l§9洋紅色瑚扇方塊','')
+    cr.addButton('§l§9藍色瑚扇方塊','')
+    cr.addButton('§l§9黃色瑚扇方塊','')
+    
+    var glass = mc.newSimpleForm()
+    glass.setTitle('§l§玻璃類')
+    glass.addButton('§l§9玻璃','')
+    glass.addButton('§l§9白色玻璃','')
+    glass.addButton('§l§9淺灰色玻璃','')
+    glass.addButton('§l§9灰色玻璃','')
+    glass.addButton('§l§9黑色玻璃','')
+    glass.addButton('§l§9棕色玻璃','')
+    glass.addButton('§l§9紅色玻璃','')
+    glass.addButton('§l§9橘色玻璃','')
+    glass.addButton('§l§9黃色玻璃','')
+    glass.addButton('§l§9淺綠色玻璃','')
+    glass.addButton('§l§9綠色玻璃','')
+    glass.addButton('§l§9青綠色玻璃','')
+    glass.addButton('§l§9淺藍色玻璃','')
+    glass.addButton('§l§9藍色玻璃','')
+    glass.addButton('§l§9紫色玻璃','')
+    glass.addButton('§l§9洋紅色玻璃','')
+    glass.addButton('§l§9粉紅色玻璃','')
+    glass.addButton('§l§9遮光玻璃','')
     
     var egg = mc.newSimpleForm()
     egg.setTitle('§l§9生怪磚')
@@ -414,8 +478,28 @@ mc.listen("onServerStarted",()=>{
 
                         })
                     } else if (id ==3){
-                        pl.sendForm(buy3,(pl,id) => {
-
+                        pl.sendForm(dr,(pl,id) => {
+                          if (id == 0){
+                            pl.sendForm(brick,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 1){
+                            pl.sendForm(bright,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 2){
+                            pl.sendForm(grd(pl,id)=>{
+                              
+                            })
+                          } else if (id == 3){
+                            pl.sendForm(cr(pl,id)=>{
+                              
+                            })
+                          } else if (id == 4){
+                            pl.sendForm(glass(pl,id)=>{
+                              
+                            })
+                          }
                         })
                     } else if (id ==4){
                         pl.sendForm(buy4,(pl,id) => {
