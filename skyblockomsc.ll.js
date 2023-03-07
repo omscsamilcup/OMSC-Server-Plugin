@@ -162,8 +162,100 @@ mc.listen("onServerStarted",()=>{
     var buy3 = mc.newSimpleForm()
     buy3.setTitle('§l§9雜物類')
     
-    var buy4 = mc.newSimpleForm()
-    buy4.setTitle('§l§9裝飾類')
+    var dr = mc.newSimpleForm()
+    dr.setTitle('§l§9裝飾類')
+    dr.addButton('§l§9磚塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5a/Stone_Bricks_JE3_BE2.png/revision/latest?cb=20200328093253')
+    dr.addButton('§l§9照明類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/46/Torch_JE4_BE2.png/revision/latest?cb=20200612171103')
+    dr.addButton('§l§9園藝類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Grass_JE4_BE3.png/revision/latest?cb=20200612162352')
+    dr.addButton('§l§9珊瑚礁類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/Tube_Coral_Block_JE2_BE1.png/revision/latest?cb=20200716012352')
+    dr.addButton('§l§9玻璃類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3e/Glass_JE4_BE2.png/revision/latest?cb=20190519011607')
+    
+    var brick = mc.newSimpleForm()
+    brick.setTitle('§l§9磚塊類')
+    brick.addButton('§l§9磚頭','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5a/Stone_Bricks_JE3_BE2.png/revision/latest?cb=20200328093253')
+    brick.addButton('§l§9海麟石磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/21/Prismarine_Bricks_JE2_BE2.png/revision/latest?cb=20200328092823')
+    brick.addButton('§l§9泥磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/da/Mud_Bricks_JE1_BE1.png/revision/latest?cb=20220317091916')
+    
+    var bright = mc.newSimpleForm()
+    bright.setTitle('§l§9照明類')
+    bright.addButton('§l§9螢光石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a5/Glowstone_JE4_BE2.png/revision/latest?cb=20200612162124')
+    bright.addButton('§l§9海燈籠','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/75/Sea_Lantern_JE1_BE1.gif/revision/latest?cb=20190913081154')
+    bright.addButton('§l§9烽火台','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/25/Beacon_JE6_BE2.png/revision/latest?cb=20200510101341')
+    bright.addButton('§l§9南瓜燈','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c2/Jack_o%27Lantern_JE3_BE2.png/revision/latest?cb=20200612163045')
+    bright.addButton('§l§9珠光蛙燈','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/42/Pearlescent_Froglight_JE1.png/revision/latest?cb=20220621045346')
+    bright.addButton('§l§9翠綠蛙燈','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fd/Verdant_Froglight_JE1.png/revision/latest?cb=20220621045345')
+    bright.addButton('§l§9赭色挖燈','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/91/Ochre_Froglight_JE1.png/revision/latest?cb=20220621045343')
+    
+    var grd = mc.newSimpleForm()
+    grd.setTitle('§l§9園藝類')
+    grd.addButton('§l§9花類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/0e/Dandelion_JE2_BE2.png/revision/latest?cb=20200612160822')
+    grd.addButton('§l§9種子類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c7/Wheat_Age_0_JE3_BE2.png/revision/latest?cb=20191013070952')
+    
+    var flower = mc.newSimpleForm()
+    flower.setTitle('§l§9花類')
+    flower.addButton('§l§9蒲公英','')
+    flower.addButton('§l§9罌粟','')
+    flower.addButton('§l§9藍色蝴蝶蘭','')
+    flower.addButton('§l§9紫色球花','')
+    flower.addButton('§l§9雛草','')
+    flower.addButton('§l§9紅鬱金香','')
+    flower.addButton('§l§9橙鬱金香','')
+    flower.addButton('§l§9白鬱金香','')
+    flower.addButton('§l§9粉紅鬱金香','')
+    flower.addButton('§l§9雛菊','')
+    flower.addButton('§l§9矢車菊','')
+    flower.addButton('§l§9空谷百合','')
+    flower.addButton('§l§9向日葵','')
+    flower.addButton('§l§9紫丁香','')
+    flower.addButton('§l§9玫瑰叢','')
+    flower.addButton('§l§9牡丹花','')
+    flower.addButton('§l§9凋零玫瑰','')
+    
+    var seed = mc.newSimpleForm()
+    seed.setTitle('§l§9種子類')
+    seed.addButton('§l§9小麥種子','')
+    seed.addButton('§l§9南瓜種子','')
+    seed.addButton('§l§9西瓜種子','')
+    seed.addButton('§l§9甜菜種子','')
+    
+    var cr = mc.newSimpleForm()
+    cr.setTitle('§l§9珊瑚礁')
+    cr.addButton('§l§9紅色珊瑚','')
+    cr.addButton('§l§9粉紅珊瑚','')
+    cr.addButton('§l§9洋紅色珊瑚','')
+    cr.addButton('§l§9藍色珊瑚','')
+    cr.addButton('§l§9黃色珊瑚','')
+    cr.addButton('§l§9紅色瑚扇','')
+    cr.addButton('§l§9粉紅瑚扇','')
+    cr.addButton('§l§9洋紅色瑚扇','')
+    cr.addButton('§l§9藍色瑚扇','')
+    cr.addButton('§l§9黃色瑚扇','')
+    cr.addButton('§l§9紅色瑚扇方塊','')
+    cr.addButton('§l§9粉紅色瑚扇方塊','')
+    cr.addButton('§l§9洋紅色瑚扇方塊','')
+    cr.addButton('§l§9藍色瑚扇方塊','')
+    cr.addButton('§l§9黃色瑚扇方塊','')
+    
+    var glass = mc.newSimpleForm()
+    glass.setTitle('§l§玻璃類')
+    glass.addButton('§l§9玻璃','')
+    glass.addButton('§l§9白色玻璃','')
+    glass.addButton('§l§9淺灰色玻璃','')
+    glass.addButton('§l§9灰色玻璃','')
+    glass.addButton('§l§9黑色玻璃','')
+    glass.addButton('§l§9棕色玻璃','')
+    glass.addButton('§l§9紅色玻璃','')
+    glass.addButton('§l§9橘色玻璃','')
+    glass.addButton('§l§9黃色玻璃','')
+    glass.addButton('§l§9淺綠色玻璃','')
+    glass.addButton('§l§9綠色玻璃','')
+    glass.addButton('§l§9青綠色玻璃','')
+    glass.addButton('§l§9淺藍色玻璃','')
+    glass.addButton('§l§9藍色玻璃','')
+    glass.addButton('§l§9紫色玻璃','')
+    glass.addButton('§l§9洋紅色玻璃','')
+    glass.addButton('§l§9粉紅色玻璃','')
+    glass.addButton('§l§9遮光玻璃','')
     
     var egg = mc.newSimpleForm()
     egg.setTitle('§l§9生怪磚')
@@ -237,23 +329,84 @@ mc.listen("onServerStarted",()=>{
     ttr.setTitle('§l§9一般陶土')
     ttr.addButton('§l§9陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/e/e8/Terracotta_JE2_BE2.png/revision/latest?cb=20200105084827')
     ttr.addButton('§l§9白色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/White_Terracotta_JE1_BE1.png/revision/latest?cb=20200716012702')
-    ttr.addButton('§l§9淺灰色陶土','')
-    ttr.addButton('§l§9灰色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c2/Cyan_Terracotta_JE1_BE1.png/revision/latest/scale-to-width-down/150?cb=20190516070946')
+    ttr.addButton('§l§9淺灰色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/7e/Light_Gray_Terracotta_JE1_BE1.png/revision/latest?cb=20190516073558')
+    ttr.addButton('§l§9灰色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a4/Gray_Terracotta_JE1_BE1.png/revision/latest?cb=20190516072227')
     ttr.addButton('§l§9黑色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a3/Black_Terracotta_JE1_BE1.png/revision/latest?cb=20190516065445')
-    ttr.addButton('§l§9棕色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a4/Gray_Terracotta_JE1_BE1.png/revision/latest?cb=20190516072227')
-    ttr.addButton('§l§9紅色陶土','')
-    ttr.addButton('§l§9橘色陶土','')
+    ttr.addButton('§l§9棕色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/61/Brown_Terracotta_JE1_BE1.png/revision/latest?cb=20190516070345')
+    ttr.addButton('§l§9紅色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/da/Red_Terracotta_JE1_BE1.png/revision/latest?cb=20190516080611')
+    ttr.addButton('§l§9橘色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/07/Orange_Terracotta_JE1_BE1.png/revision/latest?cb=20190516074950')
     ttr.addButton('§l§9黃色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f9/Yellow_Terracotta_JE1_BE1.png/revision/latest?cb=20190516081853')
-    ttr.addButton('§l§9淺綠色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/07/Lime_Terracotta_JE1_BE1.png/revision/latest/scale-to-width-down/150?cb=20190516073919')
-    ttr.addButton('§l§9綠色陶土','')
-    ttr.addButton('§l§9青綠色陶土','')
-    ttr.addButton('§l§9淺藍色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/05/Light_Blue_Terracotta_JE1_BE1.png/revision/latest/scale-to-width-down/150?cb=20190516073259')
-    ttr.addButton('§l§9藍色陶土','')
-    ttr.addButton('§l§9紫色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/8b/Blue_Terracotta_JE1_BE1.png/revision/latest?cb=20190516065835')
-    ttr.addButton('§l§9洋紅色陶土','')
-    ttr.addButton('§l§9粉紅色陶土','')
+    ttr.addButton('§l§9淺綠色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/07/Lime_Terracotta_JE1_BE1.png/revision/latest?cb=20190516073919')
+    ttr.addButton('§l§9綠色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/7b/Green_Terracotta_JE1_BE1.png/revision/latest?cb=20190516072548')
+    ttr.addButton('§l§9青綠色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c2/Cyan_Terracotta_JE1_BE1.png/revision/latest?cb=20190516070946')
+    ttr.addButton('§l§9淺藍色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/05/Light_Blue_Terracotta_JE1_BE1.png/revision/latest?cb=20190516073259')
+    ttr.addButton('§l§9藍色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/8b/Blue_Terracotta_JE1_BE1.png/revision/latest?cb=20190516065835')
+    ttr.addButton('§l§9紫色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4f/Purple_Terracotta_JE1_BE1.png/revision/latest?cb=20190516080031')
+    ttr.addButton('§l§9洋紅色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c5/Magenta_Terracotta_JE1_BE1.png/revision/latest?cb=20190516074300')
+    ttr.addButton('§l§9粉紅色陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b7/Pink_Terracotta_JE1_BE1.png/revision/latest?cb=20190516075340')
     
+    var etr = mc.newSimpleForm()
+    etr.setTitle('§l§9帶釉陶瓦')
+    etr.addButton('§l§9白色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6b/White_Glazed_Terracotta_JE2_BE2.png/revision/latest?cb=20191002161558')
+    etr.addButton('§l§9淺灰色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a5/Light_Gray_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161739')
+    etr.addButton('§l§9灰色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d1/Gray_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161726')
+    etr.addButton('§l§9黑色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/aa/Black_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161905')
+    etr.addButton('§l§9棕色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f2/Brown_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161828')
+    etr.addButton('§l§9紅色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/13/Red_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161854')
+    etr.addButton('§l§9橘色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3f/Orange_Glazed_Terracotta_JE2_BE2.png/revision/latest?cb=20191002161610')
+    etr.addButton('§l§9黃色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f1/Yellow_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161237')
+    etr.addButton('§l§9淺綠色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/66/Lime_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161701')
+    etr.addButton('§l§9綠色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/8d/Green_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161839')
+    etr.addButton('§l§9青綠色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/10/Cyan_Glazed_Terracotta_JE2_BE2.png/revision/latest?cb=20191002161749')
+    etr.addButton('§l§9淺藍色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/22/Light_Blue_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161630')
+    etr.addButton('§l§9藍色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/84/Blue_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161816')
+    etr.addButton('§l§9紫色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3d/Purple_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161803')
+    etr.addButton('§l§9洋紅色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f1/Magenta_Glazed_Terracotta_JE2_BE2.png/revision/latest?cb=20191002161621')
+    etr.addButton('§l§9粉紅色帶釉陶土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/94/Pink_Glazed_Terracotta_JE1_BE1.png/revision/latest?cb=20191002161712')
     
+    var cct = mc.newSimpleForm()
+    cct.setTitle('§l§9混凝土類')
+    cct.addButton('§l§9白色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/59/White_Concrete_JE1_BE1.png/revision/latest?cb=20190406132651')
+    cct.addButton('§l§9淺灰色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fb/Light_Gray_Concrete_JE1_BE1.png/revision/latest?cb=20190516073438')
+    cct.addButton('§l§9灰色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ad/Gray_Concrete_JE1_BE1.png/revision/latest?cb=20190516072107')
+    cct.addButton('§l§9黑色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/0b/Black_Concrete_JE1_BE1.png/revision/latest?cb=20190516065325')
+    cct.addButton('§l§9棕色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/34/Brown_Concrete_JE1_BE1.png/revision/latest?cb=20190516070215')
+    cct.addButton('§l§9紅色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b1/Red_Concrete_JE1_BE1.png/revision/latest?cb=20190516080311')
+    cct.addButton('§l§9橘色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ab/Orange_Concrete_JE1_BE1.png/revision/latest?cb=20190516074830')
+    cct.addButton('§l§9黃色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Yellow_Concrete_JE1_BE1.png/revision/latest?cb=20190516081732')
+    cct.addButton('§l§9淺綠色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fe/Lime_Concrete_JE1_BE1.png/revision/latest?cb=20190516073759')
+    cct.addButton('§l§9綠色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/33/Green_Concrete_JE1_BE1.png/revision/latest?cb=20190516072427')
+    cct.addButton('§l§9青綠色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/39/Cyan_Concrete_JE1_BE1.png/revision/latest?cb=20190516070826')
+    cct.addButton('§l§9淺藍色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/93/Light_Blue_Concrete_JE1_BE1.png/revision/latest?cb=20190516073138')
+    cct.addButton('§l§9藍色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/25/Blue_Concrete_JE1_BE1.png/revision/latest?cb=20190516065705')
+    cct.addButton('§l§9紫色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/92/Purple_Concrete_JE1_BE1.png/revision/latest?cb=20190516075911')
+    cct.addButton('§l§9洋紅色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f3/Magenta_Concrete_JE1_BE1.png/revision/latest?cb=20190516074139')
+    cct.addButton('§l§9粉紅色混凝土','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/09/Pink_Concrete_JE1_BE1.png/revision/latest?cb=20190516075220')
+    
+    var nth = mc.newSimpleForm()
+    nth.setTitle('§l§9地獄類')
+    nth.addButton('§l§9地獄石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/02/Netherrack_JE4_BE2.png/revision/latest?cb=20200612164913')
+    nth.addButton('§l§9靈魂沙','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6d/Soul_Sand_JE2_BE2.png/revision/latest?cb=20180501044105')
+    nth.addButton('§l§9熔岩塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d1/Magma_Block_JE2_BE2.gif/revision/latest?cb=20191123031151')
+    nth.addButton('§l§9地獄疙瘩方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d0/Nether_Wart_Block_JE3.png/revision/latest?cb=20200328085553')
+    nth.addButton('§l§9奇怪疙瘩方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f0/Warped_Wart_Block_JE1_BE1.png/revision/latest?cb=20200328071855')
+    nth.addButton('§l§9菌光體','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/83/Shroomlight_JE1_BE1.png/revision/latest?cb=20200329152758')
+    nth.addButton('§l§9深紅菌絲石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/69/Crimson_Nylium_JE1_BE1.png/revision/latest?cb=20200402091340')
+    nth.addButton('§l§9奇怪菌絲石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/25/Warped_Nylium_JE1_BE1.png/revision/latest?cb=20200402091800')
+    nth.addButton('§l§9紅樹木原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/1e/Mangrove_Log_%28UD%29_JE1_BE1.png/revision/latest?cb=20220317063223')
+    nth.addButton('§l§9深紅莖','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/08/Crimson_Stem_Axis_Y_JE2_BE1.gif/revision/latest?cb=20200410000051')
+    nth.addButton('§l§9奇怪蕈柄','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/ff/Warped_Stem_Axis_Y_JE2_BE1.gif/revision/latest?cb=20200410004855')
+    nth.addButton('§l§9地獄磚塊方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/99/Nether_Bricks_JE3_BE4.png/revision/latest?cb=20200117162809')
+    nth.addButton('§l§9紅色地獄磚塊方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/95/Red_Nether_Bricks_JE3_BE2.png/revision/latest?cb=20200328092943')
+    
+    var end = mc.newSimpleForm()
+    end.setTitle('§l§9終界類')
+    end.addButton('§l§9終界石','')
+    end.addButton('§l§9歌萊花','')
+    end.addButton('§l§9歌萊枝','')
+    end.addButton('§l§9終界石磚塊','')
+    end.addButton('§l§9紫珀塊','')
+    end.addButton('§l§9紫珀柱','')
 
     var food = mc.newSimpleForm()
     food.setTitle('§l§9食物類')
@@ -281,8 +434,8 @@ mc.listen("onServerStarted",()=>{
     buy.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
     buy.addButton('§l§9礦物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6a/Diamond_JE2_BE2.png/revision/latest?cb=20200612161112')
     buy.addButton('§l§9食物類','https://oyster.ignimgs.com/mediawiki/apis.ign.com/minecraft/6/66/Steak.png')
-    buy.addButton('§l§9雜物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/87/Blaze_Rod_JE1_BE1.png/revision/latest?cb=20190907013007')
     buy.addButton('§l§9裝飾類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Peony_JE2_BE3.png/revision/latest?cb=20200612165418')
+    buy.addButton('§l§9雜物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/87/Blaze_Rod_JE1_BE1.png/revision/latest?cb=20190907013007')
     buy.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
 
     var sell = mc.newSimpleForm()
@@ -326,8 +479,24 @@ mc.listen("onServerStarted",()=>{
                                         pl.sendForm(ttr,(pl,id) => {
 
                                         })
+                                    } else if (id == 1){
+                                    pl.sendForm(etr,(pl,id)=> {
+                                      
+                                    })
                                     }
                                 })
+                            } else if (id == 6){
+                            pl.sendForm(cct,(pl,id)=>{
+                              
+                            })  
+                            } else if (id == 7){
+                              pl.sendForm(nth,(pl,id)=>{
+                                
+                              })
+                            } else if (id == 8){
+                              pl.sendForm(end,(pl,id)=>{
+                                
+                              })
                             }
                         })
                     } else if(id == 1){
@@ -339,8 +508,28 @@ mc.listen("onServerStarted",()=>{
 
                         })
                     } else if (id ==3){
-                        pl.sendForm(buy3,(pl,id) => {
-
+                        pl.sendForm(dr,(pl,id) => {
+                          if (id == 0){
+                            pl.sendForm(brick,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 1){
+                            pl.sendForm(bright,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 2){
+                            pl.sendForm(grd(pl,id)=>{
+                              
+                            })
+                          } else if (id == 3){
+                            pl.sendForm(cr(pl,id)=>{
+                              
+                            })
+                          } else if (id == 4){
+                            pl.sendForm(glass(pl,id)=>{
+                              
+                            })
+                          }
                         })
                     } else if (id ==4){
                         pl.sendForm(buy4,(pl,id) => {
