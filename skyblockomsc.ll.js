@@ -526,7 +526,7 @@ mc.listen("onServerStarted",()=>{
                               
                             })
                           } else if (id == 4){
-                            pl.sendForm(glass(pl,id)=>{
+                            pl.sendForm(glass,(pl,id)=>{
                               
                             })
                           }
