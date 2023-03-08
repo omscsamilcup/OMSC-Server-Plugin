@@ -518,11 +518,11 @@ mc.listen("onServerStarted",()=>{
                               
                             })
                           } else if (id == 2){
-                            pl.sendForm(grd(pl,id)=>{
+                            pl.sendForm(grd,(pl,id)=>{
                               
                             })
                           } else if (id == 3){
-                            pl.sendForm(cr(pl,id)=>{
+                            pl.sendForm(cr,(pl,id)=>{
                               
                             })
                           } else if (id == 4){
