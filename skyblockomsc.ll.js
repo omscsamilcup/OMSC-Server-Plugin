@@ -1470,6 +1470,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 1000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§a青銅抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買青銅抽獎券x${data[1]}`)
+                            pl.reduceScore('money',1000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1483,6 +1484,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 3000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§f白金抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買白金抽獎券x${data[1]}`)
+                            pl.reduceScore('money',3000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1496,6 +1498,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 5000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§g黃金抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買黃金抽獎券x${data[1]}`)
+                            pl.reduceScore('money',5000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1509,6 +1512,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 10000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§f鉑金抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買鉑金抽獎券x${data[1]}`)
+                            pl.reduceScore('money',10000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1522,6 +1526,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 20000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§b鑽石抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買鑽石抽獎券x${data[1]}`)
+                            pl.reduceScore('money',20000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1535,6 +1540,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 50000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§e星曜抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買星曜抽獎券x${data[1]}`)
+                            pl.reduceScore('money',50000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1548,6 +1554,7 @@ mc.listen("onServerStarted",() => {
                         if (pl.getScore('money') > data[1] * 100000) {
                             pl.giveItem(mc.newItem(NBT.parseSNBT(`{"Count":${data[1]}b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§4惡魔抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}`)))
                             pl.tell(`§a成功購買惡魔抽獎券x${data[1]}`)
+                            pl.reduceScore('money',100000)
                         } else {
                             pl.tell('§c你的錢不足')
                         }
@@ -1611,8 +1618,8 @@ mc.listen("onTick",() => {
             pl.setScore('spin2',0)
             pl.clearItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:paper","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§f白銀抽獎券(使用方法:點擊三次地面，請每次一張一張使用，也請背包不要有其他紙張)"},"ench":[{"id":0s,"lvl":10s}]}}')))
             if (numbers > 0 && numbers < 201) {
-                pl.addScore('money',8000)
-                pl.tell('§l§b恭喜你，你成功抽到了7000空島SC幣')
+                pl.addScore('money',11000)
+                pl.tell('§l§b恭喜你，你成功抽到了8000空島SC幣')
             } else if (numbers > 200 && numbers < 401) {
                 pl.addScore('money',3000)
                 pl.tell('§l§b你什麽也沒有抽到，但是你成功回本了，你獲得了3000空島SC幣')
@@ -1631,15 +1638,21 @@ mc.listen("onTick",() => {
             var numbers = Math.floor(Math.random() * 1001)
             pl.setScore('spin3',0)
             if (numbers > 0 && numbers < 201) {
-
+                pl.addScore('money',17000)
+                pl.tell('§l§b恭喜你，你成功抽到了12000空島SC幣')
             } else if (numbers > 200 && numbers < 401) {
-
+                pl.addScore('money',5000)
+                pl.tell('§l§b你什麽也沒有抽到，但是你成功回本了，你獲得了5000空島SC幣')
             } else if (numbers > 400 && numbers < 601) {
-
+                pl.reduceScore('money',20000)
+                pl.tell('§l§c恭喜你，你抽到了-20000，你一下子虧了25000SC空島幣了！')
             } else if (numbers > 600 && numbers < 801) {
-
+                pl.addScore('money',21000)
+                pl.tell('恭喜你，你成功抽到16000空島SC幣')
             } else if (numbers > 800 && numbers < 1001) {
-                
+                pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Lore":["§f這是黃金抽獎的最高物品，恭喜你成功抽到了.."],"Name":"§f黃金抽獎券的奇跡"},"ench":[{"id":15s,"lvl":15s},{"id":17s,"lvl":15s},{"id":18s,"lvl":15s},{"id":26s,"lvl":15s}]}}')))
+                pl.tell('§l§b恭喜你，你成功抽到了黃金抽獎券的奇跡')
+                mc.broadcast('§l§e'+pl.realName + '抽到了黃金抽獎券的奇跡')
             }
         } else if (pl.getScore('spin4') == 3) {
             var numbers = Math.floor(Math.random() * 1001)
@@ -1686,15 +1699,15 @@ mc.listen("onTick",() => {
         } else if (pl.getScore('spin7') == 3) {
             var numbers = Math.floor(Math.random() * 1001)
             pl.setScore('spin7',0)
-            if (numbers > 0 && numbers < 201) {
+            if (numbers > 0 && numbers < 251) {
 
-            } else if (numbers > 200 && numbers < 401) {
+            } else if (numbers > 250 && numbers < 501) {
 
-            } else if (numbers > 400 && numbers < 601) {
+            } else if (numbers > 500 && numbers < 751) {
 
-            } else if (numbers > 600 && numbers < 801) {
+            } else if (numbers > 750 && numbers < 901) {
 
-            } else if (numbers > 800 && numbers < 1001) {
+            } else if (numbers > 900 && numbers < 1001) {
                 
             }
         }
