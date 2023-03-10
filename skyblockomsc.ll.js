@@ -2645,7 +2645,7 @@ mc.listen('onServerStarted',()=>{
 mc.listen('onServerStarted',() => {
     var cmd = mc.newCommand('cmdhelp','指令列表',PermType.Any)
     cmd.setEnum('choose',['ui','msg'])
-    cmd.optional('chose',ParamType.Any,'choose',1)
+    cmd.optional('chose',ParamType.Enum,'choose',1)
     cmd.overload('chose')
 
     cmd.setCallback((_cmd,ori,_out,res) => {
@@ -2665,13 +2665,14 @@ mc.listen('onServerStarted',() => {
         fm.setTitle('§l§b指令列表')
         fm.addLabel(msg)
 
-        switch (res.chose) {
-            case 'msg':
-                pl.tell(msg)
-            case 'ui':
-                pl.sendForm(fm)
-            case '':
-                pl.tell(msg)
+        if (res.chose == 'msg') {
+            pl.tell(msg)
+        } else if (res.chose == 'ui') {
+            pl.sendForm(fm,(pl,data) => {
+
+            })
+        } else if (res.chose == null) {
+            pl.tell(msg)
         }
     })
     cmd.setup()
