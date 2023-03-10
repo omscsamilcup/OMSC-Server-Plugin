@@ -2669,7 +2669,7 @@ mc.listen('onServerStarted',() => {
         if (res.chose == 'msg') {
             pl.tell(msg)
         } else if (res.chose == 'ui') {
-            pl.sendForm(fm,(pl,data) => {
+            pl.sendForm(fm,(_pl,_data) => {
 
             })
         } else if (res.chose == null) {
