@@ -925,7 +925,8 @@ mc.listen("onServerStarted",() => {
                 i += 1
             }
         }
-    },1000)
+    },2000)
+    
     var cmd = mc.newCommand('bossbar','開關Bossbar')
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
