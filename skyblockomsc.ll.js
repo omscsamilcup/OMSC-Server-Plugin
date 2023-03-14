@@ -213,7 +213,7 @@ mc.listen("onServerStarted",()=>{
     
     var seed = mc.newSimpleForm()
     seed.setTitle('§l§9種子類')
-    seed.addButton('§l§9小麥種子','')
+    seed.addButton('§l§9小麥種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fb/Wheat_Age_6_JE4_BE2.png/revision/latest?cb=20191013070939')
     seed.addButton('§l§9南瓜種子','')
     seed.addButton('§l§9西瓜種子','')
     seed.addButton('§l§9甜菜種子','')
