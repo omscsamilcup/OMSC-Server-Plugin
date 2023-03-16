@@ -193,69 +193,68 @@ mc.listen("onServerStarted",()=>{
     
     var flower = mc.newSimpleForm()
     flower.setTitle('§l§9花類')
-    flower.addButton('§l§9蒲公英','')
-    flower.addButton('§l§9罌粟','')
-    flower.addButton('§l§9藍色蝴蝶蘭','')
-    flower.addButton('§l§9紫色球花','')
-    flower.addButton('§l§9雛草','')
-    flower.addButton('§l§9紅鬱金香','')
-    flower.addButton('§l§9橙鬱金香','')
-    flower.addButton('§l§9白鬱金香','')
+    flower.addButton('§l§9蒲公英','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/0e/Dandelion_JE2_BE2.png/revision/latest?cb=20200612160822')
+    flower.addButton('§l§9罌粟','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/7e/Poppy_JE3_BE2.png/revision/latest?cb=20200612165631')
+    flower.addButton('§l§9藍色蝴蝶蘭','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/32/Blue_Orchid_JE2_BE2.png/revision/latest?cb=20200612155132')
+    flower.addButton('§l§9紫色球花','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/01/Allium_JE2_BE2.png/revision/latest?cb=20200612153838')
+    flower.addButton('§l§9雛草','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5b/Azure_Bluet_JE2_BE2.png/revision/latest?cb=20200612154349')
+    flower.addButton('§l§9紅鬱金香','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/dd/Red_Tulip_JE2_BE2.png/revision/latest?cb=20200612170146')
+    flower.addButton('§l§9橙鬱金香','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c8/Orange_Tulip_JE2_BE2.png/revision/latest?cb=20200612165259')
+    flower.addButton('§l§9白鬱金香','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5e/White_Tulip_JE2_BE2.png/revision/latest?cb=20200612171559')
     flower.addButton('§l§9粉紅鬱金香','')
-    flower.addButton('§l§9雛菊','')
-    flower.addButton('§l§9矢車菊','')
-    flower.addButton('§l§9空谷百合','')
-    flower.addButton('§l§9向日葵','')
-    flower.addButton('§l§9紫丁香','')
-    flower.addButton('§l§9玫瑰叢','')
-    flower.addButton('§l§9牡丹花','')
-    flower.addButton('§l§9凋零玫瑰','')
+    flower.addButton('§l§9雛菊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3d/Oxeye_Daisy_JE2_BE2.png/revision/latest?cb=20200612165318')
+    flower.addButton('§l§9矢車菊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/73/Cornflower_JE1_BE1.png/revision/latest?cb=20190714083934')
+    flower.addButton('§l§9向日葵','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/53/Sunflower_JE2_BE2.png/revision/latest?cb=20200612170923')
+    flower.addButton('§l§9紫丁香','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/be/Rose_Bush_JE2_BE3.png/revision/latest?cb=20200612170427')
+    flower.addButton('§l§9玫瑰叢','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/be/Rose_Bush_JE2_BE3.png/revision/latest?cb=20200612170427')
+    flower.addButton('§l§9牡丹花','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Peony_JE2_BE3.png/revision/latest?cb=20200612165418')
+    flower.addButton('§l§9凋零玫瑰','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fa/Wither_Rose_JE1_BE1.png/revision/latest?cb=20200716012742')
     
     var seed = mc.newSimpleForm()
     seed.setTitle('§l§9種子類')
     seed.addButton('§l§9小麥種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fb/Wheat_Age_6_JE4_BE2.png/revision/latest?cb=20191013070939')
-    seed.addButton('§l§9南瓜種子','')
-    seed.addButton('§l§9西瓜種子','')
-    seed.addButton('§l§9甜菜種子','')
+    seed.addButton('§l§9南瓜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
+    seed.addButton('§l§9西瓜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
+    seed.addButton('§l§9甜菜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
     
     var cr = mc.newSimpleForm()
     cr.setTitle('§l§9珊瑚礁')
-    cr.addButton('§l§9紅色珊瑚','')
-    cr.addButton('§l§9粉紅珊瑚','')
-    cr.addButton('§l§9洋紅色珊瑚','')
-    cr.addButton('§l§9藍色珊瑚','')
-    cr.addButton('§l§9黃色珊瑚','')
-    cr.addButton('§l§9紅色瑚扇','')
-    cr.addButton('§l§9粉紅瑚扇','')
-    cr.addButton('§l§9洋紅色瑚扇','')
-    cr.addButton('§l§9藍色瑚扇','')
-    cr.addButton('§l§9黃色瑚扇','')
-    cr.addButton('§l§9紅色瑚扇方塊','')
-    cr.addButton('§l§9粉紅色瑚扇方塊','')
-    cr.addButton('§l§9洋紅色瑚扇方塊','')
-    cr.addButton('§l§9藍色瑚扇方塊','')
-    cr.addButton('§l§9黃色瑚扇方塊','')
+    cr.addButton('§l§9紅色珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d3/Fire_Coral_JE2_BE1.png/revision/latest?cb=20190516071757')
+    cr.addButton('§l§9粉紅珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/26/Brain_Coral_JE1_BE1.png/revision/latest?cb=20190516065955')
+    cr.addButton('§l§9洋紅色珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/22/Bubble_Coral_JE1_BE1.png/revision/latest?cb=20190516070456')
+    cr.addButton('§l§9藍色珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/44/Tube_Coral_JE1_BE1.png/revision/latest?cb=20200716012412')
+    cr.addButton('§l§9黃色珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/75/Horn_Coral_JE1_BE1.png/revision/latest?cb=20190516072718')
+    cr.addButton('§l§9紅色瑚扇','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/8f/Fire_Coral_Fan_JE1_BE2.png/revision/latest?cb=20190516071817')
+    cr.addButton('§l§9粉紅瑚扇','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/8f/Fire_Coral_Fan_JE1_BE2.png/revision/latest?cb=20190516071817')
+    cr.addButton('§l§9洋紅色瑚扇','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/e/e5/Bubble_Coral_Fan_JE1_BE2.png/revision/latest?cb=20190406123049')
+    cr.addButton('§l§9藍色瑚扇','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/89/Tube_Coral_Fan_JE1_BE2.png/revision/latest?cb=20190406132520')
+    cr.addButton('§l§9黃色瑚扇','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/03/Horn_Coral_Fan_JE1_BE2.png/revision/latest?cb=20190406124627')
+    cr.addButton('§l§9紅色瑚扇方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/ff/Fire_Coral_Block_JE2_BE1.png/revision/latest?cb=20180406150159')
+    cr.addButton('§l§9粉紅色瑚扇方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5e/Brain_Coral_Block_JE2_BE1.png/revision/latest?cb=20180310000937')
+    cr.addButton('§l§9洋紅色瑚扇方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6c/Bubble_Coral_Block_JE2_BE1.png/revision/latest?cb=20180310000958')
+    cr.addButton('§l§9藍色瑚扇方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/Tube_Coral_Block_JE2_BE1.png/revision/latest?cb=20200716012352')
+    cr.addButton('§l§9黃色瑚扇方塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Horn_Coral_Block_JE2_BE2.png/revision/latest?cb=20180310001041')
     
     var glass = mc.newSimpleForm()
     glass.setTitle('§l§玻璃類')
-    glass.addButton('§l§9玻璃','')
-    glass.addButton('§l§9白色玻璃','')
-    glass.addButton('§l§9淺灰色玻璃','')
-    glass.addButton('§l§9灰色玻璃','')
-    glass.addButton('§l§9黑色玻璃','')
-    glass.addButton('§l§9棕色玻璃','')
-    glass.addButton('§l§9紅色玻璃','')
-    glass.addButton('§l§9橘色玻璃','')
-    glass.addButton('§l§9黃色玻璃','')
-    glass.addButton('§l§9淺綠色玻璃','')
-    glass.addButton('§l§9綠色玻璃','')
-    glass.addButton('§l§9青綠色玻璃','')
-    glass.addButton('§l§9淺藍色玻璃','')
-    glass.addButton('§l§9藍色玻璃','')
-    glass.addButton('§l§9紫色玻璃','')
-    glass.addButton('§l§9洋紅色玻璃','')
-    glass.addButton('§l§9粉紅色玻璃','')
-    glass.addButton('§l§9遮光玻璃','')
+    glass.addButton('§l§9玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3e/Glass_JE4_BE2.png/revision/latest?cb=20190519011607')
+    glass.addButton('§l§9白色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/83/White_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309070544')
+    glass.addButton('§l§9淺灰色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/e/e2/Light_Gray_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309070359')
+    glass.addButton('§l§9灰色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/cd/Gray_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071249')
+    glass.addButton('§l§9黑色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3a/Black_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071512')
+    glass.addButton('§l§9棕色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/46/Brown_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071453')
+    glass.addButton('§l§9紅色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/bf/Red_Stained_Glass_JE4_BE4.png/revision/latest?cb=20211121011854')
+    glass.addButton('§l§9橘色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/13/Orange_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309070826')
+    glass.addButton('§l§9黃色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/af/Yellow_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071226')
+    glass.addButton('§l§9淺綠色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/7d/Lime_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071234')
+    glass.addButton('§l§9綠色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/76/Green_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071500')
+    glass.addButton('§l§9青綠色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d0/Cyan_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071259')
+    glass.addButton('§l§9淺藍色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/26/Light_Blue_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309070936')
+    glass.addButton('§l§9藍色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b3/Blue_Stained_Glass_JE4_BE4.png/revision/latest?cb=20211121011856')
+    glass.addButton('§l§9紫色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/ca/Purple_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071308')
+    glass.addButton('§l§9洋紅色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ad/Magenta_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309070911')
+    glass.addButton('§l§9粉紅色玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/68/Pink_Stained_Glass_JE3_BE3.png/revision/latest?cb=20190309071240')
+    glass.addButton('§l§9遮光玻璃','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/43/Tinted_Glass_JE2_BE1.png/revision/latest?cb=20201112051825')
     
     var egg = mc.newSimpleForm()
     egg.setTitle('§l§9生怪磚')
@@ -401,12 +400,12 @@ mc.listen("onServerStarted",()=>{
     
     var end = mc.newSimpleForm()
     end.setTitle('§l§9終界類')
-    end.addButton('§l§9終界石','')
-    end.addButton('§l§9歌萊花','')
-    end.addButton('§l§9歌萊枝','')
-    end.addButton('§l§9終界石磚塊','')
-    end.addButton('§l§9紫珀塊','')
-    end.addButton('§l§9紫珀柱','')
+    end.addButton('§l§9終界石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/43/End_Stone_JE3_BE2.png/revision/latest?cb=20200612161542')
+    end.addButton('§l§9歌萊花','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/ca/Chorus_Flower_JE2_BE2.png/revision/latest?cb=20200612160205')
+    end.addButton('§l§9歌萊枝','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a7/Chorus_Plant_JE2_BE2.png/revision/latest?cb=20200612160225')
+    end.addButton('§l§9終界石磚塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/72/End_Stone_Bricks_JE2_BE2.png/revision/latest?cb=20200328092544')
+    end.addButton('§l§9紫珀塊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d1/Purpur_Block_JE2_BE2.png/revision/latest?cb=20200328092924')
+    end.addButton('§l§9紫珀柱','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3b/Purpur_Pillar_Axis_X_JE3_BE2.png/revision/latest?cb=20200227013509')
 
     var food = mc.newSimpleForm()
     food.setTitle('§l§9食物類')
@@ -428,7 +427,21 @@ mc.listen("onServerStarted",()=>{
     food.addButton('§l§9南瓜派','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png/revision/latest?cb=20190424101937')
     food.addButton('§l§9牛排','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/1b/Steak_JE3_BE3.png/revision/latest?cb=20190424065405')
     food.addButton('§l§9種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a2/Wheat_Age_7_JE4_BE2.png/revision/latest?cb=20200612171429')
-
+    
+    var others = mc.newSimpleForm()
+    others.setTitle('§l§9雜物類')
+    others.addButton('§l§9岩漿桶','')
+    others.addButton('§l§9水桶','')
+    others.addButton('§l§9史萊姆方塊','')
+    others.addButton('§l§9蜂蜜方塊','')
+    others.addButton('§l§9界伏盒','')
+    others.addButton('§l§9龍蛋','')
+    others.addButton('§l§9龍首','')
+    others.addButton('§l§9鞘翅','')
+    others.addButton('§l§9煙火','')
+    others.addButton('§l§9三叉戟','')
+    others.addButton('§l§9不死圖騰','')
+    
     var buy = mc.newSimpleForm()
     buy.setTitle('§l§9購買物品')
     buy.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
@@ -443,6 +456,8 @@ mc.listen("onServerStarted",()=>{
     sell.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
     sell.addButton('§l§9礦物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6a/Diamond_JE2_BE2.png/revision/latest?cb=20200612161112')
     sell.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
+    
+    //function
 
     var cmd = mc.newCommand('shop','商店',PermType.Any)
     cmd.setEnum('choose',['buy','sell'])
@@ -532,7 +547,7 @@ mc.listen("onServerStarted",()=>{
                           }
                         })
                     } else if (id ==4){
-                        pl.sendForm(buy4,(pl,id) => {
+                        pl.sendForm(others,(pl,id) => {
 
                         })
                     } else if (id == 5){
@@ -543,19 +558,225 @@ mc.listen("onServerStarted",()=>{
                 })
         }else if (res.chose == 'sell') {
             ori.player.sendForm(sell,(pl,id) => {
-            
-            })
+              if (id == 0) {
+                  pl.sendForm(block,(pl,id) => {
+                      if (id == 0){
+                          pl.sendForm(dirt,(pl,id) => {
+    
+                          })
+                      } else if (id == 1){
+                          pl.sendForm(sand,(pl,id) => {
+    
+                          })
+                      } else if (id == 2){
+                          pl.sendForm(log,(pl,id) => {
+    
+                          })
+                      } else if (id == 3){
+                          pl.sendForm(stone,(pl,id) => {
+    
+                          })
+                      } else if (id == 4){
+                          pl.sendForm(wool,(pl,id) => {
+    
+                          })
+                      } else if (id == 5){
+                          pl.sendForm(tr,(pl,id) => {
+                              if (id == 0){
+                                  pl.sendForm(ttr,(pl,id) => {
+    
+                                  })
+                              } else if (id == 1){
+                              pl.sendForm(etr,(pl,id)=> {
+                                
+                              })
+                              }
+                          })
+                      } else if (id == 6){
+                      pl.sendForm(cct,(pl,id)=>{
+                        
+                      })  
+                      } else if (id == 7){
+                        pl.sendForm(nth,(pl,id)=>{
+                          
+                        })
+                      } else if (id == 8){
+                        pl.sendForm(end,(pl,id)=>{
+                          
+                        })
+                      }
+                  })
+              } else if(id == 1){
+                pl.sendForm(ore,(pl,id) => {
+                  })
+              } else if(id == 2){
+                pl.sendForm(egg,(pl,id) => {
+                  })
+              }
+              })
         }else if (res.chose == null) {
             ori.player.sendForm(fm,(pl,id) => {
-                if (id == 0) {
+              if (id == 0){
+                pl.sendForm(buy,(pl,id)=>{
+                  if (id == 0) {
                     pl.sendForm(buy,(pl,id) => {
+                      if (id == 0) {
+                        pl.sendForm(block,(pl,id) => {
+                            if (id == 0){
+                                pl.sendForm(dirt,(pl,id) => {
 
+                                })
+                            } else if (id == 1){
+                                pl.sendForm(sand,(pl,id) => {
+
+                                })
+                            } else if (id == 2){
+                                pl.sendForm(log,(pl,id) => {
+
+                                })
+                            } else if (id == 3){
+                                pl.sendForm(stone,(pl,id) => {
+
+                                })
+                            } else if (id == 4){
+                                pl.sendForm(wool,(pl,id) => {
+
+                                })
+                            } else if (id == 5){
+                                pl.sendForm(tr,(pl,id) => {
+                                    if (id == 0){
+                                        pl.sendForm(ttr,(pl,id) => {
+
+                                        })
+                                    } else if (id == 1){
+                                    pl.sendForm(etr,(pl,id)=> {
+                                      
+                                    })
+                                    }
+                                })
+                            } else if (id == 6){
+                            pl.sendForm(cct,(pl,id)=>{
+                              
+                            })  
+                            } else if (id == 7){
+                              pl.sendForm(nth,(pl,id)=>{
+                                
+                              })
+                            } else if (id == 8){
+                              pl.sendForm(end,(pl,id)=>{
+                                
+                              })
+                            }
+                        })
+                    } else if(id == 1){
+                        pl.sendForm(ore,(pl,id) => {
+
+                        })
+                    } else if (id ==2){
+                        pl.sendForm(food,(pl,id) => {
+
+                        })
+                    } else if (id ==3){
+                        pl.sendForm(dr,(pl,id) => {
+                          if (id == 0){
+                            pl.sendForm(brick,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 1){
+                            pl.sendForm(bright,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 2){
+                            pl.sendForm(grd,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 3){
+                            pl.sendForm(cr,(pl,id)=>{
+                              
+                            })
+                          } else if (id == 4){
+                            pl.sendForm(glass,(pl,id)=>{
+                              
+                            })
+                          }
+                        })
+                    } else if (id ==4){
+                        pl.sendForm(others,(pl,id) => {
+
+                        })
+                    } else if (id == 5){
+                        pl.sendForm(egg,(pl,id) => {
+
+                        })
+                    }
                     })
                 } else if (id == 1) {
                     pl.sendForm(sell,(pl,id) => {
 
                     })
                 }
+                })
+              } else if (id ==1){
+                pl.sendForm(sell,(pl,id)=>{
+                                      if (id == 0) {
+                        pl.sendForm(block,(pl,id) => {
+                            if (id == 0){
+                                pl.sendForm(dirt,(pl,id) => {
+
+                                })
+                            } else if (id == 1){
+                                pl.sendForm(sand,(pl,id) => {
+
+                                })
+                            } else if (id == 2){
+                                pl.sendForm(log,(pl,id) => {
+
+                                })
+                            } else if (id == 3){
+                                pl.sendForm(stone,(pl,id) => {
+
+                                })
+                            } else if (id == 4){
+                                pl.sendForm(wool,(pl,id) => {
+
+                                })
+                            } else if (id == 5){
+                                pl.sendForm(tr,(pl,id) => {
+                                    if (id == 0){
+                                        pl.sendForm(ttr,(pl,id) => {
+
+                                        })
+                                    } else if (id == 1){
+                                    pl.sendForm(etr,(pl,id)=> {
+                                      
+                                    })
+                                    }
+                                })
+                            } else if (id == 6){
+                            pl.sendForm(cct,(pl,id)=>{
+                              
+                            })  
+                            } else if (id == 7){
+                              pl.sendForm(nth,(pl,id)=>{
+                                
+                              })
+                            } else if (id == 8){
+                              pl.sendForm(end,(pl,id)=>{
+                                
+                              })
+                            }
+                        })
+                    } else if(id == 1){
+                        pl.sendForm(ore,(pl,id) => {
+
+                        })
+                    } else if(id == 2){
+                      pl.sendForm(egg,(pl,id) => {
+
+                        })
+                    }
+                })
+              }
             })
         }
     })
