@@ -2699,7 +2699,7 @@ mc.listen('onJoin',(pl) => {
     fm.addInput('§l§e請輸入伺服器團隊管理密碼','§l§e請輸入伺服器團隊管理密碼')
     if (pl.isOP()) {
         pl.sendForm(fm,(pl,data) => {
-            if (data[1] == 'omscteamtop') {
+            if (data[0] == 'omscteamtop') {
                 pl.tell('§l§a密碼正確，你已成功登入你的管理員帳號')
             } else {
                 pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
