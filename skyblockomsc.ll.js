@@ -39,8 +39,6 @@ setInterval(() => {
         var str8 = '§l§e| §r§b你的設備:$os'.replace('$os', pl.getDevice().os)
         var str9 = '§l§e| §r§b在綫人數:$online/100'.replace('$online', mc.getOnlinePlayers().length)
         var str10 = '§l§e| §r§b你的Rank:$rank'.replace('$rank', rank)
-        var str11 = '§l§e| §r§b伺服器版本:MCPE$version'.replace('$version', mc.getBDSVersion())
-
         var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11]
 
         var bar = '{"'
@@ -427,7 +425,7 @@ mc.listen("onServerStarted",()=>{
     food.addButton('§l§9南瓜派','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png/revision/latest?cb=20190424101937')
     food.addButton('§l§9牛排','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/1b/Steak_JE3_BE3.png/revision/latest?cb=20190424065405')
     food.addButton('§l§9種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a2/Wheat_Age_7_JE4_BE2.png/revision/latest?cb=20200612171429')
-        
+    
     var others = mc.newSimpleForm()
     others.setTitle('§l§9雜物類')
     others.addButton('§l§9岩漿桶','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/74/Lava_Bucket_JE2_BE2.png/revision/latest?cb=20200612163314')
@@ -441,7 +439,7 @@ mc.listen("onServerStarted",()=>{
     others.addButton('§l§9煙火','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/fd/Firework_Rocket_JE2_BE2.png/revision/latest?cb=20200716063447')
     others.addButton('§l§9三叉戟','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/ba/Trident_%28item%29.png/revision/latest?cb=20200602091354')
     others.addButton('§l§9不死圖騰','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2e/Totem_of_Undying_JE2_BE2.png/revision/latest?cb=20200612171123')
-
+    
     var buy = mc.newSimpleForm()
     buy.setTitle('§l§9購買物品')
     buy.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
@@ -456,11 +454,7 @@ mc.listen("onServerStarted",()=>{
     sell.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
     sell.addButton('§l§9礦物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6a/Diamond_JE2_BE2.png/revision/latest?cb=20200612161112')
     sell.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
-
-        
-    var buyMenu = mc.newCustomForm()
-    buyMenu.setTitle('買東西')
-    buyMenu.addInput('購買數量')
+    
     //function
     var produts = [
         { id: 1, id2: 0, name: 'dirty', price: 3},
@@ -470,13 +464,13 @@ mc.listen("onServerStarted",()=>{
         { id: 5, id2: 0, name: 'sand', price: 3},
         { id: 6, id2: 0, name: 'red_sand', price: 2},
         { id: 7, id2: 0, name: 'sandstone', price: 2},
-        { id: 8, id2: 1, name: 'sandstone1', price: 3},
-        { id: 9, id2: 2, name: 'sandstone2', price: 3},
-        { id: 10, id2: 3, name: 'sandstone3', price: 3},
+        { id: 8, id2: 1, name: 'sandstone', price: 3},
+        { id: 9, id2: 2, name: 'sandstone', price: 3},
+        { id: 10, id2: 3, name: 'sandstone', price: 3},
         { id: 11, id2: 0, name: 'red_sandstone', price: 2},
-        { id: 12, id2: 1, name: 'red_sandstone1', price: 3},
-        { id: 13, id2: 2, name: 'red_sandstone2', price: 3},
-        { id: 14, id2: 3, name: 'red_sandstone3', price: 3},
+        { id: 12, id2: 1, name: 'red_sandstone', price: 3},
+        { id: 13, id2: 2, name: 'red_sandstone', price: 3},
+        { id: 14, id2: 3, name: 'red_sandstone', price: 3},
         { id: 15, id2: 0, name: 'oak_log', price: 5},
         { id: 16, id2: 0, name: 'spruce_log', price: 5},
         { id: 17, id2: 0, name: 'birch_log', price: 5},
@@ -524,8 +518,109 @@ mc.listen("onServerStarted",()=>{
         { id: 58, id: 0, name: 'beacon', price: 20000},
         { id: 59, id: 0, name: 'lit_pumpkin', price: 10},
         { id: 60, id: 0, name: 'pearlescent_froglight', price: 10},
+        { id: 61, id2: 0, name: 'verdant_froglight', price: 10},
+        { id: 62, id2: 0, name: 'ochre_froglight', price: 10},
+        { id: 63, id2: 0, name: 'yellow_flower', price: 1},
+        { id: 64, id2: 0, name: 'red_flower', price: 1},
+        { id: 65, id2: 1, name: 'red_flower', price: 1},
+        { id: 66, id2: 2, name: 'red_flower', price: 1},
+        { id: 67, id2: 3, name: 'red_flower', price: 1},
+        { id: 68, id2: 4, name: 'red_flower', price: 1},
+        { id: 69, id2: 5, name: 'red_flower', price: 1},
+        { id: 70, id2: 6, name: 'red_flower', price: 1},
+        { id: 71, id2: 7, name: 'red_flower', price: 1},
+        { id: 72, id2: 8, name: 'red_flower', price: 1},
+        { id: 73, id2: 9, name: 'double_plant', price: 1},
+        { id: 74, id2: 1, name: 'double_plant', price: 1},
+        { id: 75, id2: 4, name: 'double_plant', price: 1},
+        { id: 76, id2: 5, name: 'double_plant', price: 1},
+        { id: 77, id2: 0, name: 'wither_rose', price: 3},
+        { id: 78, id2: 0, name: 'wheat_seeds', price: 3},
+        { id: 79, id2: 0, name: 'pumpkin_seeds', price: 3},
+        { id: 80, id2: 0, name: 'beetroot_seeds', price: 3},
+        { id: 81, id2: 3, name: 'coral', price: 5},
+        { id: 82, id2: 1, name: 'coral', price: 5},
+        { id: 83, id2: 2, name: 'coral', price: 5},
+        { id: 84, id2: 0, name: 'coral', price: 5},
+        { id: 85, id2: 4, name: 'coral', price: 5},
+        { id: 86, id2: 3, name: 'coral_fan', price: 5},
+        { id: 87, id2: 1, name: 'coral_fan', price: 5},
+        { id: 88, id2: 2, name: 'coral_fan', price: 5},
+        { id: 89, id2: 0, name: 'coral_fan', price: 5},
+        { id: 90, id2: 4, name: 'coral_fan', price: 5},
+        { id: 91, id2: 3, name: 'coral_block', price: 5},
+        { id: 92, id2: 1, name: 'coral_block', price: 5},
+        { id: 93, id2: 2, name: 'coral_block', price: 5},
+        { id: 94, id2: 0, name: 'coral_block', price: 5},
+        { id: 95, id2: 4, name: 'coral_block', price: 5},
+        { id: 96, id2: 0, name: 'glass', price: 5},
+        { id: 97, id2: 0, name: 'stained_glass', price: 5},
+        { id: 98, id2: 8, name: 'stained_glass', price: 5},
+        { id: 99, id2: 7, name: 'stained_glass', price: 5},
+        { id: 100, id2: 15, name: 'stained_glass', price: 5},
+        { id: 101, id2: 12, name: 'stained_glass', price: 5},
+        { id: 102, id2: 14, name: 'stained_glass', price: 5},
+        { id: 103, id2: 1, name: 'stained_glass', price: 5},
+        { id: 104, id2: 4, name: 'stained_glass', price: 5},
+        { id: 105, id2: 5, name: 'stained_glass', price: 5},
+        { id: 106, id2: 13, name: 'stained_glass', price: 5},
+        { id: 107, id2: 9, name: 'stained_glass', price: 5},
+        { id: 108, id2: 3, name: 'stained_glass', price: 5},
+        { id: 109, id2: 11, name: 'stained_glass', price: 5},
+        { id: 110, id2: 10, name: 'stained_glass', price: 5},
+        { id: 111, id2: 2, name: 'stained_glass', price: 5},
+        { id: 112, id2: 6, name: 'stained_glass', price: 5},
+        { id: 113, id2: 0, name: 'tinted_glass', price: 5},
+        { id: 114, id2: 0, name: 'axolotl_spawn_egg', price: 200000},
+        { id: 115, id2: 0, name: 'blaze_spawn_egg', price: 150000},
+        { id: 116, id2: 0, name: 'cave_spider_spawn_egg', price: 150000},
+        { id: 117, id2: 0, name: 'chicken_spawn_egg', price: 150000},
+        { id: 118, id2: 0, name: 'cow_spawn_egg', price: 150000},
+        { id: 119, id2: 0, name: 'creeper_spawn_egg', price: 200000},
+        { id: 120, id2: 0, name: 'drowned_spawn_egg', price: 150000},
+        { id: 121, id2: 0, name: 'elder_guardian_spawn_egg', price: 200000},
+        { id: 122, id2: 0, name: 'enderman_spawn_egg', price: 300000},
+        { id: 123, id2: 0, name: 'endermite_spawn_egg', price: 100000},
+        { id: 124, id2: 0, name: 'evoker_spawn_egg', price: 2500000},
+        { id: 125, id2: 0, name: 'goat_spawn_egg', price: 150000},
+        { id: 126, id2: 0, name: 'guardian_spawn_egg', price: 150000},
+        { id: 127, id2: 0, name: 'hoglin_spawn_egg', price: 100000},
+        { id: 128, id2: 0, name: 'husk_spawn_egg', price: 150000},
+        { id: 129, id2: 0, name: 'iron_gol', price: 500000},
+        { id: 130, id2: 0, name: 'magma_cube_spawn_egg', price: 150000},
+        { id: 131, id2: 0, name: 'mooshroom_spawn_egg', price: 200000},
+        { id: 132, id2: 0, name: 'panda_spawn_egg', price: 150000},
+        { id: 133, id2: 0, name: 'pig_spawn_egg', price: 150000},
+        { id: 134, id2: 0, name: 'piglin_brute_sawn_egg', price: 200000},
+        { id: 135, id2: 0, name: 'piglin_spawn_egg', price: 200000},
+        { id: 136, id2: 0, name: 'pillager_spawn_egg', price: 200000},
+        { id: 137, id2: 0, name: 'rabbit_spawn_egg', price: 150000},
+        { id: 138, id2: 0, name: 'ravager_spawn_egg', price: 200000},
+        { id: 139, id2: 0, name: 'sheeep_spawn_egg', price: 100000},
+        { id: 140, id2: 0, name: 'shulker_spawn_egg', price: 450000},
+        { id: 141, id2: 0, name: 'skeleton_horse_spawn_egg', price: 200000},
+        { id: 142, id2: 0, name: 'skeleton_spawn_egg', price: 150000},
+        { id: 143, id2: 0, name: 'slime_spawn_egg', price: 150000},
+        { id: 144, id2: 0, name: 'snow_golem_spawn_egg', price: 10000},
+        { id: 145, id2: 0, name: 'spider_spawn_egg', price: 150000},
+        { id: 146, id2: 0, name: 'stray_spawn_egg', price: 150000},
+        { id: 147, id2: 0, name: 'strider_spawn_egg', price: 250000},
+        { id: 148, id2: 0, name: 'vindicator_spawn_egg', price: 250000},
+        { id: 149, id2: 0, name: 'witch_spawn_egg', price: 150000},
+        { id: 150, id2: 0, name: 'wither_skeleton_spawm_egg', price: 200000},
+        { id: 151, id2: 0, name: 'zoglin_spawn_egg', price: 150000},
+        { id: 152, id2: 0, name: 'zombie_horse_spawn_egg', price: 150000},
+        { id: 153, id2: 0, name: 'zombie_pigman_spawn_egg', price: 100000},
+        { id: 154, id2: 0, name: 'zombie_spawn_egg', price: 100000},
+        { id: 155, id2: 0, name: 'zombie_villager_spawn_egg', price: 100000},
     ]
     
+    var priceB = []
+    var buyMenu = mc.newCustomForm()
+    buyMenu.setTitle('買東西')
+    buyMenu.addLabel('物品單價' + priceB)
+    buyMenu.addInput('購買數量')
+
     //function
     function purchaseItem(plyer,itemId,quantity) {
         var item = products.find((produts) => produts.id === itemId)
@@ -556,9 +651,17 @@ mc.listen("onServerStarted",()=>{
                             if (id == 0){
                                 pl.sendForm(dirt,(pl,id) => {
                                     if (id == 0) {
+                                        var priceB = 3
                                         pl.sendForm(buyMenu,(pl,data) => {
                                             var player = pl
                                             var itemId = 1
+                                            var quantity = data[0]
+                                            purchaseItem(player,itemId, quantity)
+                                        })
+                                    } else if (id == 1) {
+                                        pl.sendForm(buyMenu,(pl,data) => {
+                                            var player = pl
+                                            var itemId = 2
                                             var quantity = data[0]
                                             purchaseItem(player,itemId, quantity)
                                         })
