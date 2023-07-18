@@ -32,15 +32,13 @@ setInterval(() => {
         var str1 = '§l§e| §r§b你有$money空島SC幣'.replace('$money',pl.getScore('money'))
         var str2 = '§l§e| §r§b你有$point點數 $ownercoins服主幣'.replace('$point',pl.getScore('point')).replace('$ownercoins',pl.getScore('ownercoins'))
         var str3 = '§l§e| §r§b你的空島等級$level'.replace('$level',pl.getScore('level'))
-        var str4 = '§l§e| §r§b伺服器TPS:$tps 你的延遲$pingms'.replace('$ping',pl.getDevice().avgPing).replace('$tps',CurrentTPS())
-        var str5 = '§l§e| §r§b你的總游玩時間$playD天$playH小時$playm分鐘$plays秒'.replace('$playD',pl.getScore('playDays')).replace('$playH',pl.getScore('playHours')).replace('$playm',pl.getScore('playMin')).replace('$plays',pl.getScore('playSec'))
-        var str6 = '§l§e| §r§b你的設備:$os'.replace('$os', pl.getDevice().os)
-        var str7 = '§l§e| §r§b在綫人數:$online/100'.replace('$online', mc.getOnlinePlayers().length)
-        var str8 = '§l§e|§r §b你的Rank:$rank'.replace('$rank', rank)
-        var str9 = '§l§e| §r§b伺服器IP:omsctop.ddns.net(待定)'
-        var str10 = '§l§e| §r§b埠:19133'
-        var str11 = '§l§e| §r§b伺服器版本:MCPE$version'.replace('$version', mc.getBDSVersion())
-
+        var str4 = '§l§e| §r§b伺服器TPS:$tps'.replace('$tps',CurrentTPS())
+        var str5 = '§l§e| §r§b你的延遲$pingms'.replace('$ping',pl.getDevice().avgPing)
+        var str6 = '§l§e| §r§b游玩時間$playD天$playH小時'.replace('$playD',pl.getScore('playDays')).replace('$playH',pl.getScore('playHours'))
+        var str7 = '§l§e| §r§b           $playm分鐘$plays秒'.replace('$playm',pl.getScore('playMin')).replace('$plays',pl.getScore('playSec'))
+        var str8 = '§l§e| §r§b你的設備:$os'.replace('$os', pl.getDevice().os)
+        var str9 = '§l§e| §r§b在綫人數:$online/100'.replace('$online', mc.getOnlinePlayers().length)
+        var str10 = '§l§e| §r§b你的Rank:$rank'.replace('$rank', rank)
         var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11]
 
         var bar = '{"'
@@ -50,7 +48,7 @@ setInterval(() => {
         bar = bar.slice(0,-2) + '}'
         if (pl.getScore('score') == 0) {
             pl.removeSidebar()
-            pl.setSidebar('§l§cO§6M§eS§aC§2伺§b服§d器', JSON.parse(bar),0)
+            pl.setSidebar('§l§cO§6M§eS§aC§2空§b島§d伺§c服§6器', JSON.parse(bar),0)
         } else if (pl.getScore('score') == 1) {
             pl.removeSidebar()
         }
@@ -1002,9 +1000,9 @@ mc.listen('onJoin',(pl) => {
                 pl.tell('§l§b感謝你同意本服條款！')
                 log(pl.realName + '同意伺服器條款')
                 var confirm = {}
-                confirm = data.parseJson(file.readFrom('plugins/主插件/terms.json'))
+                confirm = data.parseJson(file.readFrom('./plugins/主插件/terms.json'))
                 confirm[pl.realName] = '在' + system.getTimeStr() + '同意伺服器條款'
-                file.writeTo('plugins/主插件/terms.json', JSON.stringify(confirm,null,'\t'))
+                file.writeTo('./plugins/主插件/terms.json', JSON.stringify(confirm,null,'\t'))
             } else if (id == 1) {
                 mc.runcmd(`clear \"${pl.realName}\"`)
                 pl.removeTag('first')
@@ -1019,8 +1017,8 @@ mc.listen('onJoin',(pl) => {
                 log(pl.realName + '不同意伺服器條款')
             }
         })
-    }
-})
+    }}
+)
 
 //防刷屏
 mc.listen("onPlayerCmd",(pl,cmd) => {
@@ -3108,20 +3106,4 @@ mc.listen('onServerStarted',() => {
         }
     })
     cmd.setup()
-})
-
-//密碼系統
-mc.listen('onJoin',(pl) => {
-    var fm = mc.newCustomForm()
-    fm.setTitle('§l§c伺服器管理員驗證系統')
-    fm.addInput('§l§e請輸入伺服器團隊管理密碼','§l§e請輸入伺服器團隊管理密碼')
-    if (pl.isOP()) {
-        pl.sendForm(fm,(pl,data) => {
-            if (data[0] == 'omscteamtop') {
-                pl.tell('§l§a密碼正確，你已成功登入你的管理員帳號')
-            } else {
-                pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
-            }
-        })
-    }
 })
