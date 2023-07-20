@@ -691,57 +691,62 @@ mc.listen("onServerStarted",()=>{
         { id: 227, id2: 0, name: 'mangrove_log', price: 15},
         { id: 228, id2: 0, name: 'crimson_stem', price: 15},
         { id: 229, id2: 0, name: 'warped_stem', price: 15},
-        { id: 230, id2: 0, name: '', price: },
-        { id: 231, id2: 0, name: '', price: },
-        { id: 232, id2: 0, name: '', price: },
-        { id: 233, id2: 0, name: '', price: },
-        { id: 234, id2: 0, name: '', price: },
-        { id: 235, id2: 0, name: '', price: },
-        { id: 236, id2: 0, name: '', price: },
-        { id: 237, id2: 0, name: '', price: },
-        { id: 238, id2: 0, name: '', price: },
-        { id: 239, id2: 0, name: '', price: },
-        { id: 240, id2: 0, name: '', price: },
-        { id: 241, id2: 0, name: '', price: },
-        { id: 242, id2: 0, name: '', price: },
-        { id: 243, id2: 0, name: '', price: },
-        { id: 244, id2: 0, name: '', price: },
-        { id: 245, id2: 0, name: '', price: },
-        { id: 246, id2: 0, name: '', price: },
-        { id: 247, id2: 0, name: '', price: },
-        { id: 248, id2: 0, name: '', price: },
-        { id: 249, id2: 0, name: '', price: },
-        { id: 250, id2: 0, name: '', price: },
-        { id: 251, id2: 0, name: '', price: },
-        { id: 252, id2: 0, name: '', price: },
-        { id: 253, id2: 0, name: '', price: },
-        { id: 254, id2: 0, name: '', price: },
-        { id: 255, id2: 0, name: '', price: },
-        { id: 256, id2: 0, name: '', price: },
-        { id: 257, id2: 0, name: '', price: },
-        { id: 258, id2: 0, name: '', price: },
-        { id: 259, id2: 0, name: '', price: },
-        { id: 260, id2: 0, name: '', price: },
-        { id: 261, id2: 0, name: '', price: },
-        { id: 262, id2: 0, name: '', price: },
-        { id: 263, id2: 0, name: '', price: },
-        { id: 264, id2: 0, name: '', price: },
-        { id: 265, id2: 0, name: '', price: },
-        { id: 266, id2: 0, name: '', price: },
-        { id: 267, id2: 0, name: '', price: },
-        { id: 268, id2: 0, name: '', price: },
-        { id: 269, id2: 0, name: '', price: },
-        { id: 270, id2: 0, name: '', price: },
+        { id: 230, id2: 0, name: 'nether_brick', price: 15},
+        { id: 231, id2: 0, name: 'red_nether_brick', price: 20},
+        { id: 232, id2: 0, name: 'end_stone', price: 5},
+        { id: 233, id2: 0, name: 'chorus_flower', price: 3},
+        { id: 233, id2: 0, name: 'chorus_plant', price: 5},
+        { id: 234, id2: 0, name: 'end_bicks', price: 7},
+        { id: 235, id2: 0, name: 'purpur_block', price: 7},
+        { id: 236, id2: 2, name: 'purpur_block', price: 7},
+        { id: 237, id2: 0, name: 'apple', price: 3},
+        { id: 238, id2: 0, name: 'baked_potato', price: 5},
+        { id: 239, id2: 0, name: 'bread', price: 3},
+        { id: 240, id2: 0, name: 'carrot', price: 3},
+        { id: 241, id2: 0, name: 'cooked_chicken', price: 5},
+        { id: 242, id2: 0, name: 'cooked_cod', price: 5},
+        { id: 243, id2: 0, name: 'cooked_mutton', price: 5},
+        { id: 244, id2: 0, name: 'cooked_porkchop', price: 5},
+        { id: 245, id2: 0, name: 'cooked_rabbit', price: 5},
+        { id: 246, id2: 0, name: 'cooked_salmon', price: 5},
+        { id: 247, id2: 0, name: 'cookie', price: 1},
+        { id: 248, id2: 0, name: 'dried_kelp', price: 1},
+        { id: 249, id2: 0, name: 'enchanted_golden_apple', price: 1000},
+        { id: 250, id2: 0, name: 'golden_apple', price: 500},
+        { id: 251, id2: 0, name: 'melon_slice', price: 3},
+        { id: 252, id2: 0, name: 'pumpkin_pie', price: 1},
+        { id: 253, id2: 0, name: 'cooked_beef', price: 7},
+        { id: 254, id2: 0, name: 'wheat_seeds', price: 3},
+        { id: 255, id2: 0, name: 'lava_bucket', price: 10},
+        { id: 256, id2: 0, name: 'water_bucket', price: 10},
+        { id: 257, id2: 0, name: 'slime', price: 5},
+        { id: 258, id2: 0, name: 'honey_block', price: 5},
+        { id: 259, id2: 0, name: 'shulker_box', price: 2000},
+        { id: 260, id2: 0, name: 'dragon_egg', price: 50000},
+        { id: 261, id2: 5, name: 'skull', price: 35000},
+        { id: 262, id2: 0, name: 'elytra', price: 750},
+        { id: 263, id2: 0, name: 'firework_rocket', price: 3},
+        { id: 264, id2: 0, name: 'trident', price: 500},
+        { id: 265, id2: 0, name: 'totem_of_undying', price: 1000},
     ]
     
-    var priceB = []
-    var buyMenu = mc.newCustomForm()
-    buyMenu.setTitle('買東西')
-    buyMenu.addLabel('物品單價' + priceB)
-    buyMenu.addInput('購買數量')
+    function buyM(itemId) {
+        var item = products.find((produts) => produts.id === itemId)
+        if (!item) {
+            player.tell('該商品不存在!')
+            return
+        }
+
+        var buyMenu = mc.newCustomForm()
+        buyMenu.setTitle('買東西')
+        buyMenu.addLabel(`物品名稱${item.name}`)
+        buyMenu.addLabel(`物品單價${item.price}`)
+        buyMenu.addInput('購買數量')
+    }
+    
 
     //function
-    function purchaseItem(plyer,itemId,quantity) {
+    function purchaseItem(player,itemId,quantity) {
         var item = products.find((produts) => produts.id === itemId)
         if (!item) {
             player.tell('該商品不存在!')
@@ -754,7 +759,11 @@ mc.listen("onServerStarted",()=>{
             return
         }
         player.reduceScore("money",totalPrice)
-        player.giveItem(item.name,quantity)
+        if (item.id2 == 0) {
+            player.giveItem(item.name,quantity)
+        } else {
+            mc.runcmd(`give ${player} ${item.name} ${quantity} ${item.id2}`)
+        }
         player.tell('購買成功')
     }
 
@@ -770,7 +779,8 @@ mc.listen("onServerStarted",()=>{
                             if (id == 0){
                                 pl.sendForm(dirt,(pl,id) => {
                                     if (id == 0) {
-                                        var priceB = 3
+                                        var itemId = 1
+                                        buyM(itemId)
                                         pl.sendForm(buyMenu,(pl,data) => {
                                             var player = pl
                                             var itemId = 1
@@ -778,9 +788,29 @@ mc.listen("onServerStarted",()=>{
                                             purchaseItem(player,itemId, quantity)
                                         })
                                     } else if (id == 1) {
+                                        var itemId = 2
+                                        buyM(itemId)
                                         pl.sendForm(buyMenu,(pl,data) => {
                                             var player = pl
                                             var itemId = 2
+                                            var quantity = data[0]
+                                            purchaseItem(player,itemId, quantity)
+                                        })
+                                    }  else if (id == 2) {
+                                        var itemId = 3
+                                        buyM(itemId)
+                                        pl.sendForm(buyMenu,(pl,data) => {
+                                            var player = pl
+                                            var itemId = 3
+                                            var quantity = data[0]
+                                            purchaseItem(player,itemId, quantity)
+                                        })
+                                    } else if (id == 3) {
+                                        var itemId = 4
+                                        buyM(itemId)
+                                        pl.sendForm(buyMenu,(pl,data) => {
+                                            var player = pl
+                                            var itemId = 4
                                             var quantity = data[0]
                                             purchaseItem(player,itemId, quantity)
                                         })
@@ -788,7 +818,25 @@ mc.listen("onServerStarted",()=>{
                                 })
                             } else if (id == 1){
                                 pl.sendForm(sand,(pl,id) => {
-
+                                    if (id == 0) {
+                                        var itemId = 5
+                                        buyM(itemId)
+                                        pl.sendForm(buyMenu,(pl,data) => {
+                                            var player = pl
+                                            var itemId = 5
+                                            var quantity = data[0]
+                                            purchaseItem(player,itemId, quantity)
+                                        })
+                                    } else if (id == 1) {
+                                        var itemId = 6
+                                        buyM(itemId)
+                                        pl.sendForm(buyMenu,(pl,data) => {
+                                            var player = pl
+                                            var itemId = 6
+                                            var quantity = data[0]
+                                            purchaseItem(player,itemId, quantity)
+                                        })
+                                    }
                                 })
                             } else if (id == 2){
                                 pl.sendForm(log,(pl,id) => {
