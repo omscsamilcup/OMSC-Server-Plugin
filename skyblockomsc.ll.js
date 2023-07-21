@@ -39,7 +39,7 @@ setInterval(() => {
         var str8 = '§l§e| §r§b你的設備:$os'.replace('$os', pl.getDevice().os)
         var str9 = '§l§e| §r§b在綫人數:$online/100'.replace('$online', mc.getOnlinePlayers().length)
         var str10 = '§l§e| §r§b你的Rank:$rank'.replace('$rank', rank)
-        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11]
+        var arr = [str0,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10]
 
         var bar = '{"'
         for (var i in arr) {
@@ -457,8 +457,8 @@ mc.listen("onServerStarted",()=>{
     
     //function
     var produts = [
-        { id: 1, id2: 0, name: 'dirty', price: 3},
-        { id: 2, id2: 0, name: 'grasss', price: 5},
+        { id: 1, id2: 0, name: 'dirt', price: 3},
+        { id: 2, id2: 0, name: 'grass', price: 5},
         { id: 3, id2: 0, name: 'podzol', price: 3},
         { id: 4, id2: 0, name: 'mycelium', price: 5},
         { id: 5, id2: 0, name: 'sand', price: 3},
@@ -487,37 +487,37 @@ mc.listen("onServerStarted",()=>{
         { id: 28, id2: 0, name: 'deepslate', price: 3},
         { id: 29, id2: 0, name: 'basalt', price: 3},
         { id: 30, id2: 0, name: 'tuff', price: 5},
-        { id: 31, id: 0, name: 'calcite', price: 5},
-        { id: 32, id: 0, name: 'obsidian', price: 200},
-        { id: 33, id: 0, name: 'coal', price: 15},
-        { id: 34, id: 0, name: 'coal_ore', price: 15},
-        { id: 35, id: 0, name: 'coal_block', price: 135},
-        { id: 36, id: 0, name: 'iron_ingot', price: 20},
-        { id: 37, id: 0, name: 'iron_ore', price: 20},
-        { id: 38, id: 0, name: 'iron_block', price: 180},
-        { id: 39, id: 0, name: 'lapis_lazuli', price: 10},
-        { id: 40, id: 0, name: 'lapis_ore', price: 10},
-        { id: 40, id: 0, name: 'lapis_block', price: 90},
-        { id: 41, id: 0, name: 'gold_ingot', price: 20},
-        { id: 42, id: 0, name: 'gold_ore', price: 20},
-        { id: 43, id: 0, name: 'gold_block', price: 180},
-        { id: 44, id: 0, name: 'redstone', price: 10},
-        { id: 45, id: 0, name: 'redstone_ore', price: 10},
-        { id: 46, id: 0, name: 'redstone_block', price: 90},
-        { id: 47, id: 0, name: 'diamond', price: 55},
-        { id: 48, id: 0, name: 'diamond_ore', price: 55},
-        { id: 49, id: 0, name: 'diamond_block', price: 495},
-        { id: 50, id: 0, name: 'emerald', price: 65},
-        { id: 51, id: 0, name: 'emerald_ore', price: 65},
-        { id: 52, id: 0, name: 'emerald_block', price: 585},
-        { id: 53, id: 0, name: 'brick', price: 5},
-        { id: 54, id: 0, name: 'prismarine_bricks', price: 5},
-        { id: 55, id: 0, name: 'mud_bricks', price: 5},
-        { id: 56, id: 0, name: 'glowstone', price: 10},
-        { id: 57, id: 0, name: 'ea_lantern', price: 15},
-        { id: 58, id: 0, name: 'beacon', price: 20000},
-        { id: 59, id: 0, name: 'lit_pumpkin', price: 10},
-        { id: 60, id: 0, name: 'pearlescent_froglight', price: 10},
+        { id: 31, id2: 0, name: 'calcite', price: 5},
+        { id: 32, id2: 0, name: 'obsidian', price: 200},
+        { id: 33, id2: 0, name: 'coal', price: 15},
+        { id: 34, id2: 0, name: 'coal_ore', price: 15},
+        { id: 35, id2: 0, name: 'coal_block', price: 135},
+        { id: 36, id2: 0, name: 'iron_ingot', price: 20},
+        { id: 37, id2: 0, name: 'iron_ore', price: 20},
+        { id: 38, id2: 0, name: 'iron_block', price: 180},
+        { id: 39, id2: 0, name: 'lapis_lazuli', price: 10},
+        { id: 40, id2: 0, name: 'lapis_ore', price: 10},
+        { id: 40, id2: 0, name: 'lapis_block', price: 90},
+        { id: 41, id2: 0, name: 'gold_ingot', price: 20},
+        { id: 42, id2: 0, name: 'gold_ore', price: 20},
+        { id: 43, id2: 0, name: 'gold_block', price: 180},
+        { id: 44, id2: 0, name: 'redstone', price: 10},
+        { id: 45, id2: 0, name: 'redstone_ore', price: 10},
+        { id: 46, id2: 0, name: 'redstone_block', price: 90},
+        { id: 47, id2: 0, name: 'diamond', price: 55},
+        { id: 48, id2: 0, name: 'diamond_ore', price: 55},
+        { id: 49, id2: 0, name: 'diamond_block', price: 495},
+        { id: 50, id2: 0, name: 'emerald', price: 65},
+        { id: 51, id2: 0, name: 'emerald_ore', price: 65},
+        { id: 52, id2: 0, name: 'emerald_block', price: 585},
+        { id: 53, id2: 0, name: 'brick', price: 5},
+        { id: 54, id2: 0, name: 'prismarine_bricks', price: 5},
+        { id: 55, id2: 0, name: 'mud_bricks', price: 5},
+        { id: 56, id2: 0, name: 'glowstone', price: 10},
+        { id: 57, id2: 0, name: 'ea_lantern', price: 15},
+        { id: 58, id2: 0, name: 'beacon', price: 20000},
+        { id: 59, id2: 0, name: 'lit_pumpkin', price: 10},
+        { id: 60, id2: 0, name: 'pearlescent_froglight', price: 10},
         { id: 61, id2: 0, name: 'verdant_froglight', price: 10},
         { id: 62, id2: 0, name: 'ochre_froglight', price: 10},
         { id: 63, id2: 0, name: 'yellow_flower', price: 1},
@@ -729,29 +729,38 @@ mc.listen("onServerStarted",()=>{
         { id: 264, id2: 0, name: 'trident', price: 500},
         { id: 265, id2: 0, name: 'totem_of_undying', price: 1000},
     ]
-    
-    function buyM(itemId) {
-        var item = products.find((produts) => produts.id === itemId)
-        if (!item) {
-            player.tell('該商品不存在!')
-            return
-        }
-
+    function buyM(itemId,pl) {
+        var item = produts.find((produts) => produts.id === itemId)
         var buyMenu = mc.newCustomForm()
         buyMenu.setTitle('買東西')
         buyMenu.addLabel(`物品名稱${item.name}`)
         buyMenu.addLabel(`物品單價${item.price}`)
         buyMenu.addInput('購買數量')
-    }
-    
-
-    //function
-    function purchaseItem(player,itemId,quantity) {
-        var item = products.find((produts) => produts.id === itemId)
         if (!item) {
             player.tell('該商品不存在!')
             return
+        } else {
+            var buyMenu = mc.newCustomForm()
+            buyMenu.setTitle('買東西')
+            buyMenu.addLabel(`物品名稱${item.name}`)
+            buyMenu.addLabel(`物品單價${item.price}`)
+            buyMenu.addInput('購買數量')
+            pl.sendForm(buyMenu,(pl,data) => {
+                var player = pl
+                var quantity = data[0]
+                if (quantity != 0 && quantity < 0 && quantity != Null) {
+                    pl.tell('請輸入正確的數字')
+                } else {
+                    purchaseItem(player,itemId, quantity,item)
+                }
+            })
         }
+    }
+
+
+    //function
+    function purchaseItem(player,itemId,quantity, item) {
+        var item = produts.find((produts) => produts.id === itemId)
         var playerCurrency = player.getScore('money')
         var totalPrice = item.price * quantity
         if (playerCurrency < totalPrice) {
@@ -760,11 +769,11 @@ mc.listen("onServerStarted",()=>{
         }
         player.reduceScore("money",totalPrice)
         if (item.id2 == 0) {
-            player.giveItem(item.name,quantity)
+            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
         } else {
-            mc.runcmd(`give ${player} ${item.name} ${quantity} ${item.id2}`)
+            mc.runcmd(`give ${player.name} ${item.name} ${quantity} ${item.id2}`)
         }
-        player.tell('購買成功')
+        player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
     var cmd = mc.newCommand('shop','商店',PermType.Any)
@@ -773,49 +782,26 @@ mc.listen("onServerStarted",()=>{
     cmd.overload(['choose'])
     cmd.setCallback((_cmd,ori,_out,res) => {
         if (res.chose == 'buy') {
-                ori.player.sendForm(buy,(pl,id) => {
-                    if (id == 0) {
-                        pl.sendForm(block,(pl,id) => {
-                            if (id == 0){
-                                pl.sendForm(dirt,(pl,id) => {
+            ori.player.sendForm(buy,(pl,id)=>{
+                if (id == 0) {
+                  pl.sendForm(block,(pl,id) => {
+                      if (id == 0){
+                          pl.sendForm(dirt,(pl,id) => {
                                     if (id == 0) {
                                         var itemId = 1
-                                        buyM(itemId)
-                                        pl.sendForm(buyMenu,(pl,data) => {
-                                            var player = pl
-                                            var itemId = 1
-                                            var quantity = data[0]
-                                            purchaseItem(player,itemId, quantity)
-                                        })
+                                        buyM(itemId,pl)
                                     } else if (id == 1) {
                                         var itemId = 2
-                                        buyM(itemId)
-                                        pl.sendForm(buyMenu,(pl,data) => {
-                                            var player = pl
-                                            var itemId = 2
-                                            var quantity = data[0]
-                                            purchaseItem(player,itemId, quantity)
-                                        })
+                                        buyM(itemId,pl)
                                     }  else if (id == 2) {
                                         var itemId = 3
-                                        buyM(itemId)
-                                        pl.sendForm(buyMenu,(pl,data) => {
-                                            var player = pl
-                                            var itemId = 3
-                                            var quantity = data[0]
-                                            purchaseItem(player,itemId, quantity)
-                                        })
+                                        buyM(itemId,pl)
                                     } else if (id == 3) {
                                         var itemId = 4
-                                        buyM(itemId)
-                                        pl.sendForm(buyMenu,(pl,data) => {
-                                            var player = pl
-                                            var itemId = 4
-                                            var quantity = data[0]
-                                            purchaseItem(player,itemId, quantity)
-                                        })
+                                        buyM(itemId,pl)
                                     }
                                 })
+                                
                             } else if (id == 1){
                                 pl.sendForm(sand,(pl,id) => {
                                     if (id == 0) {
@@ -980,8 +966,6 @@ mc.listen("onServerStarted",()=>{
             ori.player.sendForm(fm,(pl,id) => {
               if (id == 0){
                 pl.sendForm(buy,(pl,id)=>{
-                  if (id == 0) {
-                    pl.sendForm(buy,(pl,id) => {
                       if (id == 0) {
                         pl.sendForm(block,(pl,id) => {
                             if (id == 0){
@@ -1014,7 +998,7 @@ mc.listen("onServerStarted",()=>{
                                     pl.sendForm(etr,(pl,id)=> {
                                       
                                     })
-                                    }
+                                }
                                 })
                             } else if (id == 6){
                             pl.sendForm(cct,(pl,id)=>{
@@ -1027,8 +1011,8 @@ mc.listen("onServerStarted",()=>{
                             } else if (id == 8){
                               pl.sendForm(end,(pl,id)=>{
                                 
-                              })
-                            }
+                            })
+                        }
                         })
                     } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
@@ -1071,13 +1055,13 @@ mc.listen("onServerStarted",()=>{
 
                         })
                     }
-                    })
+                })
                 } else if (id == 1) {
                     pl.sendForm(sell,(pl,id) => {
 
                     })
                 }
-                })
+            })
               } else if (id ==1){
                 pl.sendForm(sell,(pl,id)=>{
                                       if (id == 0) {
@@ -1137,11 +1121,9 @@ mc.listen("onServerStarted",()=>{
 
                         })
                     }
-                })
+                }) 
               }
-            })
-        }
-    })
+        })
     cmd.setup()
 })
 
@@ -1559,11 +1541,12 @@ mc.listen("onServerStarted",() => {
 mc.listen("onServerStarted",() => {
     var cmd = mc.newCommand('resc',"§l§e重新加載OMSC空島插件")
     cmd.overload()
-    cmd.setCallback((_cmd,ori,_out,_res) => {
-        pl.tell('§l§e正在重新加載插件...')
+    cmd.setCallback((_cmd,_ori,out,_res) => {
+        out.success('§l§e正在重新加載插件...')
         setTimeout('§l§e插件已重新加載',5000)
         mc.runcmd('ll reload skyblockomsc.ll.js')
     })
+    cmd.setup()
 })
 
 //抽獎
