@@ -153,9 +153,6 @@ mc.listen("onServerStarted",()=>{
     ore.addButton('§l§9綠寶石','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/26/Emerald_JE3_BE3.png/revision/latest?cb=20200612161342')
     ore.addButton('§l§9綠寶石礦','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3b/Emerald_Ore_JE3_BE3.png/revision/latest?cb=20210225133147')
     ore.addButton('§l§9綠寶石磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/0/0b/Block_of_Emerald_JE4_BE3.png/revision/latest?cb=20200612130938')
-    ore.addButton('§l§9獄隨錠','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/26/Netherite_Ingot_JE1_BE2.png/revision/latest?cb=20200206023314')
-    ore.addButton('§l§9獄髓礦','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/Ancient_Debris_JE1_BE1.png/revision/latest?cb=20200329055645')
-    ore.addButton('§l§9獄髓磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/31/Block_of_Netherite_JE1_BE1.png/revision/latest?cb=20200207022031')
     
     var buy3 = mc.newSimpleForm()
     buy3.setTitle('§l§9雜物類')
@@ -497,7 +494,6 @@ mc.listen("onServerStarted",()=>{
         { id: 38, id2: 0, name: 'iron_block', price: 180},
         { id: 39, id2: 0, name: 'lapis_lazuli', price: 10},
         { id: 40, id2: 0, name: 'lapis_ore', price: 10},
-        { id: 40, id2: 0, name: 'lapis_block', price: 90},
         { id: 41, id2: 0, name: 'gold_ingot', price: 20},
         { id: 42, id2: 0, name: 'gold_ore', price: 20},
         { id: 43, id2: 0, name: 'gold_block', price: 180},
@@ -691,8 +687,7 @@ mc.listen("onServerStarted",()=>{
         { id: 231, id2: 0, name: 'red_nether_brick', price: 20},
         { id: 232, id2: 0, name: 'end_stone', price: 5},
         { id: 233, id2: 0, name: 'chorus_flower', price: 3},
-        { id: 233, id2: 0, name: 'chorus_plant', price: 5},
-        { id: 234, id2: 0, name: 'end_bicks', price: 7},
+        { id: 234, id2: 0, name: 'end_bricks', price: 7},
         { id: 235, id2: 0, name: 'purpur_block', price: 7},
         { id: 236, id2: 2, name: 'purpur_block', price: 7},
         { id: 237, id2: 0, name: 'apple', price: 3},
@@ -726,6 +721,8 @@ mc.listen("onServerStarted",()=>{
         { id: 265, id2: 0, name: 'totem_of_undying', price: 1000},
         { id: 266, id2: 0, name: 'lime_wool', price: 6},
         { id: 267, id2: 0, name: 'yellow_glazed_terracotta', price: 15},
+        { id: 268, id2: 0, name: 'chorus_plant', price: 5},
+        { id: 269, id2: 0, name: 'lapis_block', price: 90},
     ]
     function buyM(itemId,pl) {
         var item = produts.find((produts) => produts.id === itemId)
@@ -1156,17 +1153,102 @@ mc.listen("onServerStarted",()=>{
                               })
                             } else if (id == 8){
                               pl.sendForm(end,(pl,id)=>{
-                                
+                                if (id == 0) {
+                                    var itemId = 232
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 233
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 268
+                                    buyM(itemId,pl)
+                                } else if (id == 3) {
+                                    var itemId = 234
+                                    buyM(itemId,pl)
+                                } else if (id == 4) {
+                                    var itemId = 235
+                                    buyM(itemId,pl)
+                                } else if (id == 5) {
+                                    var itemId = 236
+                                    buyM(itemId,pl)
+                                }
                               })
                             }
                         })
                     } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
-
+                            if (id == 0) {
+                                var itemId = 33
+                                buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 34
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 35
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 36
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 37
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 38
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 39
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 40
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 269
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 41
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 42
+                                buyM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 43
+                                buyM(itemId,pl)
+                            } else if (id == 12) {
+                                var itemId = 44
+                                buyM(itemId,pl)
+                            } else if (id == 13) {
+                                var itemId = 45
+                                buyM(itemId,pl)
+                            } else if (id == 14) {
+                                var itemId = 46
+                                buyM(itemId,pl)
+                            } else if (id == 15) {
+                                var itemId = 47
+                                buyM(itemId,pl)
+                            } else if (id == 16) {
+                                var itemId = 48
+                                buyM(itemId,pl)
+                            } else if (id == 17) {
+                                var itemId = 49
+                                buyM(itemId,pl)
+                            } else if (id == 18) {
+                                var itemId = 50
+                                buyM(itemId,pl)
+                            } else if (id == 19) {
+                                var itemId = 51
+                                buyM(itemId,pl)
+                            } else if (id == 20) {
+                                var itemId = 52 
+                                buyM(itemId,pl)
+                            }
                         })
                     } else if (id ==2){
                         pl.sendForm(food,(pl,id) => {
-
+                            if (id == 0) {
+                                var itemId = 237
+                                buyM(itemId,pl)
+                            }
+                            
                         })
                     } else if (id ==3){
                         pl.sendForm(dr,(pl,id) => {
