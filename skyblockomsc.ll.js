@@ -453,7 +453,7 @@ mc.listen("onServerStarted",()=>{
     sell.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
     
     //function
-    var produts = [
+    var produts_buy = [
         { id: 1, id2: 0, name: 'dirt', price: 3},
         { id: 2, id2: 0, name: 'grass', price: 5},
         { id: 3, id2: 0, name: 'podzol', price: 3},
@@ -506,8 +506,8 @@ mc.listen("onServerStarted",()=>{
         { id: 50, id2: 0, name: 'emerald', price: 65},
         { id: 51, id2: 0, name: 'emerald_ore', price: 65},
         { id: 52, id2: 0, name: 'emerald_block', price: 585},
-        { id: 53, id2: 0, name: 'brick', price: 5},
-        { id: 54, id2: 0, name: 'prismarine_bricks', price: 5},
+        { id: 53, id2: 0, name: 'brick_block', price: 5},
+        { id: 54, id2: 2, name: 'prismarine', price: 5},
         { id: 55, id2: 0, name: 'mud_bricks', price: 5},
         { id: 56, id2: 0, name: 'glowstone', price: 10},
         { id: 57, id2: 0, name: 'ea_lantern', price: 15},
@@ -723,9 +723,15 @@ mc.listen("onServerStarted",()=>{
         { id: 267, id2: 0, name: 'yellow_glazed_terracotta', price: 15},
         { id: 268, id2: 0, name: 'chorus_plant', price: 5},
         { id: 269, id2: 0, name: 'lapis_block', price: 90},
+        { id: 270, id2: 9, name: 'red_flower', price: 1},
+        { id: 271, id2: 9, name: 'melon_seeds', price: 3},
     ]
+
+    var produts_sell = [
+        { id: 1, id2: 9, name: 'dirt', swlllPrice: 1},
+    ]      
     function buyM(itemId,pl) {
-        var item = produts.find((produts) => produts.id === itemId)
+        var item = produts_buy.find((produts) => produts.id === itemId)
         var buyMenu = mc.newCustomForm()
         buyMenu.setTitle('買東西')
         buyMenu.addLabel(`物品名稱§l§a${item.name}`)
@@ -743,10 +749,38 @@ mc.listen("onServerStarted",()=>{
             pl.sendForm(buyMenu,(pl,data) => {
                 var player = pl
                 var quantity = parseInt(data[2])
-                if (quantity != 0 && quantity < 0 && qantity != Null) {
+                if (isNaN(quantity) || quantity <= 0) {
                     pl.tell('§l§c請輸入正確的數字')
                 } else {
-                    purchaseItem(player,itemId, quantity,item)
+                    purchaseItem_buy(player,itemId, quantity,item)
+                }
+            })
+        }
+    }
+
+    function sellM(itemId,pl) {
+        var item = produts_sell.find((produts) => produts.id === itemId)
+        var sellMenu = mc.newCustomForm()
+        sellMenu.setTitle('賣東西')
+        sellMenu.addLabel(`物品名稱§l§a${item.name}`)
+        sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
+        buyMenu.addInput('賣出數量')
+        if (!item) {
+            player.tell('該商品不存在!')
+            return
+        } else {
+            var sellMenu = mc.newCustomForm()
+            sellMenu.setTitle('賣東西')
+            sellMenu.addLabel(`物品名稱§l§a${item.name}`)
+            sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
+            buyMenu.addInput('賣出數量')
+            pl.sendForm(sellMenu,(pl,data) => {
+                var player = pl
+                var quantity = parseInt(data[2])
+                if (isNaN(quantity) || quantity <= 0) {
+                    pl.tell('§l§c請輸入正確的數字')
+                } else {
+                    purchaseItem_sell(player,itemId, quantity,item)
                 }
             })
         }
@@ -754,8 +788,25 @@ mc.listen("onServerStarted",()=>{
 
 
     //function
-    function purchaseItem(player,itemId,quantity, item) {
-        var item = produts.find((produts) => produts.id === itemId)
+    function purchaseItem_buy(player,itemId,quantity, item) {
+        var item = produts_buy.find((produts) => produts.id === itemId)
+        var playerCurrency = player.getScore('money')
+        var totalPrice = item.price * quantity
+        if (playerCurrency < totalPrice) {
+            player.tell("§l§cyou don't have enough money to buy")
+            return
+        }
+        player.reduceScore("money",totalPrice)
+        if (item.id2 == 0) {
+            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
+        } else {
+            mc.runcmd(`give ${player.name} ${item.name} ${quantity} ${item.id2}`)
+        }
+        player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
+    }
+
+    function purchaseItem_sell(player,itemId,quantity, item) {
+        var item = produts_buy.find((produts) => produts.id === itemId)
         var playerCurrency = player.getScore('money')
         var totalPrice = item.price * quantity
         if (playerCurrency < totalPrice) {
@@ -1247,40 +1298,446 @@ mc.listen("onServerStarted",()=>{
                             if (id == 0) {
                                 var itemId = 237
                                 buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 238
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 239
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 240
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 241
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 242
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 243
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 244
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 245
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 246
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 247
+                                buyM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 248
+                                buyM(itemId,pl)
+                            } else if (id == 12) {
+                                var itemId = 249
+                                buyM(itemId,pl)
+                            } else if (id == 13) {
+                                var itemId = 250
+                                buyM(itemId,pl)
+                            } else if (id == 14) {
+                                var itemId = 251
+                                buyM(itemId,pl)
+                            } else if (id == 15) {
+                                var itemId = 252
+                                buyM(itemId,pl)
+                            } else if (id == 16) {
+                                var itemId = 253
+                                buyM(itemId,pl)
+                            } else if (id == 17) {
+                                var itemId = 254
+                                buyM(itemId,pl)
                             }
-                            
                         })
                     } else if (id ==3){
                         pl.sendForm(dr,(pl,id) => {
                           if (id == 0){
                             pl.sendForm(brick,(pl,id)=>{
-                              
+                                if (id == 0) {
+                                    var itemId = 53
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 54
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 55
+                                    buyM(itemId,pl)
+                                }
                             })
                           } else if (id == 1){
                             pl.sendForm(bright,(pl,id)=>{
-                              
+                                if (id == 0) {
+                                    var itemId = 56
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 57
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 58
+                                    buyM(itemId,pl)
+                                } else if (id == 3) {
+                                    var itemId = 59
+                                    buyM(itemId,pl)
+                                } else if (id == 4) {
+                                    var itemId = 60
+                                    buyM(itemId,pl)
+                                } else if (id == 5) {
+                                    var itemId = 61
+                                    buyM(itemId,pl)
+                                } else if (id == 6) {
+                                    var itemId = 62
+                                    buyM(itemId,pl)
+                                }
                             })
                           } else if (id == 2){
                             pl.sendForm(grd,(pl,id)=>{
-                              
+                                if (id == 0) {
+                                    pl.sendForm(flower,(pl,id)=>{
+                                        if (id == 0) {
+                                            var itemId = 63
+                                            buyM(itemId,pl)
+                                        } else if (id == 1) {
+                                            var itemId = 64
+                                            buyM(itemId,pl)
+                                        } else if (id == 2) {
+                                            var itemId = 65
+                                            buyM(itemId,pl)
+                                        } else if (id == 3) {
+                                            var itemId = 66
+                                            buyM(itemId,pl)
+                                        } else if (id == 4) {
+                                            var itemId = 67
+                                            buyM(itemId,pl)
+                                        } else if (id == 5) {
+                                            var itemId = 68
+                                            buyM(itemId,pl)
+                                        } else if (id == 6) {
+                                            var itemId = 69
+                                            buyM(itemId,pl)
+                                        } else if (id == 7) {
+                                            var itemId = 70
+                                            buyM(itemId,pl)
+                                        } else if (id == 8) {
+                                            var itemId = 71
+                                            buyM(itemId,pl)
+                                        } else if (id == 9) {
+                                            var itemId = 72
+                                            buyM(itemId,pl)
+                                        } else if (id == 10) {
+                                            var itemId = 270
+                                            buyM(itemId,pl)
+                                        } else if (id == 11) {
+                                            var itemId = 73
+                                            buyM(itemId,pl)
+                                        } else if (id == 12) {
+                                            var itemId = 74
+                                            buyM(itemId,pl)
+                                        } else if (id == 13) {
+                                            var itemId = 75
+                                            buyM(itemId,pl)
+                                        } else if (id == 14) {
+                                            var itemId = 76
+                                            buyM(itemId,pl)
+                                        } else if (id == 15) {
+                                            var itemId = 77
+                                            buyM(itemId,pl)
+                                        }
+                                    })
+                                } else if (id == 1) {
+                                    pl.sendForm(seed,(pl,id)=>{
+                                        if (id == 0) {
+                                            var itemId =78
+                                            buyM(itemId,pl)
+                                        } else if (id == 1) {
+                                            var itemId = 79
+                                            buyM(itemId,pl)
+                                        } else if (id == 2) {
+                                            var itemId = 271
+                                            buyM(itemId,pl)
+                                        } else if (id == 3) {
+                                            var itemId = 80
+                                            buyM(itemId,pl)
+                                        }
+                                    })
+                                }
                             })
                           } else if (id == 3){
                             pl.sendForm(cr,(pl,id)=>{
-                              
+                                if (id == 0) {
+                                    var itemId = 81
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 82
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 83
+                                    buyM(itemId,pl)
+                                } else if (id == 3) {
+                                    var itemId = 84
+                                    buyM(itemId,pl)
+                                } else if (id == 4) {
+                                    var itemId = 85
+                                    buyM(itemId,pl)
+                                } else if (id == 5) {
+                                    var itemId = 86
+                                    buyM(itemId,pl)
+                                } else if (id == 6) {
+                                    var itemId = 87
+                                    buyM(itemId,pl)
+                                } else if (id == 7) {
+                                    var itemId = 88
+                                    buyM(itemId,pl)
+                                } else if (id == 8) {
+                                    var itemId = 89
+                                    buyM(itemId,pl)
+                                } else if (id == 9) {
+                                    var itemId = 90
+                                    buyM(itemId,pl)
+                                } else if (id == 10) {
+                                    var itemId = 91
+                                    buyM(itemId,pl)
+                                } else if (id == 11) {
+                                    var itemId = 92
+                                    buyM(itemId,pl)
+                                } else if (id == 12) {
+                                    var itemId = 93
+                                    buyM(itemId,pl)
+                                } else if (id == 13) {
+                                    var itemId = 94
+                                    buyM(itemId,pl)
+                                } else if (id == 14) {
+                                    var itemId = 95
+                                    buyM(itemId,pl)
+                                }
                             })
                           } else if (id == 4){
                             pl.sendForm(glass,(pl,id)=>{
-                              
+                                if (id == 0) {
+                                    var itemId = 96
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 97
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 98
+                                    buyM(itemId,pl)
+                                } else if (id == 3) {
+                                    var itemId = 99
+                                    buyM(itemId,pl)
+                                } else if (id == 4) {
+                                    var itemId = 100
+                                    buyM(itemId,pl)
+                                } else if (id == 5) {
+                                    var itemId = 101
+                                    buyM(itemId,pl)
+                                } else if (id == 6) {
+                                    var itemId = 102
+                                    buyM(itemId,pl)
+                                } else if (id == 7) {
+                                    var itemId = 103
+                                    buyM(itemId,pl)
+                                } else if (id == 8) {
+                                    var itemId = 104
+                                    buyM(itemId,pl)
+                                } else if (id == 9) {
+                                    var itemId = 105
+                                    buyM(itemId,pl)
+                                } else if (id == 10) {
+                                    var itemId = 106
+                                    buyM(itemId,pl)
+                                } else if (id == 11) {
+                                    var itemId = 107
+                                    buyM(itemId,pl)
+                                } else if (id == 12) {
+                                    var itemId = 108
+                                    buyM(itemId,pl)
+                                } else if (id == 13) {
+                                    var itemId = 109
+                                    buyM(itemId,pl)
+                                } else if (id == 14) {
+                                    var itemId = 110
+                                    buyM(itemId,pl)
+                                } else if (id == 15) {
+                                    var itemId = 111
+                                    buyM(itemId,pl)
+                                } else if (id == 16) {
+                                    var itemId = 112
+                                    buyM(itemId,pl)
+                                } else if (id == 17) {
+                                    var itemId = 113
+                                    buyM(itemId,pl)
+                                }
                             })
                           }
                         })
                     } else if (id ==4){
                         pl.sendForm(others,(pl,id) => {
-
+                            if (id == 0) {
+                                var itemId = 255
+                                buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 256
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 257
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 258
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 259
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 260
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 261
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 262
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 263
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 264
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 265
+                                buyM(itemId,pl)
+                            }
                         })
                     } else if (id == 5){
                         pl.sendForm(egg,(pl,id) => {
-
+                            if (id == 0) {
+                                var itemId = 114
+                                buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 115
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 116
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 117
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 118
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 119
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 120
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 121
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 122
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 123
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 124
+                                buyM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 125
+                                buyM(itemId,pl)
+                            } else if (id == 12) {
+                                var itemId = 126
+                                buyM(itemId,pl)
+                            } else if (id == 13) {
+                                var itemId = 127
+                                buyM(itemId,pl)
+                            } else if (id == 14) {
+                                var itemId = 128
+                                buyM(itemId,pl)
+                            } else if (id == 15) {
+                                var itemId = 129
+                                buyM(itemId,pl)
+                            } else if (id == 16) {
+                                var itemId = 130
+                                buyM(itemId,pl)
+                            } else if (id == 17) {
+                                var itemId = 131
+                                buyM(itemId,pl)
+                            } else if (id == 18) {
+                                var itemId = 132
+                                buyM(itemId,pl)
+                            } else if (id == 19) {
+                                var itemId = 133
+                                buyM(itemId,pl)
+                            } else if (id == 20) {
+                                var itemId = 134
+                                buyM(itemId,pl)
+                            } else if (id == 21) {
+                                var itemId = 135
+                                buyM(itemId,pl)
+                            } else if (id == 22) {
+                                var itemId = 136
+                                buyM(itemId,pl)
+                            } else if (id == 23) {
+                                var itemId = 137
+                                buyM(itemId,pl)
+                            } else if (id == 24) {
+                                var itemId = 138
+                                buyM(itemId,pl)
+                            } else if (id == 25) {
+                                var itemId = 139
+                                buyM(itemId,pl)
+                            } else if (id == 26) {
+                                var itemId = 140
+                                buyM(itemId,pl)
+                            } else if (id == 27) {
+                                var itemId = 141
+                                buyM(itemId,pl)
+                            } else if (id == 28) {
+                                var itemId = 142
+                                buyM(itemId,pl)
+                            } else if (id == 29) {
+                                var itemId = 143
+                                buyM(itemId,pl)
+                            } else if (id == 30) {
+                                var itemId = 144
+                                buyM(itemId,pl)
+                            } else if (id == 31) {
+                                var itemId = 145
+                                buyM(itemId,pl)
+                            } else if (id == 32) {
+                                var itemId = 146
+                                buyM(itemId,pl)
+                            } else if (id == 33) {
+                                var itemId = 147
+                                buyM(itemId,pl)
+                            } else if (id == 34) {
+                                var itemId = 148
+                                buyM(itemId,pl)
+                            } else if (id == 35) {
+                                var itemId = 149
+                                buyM(itemId,pl)
+                            } else if (id == 36) {
+                                var itemId = 150
+                                buyM(itemId,pl)
+                            } else if (id == 37) {
+                                var itemId = 151
+                                buyM(itemId,pl)
+                            } else if (id == 38) {
+                                var itemId = 152
+                                buyM(itemId,pl)
+                            } else if (id == 39) {
+                                var itemId = 153
+                                buyM(itemId,pl)
+                            } else if (id == 40) {
+                                var itemId = 154
+                                buyM(itemId,pl)
+                            } else if (id == 41) {
+                                var itemId = 155
+                                buyM(itemId,pl)
+                            }
                         })
                     }
                 })
@@ -1344,103 +1801,917 @@ mc.listen("onServerStarted",()=>{
               })
         }else if (res.chose == null) {
             ori.player.sendForm(fm,(pl,id) => {
-              if (id == 0){
-                pl.sendForm(buy,(pl,id)=>{
-                      if (id == 0) {
-                        pl.sendForm(block,(pl,id) => {
-                            if (id == 0){
-                                pl.sendForm(dirt,(pl,id) => {
-
-                                })
-                            } else if (id == 1){
-                                pl.sendForm(sand,(pl,id) => {
-
-                                })
-                            } else if (id == 2){
-                                pl.sendForm(log,(pl,id) => {
-
-                                })
-                            } else if (id == 3){
-                                pl.sendForm(stone,(pl,id) => {
-
-                                })
-                            } else if (id == 4){
-                                pl.sendForm(wool,(pl,id) => {
-
-                                })
-                            } else if (id == 5){
-                                pl.sendForm(tr,(pl,id) => {
-                                    if (id == 0){
-                                        pl.sendForm(ttr,(pl,id) => {
-
-                                        })
-                                    } else if (id == 1){
-                                    pl.sendForm(etr,(pl,id)=> {
-                                      
-                                    })
-                                }
-                                })
-                            } else if (id == 6){
-                            pl.sendForm(cct,(pl,id)=>{
-                              
-                            })  
-                            } else if (id == 7){
-                              pl.sendForm(nth,(pl,id)=>{
-                                
-                              })
-                            } else if (id == 8){
-                              pl.sendForm(end,(pl,id)=>{
-                                
-                            })
-                        }
-                        })
-                    } else if(id == 1){
-                        pl.sendForm(ore,(pl,id) => {
-
-                        })
-                    } else if (id ==2){
-                        pl.sendForm(food,(pl,id) => {
-
-                        })
-                    } else if (id ==3){
-                        pl.sendForm(dr,(pl,id) => {
-                          if (id == 0){
-                            pl.sendForm(brick,(pl,id)=>{
-                              
-                            })
+                if (id == 0) {
+                    pl.sendForm(block,(pl,id) => {
+                        if (id == 0){
+                            pl.sendForm(dirt,(pl,id) => {
+                                      if (id == 0) {
+                                          var itemId = 1
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 2
+                                          buyM(itemId,pl)
+                                      }  else if (id == 2) {
+                                          var itemId = 3
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 4
+                                          buyM(itemId,pl)
+                                      }
+                                  })
+                                  
                           } else if (id == 1){
-                            pl.sendForm(bright,(pl,id)=>{
-                              
-                            })
-                          } else if (id == 2){
-                            pl.sendForm(grd,(pl,id)=>{
-                              
-                            })
-                          } else if (id == 3){
-                            pl.sendForm(cr,(pl,id)=>{
-                              
-                            })
-                          } else if (id == 4){
-                            pl.sendForm(glass,(pl,id)=>{
-                              
-                            })
-                          }
-                        })
-                    } else if (id ==4){
-                        pl.sendForm(others,(pl,id) => {
-
-                        })
-                    } else if (id == 5){
-                        pl.sendForm(egg,(pl,id) => {
-
-                        })
-                    }
-                })
-                } else if (id == 1) {
-                    pl.sendForm(sell,(pl,id) => {
-
-                    })
-                }
+                                  pl.sendForm(sand,(pl,id) => {
+                                      if (id == 0) {
+                                          var itemId = 5
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 6
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 7
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 8
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 9
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 10
+                                          buyM(itemId,pl)
+                                      } else if (id == 6) {
+                                          var itemId = 11
+                                          buyM(itemId,pl)
+                                      } else if (id == 7) {
+                                          var itemId = 12
+                                          buyM(itemId,pl)
+                                      } else if (id == 8) {
+                                          var itemId = 13
+                                          buyM(itemId,pl)
+                                      } else if (id == 9) {
+                                          var itemId = 14
+                                          buyM(itemId,pl)
+                                      }
+                                  })
+                              } else if (id == 2){
+                                  pl.sendForm(log,(pl,id) => {
+                                      if (id == 0) {
+                                          var itemId = 15
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 16
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 17
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 18
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 19
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 20
+                                          buyM(itemId,pl)
+                                      }
+                                  })
+                              } else if (id == 3){
+                                  pl.sendForm(stone,(pl,id) => {
+                                      if (id == 0) {
+                                          var itemId = 21
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 22
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 23
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 24
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 25
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 26
+                                          buyM(itemId,pl)
+                                      } else if (id == 6) {
+                                          var itemId = 27
+                                          buyM(itemId,pl)
+                                      } else if (id == 7) {
+                                          var itemId = 28
+                                          buyM(itemId,pl)
+                                      } else if (id == 8) {
+                                          var itemId = 29
+                                          buyM(itemId,pl)
+                                      } else if (id == 9) {
+                                          var itemId = 30
+                                          buyM(itemId,pl)
+                                      } else if (id == 10) {
+                                          var itemId = 31
+                                          buyM(itemId,pl)
+                                      } else if (id == 11) {
+                                          var itemId = 32
+                                          buyM(itemId,pl)
+                                      }
+                                  })
+                              } else if (id == 4){
+                                  pl.sendForm(wool,(pl,id) => {
+                                      if (id == 0) {
+                                          var itemId = 156
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 157
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 158
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 159
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 160
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 161
+                                          buyM(itemId,pl)
+                                      } else if (id == 6) {
+                                          var itemId = 162
+                                          buyM(itemId,pl)
+                                      } else if (id == 7) {
+                                          var itemId = 163
+                                          buyM(itemId,pl)
+                                      } else if (id == 8) {
+                                          var itemId = 266
+                                          buyM(itemId,pl)
+                                      } else if (id == 9) {
+                                          var itemId = 164
+                                          buyM(itemId,pl)
+                                      } else if (id == 10) {
+                                          var itemId = 165
+                                          buyM(itemId,pl)
+                                      } else if (id == 11) {
+                                          var itemId = 166
+                                          buyM(itemId,pl)
+                                      } else if (id == 12) {
+                                          var itemId = 167
+                                          buyM(itemId,pl)
+                                      } else if (id == 13) {
+                                          var itemId = 168
+                                          buyM(itemId,pl)
+                                      } else if (id == 14) {
+                                          var itemId = 169
+                                          buyM(itemId,pl)
+                                      } else if (id == 15) {
+                                          var itemId = 170
+                                          buyM(itemId,pl)
+                                      }
+                                  })
+                              } else if (id == 5){
+                                  pl.sendForm(tr,(pl,id) => {
+                                      if (id == 0){
+                                          pl.sendForm(ttr,(pl,id) => {
+                                              if (id == 0) {
+                                                  var itemId = 171
+                                                  buyM(itemId,pl)
+                                              } else if (id == 1) {
+                                                  var itemId = 172
+                                                  buyM(itemId,pl)
+                                              } else if (id == 2) {
+                                                  var itemId = 173
+                                                  buyM(itemId,pl)
+                                              } else if (id == 3) {
+                                                  var itemId = 174
+                                                  buyM(itemId,pl)
+                                              } else if (id == 4) {
+                                                  var itemId = 175
+                                                  buyM(itemId,pl)
+                                              } else if (id == 5) {
+                                                  var itemId = 176
+                                                  buyM(itemId,pl)
+                                              } else if (id == 6) {
+                                                  var itemId = 177
+                                                  buyM(itemId,pl)
+                                              } else if (id == 7) {
+                                                  var itemId = 178
+                                                  buyM(itemId,pl)
+                                              } else if (id == 8) {
+                                                  var itemId = 179
+                                                  buyM(itemId,pl)
+                                              } else if (id == 9) {
+                                                  var itemId = 180
+                                                  buyM(itemId,pl)
+                                              } else if (id == 10) {
+                                                  var itemId = 181
+                                                  buyM(itemId,pl)
+                                              } else if (id == 11) {
+                                                  var itemId = 182
+                                                  buyM(itemId,pl)
+                                              } else if (id == 12) {
+                                                  var itemId = 183
+                                                  buyM(itemId,pl)
+                                              } else if (id == 13) {
+                                                  var itemId = 184
+                                                  buyM(itemId,pl)
+                                              } else if (id == 14) {
+                                                  var itemId = 185
+                                                  buyM(itemId,pl)
+                                              } else if (id == 15) {
+                                                  var itemId = 186
+                                                  buyM(itemId,pl)
+                                              } else if (id == 16) {
+                                                  var itemId = 187
+                                                  buyM(itemId,pl)
+                                              }
+                                          })
+                                      } else if (id == 1){
+                                      pl.sendForm(etr,(pl,id)=> {
+                                          if (id == 0) {
+                                              var itemId = 188
+                                              buyM(itemId,pl)
+                                          } else if (id == 1) {
+                                              var itemId = 189
+                                              buyM(itemId,pl)
+                                          } else if (id == 2) {
+                                              var itemId = 190
+                                              buyM(itemId,pl)
+                                          } else if (id == 3) {
+                                              var itemId = 191
+                                              buyM(itemId,pl)
+                                          } else if (id == 4) {
+                                              var itemId = 192
+                                              buyM(itemId,pl)
+                                          } else if (id == 5) {
+                                              var itemId = 193
+                                              buyM(itemId,pl)
+                                          } else if (id == 6) {
+                                              var itemId = 194
+                                              buyM(itemId,pl)
+                                          } else if (id == 7) {
+                                              var itemId = 267
+                                              buyM(itemId,pl)
+                                          } else if (id == 8) {
+                                              var itemId = 195
+                                              buyM(itemId,pl)
+                                          } else if (id == 9) {
+                                              var itemId = 196
+                                              buyM(itemId,pl)
+                                          } else if (id == 10) {
+                                              var itemId = 197
+                                              buyM(itemId,pl)
+                                          } else if (id == 11) {
+                                              var itemId = 198
+                                              buyM(itemId,pl)
+                                          } else if (id == 12) {
+                                              var itemId = 199
+                                              buyM(itemId,pl)
+                                          } else if (id == 13) {
+                                              var itemId = 200
+                                              buyM(itemId,pl)
+                                          } else if (id == 14) {
+                                              var itemId = 201
+                                              buyM(itemId,pl)
+                                          } else if (id == 15) {
+                                              var itemId = 202
+                                              buyM(itemId,pl)
+                                          }
+                                      })
+                                      }
+                                  })
+                              } else if (id == 6){
+                                  pl.sendForm(cct,(pl,id)=>{
+                                      if (id == 0) {
+                                          var itemId = 203 
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 204
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 205
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 206
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 207
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 208
+                                          buyM(itemId,pl)
+                                      } else if (id == 6) {
+                                          var itemId = 209
+                                          buyM(itemId,pl)
+                                      } else if (id == 7) {
+                                          var itemId = 210
+                                          buyM(itemId,pl)
+                                      } else if (id == 8) {
+                                          var itemId = 211
+                                          buyM(itemId,pl)
+                                      } else if (id == 9) {
+                                          var itemId = 212
+                                          buyM(itemId,pl)
+                                      } else if (id == 10) {
+                                          var itemId = 213
+                                          buyM(itemId,pl)
+                                      } else if (id == 11) {
+                                          var itemId = 214
+                                          buyM(itemId,pl)
+                                      } else if (id == 12) {
+                                          var itemId = 215
+                                          buyM(itemId,pl)
+                                      } else if (id == 13) {
+                                          var itemId = 216
+                                          buyM(itemId,pl)
+                                      } else if (id == 14) {
+                                          var itemId = 217
+                                          buyM(itemId,pl)
+                                      } else if (id == 15) {
+                                          var itemId = 218
+                                          buyM(itemId,pl)
+                                      }
+                                  }) 
+                              } else if (id == 7){
+                                pl.sendForm(nth,(pl,id)=>{
+                                      if (id == 0) {
+                                          var itemId = 219
+                                          buyM(itemId,pl)
+                                      } else if (id == 1) {
+                                          var itemId = 220
+                                          buyM(itemId,pl)
+                                      } else if (id == 2) {
+                                          var itemId = 221
+                                          buyM(itemId,pl)
+                                      } else if (id == 3) {
+                                          var itemId = 222
+                                          buyM(itemId,pl)
+                                      } else if (id == 4) {
+                                          var itemId = 223
+                                          buyM(itemId,pl)
+                                      } else if (id == 5) {
+                                          var itemId = 224
+                                          buyM(itemId,pl)
+                                      } else if (id == 6) {
+                                          var itemId = 225
+                                          buyM(itemId,pl)
+                                      } else if (id == 7) {
+                                          var itemId = 226 
+                                          buyM(itemId,pl)
+                                      } else if (id == 8) {
+                                          var itemId = 227 
+                                          buyM(itemId,pl)
+                                      } else if (id == 9) {
+                                          var itemId = 228
+                                          buyM(itemId,pl)
+                                      } else if (id == 10) {
+                                          var itemId = 229
+                                          buyM(itemId,pl)
+                                      } else if (id == 11) {
+                                          var itemId = 230 
+                                          buyM(itemId,pl)
+                                      } else if (id == 12) {
+                                          var itemId = 231
+                                          buyM(itemId,pl)
+                                      }
+                                })
+                              } else if (id == 8){
+                                pl.sendForm(end,(pl,id)=>{
+                                  if (id == 0) {
+                                      var itemId = 232
+                                      buyM(itemId,pl)
+                                  } else if (id == 1) {
+                                      var itemId = 233
+                                      buyM(itemId,pl)
+                                  } else if (id == 2) {
+                                      var itemId = 268
+                                      buyM(itemId,pl)
+                                  } else if (id == 3) {
+                                      var itemId = 234
+                                      buyM(itemId,pl)
+                                  } else if (id == 4) {
+                                      var itemId = 235
+                                      buyM(itemId,pl)
+                                  } else if (id == 5) {
+                                      var itemId = 236
+                                      buyM(itemId,pl)
+                                  }
+                                })
+                              }
+                          })
+                      } else if(id == 1){
+                          pl.sendForm(ore,(pl,id) => {
+                              if (id == 0) {
+                                  var itemId = 33
+                                  buyM(itemId,pl)
+                              } else if (id == 1) {
+                                  var itemId = 34
+                                  buyM(itemId,pl)
+                              } else if (id == 2) {
+                                  var itemId = 35
+                                  buyM(itemId,pl)
+                              } else if (id == 3) {
+                                  var itemId = 36
+                                  buyM(itemId,pl)
+                              } else if (id == 4) {
+                                  var itemId = 37
+                                  buyM(itemId,pl)
+                              } else if (id == 5) {
+                                  var itemId = 38
+                                  buyM(itemId,pl)
+                              } else if (id == 6) {
+                                  var itemId = 39
+                                  buyM(itemId,pl)
+                              } else if (id == 7) {
+                                  var itemId = 40
+                                  buyM(itemId,pl)
+                              } else if (id == 8) {
+                                  var itemId = 269
+                                  buyM(itemId,pl)
+                              } else if (id == 9) {
+                                  var itemId = 41
+                                  buyM(itemId,pl)
+                              } else if (id == 10) {
+                                  var itemId = 42
+                                  buyM(itemId,pl)
+                              } else if (id == 11) {
+                                  var itemId = 43
+                                  buyM(itemId,pl)
+                              } else if (id == 12) {
+                                  var itemId = 44
+                                  buyM(itemId,pl)
+                              } else if (id == 13) {
+                                  var itemId = 45
+                                  buyM(itemId,pl)
+                              } else if (id == 14) {
+                                  var itemId = 46
+                                  buyM(itemId,pl)
+                              } else if (id == 15) {
+                                  var itemId = 47
+                                  buyM(itemId,pl)
+                              } else if (id == 16) {
+                                  var itemId = 48
+                                  buyM(itemId,pl)
+                              } else if (id == 17) {
+                                  var itemId = 49
+                                  buyM(itemId,pl)
+                              } else if (id == 18) {
+                                  var itemId = 50
+                                  buyM(itemId,pl)
+                              } else if (id == 19) {
+                                  var itemId = 51
+                                  buyM(itemId,pl)
+                              } else if (id == 20) {
+                                  var itemId = 52 
+                                  buyM(itemId,pl)
+                              }
+                          })
+                      } else if (id ==2){
+                          pl.sendForm(food,(pl,id) => {
+                              if (id == 0) {
+                                  var itemId = 237
+                                  buyM(itemId,pl)
+                              } else if (id == 1) {
+                                  var itemId = 238
+                                  buyM(itemId,pl)
+                              } else if (id == 2) {
+                                  var itemId = 239
+                                  buyM(itemId,pl)
+                              } else if (id == 3) {
+                                  var itemId = 240
+                                  buyM(itemId,pl)
+                              } else if (id == 4) {
+                                  var itemId = 241
+                                  buyM(itemId,pl)
+                              } else if (id == 5) {
+                                  var itemId = 242
+                                  buyM(itemId,pl)
+                              } else if (id == 6) {
+                                  var itemId = 243
+                                  buyM(itemId,pl)
+                              } else if (id == 7) {
+                                  var itemId = 244
+                                  buyM(itemId,pl)
+                              } else if (id == 8) {
+                                  var itemId = 245
+                                  buyM(itemId,pl)
+                              } else if (id == 9) {
+                                  var itemId = 246
+                                  buyM(itemId,pl)
+                              } else if (id == 10) {
+                                  var itemId = 247
+                                  buyM(itemId,pl)
+                              } else if (id == 11) {
+                                  var itemId = 248
+                                  buyM(itemId,pl)
+                              } else if (id == 12) {
+                                  var itemId = 249
+                                  buyM(itemId,pl)
+                              } else if (id == 13) {
+                                  var itemId = 250
+                                  buyM(itemId,pl)
+                              } else if (id == 14) {
+                                  var itemId = 251
+                                  buyM(itemId,pl)
+                              } else if (id == 15) {
+                                  var itemId = 252
+                                  buyM(itemId,pl)
+                              } else if (id == 16) {
+                                  var itemId = 253
+                                  buyM(itemId,pl)
+                              } else if (id == 17) {
+                                  var itemId = 254
+                                  buyM(itemId,pl)
+                              }
+                          })
+                      } else if (id ==3){
+                          pl.sendForm(dr,(pl,id) => {
+                            if (id == 0){
+                              pl.sendForm(brick,(pl,id)=>{
+                                  if (id == 0) {
+                                      var itemId = 53
+                                      buyM(itemId,pl)
+                                  } else if (id == 1) {
+                                      var itemId = 54
+                                      buyM(itemId,pl)
+                                  } else if (id == 2) {
+                                      var itemId = 55
+                                      buyM(itemId,pl)
+                                  }
+                              })
+                            } else if (id == 1){
+                              pl.sendForm(bright,(pl,id)=>{
+                                  if (id == 0) {
+                                      var itemId = 56
+                                      buyM(itemId,pl)
+                                  } else if (id == 1) {
+                                      var itemId = 57
+                                      buyM(itemId,pl)
+                                  } else if (id == 2) {
+                                      var itemId = 58
+                                      buyM(itemId,pl)
+                                  } else if (id == 3) {
+                                      var itemId = 59
+                                      buyM(itemId,pl)
+                                  } else if (id == 4) {
+                                      var itemId = 60
+                                      buyM(itemId,pl)
+                                  } else if (id == 5) {
+                                      var itemId = 61
+                                      buyM(itemId,pl)
+                                  } else if (id == 6) {
+                                      var itemId = 62
+                                      buyM(itemId,pl)
+                                  }
+                              })
+                            } else if (id == 2){
+                              pl.sendForm(grd,(pl,id)=>{
+                                  if (id == 0) {
+                                      pl.sendForm(flower,(pl,id)=>{
+                                          if (id == 0) {
+                                              var itemId = 63
+                                              buyM(itemId,pl)
+                                          } else if (id == 1) {
+                                              var itemId = 64
+                                              buyM(itemId,pl)
+                                          } else if (id == 2) {
+                                              var itemId = 65
+                                              buyM(itemId,pl)
+                                          } else if (id == 3) {
+                                              var itemId = 66
+                                              buyM(itemId,pl)
+                                          } else if (id == 4) {
+                                              var itemId = 67
+                                              buyM(itemId,pl)
+                                          } else if (id == 5) {
+                                              var itemId = 68
+                                              buyM(itemId,pl)
+                                          } else if (id == 6) {
+                                              var itemId = 69
+                                              buyM(itemId,pl)
+                                          } else if (id == 7) {
+                                              var itemId = 70
+                                              buyM(itemId,pl)
+                                          } else if (id == 8) {
+                                              var itemId = 71
+                                              buyM(itemId,pl)
+                                          } else if (id == 9) {
+                                              var itemId = 72
+                                              buyM(itemId,pl)
+                                          } else if (id == 10) {
+                                              var itemId = 270
+                                              buyM(itemId,pl)
+                                          } else if (id == 11) {
+                                              var itemId = 73
+                                              buyM(itemId,pl)
+                                          } else if (id == 12) {
+                                              var itemId = 74
+                                              buyM(itemId,pl)
+                                          } else if (id == 13) {
+                                              var itemId = 75
+                                              buyM(itemId,pl)
+                                          } else if (id == 14) {
+                                              var itemId = 76
+                                              buyM(itemId,pl)
+                                          } else if (id == 15) {
+                                              var itemId = 77
+                                              buyM(itemId,pl)
+                                          }
+                                      })
+                                  } else if (id == 1) {
+                                      pl.sendForm(seed,(pl,id)=>{
+                                          if (id == 0) {
+                                              var itemId =78
+                                              buyM(itemId,pl)
+                                          } else if (id == 1) {
+                                              var itemId = 79
+                                              buyM(itemId,pl)
+                                          } else if (id == 2) {
+                                              var itemId = 271
+                                              buyM(itemId,pl)
+                                          } else if (id == 3) {
+                                              var itemId = 80
+                                              buyM(itemId,pl)
+                                          }
+                                      })
+                                  }
+                              })
+                            } else if (id == 3){
+                              pl.sendForm(cr,(pl,id)=>{
+                                  if (id == 0) {
+                                      var itemId = 81
+                                      buyM(itemId,pl)
+                                  } else if (id == 1) {
+                                      var itemId = 82
+                                      buyM(itemId,pl)
+                                  } else if (id == 2) {
+                                      var itemId = 83
+                                      buyM(itemId,pl)
+                                  } else if (id == 3) {
+                                      var itemId = 84
+                                      buyM(itemId,pl)
+                                  } else if (id == 4) {
+                                      var itemId = 85
+                                      buyM(itemId,pl)
+                                  } else if (id == 5) {
+                                      var itemId = 86
+                                      buyM(itemId,pl)
+                                  } else if (id == 6) {
+                                      var itemId = 87
+                                      buyM(itemId,pl)
+                                  } else if (id == 7) {
+                                      var itemId = 88
+                                      buyM(itemId,pl)
+                                  } else if (id == 8) {
+                                      var itemId = 89
+                                      buyM(itemId,pl)
+                                  } else if (id == 9) {
+                                      var itemId = 90
+                                      buyM(itemId,pl)
+                                  } else if (id == 10) {
+                                      var itemId = 91
+                                      buyM(itemId,pl)
+                                  } else if (id == 11) {
+                                      var itemId = 92
+                                      buyM(itemId,pl)
+                                  } else if (id == 12) {
+                                      var itemId = 93
+                                      buyM(itemId,pl)
+                                  } else if (id == 13) {
+                                      var itemId = 94
+                                      buyM(itemId,pl)
+                                  } else if (id == 14) {
+                                      var itemId = 95
+                                      buyM(itemId,pl)
+                                  }
+                              })
+                            } else if (id == 4){
+                              pl.sendForm(glass,(pl,id)=>{
+                                  if (id == 0) {
+                                      var itemId = 96
+                                      buyM(itemId,pl)
+                                  } else if (id == 1) {
+                                      var itemId = 97
+                                      buyM(itemId,pl)
+                                  } else if (id == 2) {
+                                      var itemId = 98
+                                      buyM(itemId,pl)
+                                  } else if (id == 3) {
+                                      var itemId = 99
+                                      buyM(itemId,pl)
+                                  } else if (id == 4) {
+                                      var itemId = 100
+                                      buyM(itemId,pl)
+                                  } else if (id == 5) {
+                                      var itemId = 101
+                                      buyM(itemId,pl)
+                                  } else if (id == 6) {
+                                      var itemId = 102
+                                      buyM(itemId,pl)
+                                  } else if (id == 7) {
+                                      var itemId = 103
+                                      buyM(itemId,pl)
+                                  } else if (id == 8) {
+                                      var itemId = 104
+                                      buyM(itemId,pl)
+                                  } else if (id == 9) {
+                                      var itemId = 105
+                                      buyM(itemId,pl)
+                                  } else if (id == 10) {
+                                      var itemId = 106
+                                      buyM(itemId,pl)
+                                  } else if (id == 11) {
+                                      var itemId = 107
+                                      buyM(itemId,pl)
+                                  } else if (id == 12) {
+                                      var itemId = 108
+                                      buyM(itemId,pl)
+                                  } else if (id == 13) {
+                                      var itemId = 109
+                                      buyM(itemId,pl)
+                                  } else if (id == 14) {
+                                      var itemId = 110
+                                      buyM(itemId,pl)
+                                  } else if (id == 15) {
+                                      var itemId = 111
+                                      buyM(itemId,pl)
+                                  } else if (id == 16) {
+                                      var itemId = 112
+                                      buyM(itemId,pl)
+                                  } else if (id == 17) {
+                                      var itemId = 113
+                                      buyM(itemId,pl)
+                                  }
+                              })
+                            }
+                          })
+                      } else if (id ==4){
+                          pl.sendForm(others,(pl,id) => {
+                              if (id == 0) {
+                                  var itemId = 255
+                                  buyM(itemId,pl)
+                              } else if (id == 1) {
+                                  var itemId = 256
+                                  buyM(itemId,pl)
+                              } else if (id == 2) {
+                                  var itemId = 257
+                                  buyM(itemId,pl)
+                              } else if (id == 3) {
+                                  var itemId = 258
+                                  buyM(itemId,pl)
+                              } else if (id == 4) {
+                                  var itemId = 259
+                                  buyM(itemId,pl)
+                              } else if (id == 5) {
+                                  var itemId = 260
+                                  buyM(itemId,pl)
+                              } else if (id == 6) {
+                                  var itemId = 261
+                                  buyM(itemId,pl)
+                              } else if (id == 7) {
+                                  var itemId = 262
+                                  buyM(itemId,pl)
+                              } else if (id == 8) {
+                                  var itemId = 263
+                                  buyM(itemId,pl)
+                              } else if (id == 9) {
+                                  var itemId = 264
+                                  buyM(itemId,pl)
+                              } else if (id == 10) {
+                                  var itemId = 265
+                                  buyM(itemId,pl)
+                              }
+                          })
+                      } else if (id == 5){
+                          pl.sendForm(egg,(pl,id) => {
+                              if (id == 0) {
+                                  var itemId = 114
+                                  buyM(itemId,pl)
+                              } else if (id == 1) {
+                                  var itemId = 115
+                                  buyM(itemId,pl)
+                              } else if (id == 2) {
+                                  var itemId = 116
+                                  buyM(itemId,pl)
+                              } else if (id == 3) {
+                                  var itemId = 117
+                                  buyM(itemId,pl)
+                              } else if (id == 4) {
+                                  var itemId = 118
+                                  buyM(itemId,pl)
+                              } else if (id == 5) {
+                                  var itemId = 119
+                                  buyM(itemId,pl)
+                              } else if (id == 6) {
+                                  var itemId = 120
+                                  buyM(itemId,pl)
+                              } else if (id == 7) {
+                                  var itemId = 121
+                                  buyM(itemId,pl)
+                              } else if (id == 8) {
+                                  var itemId = 122
+                                  buyM(itemId,pl)
+                              } else if (id == 9) {
+                                  var itemId = 123
+                                  buyM(itemId,pl)
+                              } else if (id == 10) {
+                                  var itemId = 124
+                                  buyM(itemId,pl)
+                              } else if (id == 11) {
+                                  var itemId = 125
+                                  buyM(itemId,pl)
+                              } else if (id == 12) {
+                                  var itemId = 126
+                                  buyM(itemId,pl)
+                              } else if (id == 13) {
+                                  var itemId = 127
+                                  buyM(itemId,pl)
+                              } else if (id == 14) {
+                                  var itemId = 128
+                                  buyM(itemId,pl)
+                              } else if (id == 15) {
+                                  var itemId = 129
+                                  buyM(itemId,pl)
+                              } else if (id == 16) {
+                                  var itemId = 130
+                                  buyM(itemId,pl)
+                              } else if (id == 17) {
+                                  var itemId = 131
+                                  buyM(itemId,pl)
+                              } else if (id == 18) {
+                                  var itemId = 132
+                                  buyM(itemId,pl)
+                              } else if (id == 19) {
+                                  var itemId = 133
+                                  buyM(itemId,pl)
+                              } else if (id == 20) {
+                                  var itemId = 134
+                                  buyM(itemId,pl)
+                              } else if (id == 21) {
+                                  var itemId = 135
+                                  buyM(itemId,pl)
+                              } else if (id == 22) {
+                                  var itemId = 136
+                                  buyM(itemId,pl)
+                              } else if (id == 23) {
+                                  var itemId = 137
+                                  buyM(itemId,pl)
+                              } else if (id == 24) {
+                                  var itemId = 138
+                                  buyM(itemId,pl)
+                              } else if (id == 25) {
+                                  var itemId = 139
+                                  buyM(itemId,pl)
+                              } else if (id == 26) {
+                                  var itemId = 140
+                                  buyM(itemId,pl)
+                              } else if (id == 27) {
+                                  var itemId = 141
+                                  buyM(itemId,pl)
+                              } else if (id == 28) {
+                                  var itemId = 142
+                                  buyM(itemId,pl)
+                              } else if (id == 29) {
+                                  var itemId = 143
+                                  buyM(itemId,pl)
+                              } else if (id == 30) {
+                                  var itemId = 144
+                                  buyM(itemId,pl)
+                              } else if (id == 31) {
+                                  var itemId = 145
+                                  buyM(itemId,pl)
+                              } else if (id == 32) {
+                                  var itemId = 146
+                                  buyM(itemId,pl)
+                              } else if (id == 33) {
+                                  var itemId = 147
+                                  buyM(itemId,pl)
+                              } else if (id == 34) {
+                                  var itemId = 148
+                                  buyM(itemId,pl)
+                              } else if (id == 35) {
+                                  var itemId = 149
+                                  buyM(itemId,pl)
+                              } else if (id == 36) {
+                                  var itemId = 150
+                                  buyM(itemId,pl)
+                              } else if (id == 37) {
+                                  var itemId = 151
+                                  buyM(itemId,pl)
+                              } else if (id == 38) {
+                                  var itemId = 152
+                                  buyM(itemId,pl)
+                              } else if (id == 39) {
+                                  var itemId = 153
+                                  buyM(itemId,pl)
+                              } else if (id == 40) {
+                                  var itemId = 154
+                                  buyM(itemId,pl)
+                              } else if (id == 41) {
+                                  var itemId = 155
+                                  buyM(itemId,pl)
+                              }
+                          })
+                      }
             })
               } else if (id ==1){
                 pl.sendForm(sell,(pl,id)=>{
