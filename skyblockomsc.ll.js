@@ -2786,6 +2786,7 @@ mc.listen('onJoin',(pl) => {
         pl.setScore('playHours',0)
         pl.setScore('playMin',0)
         pl.setScore('playSec',0)
+        pl.setScore('fly', 1)
         pl.addTag('first')
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
         log(pl.realName + '首次加入伺服器')
@@ -2901,8 +2902,8 @@ mc.listen("onJoin",(pl) => {
 //ScoreBoard
 mc.listen('onServerStarted',() => {
     mc.regConsoleCmd('score','加載計分板',() => {
-        var score = ['money','level','playSec','playMin','playHours','playDays','score','antispam','antispam2','daily','point','ownercoins','spin1','spin2','spin3','spin4','spin5','spin6','spin7','bossbar']
-        var score_name = ['空島SC幣','等級','秒','分','小時','天','開關計分板','防刷屏','防刷屏2','簽到','點數','服主幣','spin1','spin2','spin3','spin4','spin5','spin6','spin7','bossbar']
+        var score = ['money','level','playSec','playMin','playHours','playDays','score','antispam','antispam2','daily','point','ownercoins','spin1','spin2','spin3','spin4','spin5','spin6','spin7','bossbar','fly']
+        var score_name = ['空島SC幣','等級','秒','分','小時','天','開關計分板','防刷屏','防刷屏2','簽到','點數','服主幣','spin1','spin2','spin3','spin4','spin5','spin6','spin7','bossbar','fly']
         var a = 0
         if (score.length == score_name.length) {
             while (a < score.length) {
@@ -4924,4 +4925,25 @@ mc.listen('onJoin',(pl) => {
             }
         })
     }
+})
+
+//飛行
+mc.listen("onServerStarted",() => {
+    var cmd = mc.newCommand('fly','§l§e開關飛行',PermType.Any)
+    cmd.overload()
+    cmd.setCallback((_cmd,ori,_out,_res) => {
+        var pl = ori.player
+        if (pl.hasTag('donate') || pl.hasTag('mvpp') || pl.hasTag('yt') || pl.hasTag('team')) {
+            if (pl.getScore('fly') == 0) {
+                pl.setAbility(1,true)
+                pl.tell('§l§a成功開啟飛行')
+            } else if (pl.getScore('fly') == 1) {
+                pl.setAbility(1,false)
+                pl.tell('§l§c成功關閉飛行')
+            }
+        } else {
+            pl.tell('§l§c你沒有權限使用飛行')
+        }
+    })
+    cmd.setup()
 })
