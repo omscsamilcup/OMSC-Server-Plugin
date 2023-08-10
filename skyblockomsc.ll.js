@@ -4909,23 +4909,6 @@ mc.listen('onServerStarted',() => {
     })
     cmd.setup()
 })
-//密碼系統
-mc.listen('onJoin',(pl) => {
-    var fm = mc.newCustomForm()
-    fm.setTitle('§l§c伺服器管理員驗證系統')
-    fm.addInput('§l§e請輸入伺服器團隊管理密碼','§l§e請輸入伺服器團隊管理密碼')
-    if (pl.isOP()) {
-        pl.sendForm(fm,(pl,data) => {
-            if (data[0] == 'omscteamtop') {
-                pl.tell('§l§a密碼正確，你已成功登入你的管理員帳號')
-            } else if (data[0] == 'Null') {
-                pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
-            } else if (data[0] != 'omscteamtop') {
-                pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
-            }
-        })
-    }
-})
 
 //飛行
 mc.listen("onServerStarted",() => {
@@ -4935,11 +4918,13 @@ mc.listen("onServerStarted",() => {
         var pl = ori.player
         if (pl.hasTag('donate') || pl.hasTag('mvpp') || pl.hasTag('yt') || pl.hasTag('team')) {
             if (pl.getScore('fly') == 0) {
-                pl.setAbility(1,true)
+                pl.setAbility(10,true)
                 pl.tell('§l§a成功開啟飛行')
+                pl.setScore('fly', 1)
             } else if (pl.getScore('fly') == 1) {
-                pl.setAbility(1,false)
+                pl.setAbility(10,false)
                 pl.tell('§l§c成功關閉飛行')
+                pl.setScore('fly', 0)
             }
         } else {
             pl.tell('§l§c你沒有權限使用飛行')
@@ -4950,9 +4935,8 @@ mc.listen("onServerStarted",() => {
 
 //belowname
 setInterval(() => {
-    var pls = mc.getOnlinePlayers()
-    for (pl in pls) {
-        var pl = pls[pl]
+    mc.getOnlinePlayers().forEach(pls => {
+        var pl = pls
         var dv = pl.getDevice()
         var os = dv.os
         var ping = dv.avgPing
@@ -4965,5 +4949,5 @@ setInterval(() => {
         } 
         
         pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b<\n§b>§eLv.' + pl.getScore('level') + '§b<')
-    }
+    })
 },1000)
