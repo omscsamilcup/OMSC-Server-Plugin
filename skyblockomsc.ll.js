@@ -2793,7 +2793,7 @@ mc.listen('onJoin',(pl) => {
 
         var fm = mc.newSimpleForm()
         fm.setTitle('§l§c本§6伺§e服§a器§2條§b款')
-        fm.setContent('§l§b歡迎你加入OMSC伺服器\n§e我是本服的服主，杯子小以下是一些有關本伺服器的條款，請仔細閲讀！§d\n1.伺服器會在你每次進入伺服器時記錄下你的IP、使用設備和你的Xuid\n2.伺服器的所有系統基本上都是由插件製作，如果有發現任何Bug，但是不回報，玩家將會處以重罰\n3.任何色情言論/粗俗語言，玩家都會被封禁1天-永久天，根據次數決定\n4.非因爲伺服器的原因而導致物品消失，本服將不予賠償(本服有記錄)\n5伺服器禁止使用外挂，違規者將會被永久封禁\n5如玩家遭到管理員的惡意判罰，例如無理由封禁，玩家需要在一天内到Discord開"回報工單"否則不予處理\n\n伺服器Discord連結https://discord.gg/VMN3cgeUBd \n\n\n§6伺服器條款到這裏，如果玩家接受本服的條款請按"同意伺服器退款"，不同意請按"不同意伺服器條款"\n\n\n\n伺服器Discord:https://discord.gg/VMN3cgeUBd')
+        fm.setContent('§l§b歡迎你加入OMSC伺服器\n§e我是本服的服主杯子小，以下是一些有關本伺服器的條款，請仔細閲讀！§d\n1.伺服器會在你每次進入伺服器時記錄下你的IP、使用設備和你的Xuid\n2.伺服器的所有系統基本上都是由插件製作，如果有發現任何Bug，但是不回報，玩家將會處以重罰\n3.任何色情言論/粗俗語言，玩家都會被封禁1天-永久天，根據次數決定\n4.非因爲伺服器的原因而導致物品消失，本服將不予賠償(本服有記錄)\n5伺服器禁止使用外挂，違規者將會被永久封禁\n5如玩家遭到管理員的惡意判罰，例如無理由封禁，玩家需要在一天内到Discord開"回報工單"否則不予處理\n\n伺服器Discord連結https://discord.gg/VMN3cgeUBd \n\n\n§6伺服器條款到這裏，如果玩家接受本服的條款請按"同意伺服器退款"，不同意請按"不同意伺服器條款"\n\n\n\n伺服器Discord:https://discord.gg/VMN3cgeUBd')
         fm.addButton('§l§a同意伺服器條款')
         fm.addButton('§l§c不同意伺服器條款')
         pl.sendForm(fm,(pl,id) => {
@@ -2955,7 +2955,7 @@ mc.listen("onJoin",(pl) => {
 mc.listen('onJoin', function(player) {
     var ip = {}
     var dv = player.getDevice()
-    colorLog("yellow", `玩家${player.name}使用設備${dv.os},玩家IP是:${dv.ip},玩家加入是的延遲是${dv.avgPing}`)
+    colorLog("yellow", `玩家${player.realName}使用設備${dv.os},玩家IP是:${dv.ip},玩家加入是的延遲是${dv.avgPing}`)
 })
 
 //加入訊息
@@ -4916,12 +4916,12 @@ mc.listen('onJoin',(pl) => {
     fm.addInput('§l§e請輸入伺服器團隊管理密碼','§l§e請輸入伺服器團隊管理密碼')
     if (pl.isOP()) {
         pl.sendForm(fm,(pl,data) => {
-            if (data[0] == Null) {
+            if (data[0] == 'omscteamtop') {
+                pl.tell('§l§a密碼正確，你已成功登入你的管理員帳號')
+            } else if (data[0] == 'Null') {
                 pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
             } else if (data[0] != 'omscteamtop') {
                 pl.kick('§l§c你所輸入的密碼錯誤，你的管理員帳號被踢出了伺服器')
-            } else if (data[0] == 'omscteamtop') {
-                pl.tell('§l§a密碼正確，你已成功登入你的管理員帳號')
             }
         })
     }
@@ -4947,3 +4947,23 @@ mc.listen("onServerStarted",() => {
     })
     cmd.setup()
 })
+
+//belowname
+setInterval(() => {
+    var pls = mc.getOnlinePlayers()
+    for (pl in pls) {
+        var pl = pls[pl]
+        var dv = pl.getDevice()
+        var os = dv.os
+        var ping = dv.avgPing
+        if (ping < 110) {
+            ping = '§a' + ping
+        } else if (ping < 250) {
+            ping = '§e' + ping
+        } else if (ping >= 250) {
+            ping = '§c' + ping 
+        } 
+        
+        pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b<\n§b>§eLv.' + pl.getScore('level') + '§b<')
+    }
+},1000)
