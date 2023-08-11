@@ -3609,6 +3609,7 @@ mc.listen('onCmdBlockExecute',(isMinecart,pos) => {
 //返回大廳指令
 mc.listen('onServerStarted',() => {
     var cmd = mc.newCommand('hub','返回大廳',PermType.Any)
+    cmd.setAlias('lobby')
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
         ori.player.teleport(0,4,7,0)
@@ -4918,7 +4919,6 @@ mc.listen("onServerStarted",() => {
         var pl = ori.player
         if (pl.hasTag('donate') || pl.hasTag('mvpp') || pl.hasTag('yt') || pl.hasTag('team')) {
             if (pl.getScore('fly') == 0) {
-                pl.setAbility(10,true)
                 pl.tell('§l§a成功開啟飛行')
                 pl.setScore('fly', 1)
             } else if (pl.getScore('fly') == 1) {
@@ -4932,6 +4932,16 @@ mc.listen("onServerStarted",() => {
     })
     cmd.setup()
 })
+setInterval(() => { 
+    mc.getOnlinePlayers().forEach(pls => {
+        var pl = pls
+        if (pl.getScore('fly') == 1) {
+            pl.setAbility(10,true)
+        } else if (pl.getScore('fly') == 0) {
+            pl.setAbility(10,false)
+        }
+    })
+}, 1000);
 
 //belowname
 setInterval(() => {
@@ -4990,6 +5000,6 @@ setInterval(() => {
             }
         }
         
-        pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b>§9Rank:' +rank +'§b<\n§b>§eLv.' + pl.getScore('level') + '§b<')
+        pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b<\n§b>§9Rank:' +rank +'§b<\n§b>§eLv.' + pl.getScore('level') + '§b<')
     })
 },1000)
