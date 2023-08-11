@@ -2855,7 +2855,7 @@ mc.listen("onServerStarted",()=>{
             })
               } else if (id ==1){
                 pl.sendForm(sell,(pl,id)=>{
-                                      if (id == 0) {
+                    if (id == 0) {
                         pl.sendForm(block,(pl,id) => {
                             if (id == 0){
                                 pl.sendForm(dirt,(pl,id) => {
