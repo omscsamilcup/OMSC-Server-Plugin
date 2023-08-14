@@ -979,7 +979,7 @@ mc.listen("onServerStarted",()=>{
             player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
-    function purchaseItem_sell(player,itemId,quantity, item) {
+    function purchaseItem_sell(player,itemId, item) {
         var item = produts_sell.find((produts) => produts.id === itemId)
         let quantity = player.clearItem(`minecraft:${item}`)
         if (quantity < 1) {
@@ -2789,8 +2789,6 @@ mc.listen("onServerStarted",()=>{
                                               var itemId = 202
                                               buyM(itemId,pl)
                                           }
-                                      })
-                                      }
                                   })
                               } else if (id == 6){
                                   pl.sendForm(cct,(pl,id)=>{
@@ -2909,8 +2907,8 @@ mc.listen("onServerStarted",()=>{
                                       buyM(itemId,pl)
                                   }
                                 })
-                              }
-                          })
+                            }
+                        })
                       } else if(id == 1){
                           pl.sendForm(ore,(pl,id) => {
                               if (id == 0) {
@@ -3425,7 +3423,7 @@ mc.listen("onServerStarted",()=>{
                               }
                           })
                       }
-            })
+                  })
               } else if (id ==1){
                 pl.sendForm(sell,(pl,id)=>{
                     if (id == 0) {
@@ -3824,6 +3822,8 @@ mc.listen("onServerStarted",()=>{
                                 })
                               }
                           })
+                        }
+                        })
                       } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
                             if (id == 0) {
