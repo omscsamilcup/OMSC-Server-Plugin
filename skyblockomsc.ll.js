@@ -981,7 +981,7 @@ mc.listen("onServerStarted",()=>{
 
     function purchaseItem_sell(player,itemId,quantity, item) {
         var item = produts_sell.find((produts) => produts.id === itemId)
-        let quantity = pl.clearItem(`minecraft:${item}`)
+        let quantity = player.clearItem(`minecraft:${item}`)
         if (quantity < 1) {
             player.tell('你的物品數量不足，無法出售')
             if (item.id2 == 0) {
