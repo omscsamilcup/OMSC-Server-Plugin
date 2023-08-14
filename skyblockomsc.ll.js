@@ -687,7 +687,6 @@ mc.listen("onServerStarted",()=>{
         { id: 231, id2: 0, name: 'red_nether_brick', price: 20},
         { id: 232, id2: 0, name: 'end_stone', price: 5},
         { id: 233, id2: 0, name: 'chorus_flower', price: 3},
-        { id: 234, id2:0, name: 'chorus_plant',price: 5},
         { id: 234, id2: 0, name: 'end_bricks', price: 7},
         { id: 235, id2: 0, name: 'purpur_block', price: 7},
         { id: 236, id2: 2, name: 'purpur_block', price: 7},
@@ -840,73 +839,76 @@ mc.listen("onServerStarted",()=>{
         { id: 109, id2: 0, name: 'purple_wool', sellPrice:3 },
         { id: 110, id2: 0, name: 'magenta_wool', sellPrice:3 },
         { id: 111, id2: 0, name: 'pink_wool', sellPrice:3 },
-        { id: 112, id2: 0, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 113, id2: 8, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 114, id2: 7, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 115, id2: 15, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 116, id2: 12, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 117, id2: 14, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 118, id2: 1, name: 'stained_hardened_clay', sellPrice:6},
-        { id: 119, id2: 4, name: 'stained_hardened_clay', sellPrice:6},
-        { id: 120, id2: 5, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 121, id2: 13, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 122, id2: 9, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 123, id2: 3, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 124, id2: 11, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 125, id2: 10, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 126, id2: 2, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 127, id2: 6, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 128, id2: 0, name: 'white_glazed_terracotta', price: 10},
-        { id: 129, id2: 0, name: 'silver_glazed_terracotta', price: 10},
-        { id: 130, id2: 0, name: 'gray_glazed_terracotta', price: 10},
-        { id: 131, id2: 0, name: 'black_glazed_terracotta', price: 10},
-        { id: 132, id2: 0, name: 'brown_glazed_terracotta', price: 10},
-        { id: 133, id2: 0, name: 'red_glazed_terracotta', price: 10},
-        { id: 134, id2: 0, name: 'orange_glazed_terracotta', price: 10},
-        { id: 135, id2: 0, name: 'lime_glazed_terracotta', price: 10},
-        { id: 136, id2: 0, name: 'green_glazed_terracotta', price: 10},
-        { id: 137, id2: 0, name: 'cyan_glazed_terracotta', price: 10},
-        { id: 138, id2: 0, name: 'light_blue_glazed_terracotta', price: 10},
-        { id: 139, id2: 0, name: 'blue_glazed_terracotta', price: 10},
-        { id: 140, id2: 0, name: 'purple_glazed_terracotta', price: 10},
-        { id: 141, id2: 0, name: 'magenta_glazed_terracotta', price: 10},
-        { id: 142, id2: 0, name: 'pink_glazed_terracotta', price: 10},
-        { id: 143, id2: 0, name: 'white_concrete', price: 10},
-        { id: 144, id2: 0, name: 'light_gray_concrete', price: 10},
-        { id: 145, id2: 0, name: 'gray_concrete', price: 10},
-        { id: 146, id2: 0, name: 'black_concrete', price: 10},
-        { id: 147, id2: 0, name: 'brown_concrete', price: 10},
-        { id: 148, id2: 0, name: 'red_concrete', price: 10},
-        { id: 149, id2: 0, name: 'orange_concrete', price: 10},
-        { id: 150, id2: 0, name: 'yellow_concrete', price: 10},
-        { id: 151, id2: 0, name: 'lime_concrete', price: 10},
-        { id: 152, id2: 0, name: 'green_concrete', price: 10},
-        { id: 153, id2: 0, name: 'cyan_concrete', price: 10},
-        { id: 154, id2: 0, name: 'light_blue_concrete', price: 10},
-        { id: 155, id2: 0, name: 'blue_concrete', price: 10},
-        { id: 156, id2: 0, name: 'purple_concrete', price: 10},
-        { id: 157, id2: 0, name: 'magenta_concrete', price: 10},
-        { id: 158, id2: 0, name: 'pink_concrete', price: 10},
-        { id: 159, id2: 0, name: 'netherrack', price: 3},
-        { id: 160, id2: 0, name: 'soul_sand', price: 5},
-        { id: 161, id2: 0, name: 'magma', price: 8},
-        { id: 162, id2: 0, name: 'nether_wart_block', price: 45},
-        { id: 163, id2: 0, name: 'warped_wart_block', price: 45},
-        { id: 164, id2: 0, name: 'shroomlight', price: 5},
-        { id: 165, id2: 0, name: 'crimson_nylium', price: 5},
-        { id: 166, id2: 0, name: 'warped_nylium', price: 5},
-        { id: 167, id2: 0, name: 'mangrove_log', price: 5},
-        { id: 168, id2: 0, name: 'crimson_stem', price: 5},
-        { id: 169, id2: 0, name: 'warped_stem', price: 5},
-        { id: 170, id2: 0, name: 'nether_brick', price: 5},
-        { id: 171, id2: 0, name: 'red_nether_brick', price: 10},
-        { id: 172, id2: 0, name: 'end_stone', price: 3},
-        { id: 173, id2:0, name: 'chorus_plant',price: 1},
-        { id: 174, id2: 0, name: 'chorus_flower', price: 3},
-        { id: 175, id2: 0, name: 'end_bricks', price: 5},
-        { id: 176, id2: 0, name: 'purpur_block', price: 5},
-        { id: 177, id2: 2, name: 'purpur_block', price: 5},
+        { id: 112, id2: 0, name: 'hardened_clay', sellPrice:6 },
+        { id: 113, id2: 0, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 114, id2: 8, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 115, id2: 7, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 116, id2: 15, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 117, id2: 12, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 118, id2: 14, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 119, id2: 1, name: 'stained_hardened_clay', sellPrice:6},
+        { id: 120, id2: 4, name: 'stained_hardened_clay', sellPrice:6},
+        { id: 121, id2: 5, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 122, id2: 13, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 123, id2: 9, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 124, id2: 3, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 125, id2: 11, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 126, id2: 10, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 127, id2: 2, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 128, id2: 6, name: 'stained_hardened_clay', sellPrice:6 },
+        { id: 129, id2: 0, name: 'white_glazed_terracotta', price: 10},
+        { id: 130, id2: 0, name: 'silver_glazed_terracotta', price: 10},
+        { id: 131, id2: 0, name: 'gray_glazed_terracotta', price: 10},
+        { id: 132, id2: 0, name: 'black_glazed_terracotta', price: 10},
+        { id: 133, id2: 0, name: 'brown_glazed_terracotta', price: 10},
+        { id: 134, id2: 0, name: 'red_glazed_terracotta', price: 10},
+        { id: 135, id2: 0, name: 'orange_glazed_terracotta', price: 10},
+        { id: 136, id2: 0, name: 'lime_glazed_terracotta', price: 10},
+        { id: 137, id2: 0, name: 'green_glazed_terracotta', price: 10},
+        { id: 138, id2: 0, name: 'cyan_glazed_terracotta', price: 10},
+        { id: 139, id2: 0, name: 'light_blue_glazed_terracotta', price: 10},
+        { id: 140, id2: 0, name: 'blue_glazed_terracotta', price: 10},
+        { id: 141, id2: 0, name: 'purple_glazed_terracotta', price: 10},
+        { id: 142, id2: 0, name: 'magenta_glazed_terracotta', price: 10},
+        { id: 143, id2: 0, name: 'pink_glazed_terracotta', price: 10},
+        { id: 144, id2: 0, name: 'yellow_glazed_terracotta', price: 10},
+        { id: 145, id2: 0, name: 'white_concrete', price: 10},
+        { id: 146, id2: 0, name: 'light_gray_concrete', price: 10},
+        { id: 147, id2: 0, name: 'gray_concrete', price: 10},
+        { id: 148, id2: 0, name: 'black_concrete', price: 10},
+        { id: 149, id2: 0, name: 'brown_concrete', price: 10},
+        { id: 150, id2: 0, name: 'red_concrete', price: 10},
+        { id: 151, id2: 0, name: 'orange_concrete', price: 10},
+        { id: 152, id2: 0, name: 'yellow_concrete', price: 10},
+        { id: 153, id2: 0, name: 'lime_concrete', price: 10},
+        { id: 154, id2: 0, name: 'green_concrete', price: 10},
+        { id: 155, id2: 0, name: 'cyan_concrete', price: 10},
+        { id: 156, id2: 0, name: 'light_blue_concrete', price: 10},
+        { id: 157, id2: 0, name: 'blue_concrete', price: 10},
+        { id: 158, id2: 0, name: 'purple_concrete', price: 10},
+        { id: 159, id2: 0, name: 'magenta_concrete', price: 10},
+        { id: 160, id2: 0, name: 'pink_concrete', price: 10},
+        { id: 161, id2: 0, name: 'netherrack', price: 3},
+        { id: 162, id2: 0, name: 'soul_sand', price: 5},
+        { id: 163, id2: 0, name: 'magma', price: 8},
+        { id: 164, id2: 0, name: 'nether_wart_block', price: 45},
+        { id: 165, id2: 0, name: 'warped_wart_block', price: 45},
+        { id: 166, id2: 0, name: 'shroomlight', price: 5},
+        { id: 167, id2: 0, name: 'crimson_nylium', price: 5},
+        { id: 168, id2: 0, name: 'warped_nylium', price: 5},
+        { id: 169, id2: 0, name: 'mangrove_log', price: 5},
+        { id: 170, id2: 0, name: 'crimson_stem', price: 5},
+        { id: 171, id2: 0, name: 'warped_stem', price: 5},
+        { id: 172, id2: 0, name: 'nether_brick', price: 5},
+        { id: 173, id2: 0, name: 'red_nether_brick', price: 10},
+        { id: 174, id2: 0, name: 'end_stone', price: 3},
+        { id: 175, id2:0, name: 'chorus_plant',price: 1},
+        { id: 176, id2: 0, name: 'chorus_flower', price: 3},
+        { id: 177, id2: 0, name: 'end_bricks', price: 5},
+        { id: 178, id2: 0, name: 'purpur_block', price: 5},
+        { id: 179, id2: 2, name: 'purpur_block', price: 5},
     ]      
+
     function buyM(itemId,pl) {
         var item = produts_buy.find((produts) => produts.id === itemId)
         var buyMenu = mc.newCustomForm()
@@ -941,7 +943,7 @@ mc.listen("onServerStarted",()=>{
         sellMenu.setTitle('賣東西')
         sellMenu.addLabel(`物品名稱§l§a${item.name}`)
         sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
-        buyMenu.addInput('賣出數量')
+        sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
         if (!item) {
             player.tell('該商品不存在!')
             return
@@ -950,22 +952,17 @@ mc.listen("onServerStarted",()=>{
             sellMenu.setTitle('賣東西')
             sellMenu.addLabel(`物品名稱§l§a${item.name}`)
             sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
-            buyMenu.addInput('賣出數量')
-            pl.sendForm(sellMenu,(pl,data) => {
+            sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
+            pl.sendForm(sellMenu,(pl,_data) => {
                 var player = pl
-                var quantity = parseInt(data[2])
-                if (isNaN(quantity) || quantity <= 0) {
-                    pl.tell('§l§c請輸入正確的數字')
-                } else {
-                    purchaseItem_sell(player,itemId, quantity,item)
-                }
+                purchaseItem_sell(player,itemId,item)
             })
         }
     }
 
 
     //function
-    function purchaseItem_buy(player,itemId,quantity, item) {
+    function purchaseItem_buy(player,itemId, item) {
         var item = produts_buy.find((produts) => produts.id === itemId)
         var playerCurrency = player.getScore('money')
         var totalPrice = item.price * quantity
@@ -977,26 +974,26 @@ mc.listen("onServerStarted",()=>{
         if (item.id2 == 0) {
             mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
         } else {
-            mc.runcmd(`give ${player.name} ${item.name} ${quantity} ${item.id2}`)
+            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity} ${item.id2}`)
         }
-        player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
+            player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
     function purchaseItem_sell(player,itemId,quantity, item) {
-        var item = produts_buy.find((produts) => produts.id === itemId)
-        var playerCurrency = player.getScore('money')
-        var totalPrice = item.price * quantity
-        if (playerCurrency < totalPrice) {
-            player.tell("§l§cyou don't have enough money to buy")
-            return
+        var item = produts_sell.find((produts) => produts.id === itemId)
+        let quantity = pl.clearItem(`minecraft:${item}`)
+        if (quantity < 1) {
+            player.tell('你的物品數量不足，無法出售')
+            if (item.id2 == 0) {
+                mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
+            } else {
+                mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity} ${item.id2}`)
+            }
+        } else if (quantity >= 1) {
+            let earn = quantity * item.price
+            player.tell(`你已成功出售該物品x${quantity}，及獲得${earn}元`)
+            player.addScore('money',earn)
         }
-        player.reduceScore("money",totalPrice)
-        if (item.id2 == 0) {
-            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
-        } else {
-            mc.runcmd(`give ${player.name} ${item.name} ${quantity} ${item.id2}`)
-        }
-        player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
     var cmd = mc.newCommand('shop','商店',PermType.Any)
@@ -1924,55 +1921,594 @@ mc.listen("onServerStarted",()=>{
                   pl.sendForm(block,(pl,id) => {
                       if (id == 0){
                           pl.sendForm(dirt,(pl,id) => {
-    
+                            if (id == 0) {
+                                var itemId = 1
+                                sellM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 2
+                                sellM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 3
+                                sellM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 4
+                                sellM(itemId,pl)
+                            }
                           })
                       } else if (id == 1){
                           pl.sendForm(sand,(pl,id) => {
-    
+                            if (id == 0) {
+                                var itemId = 5
+                                sellM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 6
+                                sellM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 7
+                                sellM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 8
+                                sellM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 9
+                                sellM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 10
+                                sellM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 11
+                                sellM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 12
+                                sellM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 13
+                                sellM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 14
+                                sellM(itemId,pl)
+                            }
                           })
                       } else if (id == 2){
                           pl.sendForm(log,(pl,id) => {
-    
+                            if (id == 0) {
+                                var itemId = 15
+                                sellM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 2
+                                sellM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 17
+                                sellM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 18
+                                sellM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 19
+                                sellM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 20
+                                sellM(itemId,pl)
+                            }
                           })
                       } else if (id == 3){
                           pl.sendForm(stone,(pl,id) => {
-    
+                            if (id == 0) {
+                                var itemId = 21
+                                sellM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 22
+                                sellM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 23
+                                sellM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 24
+                                sellM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 25
+                                sellM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 26
+                                sellM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 27
+                                sellM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 28
+                                sellM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 29
+                                sellM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 30
+                                sellM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 31
+                                sellM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 32
+                                sellM(itemId,pl)
+                            }
                           })
                       } else if (id == 4){
                           pl.sendForm(wool,(pl,id) => {
-    
+                            if (id == 0) {
+                                var itemId = 96
+                                sellM(itemId,pl)
+                            }else if (id == 1) {
+                                var itemId = 97
+                                sellM(itemId,pl)
+                            }else if (id == 2) {
+                                var itemId = 98
+                                sellM(itemId,pl)
+                            }else if (id == 3) {
+                                var itemId = 99
+                                sellM(itemId,pl)
+                            }else if (id == 4) {
+                                var itemId = 100
+                                sellM(itemId,pl)
+                            }else if (id == 5) {
+                                var itemId = 101
+                                sellM(itemId,pl)
+                            }else if (id == 6) {
+                                var itemId = 102
+                                sellM(itemId,pl)
+                            }else if (id == 7) {
+                                var itemId = 103
+                                sellM(itemId,pl)
+                            }else if (id == 8) {
+                                var itemId = 104
+                                sellM(itemId,pl)
+                            }else if (id == 9) {
+                                var itemId = 105
+                                sellM(itemId,pl)
+                            }else if (id == 10) {
+                                var itemId = 107
+                                sellM(itemId,pl)
+                            }else if (id == 11) {
+                                var itemId = 107
+                                sellM(itemId,pl)
+                            }else if (id == 12) {
+                                var itemId = 108
+                                sellM(itemId,pl)
+                            }else if (id == 13) {
+                                var itemId = 109
+                                sellM(itemId,pl)
+                            }else if (id == 14) {
+                                var itemId = 110
+                                sellM(itemId,pl)
+                            }else if (id == 15) {
+                                var itemId = 111
+                                sellM(itemId,pl)
+                            }
                           })
                       } else if (id == 5){
                           pl.sendForm(tr,(pl,id) => {
                               if (id == 0){
                                   pl.sendForm(ttr,(pl,id) => {
-    
+                                    if (id == 0) {
+                                        var itemId = 112
+                                        sellM(itemId,pl)
+                                    } else if (id == 1) {
+                                        var itemId = 113
+                                        sellM(itemId,pl)
+                                    } else if (id == 2) {
+                                        var itemId = 114
+                                        sellM(itemId,pl)
+                                    } else if (id == 3) {
+                                        var itemId = 115
+                                        sellM(itemId,pl)
+                                    } else if (id == 4) {
+                                        var itemId = 116
+                                        sellM(itemId,pl)
+                                    } else if (id == 5) {
+                                        var itemId = 117
+                                        sellM(itemId,pl)
+                                    } else if (id == 6) {
+                                        var itemId = 118
+                                        sellM(itemId,pl)
+                                    } else if (id == 7) {
+                                        var itemId = 119
+                                        sellM(itemId,pl)
+                                    } else if (id == 8) {
+                                        var itemId = 120
+                                        sellM(itemId,pl)
+                                    } else if (id == 9) {
+                                        var itemId = 121
+                                        sellM(itemId,pl)
+                                    } else if (id == 10) {
+                                        var itemId = 122
+                                        sellM(itemId,pl)
+                                    } else if (id == 11) {
+                                        var itemId = 123
+                                        sellM(itemId,pl)
+                                    } else if (id == 12) {
+                                        var itemId = 124
+                                        sellM(itemId,pl)
+                                    } else if (id == 13) {
+                                        var itemId = 125
+                                        sellM(itemId,pl)
+                                    } else if (id == 14) {
+                                        var itemId = 126
+                                        sellM(itemId,pl)
+                                    } else if (id == 15) {
+                                        var itemId = 127
+                                        sellM(itemId,pl)
+                                    } else if (id == 16) {
+                                        var itemId = 128
+                                        sellM(itemId,pl)
+                                    } 
                                   })
                               } else if (id == 1){
                               pl.sendForm(etr,(pl,id)=> {
-                                
+                                if (id == 0) {
+                                    var itemId = 129
+                                    sellM(itemId,pl)
+                                }else if (id == 1) {
+                                    var itemId = 130
+                                    sellM(itemId,pl)
+                                }else if (id == 2) {
+                                    var itemId = 131
+                                    sellM(itemId,pl)
+                                }else if (id == 3) {
+                                    var itemId = 132
+                                    sellM(itemId,pl)
+                                }else if (id == 4) {
+                                    var itemId = 133
+                                    sellM(itemId,pl)
+                                }else if (id == 5) {
+                                    var itemId = 134
+                                    sellM(itemId,pl)
+                                }else if (id == 6) {
+                                    var itemId = 135
+                                    sellM(itemId,pl)
+                                }else if (id == 7) {
+                                    var itemId = 136
+                                    sellM(itemId,pl)
+                                }else if (id == 8) {
+                                    var itemId = 144
+                                    sellM(itemId,pl)
+                                }else if (id == 9) {
+                                    var itemId = 137
+                                    sellM(itemId,pl)
+                                }else if (id == 10) {
+                                    var itemId = 138
+                                    sellM(itemId,pl)
+                                }else if (id == 11) {
+                                    var itemId = 139
+                                    sellM(itemId,pl)
+                                }else if (id == 12) {
+                                    var itemId = 140
+                                    sellM(itemId,pl)
+                                }else if (id == 13) {
+                                    var itemId = 141
+                                    sellM(itemId,pl)
+                                }else if (id == 14) {
+                                    var itemId = 142
+                                    sellM(itemId,pl)
+                                }else if (id == 15) {
+                                    var itemId = 143
+                                    sellM(itemId,pl)
+                                }
                               })
                               }
                           })
                       } else if (id == 6){
                       pl.sendForm(cct,(pl,id)=>{
-                        
+                        if (id == 0) {
+                            var itemId = 145
+                            sellM(itemId,pl)
+                        } else if (id == 1) {
+                            var itemId = 146
+                            sellM(itemId,pl)
+                        }else if (id == 2) {
+                            var itemId = 147
+                            sellM(itemId,pl)
+                        }else if (id == 3) {
+                            var itemId = 148
+                            sellM(itemId,pl)
+                        }else if (id == 4) {
+                            var itemId = 149
+                            sellM(itemId,pl)
+                        }else if (id == 5) {
+                            var itemId = 150
+                            sellM(itemId,pl)
+                        }else if (id == 6) {
+                            var itemId = 151
+                            sellM(itemId,pl)
+                        }else if (id == 7) {
+                            var itemId = 152
+                            sellM(itemId,pl)
+                        }else if (id == 8) {
+                            var itemId = 153
+                            sellM(itemId,pl)
+                        }else if (id == 9) {
+                            var itemId = 154
+                            sellM(itemId,pl)
+                        }else if (id == 10) {
+                            var itemId = 155
+                            sellM(itemId,pl)
+                        }else if (id == 11) {
+                            var itemId = 156
+                            sellM(itemId,pl)
+                        }else if (id == 12) {
+                            var itemId = 157
+                            sellM(itemId,pl)
+                        }else if (id == 13) {
+                            var itemId = 158
+                            sellM(itemId,pl)
+                        }else if (id == 14) {
+                            var itemId = 159
+                            sellM(itemId,pl)
+                        }else if (id == 15) {
+                            var itemId = 160
+                            sellM(itemId,pl)
+                        }
                       })  
                       } else if (id == 7){
                         pl.sendForm(nth,(pl,id)=>{
-                          
+                            if (id == 0) {
+                                var itemId = 161
+                                sellM(itemId,pl)
+                            }else if (id == 1) {
+                                var itemId = 162
+                                sellM(itemId,pl)
+                            }else if (id == 2) {
+                                var itemId = 163
+                                sellM(itemId,pl)
+                            }else if (id == 3) {
+                                var itemId = 164
+                                sellM(itemId,pl)
+                            }else if (id == 4) {
+                                var itemId = 165
+                                sellM(itemId,pl)
+                            }else if (id == 5) {
+                                var itemId = 166
+                                sellM(itemId,pl)
+                            }else if (id == 6) {
+                                var itemId = 167
+                                sellM(itemId,pl)
+                            }else if (id == 7) {
+                                var itemId = 168
+                                sellM(itemId,pl)
+                            }else if (id == 8) {
+                                var itemId = 169
+                                sellM(itemId,pl)
+                            }else if (id == 9) {
+                                var itemId = 170
+                                sellM(itemId,pl)
+                            }else if (id == 10) {
+                                var itemId = 171
+                                sellM(itemId,pl)
+                            }else if (id == 11) {
+                                var itemId = 172
+                                sellM(itemId,pl)
+                            }else if (id == 12) {
+                                var itemId = 173
+                                sellM(itemId,pl)
+                            }
                         })
                       } else if (id == 8){
                         pl.sendForm(end,(pl,id)=>{
-                          
+                            if (id == 0) {
+                                var itemId = 174
+                                sellM(itemId,pl)
+                            }else if (id == 1) {
+                                var itemId = 175
+                                sellM(itemId,pl)
+                            }else if (id == 2) {
+                                var itemId = 176
+                                sellM(itemId,pl)
+                            }else if (id == 3) {
+                                var itemId = 177
+                                sellM(itemId,pl)
+                            }else if (id == 4) {
+                                var itemId = 178
+                                sellM(itemId,pl)
+                            }else if (id == 5) {
+                                var itemId = 179
+                                sellM(itemId,pl)
+                            }
                         })
                       }
                   })
               } else if(id == 1){
                 pl.sendForm(ore,(pl,id) => {
+                    if (id == 0) {
+                        var itemId = 33
+                        buyM(itemId,pl)
+                    } else if (id == 1) {
+                        var itemId = 34
+                        buyM(itemId,pl)
+                    } else if (id == 2) {
+                        var itemId = 35
+                        buyM(itemId,pl)
+                    } else if (id == 3) {
+                        var itemId = 36
+                        buyM(itemId,pl)
+                    } else if (id == 4) {
+                        var itemId = 37
+                        buyM(itemId,pl)
+                    } else if (id == 5) {
+                        var itemId = 38
+                        buyM(itemId,pl)
+                    } else if (id == 6) {
+                        var itemId = 39
+                        buyM(itemId,pl)
+                    } else if (id == 7) {
+                        var itemId = 40
+                        buyM(itemId,pl)
+                    } else if (id == 8) {
+                        var itemId = 41
+                        buyM(itemId,pl)
+                    } else if (id == 9) {
+                        var itemId = 42
+                        buyM(itemId,pl)
+                    } else if (id == 10) {
+                        var itemId = 43
+                        buyM(itemId,pl)
+                    } else if (id == 11) {
+                        var itemId = 44
+                        buyM(itemId,pl)
+                    } else if (id == 12) {
+                        var itemId = 45
+                        buyM(itemId,pl)
+                    } else if (id == 13) {
+                        var itemId = 46
+                        buyM(itemId,pl)
+                    } else if (id == 14) {
+                        var itemId = 47
+                        buyM(itemId,pl)
+                    } else if (id == 15) {
+                        var itemId = 48
+                        buyM(itemId,pl)
+                    } else if (id == 16) {
+                        var itemId = 49
+                        buyM(itemId,pl)
+                    } else if (id == 17) {
+                        var itemId = 50
+                        buyM(itemId,pl)
+                    } else if (id == 18) {
+                        var itemId = 51
+                        buyM(itemId,pl)
+                    } else if (id == 19) {
+                        var itemId = 52
+                        buyM(itemId,pl)
+                    } else if (id == 20) {
+                        var itemId = 53 
+                        buyM(itemId,pl)
+                    }
                   })
               } else if(id == 2){
                 pl.sendForm(egg,(pl,id) => {
+                    if (id == 0) {
+                        var itemId = 54
+                        buyM(itemId,pl)
+                    } else if (id == 1) {
+                        var itemId = 55
+                        buyM(itemId,pl)
+                    } else if (id == 2) {
+                        var itemId = 56
+                        buyM(itemId,pl)
+                    } else if (id == 3) {
+                        var itemId = 57
+                        buyM(itemId,pl)
+                    } else if (id == 4) {
+                        var itemId = 58
+                        buyM(itemId,pl)
+                    } else if (id == 5) {
+                        var itemId = 59
+                        buyM(itemId,pl)
+                    } else if (id == 6) {
+                        var itemId = 60
+                        buyM(itemId,pl)
+                    } else if (id == 7) {
+                        var itemId = 61
+                        buyM(itemId,pl)
+                    } else if (id == 8) {
+                        var itemId = 62
+                        buyM(itemId,pl)
+                    } else if (id == 9) {
+                        var itemId = 63
+                        buyM(itemId,pl)
+                    } else if (id == 10) {
+                        var itemId = 64
+                        buyM(itemId,pl)
+                    } else if (id == 11) {
+                        var itemId = 65
+                        buyM(itemId,pl)
+                    } else if (id == 12) {
+                        var itemId = 66
+                        buyM(itemId,pl)
+                    } else if (id == 13) {
+                        var itemId = 67
+                        buyM(itemId,pl)
+                    } else if (id == 14) {
+                        var itemId = 68
+                        buyM(itemId,pl)
+                    } else if (id == 15) {
+                        var itemId = 69
+                        buyM(itemId,pl)
+                    } else if (id == 16) {
+                        var itemId = 70
+                        buyM(itemId,pl)
+                    } else if (id == 17) {
+                        var itemId = 71
+                        buyM(itemId,pl)
+                    } else if (id == 18) {
+                        var itemId = 72
+                        buyM(itemId,pl)
+                    } else if (id == 19) {
+                        var itemId = 73
+                        buyM(itemId,pl)
+                    } else if (id == 20) {
+                        var itemId = 74
+                        buyM(itemId,pl)
+                    } else if (id == 21) {
+                        var itemId = 75
+                        buyM(itemId,pl)
+                    } else if (id == 22) {
+                        var itemId = 76
+                        buyM(itemId,pl)
+                    } else if (id == 23) {
+                        var itemId = 77
+                        buyM(itemId,pl)
+                    } else if (id == 24) {
+                        var itemId = 78
+                        buyM(itemId,pl)
+                    } else if (id == 25) {
+                        var itemId = 79
+                        buyM(itemId,pl)
+                    } else if (id == 26) {
+                        var itemId = 80
+                        buyM(itemId,pl)
+                    } else if (id == 27) {
+                        var itemId = 81
+                        buyM(itemId,pl)
+                    } else if (id == 28) {
+                        var itemId = 82
+                        buyM(itemId,pl)
+                    } else if (id == 29) {
+                        var itemId = 83
+                        buyM(itemId,pl)
+                    } else if (id == 30) {
+                        var itemId = 84
+                        buyM(itemId,pl)
+                    } else if (id == 31) {
+                        var itemId = 85
+                        buyM(itemId,pl)
+                    } else if (id == 32) {
+                        var itemId = 86
+                        buyM(itemId,pl)
+                    } else if (id == 33) {
+                        var itemId = 87
+                        buyM(itemId,pl)
+                    } else if (id == 34) {
+                        var itemId = 88
+                        buyM(itemId,pl)
+                    } else if (id == 35) {
+                        var itemId = 89
+                        buyM(itemId,pl)
+                    } else if (id == 36) {
+                        var itemId = 90
+                        buyM(itemId,pl)
+                    } else if (id == 37) {
+                        var itemId = 91
+                        buyM(itemId,pl)
+                    } else if (id == 38) {
+                        var itemId = 92
+                        buyM(itemId,pl)
+                    } else if (id == 39) {
+                        var itemId = 93
+                        buyM(itemId,pl)
+                    } else if (id == 40) {
+                        var itemId = 94
+                        buyM(itemId,pl)
+                    } else if (id == 41) {
+                        var itemId = 95
+                        buyM(itemId,pl)
+                    }
                   })
               }
               })
@@ -2896,58 +3432,595 @@ mc.listen("onServerStarted",()=>{
                         pl.sendForm(block,(pl,id) => {
                             if (id == 0){
                                 pl.sendForm(dirt,(pl,id) => {
-
-                                })
-                            } else if (id == 1){
-                                pl.sendForm(sand,(pl,id) => {
-
-                                })
-                            } else if (id == 2){
-                                pl.sendForm(log,(pl,id) => {
-
-                                })
-                            } else if (id == 3){
-                                pl.sendForm(stone,(pl,id) => {
-
-                                })
-                            } else if (id == 4){
-                                pl.sendForm(wool,(pl,id) => {
-
-                                })
-                            } else if (id == 5){
-                                pl.sendForm(tr,(pl,id) => {
-                                    if (id == 0){
-                                        pl.sendForm(ttr,(pl,id) => {
-
-                                        })
-                                    } else if (id == 1){
-                                    pl.sendForm(etr,(pl,id)=> {
-                                      
-                                    })
+                                    if (id == 0) {
+                                        var itemId = 1
+                                        sellM(itemId,pl)
+                                    } else if (id == 1) {
+                                        var itemId = 2
+                                        sellM(itemId,pl)
+                                    } else if (id == 2) {
+                                        var itemId = 3
+                                        sellM(itemId,pl)
+                                    } else if (id == 3) {
+                                        var itemId = 4
+                                        sellM(itemId,pl)
+                                    }
+                                  })
+                              } else if (id == 1){
+                                  pl.sendForm(sand,(pl,id) => {
+                                    if (id == 0) {
+                                        var itemId = 5
+                                        sellM(itemId,pl)
+                                    } else if (id == 1) {
+                                        var itemId = 6
+                                        sellM(itemId,pl)
+                                    } else if (id == 2) {
+                                        var itemId = 7
+                                        sellM(itemId,pl)
+                                    } else if (id == 3) {
+                                        var itemId = 8
+                                        sellM(itemId,pl)
+                                    } else if (id == 4) {
+                                        var itemId = 9
+                                        sellM(itemId,pl)
+                                    } else if (id == 5) {
+                                        var itemId = 10
+                                        sellM(itemId,pl)
+                                    } else if (id == 6) {
+                                        var itemId = 11
+                                        sellM(itemId,pl)
+                                    } else if (id == 7) {
+                                        var itemId = 12
+                                        sellM(itemId,pl)
+                                    } else if (id == 8) {
+                                        var itemId = 13
+                                        sellM(itemId,pl)
+                                    } else if (id == 9) {
+                                        var itemId = 14
+                                        sellM(itemId,pl)
+                                    }
+                                  })
+                              } else if (id == 2){
+                                  pl.sendForm(log,(pl,id) => {
+                                    if (id == 0) {
+                                        var itemId = 15
+                                        sellM(itemId,pl)
+                                    } else if (id == 1) {
+                                        var itemId = 2
+                                        sellM(itemId,pl)
+                                    } else if (id == 2) {
+                                        var itemId = 17
+                                        sellM(itemId,pl)
+                                    } else if (id == 3) {
+                                        var itemId = 18
+                                        sellM(itemId,pl)
+                                    } else if (id == 4) {
+                                        var itemId = 19
+                                        sellM(itemId,pl)
+                                    } else if (id == 5) {
+                                        var itemId = 20
+                                        sellM(itemId,pl)
+                                    }
+                                  })
+                              } else if (id == 3){
+                                  pl.sendForm(stone,(pl,id) => {
+                                    if (id == 0) {
+                                        var itemId = 21
+                                        sellM(itemId,pl)
+                                    } else if (id == 1) {
+                                        var itemId = 22
+                                        sellM(itemId,pl)
+                                    } else if (id == 2) {
+                                        var itemId = 23
+                                        sellM(itemId,pl)
+                                    } else if (id == 3) {
+                                        var itemId = 24
+                                        sellM(itemId,pl)
+                                    } else if (id == 4) {
+                                        var itemId = 25
+                                        sellM(itemId,pl)
+                                    } else if (id == 5) {
+                                        var itemId = 26
+                                        sellM(itemId,pl)
+                                    } else if (id == 6) {
+                                        var itemId = 27
+                                        sellM(itemId,pl)
+                                    } else if (id == 7) {
+                                        var itemId = 28
+                                        sellM(itemId,pl)
+                                    } else if (id == 8) {
+                                        var itemId = 29
+                                        sellM(itemId,pl)
+                                    } else if (id == 9) {
+                                        var itemId = 30
+                                        sellM(itemId,pl)
+                                    } else if (id == 10) {
+                                        var itemId = 31
+                                        sellM(itemId,pl)
+                                    } else if (id == 11) {
+                                        var itemId = 32
+                                        sellM(itemId,pl)
+                                    }
+                                  })
+                              } else if (id == 4){
+                                  pl.sendForm(wool,(pl,id) => {
+                                    if (id == 0) {
+                                        var itemId = 96
+                                        sellM(itemId,pl)
+                                    }else if (id == 1) {
+                                        var itemId = 97
+                                        sellM(itemId,pl)
+                                    }else if (id == 2) {
+                                        var itemId = 98
+                                        sellM(itemId,pl)
+                                    }else if (id == 3) {
+                                        var itemId = 99
+                                        sellM(itemId,pl)
+                                    }else if (id == 4) {
+                                        var itemId = 100
+                                        sellM(itemId,pl)
+                                    }else if (id == 5) {
+                                        var itemId = 101
+                                        sellM(itemId,pl)
+                                    }else if (id == 6) {
+                                        var itemId = 102
+                                        sellM(itemId,pl)
+                                    }else if (id == 7) {
+                                        var itemId = 103
+                                        sellM(itemId,pl)
+                                    }else if (id == 8) {
+                                        var itemId = 104
+                                        sellM(itemId,pl)
+                                    }else if (id == 9) {
+                                        var itemId = 105
+                                        sellM(itemId,pl)
+                                    }else if (id == 10) {
+                                        var itemId = 107
+                                        sellM(itemId,pl)
+                                    }else if (id == 11) {
+                                        var itemId = 107
+                                        sellM(itemId,pl)
+                                    }else if (id == 12) {
+                                        var itemId = 108
+                                        sellM(itemId,pl)
+                                    }else if (id == 13) {
+                                        var itemId = 109
+                                        sellM(itemId,pl)
+                                    }else if (id == 14) {
+                                        var itemId = 110
+                                        sellM(itemId,pl)
+                                    }else if (id == 15) {
+                                        var itemId = 111
+                                        sellM(itemId,pl)
+                                    }
+                                  })
+                              } else if (id == 5){
+                                  pl.sendForm(tr,(pl,id) => {
+                                      if (id == 0){
+                                          pl.sendForm(ttr,(pl,id) => {
+                                            if (id == 0) {
+                                                var itemId = 112
+                                                sellM(itemId,pl)
+                                            } else if (id == 1) {
+                                                var itemId = 113
+                                                sellM(itemId,pl)
+                                            } else if (id == 2) {
+                                                var itemId = 114
+                                                sellM(itemId,pl)
+                                            } else if (id == 3) {
+                                                var itemId = 115
+                                                sellM(itemId,pl)
+                                            } else if (id == 4) {
+                                                var itemId = 116
+                                                sellM(itemId,pl)
+                                            } else if (id == 5) {
+                                                var itemId = 117
+                                                sellM(itemId,pl)
+                                            } else if (id == 6) {
+                                                var itemId = 118
+                                                sellM(itemId,pl)
+                                            } else if (id == 7) {
+                                                var itemId = 119
+                                                sellM(itemId,pl)
+                                            } else if (id == 8) {
+                                                var itemId = 120
+                                                sellM(itemId,pl)
+                                            } else if (id == 9) {
+                                                var itemId = 121
+                                                sellM(itemId,pl)
+                                            } else if (id == 10) {
+                                                var itemId = 122
+                                                sellM(itemId,pl)
+                                            } else if (id == 11) {
+                                                var itemId = 123
+                                                sellM(itemId,pl)
+                                            } else if (id == 12) {
+                                                var itemId = 124
+                                                sellM(itemId,pl)
+                                            } else if (id == 13) {
+                                                var itemId = 125
+                                                sellM(itemId,pl)
+                                            } else if (id == 14) {
+                                                var itemId = 126
+                                                sellM(itemId,pl)
+                                            } else if (id == 15) {
+                                                var itemId = 127
+                                                sellM(itemId,pl)
+                                            } else if (id == 16) {
+                                                var itemId = 128
+                                                sellM(itemId,pl)
+                                            } 
+                                          })
+                                      } else if (id == 1){
+                                      pl.sendForm(etr,(pl,id)=> {
+                                        if (id == 0) {
+                                            var itemId = 129
+                                            sellM(itemId,pl)
+                                        }else if (id == 1) {
+                                            var itemId = 130
+                                            sellM(itemId,pl)
+                                        }else if (id == 2) {
+                                            var itemId = 131
+                                            sellM(itemId,pl)
+                                        }else if (id == 3) {
+                                            var itemId = 132
+                                            sellM(itemId,pl)
+                                        }else if (id == 4) {
+                                            var itemId = 133
+                                            sellM(itemId,pl)
+                                        }else if (id == 5) {
+                                            var itemId = 134
+                                            sellM(itemId,pl)
+                                        }else if (id == 6) {
+                                            var itemId = 135
+                                            sellM(itemId,pl)
+                                        }else if (id == 7) {
+                                            var itemId = 136
+                                            sellM(itemId,pl)
+                                        }else if (id == 8) {
+                                            var itemId = 144
+                                            sellM(itemId,pl)
+                                        }else if (id == 9) {
+                                            var itemId = 137
+                                            sellM(itemId,pl)
+                                        }else if (id == 10) {
+                                            var itemId = 138
+                                            sellM(itemId,pl)
+                                        }else if (id == 11) {
+                                            var itemId = 139
+                                            sellM(itemId,pl)
+                                        }else if (id == 12) {
+                                            var itemId = 140
+                                            sellM(itemId,pl)
+                                        }else if (id == 13) {
+                                            var itemId = 141
+                                            sellM(itemId,pl)
+                                        }else if (id == 14) {
+                                            var itemId = 142
+                                            sellM(itemId,pl)
+                                        }else if (id == 15) {
+                                            var itemId = 143
+                                            sellM(itemId,pl)
+                                        }
+                                      })
+                                      }
+                                  })
+                              } else if (id == 6){
+                              pl.sendForm(cct,(pl,id)=>{
+                                if (id == 0) {
+                                    var itemId = 145
+                                    sellM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 146
+                                    sellM(itemId,pl)
+                                }else if (id == 2) {
+                                    var itemId = 147
+                                    sellM(itemId,pl)
+                                }else if (id == 3) {
+                                    var itemId = 148
+                                    sellM(itemId,pl)
+                                }else if (id == 4) {
+                                    var itemId = 149
+                                    sellM(itemId,pl)
+                                }else if (id == 5) {
+                                    var itemId = 150
+                                    sellM(itemId,pl)
+                                }else if (id == 6) {
+                                    var itemId = 151
+                                    sellM(itemId,pl)
+                                }else if (id == 7) {
+                                    var itemId = 152
+                                    sellM(itemId,pl)
+                                }else if (id == 8) {
+                                    var itemId = 153
+                                    sellM(itemId,pl)
+                                }else if (id == 9) {
+                                    var itemId = 154
+                                    sellM(itemId,pl)
+                                }else if (id == 10) {
+                                    var itemId = 155
+                                    sellM(itemId,pl)
+                                }else if (id == 11) {
+                                    var itemId = 156
+                                    sellM(itemId,pl)
+                                }else if (id == 12) {
+                                    var itemId = 157
+                                    sellM(itemId,pl)
+                                }else if (id == 13) {
+                                    var itemId = 158
+                                    sellM(itemId,pl)
+                                }else if (id == 14) {
+                                    var itemId = 159
+                                    sellM(itemId,pl)
+                                }else if (id == 15) {
+                                    var itemId = 160
+                                    sellM(itemId,pl)
+                                }
+                              })  
+                              } else if (id == 7){
+                                pl.sendForm(nth,(pl,id)=>{
+                                    if (id == 0) {
+                                        var itemId = 161
+                                        sellM(itemId,pl)
+                                    }else if (id == 1) {
+                                        var itemId = 162
+                                        sellM(itemId,pl)
+                                    }else if (id == 2) {
+                                        var itemId = 163
+                                        sellM(itemId,pl)
+                                    }else if (id == 3) {
+                                        var itemId = 164
+                                        sellM(itemId,pl)
+                                    }else if (id == 4) {
+                                        var itemId = 165
+                                        sellM(itemId,pl)
+                                    }else if (id == 5) {
+                                        var itemId = 166
+                                        sellM(itemId,pl)
+                                    }else if (id == 6) {
+                                        var itemId = 167
+                                        sellM(itemId,pl)
+                                    }else if (id == 7) {
+                                        var itemId = 168
+                                        sellM(itemId,pl)
+                                    }else if (id == 8) {
+                                        var itemId = 169
+                                        sellM(itemId,pl)
+                                    }else if (id == 9) {
+                                        var itemId = 170
+                                        sellM(itemId,pl)
+                                    }else if (id == 10) {
+                                        var itemId = 171
+                                        sellM(itemId,pl)
+                                    }else if (id == 11) {
+                                        var itemId = 172
+                                        sellM(itemId,pl)
+                                    }else if (id == 12) {
+                                        var itemId = 173
+                                        sellM(itemId,pl)
                                     }
                                 })
-                            } else if (id == 6){
-                            pl.sendForm(cct,(pl,id)=>{
-                              
-                            })  
-                            } else if (id == 7){
-                              pl.sendForm(nth,(pl,id)=>{
-                                
-                              })
-                            } else if (id == 8){
-                              pl.sendForm(end,(pl,id)=>{
-                                
-                              })
-                            }
-                        })
-                    } else if(id == 1){
+                              } else if (id == 8){
+                                pl.sendForm(end,(pl,id)=>{
+                                    if (id == 0) {
+                                        var itemId = 174
+                                        sellM(itemId,pl)
+                                    }else if (id == 1) {
+                                        var itemId = 175
+                                        sellM(itemId,pl)
+                                    }else if (id == 2) {
+                                        var itemId = 176
+                                        sellM(itemId,pl)
+                                    }else if (id == 3) {
+                                        var itemId = 177
+                                        sellM(itemId,pl)
+                                    }else if (id == 4) {
+                                        var itemId = 178
+                                        sellM(itemId,pl)
+                                    }else if (id == 5) {
+                                        var itemId = 179
+                                        sellM(itemId,pl)
+                                    }
+                                })
+                              }
+                          })
+                      } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
-
-                        })
-                    } else if(id == 2){
-                      pl.sendForm(egg,(pl,id) => {
-
-                        })
+                            if (id == 0) {
+                                var itemId = 33
+                                buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 34
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 35
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 36
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 37
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 38
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 39
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 40
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 41
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 42
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 43
+                                buyM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 44
+                                buyM(itemId,pl)
+                            } else if (id == 12) {
+                                var itemId = 45
+                                buyM(itemId,pl)
+                            } else if (id == 13) {
+                                var itemId = 46
+                                buyM(itemId,pl)
+                            } else if (id == 14) {
+                                var itemId = 47
+                                buyM(itemId,pl)
+                            } else if (id == 15) {
+                                var itemId = 48
+                                buyM(itemId,pl)
+                            } else if (id == 16) {
+                                var itemId = 49
+                                buyM(itemId,pl)
+                            } else if (id == 17) {
+                                var itemId = 50
+                                buyM(itemId,pl)
+                            } else if (id == 18) {
+                                var itemId = 51
+                                buyM(itemId,pl)
+                            } else if (id == 19) {
+                                var itemId = 52
+                                buyM(itemId,pl)
+                            } else if (id == 20) {
+                                var itemId = 53 
+                                buyM(itemId,pl)
+                            }
+                          })
+                      } else if(id == 2){
+                        pl.sendForm(egg,(pl,id) => {
+                            if (id == 0) {
+                                var itemId = 54
+                                buyM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 55
+                                buyM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 56
+                                buyM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 57
+                                buyM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 58
+                                buyM(itemId,pl)
+                            } else if (id == 5) {
+                                var itemId = 59
+                                buyM(itemId,pl)
+                            } else if (id == 6) {
+                                var itemId = 60
+                                buyM(itemId,pl)
+                            } else if (id == 7) {
+                                var itemId = 61
+                                buyM(itemId,pl)
+                            } else if (id == 8) {
+                                var itemId = 62
+                                buyM(itemId,pl)
+                            } else if (id == 9) {
+                                var itemId = 63
+                                buyM(itemId,pl)
+                            } else if (id == 10) {
+                                var itemId = 64
+                                buyM(itemId,pl)
+                            } else if (id == 11) {
+                                var itemId = 65
+                                buyM(itemId,pl)
+                            } else if (id == 12) {
+                                var itemId = 66
+                                buyM(itemId,pl)
+                            } else if (id == 13) {
+                                var itemId = 67
+                                buyM(itemId,pl)
+                            } else if (id == 14) {
+                                var itemId = 68
+                                buyM(itemId,pl)
+                            } else if (id == 15) {
+                                var itemId = 69
+                                buyM(itemId,pl)
+                            } else if (id == 16) {
+                                var itemId = 70
+                                buyM(itemId,pl)
+                            } else if (id == 17) {
+                                var itemId = 71
+                                buyM(itemId,pl)
+                            } else if (id == 18) {
+                                var itemId = 72
+                                buyM(itemId,pl)
+                            } else if (id == 19) {
+                                var itemId = 73
+                                buyM(itemId,pl)
+                            } else if (id == 20) {
+                                var itemId = 74
+                                buyM(itemId,pl)
+                            } else if (id == 21) {
+                                var itemId = 75
+                                buyM(itemId,pl)
+                            } else if (id == 22) {
+                                var itemId = 76
+                                buyM(itemId,pl)
+                            } else if (id == 23) {
+                                var itemId = 77
+                                buyM(itemId,pl)
+                            } else if (id == 24) {
+                                var itemId = 78
+                                buyM(itemId,pl)
+                            } else if (id == 25) {
+                                var itemId = 79
+                                buyM(itemId,pl)
+                            } else if (id == 26) {
+                                var itemId = 80
+                                buyM(itemId,pl)
+                            } else if (id == 27) {
+                                var itemId = 81
+                                buyM(itemId,pl)
+                            } else if (id == 28) {
+                                var itemId = 82
+                                buyM(itemId,pl)
+                            } else if (id == 29) {
+                                var itemId = 83
+                                buyM(itemId,pl)
+                            } else if (id == 30) {
+                                var itemId = 84
+                                buyM(itemId,pl)
+                            } else if (id == 31) {
+                                var itemId = 85
+                                buyM(itemId,pl)
+                            } else if (id == 32) {
+                                var itemId = 86
+                                buyM(itemId,pl)
+                            } else if (id == 33) {
+                                var itemId = 87
+                                buyM(itemId,pl)
+                            } else if (id == 34) {
+                                var itemId = 88
+                                buyM(itemId,pl)
+                            } else if (id == 35) {
+                                var itemId = 89
+                                buyM(itemId,pl)
+                            } else if (id == 36) {
+                                var itemId = 90
+                                buyM(itemId,pl)
+                            } else if (id == 37) {
+                                var itemId = 91
+                                buyM(itemId,pl)
+                            } else if (id == 38) {
+                                var itemId = 92
+                                buyM(itemId,pl)
+                            } else if (id == 39) {
+                                var itemId = 93
+                                buyM(itemId,pl)
+                            } else if (id == 40) {
+                                var itemId = 94
+                                buyM(itemId,pl)
+                            } else if (id == 41) {
+                                var itemId = 95
+                                buyM(itemId,pl)
+                            }
+                      })
                     }
                 }) 
               }
