@@ -6249,7 +6249,7 @@ setInterval(() => {
                 rank = 'None'
             }
         }
-        var tiem = pl.getScore('playDays') + '天' + pl.getScore('playHours') + '小時' + pl.getScore('playerMin') + '分鐘' + pl.getScore('playSec') + '秒'
+        var time = pl.getScore('playDays') + '天' + pl.getScore('playHours') + '小時' + pl.getScore('playerMin') + '分鐘' + pl.getScore('playSec') + '秒'
         
         pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b<\n§b>§9Rank:' +rank +'§b<\n§b>§eLv.' + pl.getScore('level') + '§b<\n§b>游玩時間' + time +'§b<')
     })
