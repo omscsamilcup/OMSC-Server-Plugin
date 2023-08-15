@@ -944,6 +944,7 @@ mc.listen("onServerStarted",()=>{
         sellMenu.addLabel(`物品名稱§l§a${item.name}`)
         sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
         sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
+        sellMenu.addSlider('無需移動此滑塊','無需移動此滑塊','無需移動此滑塊')
         if (!item) {
             player.tell('該商品不存在!')
             return
@@ -953,7 +954,8 @@ mc.listen("onServerStarted",()=>{
             sellMenu.addLabel(`物品名稱§l§a${item.name}`)
             sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
             sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
-            pl.sendForm(sellMenu,(pl,_data) => {
+            sellMenu.addSlider('無需移動此滑塊',0,1)
+            pl.sendForm(sellMenu,(pl,data) => {
                 var player = pl
                 purchaseItem_sell(player,itemId,item)
             })
@@ -962,7 +964,7 @@ mc.listen("onServerStarted",()=>{
 
 
     //function
-    function purchaseItem_buy(player,itemId, item) {
+    function purchaseItem_buy(player,itemId,quantity, item) {
         var item = produts_buy.find((produts) => produts.id === itemId)
         var playerCurrency = player.getScore('money')
         var totalPrice = item.price * quantity
@@ -972,9 +974,9 @@ mc.listen("onServerStarted",()=>{
         }
         player.reduceScore("money",totalPrice)
         if (item.id2 == 0) {
-            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
+            mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
         } else {
-            mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity} ${item.id2}`)
+            mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
         }
             player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
@@ -985,9 +987,9 @@ mc.listen("onServerStarted",()=>{
         if (quantity < 1) {
             player.tell('你的物品數量不足，無法出售')
             if (item.id2 == 0) {
-                mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity}`)
+                mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
             } else {
-                mc.runcmd(`give \"${player.name}\" ${item.name} ${quantity} ${item.id2}`)
+                mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
             }
         } else if (quantity >= 1) {
             let earn = quantity * item.price
@@ -6249,7 +6251,7 @@ setInterval(() => {
                 rank = 'None'
             }
         }
-        var time = pl.getScore('playDays') + '天' + pl.getScore('playHours') + '小時' + pl.getScore('playerMin') + '分鐘' + pl.getScore('playSec') + '秒'
+        var time = pl.getScore('playDays') + '天' + pl.getScore('playHours') + '小時' + pl.getScore('playMin') + '分鐘' + pl.getScore('playSec') + '秒'
         
         pl.rename('§b>§d'+pl.realName + '§b<\n§b>§a設備:' + os + '§b<\n§b>§6延遲:' + ping + '§b<\n§b>§9Rank:' +rank +'§b<\n§b>§eLv.' + pl.getScore('level') + '§b<\n§b>游玩時間' + time +'§b<')
     })
