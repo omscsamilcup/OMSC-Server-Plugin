@@ -106,14 +106,14 @@ mc.listen("onServerStarted",()=>{
     sand.addButton('§l§9切割紅砂岩','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/1c/Chiseled_Red_Sandstone_JE4_BE2.png/revision/latest?cb=20200612160105')
     sand.addButton('§l§9平滑紅砂岩','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d3/Smooth_Red_Sandstone.png/revision/latest?cb=20200328093134')
     
-    var log = mc.newSimpleForm()
-    log.setTitle('§l§9木頭類')
-    log.addButton('§l§9橡樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c5/Oak_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200328083939')
-    log.addButton('§l§9杉樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/51/Spruce_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200118130553')
-    log.addButton('§l§9樺樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d4/Birch_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162119')
-    log.addButton('§l§9叢林原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/68/Jungle_Log_Axis_Y_JE6_BE3.png/revision/latest?cb=20200117162648')
-    log.addButton('§l§9相思樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/be/Acacia_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162054')
-    log.addButton('§l§9黑橡樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/93/Dark_Oak_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162447')
+    var logs = mc.newSimpleForm()
+    logs.setTitle('§l§9木頭類')
+    logs.addButton('§l§9橡樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c5/Oak_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200328083939')
+    logs.addButton('§l§9杉樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/51/Spruce_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200118130553')
+    logs.addButton('§l§9樺樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d4/Birch_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162119')
+    logs.addButton('§l§9叢林原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/68/Jungle_Log_Axis_Y_JE6_BE3.png/revision/latest?cb=20200117162648')
+    logs.addButton('§l§9相思樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/be/Acacia_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162054')
+    logs.addButton('§l§9黑橡樹原木','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/9/93/Dark_Oak_Log_Axis_Y_JE5_BE3.png/revision/latest?cb=20200117162447')
     
     var stone = mc.newSimpleForm()
     stone.setTitle('§l§9石頭類')
@@ -912,19 +912,19 @@ mc.listen("onServerStarted",()=>{
     function buyM(itemId,pl) {
         var item = produts_buy.find((produts) => produts.id === itemId)
         var buyMenu = mc.newCustomForm()
-        buyMenu.setTitle('買東西')
-        buyMenu.addLabel(`物品名稱§l§a${item.name}`)
-        buyMenu.addLabel(`物品單價§l§e${item.price}`)
-        buyMenu.addInput('購買數量')
+        buyMenu.setTitle('§l§e買東西')
+        buyMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+        buyMenu.addLabel(`§l§6物品單價§l§e${item.price}`)
+        buyMenu.addInput('§l§a購買數量')
         if (!item) {
-            player.tell('該商品不存在!')
+            player.tell('§l§c該商品不存在!')
             return
         } else {
             var buyMenu = mc.newCustomForm()
-            buyMenu.setTitle('買東西')
-            buyMenu.addLabel(`物品名稱§l§a${item.name}`)
-            buyMenu.addLabel(`物品單價§l§e${item.price}`)
-            buyMenu.addInput('購買數量')
+            buyMenu.setTitle('§l§e買東西')
+            buyMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+            buyMenu.addLabel(`§l§6物品單價§l§e${item.price}`)
+            buyMenu.addInput('§l§a購買數量')
             pl.sendForm(buyMenu,(pl,data) => {
                 var player = pl
                 var quantity = parseInt(data[2])
@@ -940,27 +940,27 @@ mc.listen("onServerStarted",()=>{
     function sellM(itemId,pl) {
         var item = produts_sell.find((produts) => produts.id === itemId)
         var sellMenu = mc.newCustomForm()
-        sellMenu.setTitle('賣東西')
-        sellMenu.addLabel(`物品名稱§l§a${item.name}`)
-        sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
-        sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
-        sellMenu.addSlider('無需移動此滑塊','無需移動此滑塊','無需移動此滑塊')
+        sellMenu.setTitle('§l§e賣東西')
+        sellMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+        sellMenu.addLabel(`§l§6物品售價§l§e${item.sellPrice}`)
+        sellMenu.addLabel('§l§c若出售，將會將你身上所以該物品同時出售')
+        sellMenu.addSlider('§l§c無需移動此滑塊',1,2)
         if (!item) {
-            player.tell('該商品不存在!')
+            player.tell('§c該商品不存在!')
             return
         } else {
             var sellMenu = mc.newCustomForm()
-            sellMenu.setTitle('賣東西')
-            sellMenu.addLabel(`物品名稱§l§a${item.name}`)
-            sellMenu.addLabel(`物品售價§l§e${item.sellPrice}`)
-            sellMenu.addLabel('若出售，將會將你身上所以該物品同時出售')
-            sellMenu.addSlider('無需移動此滑塊',0,1)
+            sellMenu.setTitle('§l§e賣東西')
+            sellMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+            sellMenu.addLabel(`§l§6物品售價§l§e${item.sellPrice}`)
+            sellMenu.addLabel('§l§c若出售，將會將你身上所以該物品同時出售')
+            sellMenu.addSlider('§l§c無需移動此滑塊',1,2)
             pl.sendForm(sellMenu,(pl,data) => {
                 var player = pl
-                purchaseItem_sell(player,itemId,item)
+                purchaseItem_sell(player,item)
             })
         }
-    }
+    } 
 
 
     //function
@@ -981,11 +981,11 @@ mc.listen("onServerStarted",()=>{
             player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
-    function purchaseItem_sell(player,itemId, item) {
-        var item = produts_sell.find((produts) => produts.id === itemId)
-        let quantity = player.clearItem(`minecraft:${item}`)
+    function purchaseItem_sell(player,item) {
+        const quantity = player.clearItem(`minecraft:${item}`)
+        log(quantity)
         if (quantity < 1) {
-            player.tell('你的物品數量不足，無法出售')
+            player.tell('§l§c你的物品數量不足，無法出售')
             if (item.id2 == 0) {
                 mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
             } else {
@@ -993,7 +993,7 @@ mc.listen("onServerStarted",()=>{
             }
         } else if (quantity >= 1) {
             let earn = quantity * item.price
-            player.tell(`你已成功出售該物品x${quantity}，及獲得${earn}元`)
+            player.tell(`§l§a你已成功出售該物品x${quantity}，及獲得${earn}元`)
             player.addScore('money',earn)
         }
     }
@@ -1023,8 +1023,7 @@ mc.listen("onServerStarted",()=>{
                                         buyM(itemId,pl)
                                     }
                                 })
-                                
-                        } else if (id == 1){
+                            } else if (id == 1){
                                 pl.sendForm(sand,(pl,id) => {
                                     if (id == 0) {
                                         var itemId = 5
@@ -1059,7 +1058,7 @@ mc.listen("onServerStarted",()=>{
                                     }
                                 })
                             } else if (id == 2){
-                                pl.sendForm(log,(pl,id) => {
+                                pl.sendForm(logs,(pl,id) => {
                                     if (id == 0) {
                                         var itemId = 15
                                         buyM(itemId,pl)
@@ -1281,7 +1280,7 @@ mc.listen("onServerStarted",()=>{
                                             buyM(itemId,pl)
                                         }
                                     })
-                                    }
+                                }
                                 })
                             } else if (id == 6){
                                 pl.sendForm(cct,(pl,id)=>{
@@ -1399,9 +1398,9 @@ mc.listen("onServerStarted",()=>{
                                     var itemId = 236
                                     buyM(itemId,pl)
                                 }
-                              })
-                            }
-                        })
+                            })
+                        }
+                })
                     } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
                             if (id == 0) {
@@ -1972,7 +1971,7 @@ mc.listen("onServerStarted",()=>{
                             }
                           })
                       } else if (id == 2){
-                          pl.sendForm(log,(pl,id) => {
+                          pl.sendForm(logs,(pl,id) => {
                             if (id == 0) {
                                 var itemId = 15
                                 sellM(itemId,pl)
@@ -2512,11 +2511,13 @@ mc.listen("onServerStarted",()=>{
                         buyM(itemId,pl)
                     }
                   })
-              }
-              })
+                }
+                })
         }else if (res.chose == null) {
             ori.player.sendForm(fm,(pl,id) => {
                 if (id == 0) {
+                    pl.sendForm(buy,(pl,id) => {
+                        if (id == 0) {
                     pl.sendForm(block,(pl,id) => {
                         if (id == 0){
                             pl.sendForm(dirt,(pl,id) => {
@@ -2570,7 +2571,7 @@ mc.listen("onServerStarted",()=>{
                                       }
                                   })
                               } else if (id == 2){
-                                  pl.sendForm(log,(pl,id) => {
+                                  pl.sendForm(logs,(pl,id) => {
                                       if (id == 0) {
                                           var itemId = 15
                                           buyM(itemId,pl)
@@ -2911,6 +2912,8 @@ mc.listen("onServerStarted",()=>{
                                 })
                             }
                         })
+                    }
+                    })
                       } else if(id == 1){
                           pl.sendForm(ore,(pl,id) => {
                               if (id == 0) {
@@ -3423,8 +3426,8 @@ mc.listen("onServerStarted",()=>{
                                   var itemId = 155
                                   buyM(itemId,pl)
                               }
-                          })
-                      }
+                            })
+                        }
                   })
               } else if (id ==1){
                 pl.sendForm(sell,(pl,id)=>{
@@ -3481,7 +3484,7 @@ mc.listen("onServerStarted",()=>{
                                     }
                                   })
                               } else if (id == 2){
-                                  pl.sendForm(log,(pl,id) => {
+                                  pl.sendForm(logs,(pl,id) => {
                                     if (id == 0) {
                                         var itemId = 15
                                         sellM(itemId,pl)
@@ -3703,8 +3706,6 @@ mc.listen("onServerStarted",()=>{
                                             sellM(itemId,pl)
                                         }
                                       })
-                                      }
-                                  })
                               } else if (id == 6){
                               pl.sendForm(cct,(pl,id)=>{
                                 if (id == 0) {
@@ -3757,6 +3758,8 @@ mc.listen("onServerStarted",()=>{
                                     sellM(itemId,pl)
                                 }
                               })  
+                            }
+                        })
                               } else if (id == 7){
                                 pl.sendForm(nth,(pl,id)=>{
                                     if (id == 0) {
@@ -3824,8 +3827,6 @@ mc.listen("onServerStarted",()=>{
                                 })
                               }
                           })
-                        }
-                        })
                       } else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
                             if (id == 0) {
@@ -4024,6 +4025,8 @@ mc.listen("onServerStarted",()=>{
                             }
                       })
                     }
+                })
+                    }
                 }) 
               }
         })
@@ -4038,7 +4041,7 @@ mc.listen('onJoin',(pl) => {
         pl.setScore('playHours',0)
         pl.setScore('playMin',0)
         pl.setScore('playSec',0)
-        pl.setScore('fly', 1)
+        pl.setScore('fly', 0)
         pl.addTag('first')
         mc.broadcast('§l§e歡迎新玩家' + pl.realName + '加入伺服器')
         log(pl.realName + '首次加入伺服器')
@@ -6180,6 +6183,8 @@ mc.listen("onServerStarted",() => {
             }
         } else {
             pl.tell('§l§c你沒有權限使用飛行')
+            pl.setScore('fly', 0)
+            pl.setAbility(10,false)
         }
     })
     cmd.setup()
