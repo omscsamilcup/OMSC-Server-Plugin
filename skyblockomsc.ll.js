@@ -211,7 +211,11 @@ mc.listen("onServerStarted",()=>{
     seed.addButton('§l§9南瓜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
     seed.addButton('§l§9西瓜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
     seed.addButton('§l§9甜菜種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b4/Attached_Stem_JE2_BE2.png/revision/latest?cb=20190714083634')
-    
+    seed.addButton('§l§9甘蔗','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/41/Sugar_Cane_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190911165104')
+    seed.addButton('§l§9竹子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3b/Big_Leaves_Bamboo_JE1_BE2.png/revision/latest/scale-to-width-down/150?cb=20190420010948')
+    seed.addButton('§l§9胡蘿蔔','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4e/Carrot_JE3_BE2.png/revision/latest?cb=20200612155731')
+    seed.addButton('§l§9馬鈴薯','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/ff/Potato_JE1_BE1.png/revision/latest?cb=20200128042948')
+
     var cr = mc.newSimpleForm()
     cr.setTitle('§l§9珊瑚礁')
     cr.addButton('§l§9紅色珊瑚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/d3/Fire_Coral_JE2_BE1.png/revision/latest?cb=20190516071757')
@@ -295,6 +299,7 @@ mc.listen("onServerStarted",()=>{
     egg.addButton('§l§9殭屍化豬布林','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/39/Zombified_Piglin_Spawn_Egg_JE2_BE1.png/revision/latest?cb=20200129170223')
     egg.addButton('§l§9殭屍','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/db/Zombie_Spawn_Egg_JE2_BE1.png/revision/latest?cb=20200129170243')
     egg.addButton('§l§9村民殭屍','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a6/Zombie_Villager_Spawn_Egg_JE1_BE1.png/revision/latest?cb=20200129170303')
+    
     var wool = mc.newSimpleForm()
     wool.setTitle('§l§9羊毛類')
     wool.addButton('§l§9白色羊毛','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/66/White_Wool_JE2_BE2.png/revision/latest?cb=20200716012722')
@@ -421,7 +426,6 @@ mc.listen("onServerStarted",()=>{
     food.addButton('§l§9西瓜片','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f2/Melon_Slice_JE2_BE2.png/revision/latest?cb=20190424100306')
     food.addButton('§l§9南瓜派','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png/revision/latest?cb=20190424101937')
     food.addButton('§l§9牛排','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/1/1b/Steak_JE3_BE3.png/revision/latest?cb=20190424065405')
-    food.addButton('§l§9種子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a2/Wheat_Age_7_JE4_BE2.png/revision/latest?cb=20200612171429')
     
     var others = mc.newSimpleForm()
     others.setTitle('§l§9雜物類')
@@ -451,6 +455,24 @@ mc.listen("onServerStarted",()=>{
     sell.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
     sell.addButton('§l§9礦物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6a/Diamond_JE2_BE2.png/revision/latest?cb=20200612161112')
     sell.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
+    sell.addButton('§l§9農作物')
+
+    var md = mc.newSimpleForm()
+    md.setTitle('§l§9怪物/生物掉落物')
+    md.addButton('§l§9皮革','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6d/Leather_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190424095735')
+    md.addButton('§l§9終界珍珠','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4c/Ender_Pearl_JE2_BE2.png/revision/latest?cb=20200612161622')
+    md.addButton('§l§9烈焰棒','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/8/87/Blaze_Rod_JE1_BE1.png/revision/latest/scale-to-width-down/150?cb=20190907013007')
+    md.addButton('§l§9墨囊','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/c/c6/Ink_Sac_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190424094524')
+    md.addButton('§l§9綫','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/b/b0/Tripwire_%28ES%29.png/revision/latest/scale-to-width-down/150?cb=20200125105803')
+    md.addButton('§l§9界伏殼','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/f5/Shulker_Shell_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190424103348')
+
+    var crops = mc.newSimpleForm()
+    crops.setTitle('§l§9農作物出售')
+    crops.addButton('§l§9小麥','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/7/75/Wheat_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190424114455')
+    crops.addButton('§l§9胡蘿蔔','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4e/Carrot_JE3_BE2.png/revision/latest?cb=20200612155731')
+    crops.addButton('§l§9馬鈴薯','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/f/ff/Potato_JE1_BE1.png/revision/latest?cb=20200128042948')
+    crops.addButton('§l§9甘蔗','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/41/Sugar_Cane_JE2_BE2.png/revision/latest/scale-to-width-down/150?cb=20190911165104')
+    crops.addButton('§l§9竹子','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/3b/Big_Leaves_Bamboo_JE1_BE2.png/revision/latest/scale-to-width-down/150?cb=20190420010948')
     
     //function
     var produts_buy = [
@@ -725,6 +747,16 @@ mc.listen("onServerStarted",()=>{
         { id: 269, id2: 0, name: 'lapis_block', price: 90},
         { id: 270, id2: 9, name: 'red_flower', price: 1},
         { id: 271, id2: 9, name: 'melon_seeds', price: 3},
+        { id: 272, id2: 0, name: 'sugar_cane', price:5},
+        { id: 273, id2: 0, name: 'leather', price:5},
+        { id: 274, id2: 0, name: 'ender_pearl', price:15},
+        { id: 275, id2: 0, name: 'blaze_rod', price:10},
+        { id: 276, id2: 0, name: 'bamboo', price:5},
+        { id: 277, id2: 0, name: 'string', price:5},
+        { id: 278, id2: 0, name: 'shulker_shell', price:1000},
+        { id: 279, id2: 0, name: 'ink_sac', price:5},
+        { id: 280, id2: 0, name: 'potato' , price:5},
+        { id: 281, id2: 0, name: 'carrot' , price:5},
     ]
 
     var produts_sell = [
@@ -907,6 +939,11 @@ mc.listen("onServerStarted",()=>{
         { id: 177, id2: 0, name: 'end_bricks', price: 5},
         { id: 178, id2: 0, name: 'purpur_block', price: 5},
         { id: 179, id2: 2, name: 'purpur_block', price: 5},
+        { id: 180, id2: 0, name: 'wheat', price: 3},
+        { id: 181, id2: 0, name: 'carrot', price: 3},
+        { id: 182, id2: 0, name: 'potato', price: 3},
+        { id: 183, id2: 0, name: 'sugar_cane', price: 3},
+        { id: 184, id2: 0, name: 'bamboo', price: 3},
     ]      
 
     function buyM(itemId,pl) {
@@ -1521,9 +1558,6 @@ mc.listen("onServerStarted",()=>{
                             } else if (id == 16) {
                                 var itemId = 253
                                 buyM(itemId,pl)
-                            } else if (id == 17) {
-                                var itemId = 254
-                                buyM(itemId,pl)
                             }
                         })
                     } else if (id ==3){
@@ -1633,6 +1667,18 @@ mc.listen("onServerStarted",()=>{
                                             buyM(itemId,pl)
                                         } else if (id == 3) {
                                             var itemId = 80
+                                            buyM(itemId,pl)
+                                        } else if (id == 4) {
+                                            var itemId = 272
+                                            buyM(itemId,pl)
+                                        } else if (id == 5) {
+                                            var itemId = 276
+                                            buyM(itemId,pl)
+                                        } else if (id == 6) {
+                                            var itemId = 280
+                                            buyM(itemId,pl)
+                                        } else if (id == 7) {
+                                            var itemId = 281
                                             buyM(itemId,pl)
                                         }
                                     })
@@ -2318,199 +2364,218 @@ mc.listen("onServerStarted",()=>{
                 pl.sendForm(ore,(pl,id) => {
                     if (id == 0) {
                         var itemId = 33
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 1) {
                         var itemId = 34
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 2) {
                         var itemId = 35
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 3) {
                         var itemId = 36
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 4) {
                         var itemId = 37
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 5) {
                         var itemId = 38
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 6) {
                         var itemId = 39
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 7) {
                         var itemId = 40
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 8) {
                         var itemId = 41
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 9) {
                         var itemId = 42
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 10) {
                         var itemId = 43
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 11) {
                         var itemId = 44
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 12) {
                         var itemId = 45
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 13) {
                         var itemId = 46
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 14) {
                         var itemId = 47
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 15) {
                         var itemId = 48
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 16) {
                         var itemId = 49
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 17) {
                         var itemId = 50
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 18) {
                         var itemId = 51
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 19) {
                         var itemId = 52
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 20) {
                         var itemId = 53 
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     }
                   })
               } else if(id == 2){
                 pl.sendForm(egg,(pl,id) => {
                     if (id == 0) {
                         var itemId = 54
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 1) {
                         var itemId = 55
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 2) {
                         var itemId = 56
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 3) {
                         var itemId = 57
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 4) {
                         var itemId = 58
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 5) {
                         var itemId = 59
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 6) {
                         var itemId = 60
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 7) {
                         var itemId = 61
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 8) {
                         var itemId = 62
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 9) {
                         var itemId = 63
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 10) {
                         var itemId = 64
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 11) {
                         var itemId = 65
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 12) {
                         var itemId = 66
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 13) {
                         var itemId = 67
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 14) {
                         var itemId = 68
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 15) {
                         var itemId = 69
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 16) {
                         var itemId = 70
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 17) {
                         var itemId = 71
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 18) {
                         var itemId = 72
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 19) {
                         var itemId = 73
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 20) {
                         var itemId = 74
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 21) {
                         var itemId = 75
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 22) {
                         var itemId = 76
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 23) {
                         var itemId = 77
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 24) {
                         var itemId = 78
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 25) {
                         var itemId = 79
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 26) {
                         var itemId = 80
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 27) {
                         var itemId = 81
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 28) {
                         var itemId = 82
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 29) {
                         var itemId = 83
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 30) {
                         var itemId = 84
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 31) {
                         var itemId = 85
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 32) {
                         var itemId = 86
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 33) {
                         var itemId = 87
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 34) {
                         var itemId = 88
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 35) {
                         var itemId = 89
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 36) {
                         var itemId = 90
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 37) {
                         var itemId = 91
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 38) {
                         var itemId = 92
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 39) {
                         var itemId = 93
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 40) {
                         var itemId = 94
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     } else if (id == 41) {
                         var itemId = 95
-                        buyM(itemId,pl)
+                        sellM(itemId,pl)
                     }
                   })
+                } else if (id == 3) {
+                    pl.sendForm(crops,(pl,id) => {
+                        if (id == 0) {
+                            var itemId = 180
+                            sellM(itemId,pl)
+                        } else if (id == 1) {
+                            var itemId = 181
+                            sellM(itemId,pl)
+                        } else if (id == 2) {
+                            var itemId = 182
+                            sellM(itemId,pl)
+                        } else if (id == 3) {
+                            var itemId = 183
+                            sellM(itemId,pl)
+                        } else if (id == 4) {
+                            var itemId = 184
+                            sellM(itemId,pl)
+                        } 
+                    })
                 }
                 })
         }else if (res.chose == null) {
@@ -3034,9 +3099,6 @@ mc.listen("onServerStarted",()=>{
                               } else if (id == 16) {
                                   var itemId = 253
                                   buyM(itemId,pl)
-                              } else if (id == 17) {
-                                  var itemId = 254
-                                  buyM(itemId,pl)
                               }
                           })
                       } else if (id ==3){
@@ -3147,7 +3209,19 @@ mc.listen("onServerStarted",()=>{
                                           } else if (id == 3) {
                                               var itemId = 80
                                               buyM(itemId,pl)
-                                          }
+                                          } else if (id == 4) {
+                                                var itemId = 272
+                                                buyM(itemId,pl)
+                                          } else if (id == 5) {
+                                            var itemId = 276
+                                            buyM(itemId,pl)
+                                          } else if (id == 6) {
+                                            var itemId = 280
+                                            buyM(itemId,pl)
+                                          } else if (id == 7) {
+                                            var itemId = 281
+                                            buyM(itemId,pl)
+                                        }
                                       })
                                   }
                               })
@@ -3426,6 +3500,28 @@ mc.listen("onServerStarted",()=>{
                                   var itemId = 155
                                   buyM(itemId,pl)
                               }
+                            })
+                        } else if (id == 6) {
+                            pl.sendForm(md,(pl,id) => {
+                                if (id == 0) {
+                                    var itemId = 273
+                                    buyM(itemId,pl)
+                                } else if (id == 1) {
+                                    var itemId = 274
+                                    buyM(itemId,pl)
+                                } else if (id == 2) {
+                                    var itemId = 275
+                                    buyM(itemId,pl)
+                                } else if (id == 3) {
+                                    var itemId = 277
+                                    buyM(itemId,pl)
+                                } else if (id == 4) {
+                                    var itemId = 278
+                                    buyM(itemId,pl)
+                                } else if (id == 5) {
+                                    var itemId = 279
+                                    buyM(itemId,pl)
+                                }
                             })
                         }
                   })
@@ -3827,208 +3923,227 @@ mc.listen("onServerStarted",()=>{
                                 })
                               }
                           })
-                      } else if(id == 1){
+                      }  else if(id == 1){
                         pl.sendForm(ore,(pl,id) => {
                             if (id == 0) {
                                 var itemId = 33
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 1) {
                                 var itemId = 34
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 2) {
                                 var itemId = 35
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 3) {
                                 var itemId = 36
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 4) {
                                 var itemId = 37
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 5) {
                                 var itemId = 38
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 6) {
                                 var itemId = 39
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 7) {
                                 var itemId = 40
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 8) {
                                 var itemId = 41
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 9) {
                                 var itemId = 42
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 10) {
                                 var itemId = 43
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 11) {
                                 var itemId = 44
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 12) {
                                 var itemId = 45
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 13) {
                                 var itemId = 46
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 14) {
                                 var itemId = 47
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 15) {
                                 var itemId = 48
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 16) {
                                 var itemId = 49
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 17) {
                                 var itemId = 50
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 18) {
                                 var itemId = 51
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 19) {
                                 var itemId = 52
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 20) {
                                 var itemId = 53 
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             }
                           })
                       } else if(id == 2){
                         pl.sendForm(egg,(pl,id) => {
                             if (id == 0) {
                                 var itemId = 54
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 1) {
                                 var itemId = 55
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 2) {
                                 var itemId = 56
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 3) {
                                 var itemId = 57
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 4) {
                                 var itemId = 58
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 5) {
                                 var itemId = 59
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 6) {
                                 var itemId = 60
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 7) {
                                 var itemId = 61
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 8) {
                                 var itemId = 62
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 9) {
                                 var itemId = 63
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 10) {
                                 var itemId = 64
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 11) {
                                 var itemId = 65
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 12) {
                                 var itemId = 66
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 13) {
                                 var itemId = 67
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 14) {
                                 var itemId = 68
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 15) {
                                 var itemId = 69
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 16) {
                                 var itemId = 70
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 17) {
                                 var itemId = 71
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 18) {
                                 var itemId = 72
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 19) {
                                 var itemId = 73
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 20) {
                                 var itemId = 74
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 21) {
                                 var itemId = 75
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 22) {
                                 var itemId = 76
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 23) {
                                 var itemId = 77
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 24) {
                                 var itemId = 78
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 25) {
                                 var itemId = 79
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 26) {
                                 var itemId = 80
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 27) {
                                 var itemId = 81
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 28) {
                                 var itemId = 82
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 29) {
                                 var itemId = 83
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 30) {
                                 var itemId = 84
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 31) {
                                 var itemId = 85
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 32) {
                                 var itemId = 86
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 33) {
                                 var itemId = 87
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 34) {
                                 var itemId = 88
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 35) {
                                 var itemId = 89
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 36) {
                                 var itemId = 90
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 37) {
                                 var itemId = 91
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 38) {
                                 var itemId = 92
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 39) {
                                 var itemId = 93
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 40) {
                                 var itemId = 94
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             } else if (id == 41) {
                                 var itemId = 95
-                                buyM(itemId,pl)
+                                sellM(itemId,pl)
                             }
-                      })
+                          })
+                    } else if (id == 3) {
+                        pl.sendForm(crops,(pl,id) => {
+                            if (id == 0) {
+                                var itemId = 180
+                                sellM(itemId,pl)
+                            } else if (id == 1) {
+                                var itemId = 181
+                                sellM(itemId,pl)
+                            } else if (id == 2) {
+                                var itemId = 182
+                                sellM(itemId,pl)
+                            } else if (id == 3) {
+                                var itemId = 183
+                                sellM(itemId,pl)
+                            } else if (id == 4) {
+                                var itemId = 184
+                                sellM(itemId,pl)
+                            }     
+                        })
                     }
                 })
-                    }
-                }) 
-              }
+            }
+        })
+    }
         })
     cmd.setup()
 })
@@ -4826,22 +4941,22 @@ mc.listen("onServerStarted",()=> {
     cmd.setup()
 })
 
-//每秒空島SC幣
+//每10秒空島SC幣
 setInterval(() => {
     var pls = mc.getOnlinePlayers()
     for (pl in pls) {
         var pl = pls[pl]
         if (!pl.hasTag('donate')) {
             if (pl.hasTag('vip')) {
-                pl.addScore('money',5)
+                pl.addScore('money',1)
             } else if (pl.hasTag('vipp')) {
-                pl.addScore('money',10)
+                pl.addScore('money',5)
             } else if (pl.hasTag('vippp')) {
-                pl.addScore('money', 20)
+                pl.addScore('money', 10)
             } else if (pl.hasTag('mvp')) {
-                pl.addScore('money', 35)
+                pl.addScore('money', 25)
             } else if (pl.hasTag('mvpp')) {
-                pl.addScore('money',50)
+                pl.addScore('money',40)
             } else if (pl.hasTag('team')) {
                 pl.addScore('money', 100)
             } else if (pl.hasTag('yt')) {
@@ -4851,7 +4966,7 @@ setInterval(() => {
             pl.addScore('money',75)
         }
     }
-}, 1000)
+}, 10000)
 
 //Anti Minecart Crasher
 mc.listen('onCmdBlockExecute',(isMinecart,pos) => {
