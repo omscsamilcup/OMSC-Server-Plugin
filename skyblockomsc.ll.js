@@ -455,7 +455,7 @@ mc.listen("onServerStarted",()=>{
     sell.addButton('§l§9方塊類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/2d/Plains_Grass_Block.png/revision/latest?cb=20190718020450')
     sell.addButton('§l§9礦物類','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/6a/Diamond_JE2_BE2.png/revision/latest?cb=20200612161112')
     sell.addButton('§l§9生怪磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/40/Spawner_JE3.png/revision/latest/scale-to-width-down/150?cb=20200612170702')
-    sell.addButton('§l§9農作物')
+    sell.addButton('§l§9農作物','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7UAo3XLPaeVYVNkt7uccY3CN3AuiPJAvncQ&usqp=CAU')
 
     var md = mc.newSimpleForm()
     md.setTitle('§l§9怪物/生物掉落物')
@@ -888,62 +888,62 @@ mc.listen("onServerStarted",()=>{
         { id: 126, id2: 10, name: 'stained_hardened_clay', sellPrice:6 },
         { id: 127, id2: 2, name: 'stained_hardened_clay', sellPrice:6 },
         { id: 128, id2: 6, name: 'stained_hardened_clay', sellPrice:6 },
-        { id: 129, id2: 0, name: 'white_glazed_terracotta', price: 10},
-        { id: 130, id2: 0, name: 'silver_glazed_terracotta', price: 10},
-        { id: 131, id2: 0, name: 'gray_glazed_terracotta', price: 10},
-        { id: 132, id2: 0, name: 'black_glazed_terracotta', price: 10},
-        { id: 133, id2: 0, name: 'brown_glazed_terracotta', price: 10},
-        { id: 134, id2: 0, name: 'red_glazed_terracotta', price: 10},
-        { id: 135, id2: 0, name: 'orange_glazed_terracotta', price: 10},
-        { id: 136, id2: 0, name: 'lime_glazed_terracotta', price: 10},
-        { id: 137, id2: 0, name: 'green_glazed_terracotta', price: 10},
-        { id: 138, id2: 0, name: 'cyan_glazed_terracotta', price: 10},
-        { id: 139, id2: 0, name: 'light_blue_glazed_terracotta', price: 10},
-        { id: 140, id2: 0, name: 'blue_glazed_terracotta', price: 10},
-        { id: 141, id2: 0, name: 'purple_glazed_terracotta', price: 10},
-        { id: 142, id2: 0, name: 'magenta_glazed_terracotta', price: 10},
-        { id: 143, id2: 0, name: 'pink_glazed_terracotta', price: 10},
-        { id: 144, id2: 0, name: 'yellow_glazed_terracotta', price: 10},
-        { id: 145, id2: 0, name: 'white_concrete', price: 10},
-        { id: 146, id2: 0, name: 'light_gray_concrete', price: 10},
-        { id: 147, id2: 0, name: 'gray_concrete', price: 10},
-        { id: 148, id2: 0, name: 'black_concrete', price: 10},
-        { id: 149, id2: 0, name: 'brown_concrete', price: 10},
-        { id: 150, id2: 0, name: 'red_concrete', price: 10},
-        { id: 151, id2: 0, name: 'orange_concrete', price: 10},
-        { id: 152, id2: 0, name: 'yellow_concrete', price: 10},
-        { id: 153, id2: 0, name: 'lime_concrete', price: 10},
-        { id: 154, id2: 0, name: 'green_concrete', price: 10},
-        { id: 155, id2: 0, name: 'cyan_concrete', price: 10},
-        { id: 156, id2: 0, name: 'light_blue_concrete', price: 10},
-        { id: 157, id2: 0, name: 'blue_concrete', price: 10},
-        { id: 158, id2: 0, name: 'purple_concrete', price: 10},
-        { id: 159, id2: 0, name: 'magenta_concrete', price: 10},
-        { id: 160, id2: 0, name: 'pink_concrete', price: 10},
-        { id: 161, id2: 0, name: 'netherrack', price: 3},
-        { id: 162, id2: 0, name: 'soul_sand', price: 5},
-        { id: 163, id2: 0, name: 'magma', price: 8},
-        { id: 164, id2: 0, name: 'nether_wart_block', price: 45},
-        { id: 165, id2: 0, name: 'warped_wart_block', price: 45},
-        { id: 166, id2: 0, name: 'shroomlight', price: 5},
-        { id: 167, id2: 0, name: 'crimson_nylium', price: 5},
-        { id: 168, id2: 0, name: 'warped_nylium', price: 5},
-        { id: 169, id2: 0, name: 'mangrove_log', price: 5},
-        { id: 170, id2: 0, name: 'crimson_stem', price: 5},
-        { id: 171, id2: 0, name: 'warped_stem', price: 5},
-        { id: 172, id2: 0, name: 'nether_brick', price: 5},
-        { id: 173, id2: 0, name: 'red_nether_brick', price: 10},
-        { id: 174, id2: 0, name: 'end_stone', price: 3},
-        { id: 175, id2:0, name: 'chorus_plant',price: 1},
-        { id: 176, id2: 0, name: 'chorus_flower', price: 3},
-        { id: 177, id2: 0, name: 'end_bricks', price: 5},
-        { id: 178, id2: 0, name: 'purpur_block', price: 5},
+        { id: 129, id2: 0, name: 'white_glazed_terracotta', sellprice: 10},
+        { id: 130, id2: 0, name: 'silver_glazed_terracotta', sellprice: 10},
+        { id: 131, id2: 0, name: 'gray_glazed_terracotta', sellprice: 10},
+        { id: 132, id2: 0, name: 'black_glazed_terracotta', sellprice: 10},
+        { id: 133, id2: 0, name: 'brown_glazed_terracotta', sellprice: 10},
+        { id: 134, id2: 0, name: 'red_glazed_terracotta', sellprice: 10},
+        { id: 135, id2: 0, name: 'orange_glazed_terracotta', sellprice: 10},
+        { id: 136, id2: 0, name: 'lime_glazed_terracotta', sellprice: 10},
+        { id: 137, id2: 0, name: 'green_glazed_terracotta', sellprice: 10},
+        { id: 138, id2: 0, name: 'cyan_glazed_terracotta', sellprice: 10},
+        { id: 139, id2: 0, name: 'light_blue_glazed_terracotta', sellprice: 10},
+        { id: 140, id2: 0, name: 'blue_glazed_terracotta', sellprice: 10},
+        { id: 141, id2: 0, name: 'purple_glazed_terracotta', sellprice: 10},
+        { id: 142, id2: 0, name: 'magenta_glazed_terracotta', sellprice: 10},
+        { id: 143, id2: 0, name: 'pink_glazed_terracotta', sellprice: 10},
+        { id: 144, id2: 0, name: 'yellow_glazed_terracotta', sellprice: 10},
+        { id: 145, id2: 0, name: 'white_concrete', sellprice: 10},
+        { id: 146, id2: 0, name: 'light_gray_concrete', sellprice: 10},
+        { id: 147, id2: 0, name: 'gray_concrete', sellprice: 10},
+        { id: 148, id2: 0, name: 'black_concrete', sellprice: 10},
+        { id: 149, id2: 0, name: 'brown_concrete', sellprice: 10},
+        { id: 150, id2: 0, name: 'red_concrete', sellprice: 10},
+        { id: 151, id2: 0, name: 'orange_concrete', sellprice: 10},
+        { id: 152, id2: 0, name: 'yellow_concrete', sellprice: 10},
+        { id: 153, id2: 0, name: 'lime_concrete', sellprice: 10},
+        { id: 154, id2: 0, name: 'green_concrete', sellprice: 10},
+        { id: 155, id2: 0, name: 'cyan_concrete', sellprice: 10},
+        { id: 156, id2: 0, name: 'light_blue_concrete', sellprice: 10},
+        { id: 157, id2: 0, name: 'blue_concrete', sellprice: 10},
+        { id: 158, id2: 0, name: 'purple_concrete', sellprice: 10},
+        { id: 159, id2: 0, name: 'magenta_concrete', sellprice: 10},
+        { id: 160, id2: 0, name: 'pink_concrete', sellprice: 10},
+        { id: 161, id2: 0, name: 'netherrack', sellprice: 3},
+        { id: 162, id2: 0, name: 'soul_sand', sellprice: 5},
+        { id: 163, id2: 0, name: 'magma', sellprice: 8},
+        { id: 164, id2: 0, name: 'nether_wart_block', sellprice: 45},
+        { id: 165, id2: 0, name: 'warped_wart_block', sellprice: 45},
+        { id: 166, id2: 0, name: 'shroomlight', sellprice: 5},
+        { id: 167, id2: 0, name: 'crimson_nylium', sellprice: 5},
+        { id: 168, id2: 0, name: 'warped_nylium', sellprice: 5},
+        { id: 169, id2: 0, name: 'mangrove_log', sellprice: 5},
+        { id: 170, id2: 0, name: 'crimson_stem', sellprice: 5},
+        { id: 171, id2: 0, name: 'warped_stem', sellprice: 5},
+        { id: 172, id2: 0, name: 'nether_brick', sellprice: 5},
+        { id: 173, id2: 0, name: 'red_nether_brick', sellprice: 10},
+        { id: 174, id2: 0, name: 'end_stone', sellprice: 3},
+        { id: 175, id2:0, name: 'chorus_plant',sellprice: 1},
+        { id: 176, id2: 0, name: 'chorus_flower', sellprice: 3},
+        { id: 177, id2: 0, name: 'end_bricks', sellprice: 5},
+        { id: 178, id2: 0, name: 'purpur_block', sellprice: 5},
         { id: 179, id2: 2, name: 'purpur_block', price: 5},
-        { id: 180, id2: 0, name: 'wheat', price: 3},
-        { id: 181, id2: 0, name: 'carrot', price: 3},
-        { id: 182, id2: 0, name: 'potato', price: 3},
-        { id: 183, id2: 0, name: 'sugar_cane', price: 3},
-        { id: 184, id2: 0, name: 'bamboo', price: 3},
+        { id: 180, id2: 0, name: 'wheat', sellprice: 3},
+        { id: 181, id2: 0, name: 'carrot', sellprice: 3},
+        { id: 182, id2: 0, name: 'potato', sellprice: 3},
+        { id: 183, id2: 0, name: 'sugar_cane', sellprice: 3},
+        { id: 184, id2: 0, name: 'bamboo', sellprice: 3},
     ]      
 
     function buyM(itemId,pl) {
@@ -974,30 +974,27 @@ mc.listen("onServerStarted",()=>{
         }
     }
 
-    function sellM(itemId,pl) {
+    function sellM(itemId, pl) {
         var item = produts_sell.find((produts) => produts.id === itemId)
+    
+        if (!item) {
+            pl.tell('§c該商品不存在!')
+            return;
+        }
+    
         var sellMenu = mc.newCustomForm()
         sellMenu.setTitle('§l§e賣東西')
         sellMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
         sellMenu.addLabel(`§l§6物品售價§l§e${item.sellPrice}`)
         sellMenu.addLabel('§l§c若出售，將會將你身上所以該物品同時出售')
-        sellMenu.addSlider('§l§c無需移動此滑塊',1,2)
-        if (!item) {
-            player.tell('§c該商品不存在!')
-            return
-        } else {
-            var sellMenu = mc.newCustomForm()
-            sellMenu.setTitle('§l§e賣東西')
-            sellMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
-            sellMenu.addLabel(`§l§6物品售價§l§e${item.sellPrice}`)
-            sellMenu.addLabel('§l§c若出售，將會將你身上所以該物品同時出售')
-            sellMenu.addSlider('§l§c無需移動此滑塊',1,2)
-            pl.sendForm(sellMenu,(pl,data) => {
-                var player = pl
-                purchaseItem_sell(player,item)
-            })
-        }
-    } 
+        sellMenu.addSlider('§l§c無需移動此滑塊', 1, 2)  
+    
+        pl.sendForm(sellMenu, (pl, data) => {
+            var player = pl;
+            var sliderValue = data[0]
+            purchaseItem_sell(player, itemId) 
+        })
+    }
 
 
     //function
@@ -1018,20 +1015,28 @@ mc.listen("onServerStarted",()=>{
             player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
     }
 
-    function purchaseItem_sell(player,item) {
-        const quantity = player.clearItem(`minecraft:${item}`)
-        log(quantity)
+    function purchaseItem_sell(player, itemId) {
+        var item = produts_sell.find((produts) => produts.id === itemId)
+    
+        if (!item) {
+            player.tell('該商品不存在！')
+            return;
+        }
+    
+        const quantity = player.clearItem(`minecraft:${item.name}`)
+    
         if (quantity < 1) {
             player.tell('§l§c你的物品數量不足，無法出售')
+    
             if (item.id2 == 0) {
                 mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
             } else {
                 mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
             }
-        } else if (quantity >= 1) {
-            let earn = quantity * item.price
-            player.tell(`§l§a你已成功出售該物品x${quantity}，及獲得${earn}元`)
-            player.addScore('money',earn)
+        } else {
+            let earn = quantity * item.sellPrice
+            player.tell(`§l§a你已成功出售該物品x${quantity}，獲得${earn}元`)
+            player.addScore('money', earn)
         }
     }
 
