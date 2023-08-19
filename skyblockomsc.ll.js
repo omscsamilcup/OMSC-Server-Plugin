@@ -987,15 +987,16 @@ mc.listen("onServerStarted",()=>{
         sellMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
         sellMenu.addLabel(`§l§6物品售價§l§e${item.sellPrice}`)
         sellMenu.addLabel('§l§c若出售，將會將你身上所以該物品同時出售')
-        sellMenu.addSlider('§l§c無需移動此滑塊', 1, 2)  
+        sellMenu.addSlider('§l§a可選擇要販售的組數§g',1,5)  
     
         pl.sendForm(sellMenu, (pl, data) => {
-            var player = pl;
-            var sliderValue = data[0]
-            purchaseItem_sell(player, itemId) 
+            var player = pl
+            var slider = data[3]
+            for (var i = 0 ; i < slider ; i++) {
+                purchaseItem_sell(player, itemId) 
+            }
         })
     }
-
 
     //function
     function purchaseItem_buy(player,itemId,quantity, item) {
@@ -1022,11 +1023,11 @@ mc.listen("onServerStarted",()=>{
             player.tell('該商品不存在！')
             return;
         }
-    
+       
         const quantity = player.clearItem(`minecraft:${item.name}`)
     
         if (quantity < 1) {
-            player.tell('§l§c你的物品數量不足，無法出售')
+            player.tell('§l>>>§c你的物品數量不足，無法出售\n§g如果發現身上無物品又刻意刷\n造成遊戲負擔\n將會嚴懲')
     
             if (item.id2 == 0) {
                 mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
@@ -1035,7 +1036,7 @@ mc.listen("onServerStarted",()=>{
             }
         } else {
             let earn = quantity * item.sellPrice
-            player.tell(`§l§a你已成功出售該物品x${quantity}，獲得${earn}元`)
+            player.tell(`§l§a你已成功出售該物品§ex${quantity}§a，獲得§6${earn}元`)
             player.addScore('money', earn)
         }
     }
