@@ -4636,7 +4636,7 @@ mc.listen("onServerStarted",() => {
                 ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
                 if (numbers >= 0 && numbers < 210) {
-                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
+                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money *(bouns / 2))
                     ori.player.addScore('money',money * bouns)
                 } else if (numbers >= 210 && numbers < 510) {
                     ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
@@ -4652,7 +4652,7 @@ mc.listen("onServerStarted",() => {
                     ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
                 if (numbers >= 0 && numbers < 210) {
-                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
+                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * (bouns / 2))
                     ori.player.addScore('money',money * bouns)
                 } else if (numbers >= 210 && numbers < 510) {
                     ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
