@@ -974,6 +974,34 @@ mc.listen("onServerStarted",()=>{
         }
     }
 
+    function buyM_mob(itemId,pl) {
+        var item = produts_buy.find((produts) => produts.id === itemId)
+        var buyMenu = mc.newCustomForm()
+        buyMenu.setTitle('§l§e買東西')
+        buyMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+        buyMenu.addLabel(`§l§6物品單價§l§e${item.price}`)
+        buyMenu.addInput('§l§a購買數量')
+        if (!item) {
+            player.tell('§l§c該商品不存在!')
+            return
+        } else {
+            var buyMenu = mc.newCustomForm()
+            buyMenu.setTitle('§l§e買東西')
+            buyMenu.addLabel(`§l§b物品名稱§l§a${item.name}`)
+            buyMenu.addLabel(`§l§6物品單價§l§e${item.price}`)
+            buyMenu.addInput('§l§a購買數量')
+            pl.sendForm(buyMenu,(pl,data) => {
+                var player = pl
+                var quantity = parseInt(data[2])
+                if (isNaN(quantity) || quantity <= 0) {
+                    pl.tell('§l§c請輸入正確的數字')
+                } else {
+                    purchaseItem_buy_mob(player,itemId, quantity,item)
+                }
+            })
+        }
+    }
+
     function sellM(itemId, pl) {
         var item = produts_sell.find((produts) => produts.id === itemId)
     
@@ -1010,6 +1038,24 @@ mc.listen("onServerStarted",()=>{
         player.reduceScore("money",totalPrice)
         if (item.id2 == 0) {
             mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
+        } else {
+            mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
+        }
+            player.tell('§l§6購買該產品成功，你購買了' + quantity + '個')
+    }
+
+    function purchaseItem_buy_mob(player,itemId,quantity, item) {
+        var item = produts_buy.find((produts) => produts.id === itemId)
+        var playerCurrency = player.getScore('money')
+        var totalPrice = item.price * quantity
+        if (playerCurrency < totalPrice) {
+            player.tell("§l§cyou don't have enough money to buy")
+            return
+        }
+        player.reduceScore("money",totalPrice)
+        if (item.id2 == 0) {
+            mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
+            mc.runcmd(`give ${player.realName} monster_spawner`)
         } else {
             mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
         }
@@ -1840,130 +1886,130 @@ mc.listen("onServerStarted",()=>{
                         pl.sendForm(egg,(pl,id) => {
                             if (id == 0) {
                                 var itemId = 114
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 1) {
                                 var itemId = 115
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 2) {
                                 var itemId = 116
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 3) {
                                 var itemId = 117
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 4) {
                                 var itemId = 118
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 5) {
                                 var itemId = 119
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 6) {
                                 var itemId = 120
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 7) {
                                 var itemId = 121
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 8) {
                                 var itemId = 122
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 9) {
                                 var itemId = 123
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 10) {
                                 var itemId = 124
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 11) {
                                 var itemId = 125
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 12) {
                                 var itemId = 126
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 13) {
                                 var itemId = 127
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 14) {
                                 var itemId = 128
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 15) {
                                 var itemId = 129
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 16) {
                                 var itemId = 130
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 17) {
                                 var itemId = 131
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 18) {
                                 var itemId = 132
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 19) {
                                 var itemId = 133
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 20) {
                                 var itemId = 134
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 21) {
                                 var itemId = 135
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 22) {
                                 var itemId = 136
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 23) {
                                 var itemId = 137
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 24) {
                                 var itemId = 138
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 25) {
                                 var itemId = 139
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 26) {
                                 var itemId = 140
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 27) {
                                 var itemId = 141
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 28) {
                                 var itemId = 142
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 29) {
                                 var itemId = 143
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 30) {
                                 var itemId = 144
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 31) {
                                 var itemId = 145
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 32) {
                                 var itemId = 146
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 33) {
                                 var itemId = 147
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 34) {
                                 var itemId = 148
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 35) {
                                 var itemId = 149
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 36) {
                                 var itemId = 150
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 37) {
                                 var itemId = 151
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 38) {
                                 var itemId = 152
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 39) {
                                 var itemId = 153
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 40) {
                                 var itemId = 154
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             } else if (id == 41) {
                                 var itemId = 155
-                                buyM(itemId,pl)
+                                buyM_mob(itemId,pl)
                             }
                         })
                     }
@@ -3381,130 +3427,130 @@ mc.listen("onServerStarted",()=>{
                           pl.sendForm(egg,(pl,id) => {
                               if (id == 0) {
                                   var itemId = 114
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 1) {
                                   var itemId = 115
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 2) {
                                   var itemId = 116
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 3) {
                                   var itemId = 117
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 4) {
                                   var itemId = 118
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 5) {
                                   var itemId = 119
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 6) {
                                   var itemId = 120
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 7) {
                                   var itemId = 121
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 8) {
                                   var itemId = 122
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 9) {
                                   var itemId = 123
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 10) {
                                   var itemId = 124
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 11) {
                                   var itemId = 125
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 12) {
                                   var itemId = 126
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 13) {
                                   var itemId = 127
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 14) {
                                   var itemId = 128
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 15) {
                                   var itemId = 129
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 16) {
                                   var itemId = 130
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 17) {
                                   var itemId = 131
                                   buyM(itemId,pl)
                               } else if (id == 18) {
                                   var itemId = 132
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 19) {
                                   var itemId = 133
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 20) {
                                   var itemId = 134
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 21) {
                                   var itemId = 135
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 22) {
                                   var itemId = 136
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 23) {
                                   var itemId = 137
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 24) {
                                   var itemId = 138
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 25) {
                                   var itemId = 139
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 26) {
                                   var itemId = 140
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 27) {
                                   var itemId = 141
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 28) {
                                   var itemId = 142
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 29) {
                                   var itemId = 143
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 30) {
                                   var itemId = 144
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 31) {
                                   var itemId = 145
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 32) {
                                   var itemId = 146
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 33) {
                                   var itemId = 147
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 34) {
                                   var itemId = 148
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 35) {
                                   var itemId = 149
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 36) {
                                   var itemId = 150
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 37) {
                                   var itemId = 151
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 38) {
                                   var itemId = 152
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 39) {
                                   var itemId = 153
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 40) {
                                   var itemId = 154
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               } else if (id == 41) {
                                   var itemId = 155
-                                  buyM(itemId,pl)
+                                  buyM_mob(itemId,pl)
                               }
                             })
                         } else if (id == 6) {
