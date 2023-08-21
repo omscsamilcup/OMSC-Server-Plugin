@@ -4661,6 +4661,10 @@ mc.listen("onServerStarted",() => {
                     ori.player.tell('§l§c哈哈，你運氣真的差，抽到了空氣，你的錢都沒了')
                 }
             }
+        } else if (ori.player.getScore('money') < money) {
+            ori.player.tell('§l§c你的錢不足，無法購買')
+        } else if (bouns > 5) {
+            ori.player.tell('§l§cBouns的上限為5，你所輸入的數字過大')
         }
     })
     cmd.setup()
@@ -4677,9 +4681,9 @@ mc.listen("onServerStarted",()=>{
         if (mc.getOnlinePlayers().includes(name)) {
             if (ori.player.realName >= money) {
                 ori.player.reduceScore('money',money)
-                name.addScore('money',money * 0.9)
+                mc.runcmd(`scoreboard players add money ${name} ${money * 0.9}`)
                 ori.player.tell('§l§a你已成功轉賬' + money +'空島SC幣給玩家' + name)
-                name.tell('§l§a玩家' + ori.player.realName + '轉賬' + money+ '空島SC幣給你')
+                mc.runcmd(`tellraw @s {"rawtext":[{"text":"§l§a玩家${ori.player.realName}轉賬了${money}空島SC幣給你"}]}`)
             }
         } else {
             pl.tell('§l§c玩家不在綫')
