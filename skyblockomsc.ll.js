@@ -6444,7 +6444,7 @@ mc.listen("onServerStarted",() => {
     c_point.addButton('§l§9點數=>SC幣')
     
     var c_owner = mc.newSimpleForm()
-    c_owner,setTitle('§l§9服主幣')
+    c_owner.setTitle('§l§9服主幣')
     c_owner.addButton('§l§9服主幣=>SC幣')
 
     var point = mc.newCustomForm()
@@ -6455,7 +6455,7 @@ mc.listen("onServerStarted",() => {
     owner.setTitle('服主幣=>SC幣')
     owner.addInput('1服主幣:100000SC幣')
     
-    var cmd = mc.newCommand('coins','§l§b貨幣')
+    var cmd = mc.newCommand('coins','§l§b貨幣',PermType.Any)
     cmd.overload()
     cmd.setCallback((_cmd,ori,_out,_res) => {
         ori.player.sendForm(coins,(pl,id) => {
