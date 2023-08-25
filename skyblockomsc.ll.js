@@ -167,7 +167,7 @@ mc.listen("onServerStarted",()=>{
     
     var brick = mc.newSimpleForm()
     brick.setTitle('§l§9磚塊類')
-    brick.addButton('§l§9磚頭','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/5/5a/Stone_Bricks_JE3_BE2.png/revision/latest?cb=20200328093253')
+    brick.addButton('§l§9磚頭','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/62/Bricks_JE5_BE3.png/revision/latest?cb=20200328092244')
     brick.addButton('§l§9海麟石磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/21/Prismarine_Bricks_JE2_BE2.png/revision/latest?cb=20200328092823')
     brick.addButton('§l§9泥磚','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/da/Mud_Bricks_JE1_BE1.png/revision/latest?cb=20220317091916')
     
@@ -4365,12 +4365,12 @@ setInterval(() => {
 mc.listen("onJoin",(pl) => {
     var record = {}
     let dv = pl.getDevice()
-    record = data.parseJson(file.readFrom('plugins/主插件/data.json'))
+    record = data.parseJson(file.readFrom('/home/container/plugins/主插件/data.json'))
     record[pl.realName] = {}
     record[pl.realName].xuid = pl.xuid
     record[pl.realName].os = dv.os
     record[pl.realName].ip = dv.ip
-    file.writeTo('plugins/主插件/data.json', JSON.stringify(record,null,"\t"))
+    file.writeTo('/home/container/plugins/主插件/data.json', JSON.stringify(record,null,"\t"))
 })
 
 //後臺顯示資料
