@@ -499,9 +499,9 @@ mc.listen("onServerStarted",()=>{
         { id: 21, id2: 0, name: 'stone', price: 3},
         { id: 22, id2: 0, name: 'cobblestone', price: 3},
         { id: 23, id2: 0, name: 'gravel', price: 6},
-        { id: 24, id2: 0, name: 'granite', price: 3},
-        { id: 25, id2: 0, name: 'diorite', price: 3},
-        { id: 26, id2: 0, name: 'amdesite', price: 3},
+        { id: 24, id2: 1, name: 'stone', price: 3},
+        { id: 25, id2: 3, name: 'stone', price: 3},
+        { id: 26, id2: 6, name: 'stone', price: 3},
         { id: 27, id2: 0, name: 'blackstone', price: 3},
         { id: 28, id2: 0, name: 'deepslate', price: 3},
         { id: 29, id2: 0, name: 'basalt', price: 3},
@@ -532,7 +532,7 @@ mc.listen("onServerStarted",()=>{
         { id: 54, id2: 2, name: 'prismarine', price: 5},
         { id: 55, id2: 0, name: 'mud_bricks', price: 5},
         { id: 56, id2: 0, name: 'glowstone', price: 10},
-        { id: 57, id2: 0, name: 'ea_lantern', price: 15},
+        { id: 57, id2: 0, name: 'sea_lantern', price: 15},
         { id: 58, id2: 0, name: 'beacon', price: 20000},
         { id: 59, id2: 0, name: 'lit_pumpkin', price: 10},
         { id: 60, id2: 0, name: 'pearlescent_froglight', price: 10},
@@ -4636,17 +4636,20 @@ mc.listen("onServerStarted",() => {
                 ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
                 if (numbers >= 0 && numbers < 150) {
-                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money *(bouns / 2))
+                    ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * bouns)
                     ori.player.addScore('money',money * bouns)
-                } else if (numbers >= 150 && numbers < 500) {
+                } else if (numbers >= 150 && numbers < 450) {
                     ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
                     ori.player.addScore('money', money)
-                } else if (numbers >= 500 && numbers < 1000) {
-                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了空氣，你的錢都沒了')
+                } else if (numbers >= 450 && numbers < 800) {
+                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了空氣，你的錢都沒了，你一共損失了' + money)
+                } else if (numbers >= 800 && numbers < 1000){
+                    ori.player.tell('§l§c你運氣沒人能比了，不僅要減錢，還要*Bouns')
+                    ori.player.reduceScore('money', money * bouns)
                 } else if (numbers == 1000) {
                     ori.player.tell('§l§d你簡直是天選之子，抽到了百分之0.1機率的鎬子和Bouns')
                     ori.player.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
-                    ori.player.addScore('money',money *( bouns / 2))
+                    ori.player.addScore('money',money * bouns)
                 }
             } else if (money < 100000) {
                     ori.player.reduceScore('money', money)
@@ -4654,11 +4657,14 @@ mc.listen("onServerStarted",() => {
                 if (numbers >= 0 && numbers < 150) {
                     ori.player.tell('§l§e你成功抽到Bouns了，你獲得了' + money * (bouns / 2))
                     ori.player.addScore('money',money * bouns)
-                } else if (numbers >= 150 && numbers < 500) {
+                } else if (numbers >= 150 && numbers < 450) {
                     ori.player.tell('§l§b你成功抽到了Normal，你獲得了' + money)
                     ori.player.addScore('money', money)
-                } else if (numbers >= 500 && numbers <= 1000) {
-                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了空氣，你的錢都沒了')
+                } else if (numbers >= 450 && numbers < 800) {
+                    ori.player.tell('§l§c哈哈，你運氣真的差，抽到了空氣，你的錢都沒了，你一共損失了' + money)
+                } else if (numbers >= 800 && numbers <= 1000){
+                    ori.player.tell('§l§c你運氣沒人能比了，不僅要減錢，還要*Bouns')
+                    ori.player.reduceScore('money', money * bouns)
                 }
             }
         } else if (ori.player.getScore('money') < money) {

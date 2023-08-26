@@ -2693,7 +2693,7 @@ mc.listen('onServerStarted',() => {
         } else if (pl.hasTag('team')) {
             rank = '§6Server Team'
         } else {
-            rank = 'Null'
+            rank = 'None'
         }
         pl.tell('§l§6=======玩家資料=======\n§l§c玩家名稱\n§l§6擁有SC幣' + pl.getScore('money')+'\n§l§e擁有服主幣' + pl.getScore('ownercoins')+'\n§l§a擁有點數' + pl.getScore('point') +'\n§l§2玩家等級:' + pl.getScore('level') + '經驗:' + pl.getScore('exp') + '\n§l§b你的Rank:' + rank + '\n§l§d重生次數:' + pl.getScore('rebirth'))
     })
