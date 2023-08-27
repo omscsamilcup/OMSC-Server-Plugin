@@ -1,13 +1,5 @@
-//LiteLoaderScript Dev Helper
+// LiteLoader-AIDS automatic generated
 /// <reference path="C:\Users\pc\.vscode\dts\HelperLib-master\src/dts/HelperLib-master/src/index.d.ts"/> 
-
-ll.registerPlugin(
-    /* name */ "omsc綠寶石伺服器插件",
-    /* introduction */ "OMSC插件",
-    /* version */ [0,0,1],
-    /* otherInformation */ {}
-); 
-
 
 //reload本插件
 mc.regPlayerCmd('resc', "§l§e重新加載OMSC綠寶石插件",(pl) => {

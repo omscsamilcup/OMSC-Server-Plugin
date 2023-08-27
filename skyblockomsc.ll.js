@@ -299,7 +299,8 @@ mc.listen("onServerStarted",()=>{
     egg.addButton('§l§9殭屍化豬布林','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/3/39/Zombified_Piglin_Spawn_Egg_JE2_BE1.png/revision/latest?cb=20200129170223')
     egg.addButton('§l§9殭屍','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/d/db/Zombie_Spawn_Egg_JE2_BE1.png/revision/latest?cb=20200129170243')
     egg.addButton('§l§9村民殭屍','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/a/a6/Zombie_Villager_Spawn_Egg_JE1_BE1.png/revision/latest?cb=20200129170303')
-    
+    egg.addButton('§l§9村民', 'https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/2/24/Tadpole_Spawn_Egg_JE1_BE1.png/revision/latest/scale-to-width-down/150?cb=20211218155349')
+
     var wool = mc.newSimpleForm()
     wool.setTitle('§l§9羊毛類')
     wool.addButton('§l§9白色羊毛','https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/6/66/White_Wool_JE2_BE2.png/revision/latest?cb=20200716012722')
@@ -614,7 +615,7 @@ mc.listen("onServerStarted",()=>{
         { id: 136, id2: 0, name: 'pillager_spawn_egg', price: 200000},
         { id: 137, id2: 0, name: 'rabbit_spawn_egg', price: 150000},
         { id: 138, id2: 0, name: 'ravager_spawn_egg', price: 200000},
-        { id: 139, id2: 0, name: 'sheeep_spawn_egg', price: 100000},
+        { id: 139, id2: 0, name: 'sheep_spawn_egg', price: 100000},
         { id: 140, id2: 0, name: 'shulker_spawn_egg', price: 450000},
         { id: 141, id2: 0, name: 'skeleton_horse_spawn_egg', price: 200000},
         { id: 142, id2: 0, name: 'skeleton_spawn_egg', price: 150000},
@@ -757,6 +758,7 @@ mc.listen("onServerStarted",()=>{
         { id: 279, id2: 0, name: 'ink_sac', price:5},
         { id: 280, id2: 0, name: 'potato' , price:5},
         { id: 281, id2: 0, name: 'carrot' , price:5},
+        { id: 282, id2: 0, name: 'village_spawn_egg', price:100000}
     ]
 
     var produts_sell = [
@@ -944,6 +946,7 @@ mc.listen("onServerStarted",()=>{
         { id: 182, id2: 0, name: 'potato', sellprice: 3},
         { id: 183, id2: 0, name: 'sugar_cane', sellprice: 3},
         { id: 184, id2: 0, name: 'bamboo', sellprice: 3},
+        { id: 185, id2: 0, name: 'village_spawn_egg', sellprice: 90000}
     ]      
 
     function buyM(itemId,pl) {
@@ -1055,7 +1058,7 @@ mc.listen("onServerStarted",()=>{
         player.reduceScore("money",totalPrice)
         if (item.id2 == 0) {
             mc.runcmd(`give ${player.realName} ${item.name} ${quantity}`)
-            mc.runcmd(`give ${player.realName} monster_spawner`)
+            mc.runcmd(`give ${player.realName} mob_spawner`)
         } else {
             mc.runcmd(`give ${player.realName} ${item.name} ${quantity} ${item.id2}`)
         }
@@ -2010,6 +2013,9 @@ mc.listen("onServerStarted",()=>{
                             } else if (id == 41) {
                                 var itemId = 155
                                 buyM_mob(itemId,pl)
+                            } else if (id == 42) {
+                                var itemId = 282
+                                buyM_mob(itemId,pl)
                             }
                         })
                     }
@@ -2606,6 +2612,9 @@ mc.listen("onServerStarted",()=>{
                         sellM(itemId,pl)
                     } else if (id == 41) {
                         var itemId = 95
+                        sellM(itemId,pl)
+                    } else if (id == 42) {
+                        var itemId = 185
                         sellM(itemId,pl)
                     }
                   })
@@ -3551,7 +3560,10 @@ mc.listen("onServerStarted",()=>{
                               } else if (id == 41) {
                                   var itemId = 155
                                   buyM_mob(itemId,pl)
-                              }
+                              }  else if (id == 42) {
+                                var itemId = 282
+                                buyM_mob(itemId,pl)
+                            }
                             })
                         } else if (id == 6) {
                             pl.sendForm(md,(pl,id) => {
@@ -4169,6 +4181,9 @@ mc.listen("onServerStarted",()=>{
                                 sellM(itemId,pl)
                             } else if (id == 41) {
                                 var itemId = 95
+                                sellM(itemId,pl)
+                            }  else if (id == 42) {
+                                var itemId = 185
                                 sellM(itemId,pl)
                             }
                           })
@@ -6265,7 +6280,7 @@ mc.listen('onServerStarted',()=>{
     fm.addButton('§l§9商店系統')
     fm.addButton('§l§9Rank系統')
     fm.addButton('§l§9高級商店')
-    fm.addButton('§l§9重生系統')
+    fm.addButton('§l§9貨幣系統')
     fm.addButton('§l§9兌換碼系統')
     fm.addButton('§l§6贊助者系統')
     fm.addButton('§l§c管理員選單')
@@ -6294,7 +6309,9 @@ mc.listen('onServerStarted',()=>{
                 pl.runcmd('rank')
             } else if (id == 4) {
                 pl.runcmd('highshop')
-            } else if (id == 6) {
+            } else if (id == 5) {
+                pl.runcmd('coins')
+            }else if (id == 6) {
                 pl.runcmd('cdk')
             } else if (id == 7) {
                 pl.runcmd('donate')
@@ -6304,6 +6321,16 @@ mc.listen('onServerStarted',()=>{
         })
     })
     cmd.setup()
+})
+mc.listen('onUseItem',(pl,item) => {
+    if (item.type == 'minecraft:compass') {
+        pl.runcmd('menu')
+    }
+})
+mc.listen('onServerStarted',() => {
+    mc.regPlayerCmd('compass','獲取指南針(選單)',(pl) => {
+        pl.giveItem(mc.newItem(NBT.parseSNBT('{"Count":1b,"Damage":0s,"Name":"minecraft:compass","WasPickedUp":0b,"tag":{"RepairCost":0,"display":{"Name":"§l§b選單"}}}')))
+    })
 })
 
 //指令列表提示
