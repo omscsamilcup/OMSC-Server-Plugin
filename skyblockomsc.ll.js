@@ -4467,6 +4467,7 @@ mc.listen('onServerStarted',() => {
                         player.addTag('vip')
                         player.reduceScore('money', 5000)
                         player.tell('§l§b成功購買§aVIP')
+                        player.broadcast(pl.realName + '購買了VIP')
                         log(pl.realName + '購買了VIP')
                     } else {
                         var need = 5000 - player.getScore('money')
@@ -4481,6 +4482,7 @@ mc.listen('onServerStarted',() => {
                         player.addTag('vipp')
                         player.removeTag('vip')
                         player.reduceScore('money', 10000)
+                        player.broadcast(pl.realName + '購買了VIP')
                         player.tell('§l§b成功購買§aVIP§6+')
                         log(pl.realName + '購買了VIP+')
                     } else {
@@ -4497,6 +4499,7 @@ mc.listen('onServerStarted',() => {
                     if (player.getScore('money') >= 25000) {
                         player.addTag('vippp')
                         player.removeTag('vipp')
+                        player.broadcast(pl.realName + '購買了VIP')
                         player.reduceScore('money', 25000)
                         player.tell('§l§b成功購買§aVIP++')
                         log(pl.realName + '購買了VIP++')
@@ -4504,7 +4507,7 @@ mc.listen('onServerStarted',() => {
                         var need = 25000 - player.getScore('money')
                         player.tell('§l§c你的空島SC幣不足，需要25000空島SC幣。你還差' + need)
                     }
-                } else if (player.hasTag('vipp') == false && player.hasTag('vippp') == false && player.hasTag('mvp') == false && player.hasTag('mvpp') == false&& player.hasTag('mvppp') == false&& player.hasTag('yt') == false) {
+                } else if (player.hasTag('vipp') == false && player.hasTag('vippp') == false && player.hasTag('mvp') == false && player.hasTag('mvpp') == false&& player.hasTag('mvppp') == false&& player.hasTag('yt') == false&& player.hasTag('team') == false) {
                     player.tell('§l§c你未擁有§aVIP§6+ §cRank，所以無法購買')
                 } else {
                     player.tell('§l§c你已經擁有更高級的Rank')
@@ -4515,6 +4518,7 @@ mc.listen('onServerStarted',() => {
                         player.addTag('mvp')
                         player.removeTag('vippp')
                         player.reduceScore('money', 50000)
+                        player.broadcast(pl.realName + '購買了VIP')
                         player.tell('§l§b成功購買§bMVP')
                         log(pl.realName + '購買了MVP')
                     } else {
@@ -4531,6 +4535,7 @@ mc.listen('onServerStarted',() => {
                     if (player.getScore('money') >= 100000) {
                         player.addTag('mvpp')
                         player.removeTag('mvp')
+                        player.broadcast(pl.realName + '購買了VIP')
                         player.reduceScore('money', 100000)
                         player.tell('§l§b成功購買§bMVP§c+')
                         log(pl.realName + '購買了MVP+')
