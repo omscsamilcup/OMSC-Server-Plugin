@@ -4671,7 +4671,7 @@ mc.listen("onServerStarted",() => {
                     ori.player.giveItem(mc.newItem(NBT.parseSNBT('{"CanDestroy":["minecraft:emerald_block","minecraft:emerald_ore"],"Count":1b,"Damage":0s,"Name":"minecraft:netherite_pickaxe","WasPickedUp":0b,"tag":{"Damage":0,"RepairCost":0,"display":{"Name":"§l§c抽獎特別鎬子"},"ench":[{"id":18s,"lvl":30s},{"id":15s,"lvl":30s},{"id":17s,"lvl":25s},{"id":26s,"lvl":15s}]}}')))
                     ori.player.addScore('money',money * bouns)
                 }
-            } else if (money < 100000) {
+            } else if (money < 1000000) {
                     ori.player.reduceScore('money', money)
                 var numbers = Math.floor(Math.random() * 1001)
                 if (numbers >= 0 && numbers < 150) {
